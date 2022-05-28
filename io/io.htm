@@ -1,0 +1,274 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=big5">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:新細明體;
+	panose-1:2 2 5 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Consolas;
+	panose-1:2 11 6 9 2 2 4 3 2 4;}
+@font-face
+	{font-family:"\@新細明體";
+	panose-1:2 1 6 1 0 1 1 1 1 1;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	font-size:12.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:24.0pt;
+	font-size:12.0pt;
+	font-family:"Calibri",sans-serif;}
+.MsoChpDefault
+	{font-family:"Calibri",sans-serif;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:595.3pt 841.9pt;
+	margin:2.0cm 2.0cm 2.0cm 2.0cm;
+	layout-grid:18.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body lang=ZH-TW style='word-wrap:break-word;text-justify-trim:punctuation'>
+
+<div class=WordSection1 style='layout-grid:18.0pt'>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>來談談</span><span
+lang=EN-US>Incoming connections</span><span style='font-family:"新細明體",serif'>與</span><span
+lang=EN-US>Outoging connections</span><span style='font-family:"新細明體",serif'>的數量。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>一、</span><span
+lang=EN-US>TCP</span><span style='font-family:"新細明體",serif'>連線</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>首先了解</span><span
+lang=EN-US>TCP</span><span style='font-family:"新細明體",serif'>怎麼建立連線。通常是由一端（伺服器端）打開一個通訊端（</span><span
+lang=EN-US>socket</span><span style='font-family:"新細明體",serif'>）然後監聽來自另一方（客戶端）的連接，這就是通常所指的被動打開（</span><span
+lang=EN-US>passive open</span><span style='font-family:"新細明體",serif'>）。伺服器端被被動打開以後，客戶端就能開始建立主動打開（</span><span
+lang=EN-US>active open</span><span style='font-family:"新細明體",serif'>）。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>當你的節點有開通</span><span
+lang=EN-US>PORT 31401-31403</span><span style='font-family:"新細明體",serif'>，就是扮演伺服器端的角色，監聽著</span><span
+lang=EN-US>PORT 31402</span><span style='font-family:"新細明體",serif'>，等待其他節點（客戶端）發起連線。如果有其他節點連進來，</span><span
+lang=EN-US>Incoming connections</span><span style='font-family:"新細明體",serif'>就會加一。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>反過來，你到節點想連到其他節點，就是扮演客戶端的角色，其他節點（伺服器端）必須開通</span><span
+lang=EN-US>PORT 31402</span><span style='font-family:"新細明體",serif'>讓你連進去。如果成功建立連線，你的</span><span
+lang=EN-US>Outoging connections</span><span style='font-family:"新細明體",serif'>就會加一。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>二、參數</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>連線數分別可以透過</span><span
+lang=EN-US>TARGET_PEER_CONNECTIONS</span><span style='font-family:"新細明體",serif'>（</span><span
+lang=EN-US>out</span><span style='font-family:"新細明體",serif'>）、</span><span
+lang=EN-US>MAX_ADDITIONAL_PEER_CONNECTIONS</span><span style='font-family:"新細明體",serif'>（</span><span
+lang=EN-US>in</span><span style='font-family:"新細明體",serif'>）參數來設定，目前是設定為</span><span
+lang=EN-US>in 64</span><span style='font-family:"新細明體",serif'>、</span><span
+lang=EN-US>out 8</span><span style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>三、</span><span
+lang=EN-US>peers</span></p>
+
+<p class=MsoNormal><span lang=EN-US>core</span><span style='font-family:"新細明體",serif'>資料庫內有一個</span><span
+lang=EN-US>public.peers</span><span style='font-family:"新細明體",serif'>表格，存放了其他節點的資訊。節點跟節點之間，會彼此分享這些資料。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>你的節點會連接到哪些節點，就是由這個清單一台一台的嘗試。反過來說，其他節點會不會連進來，也是看你的節點有沒有在對方的</span><span
+lang=EN-US>peers</span><span style='font-family:"新細明體",serif'>表格內。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img width=549 height=232 id="圖片 4"
+src="io.files/image001.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>peers</span><span style='font-family:"新細明體",serif'>表格有</span><span
+lang=EN-US>5</span><span style='font-family:"新細明體",serif'>個欄位：</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span lang=EN-US>ip</span><span style='font-family:"新細明體",serif'>：這個不用解釋</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span lang=EN-US>port</span><span style='font-family:"新細明體",serif'>：都是</span><span
+lang=EN-US>31402</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span lang=EN-US>nextattempt</span><span style='font-family:"新細明體",serif'>：下一次嘗試連線的時間</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span lang=EN-US>numfailures</span><span style='font-family:"新細明體",serif'>：連線失敗的次數</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span lang=EN-US>type</span><span style='font-family:"新細明體",serif'>：有</span><span
+lang=EN-US>3</span><span style='font-family:"新細明體",serif'>種</span></p>
+
+<p class=MsoListParagraph style='margin-left:48.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:Wingdings'>n<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span lang=EN-US>0</span><span style='font-family:"新細明體",serif'>：還沒有連線成功</span></p>
+
+<p class=MsoListParagraph style='margin-left:48.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:Wingdings'>n<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span lang=EN-US>1</span><span style='font-family:"新細明體",serif'>：曾經連線成功</span></p>
+
+<p class=MsoListParagraph style='margin-left:48.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:Wingdings'>n<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span lang=EN-US>2</span><span style='font-family:"新細明體",serif'>：</span><span
+lang=EN-US>preferred peer</span><span style='font-family:"新細明體",serif'>，優先選擇的節點，目前全網就三個</span><span
+lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>：</span><span
+lang=EN-US>161.35.227.222</span><span style='font-family:"新細明體",serif'>、</span><span
+lang=EN-US>161.35.227.224</span><span style='font-family:"新細明體",serif'>、</span><span
+lang=EN-US>161.35.238.87</span><span style='font-family:"新細明體",serif'>。都是官方的節點。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>你的節點會依照</span><span
+lang=EN-US>nextattempt</span><span style='font-family:"新細明體",serif'>的時間順序，不斷嘗試向其他節點發起連線。如果網路不通、</span><span
+lang=EN-US>SYN-SENT</span><span style='font-family:"新細明體",serif'>封包根本沒回應，</span><span
+lang=EN-US>numfailures</span><span style='font-family:"新細明體",serif'>會加一，</span><span
+lang=EN-US>type</span><span style='font-family:"新細明體",serif'>設定為</span><span
+lang=EN-US>0</span><span style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>如果網路有通，</span><span
+lang=EN-US>TCP</span><span style='font-family:"新細明體",serif'>三向交握能完成，</span><span
+lang=EN-US>numfailures</span><span style='font-family:"新細明體",serif'>會設定為</span><span
+lang=EN-US>0</span><span style='font-family:"新細明體",serif'>、</span><span
+lang=EN-US>type</span><span style='font-family:"新細明體",serif'>設定為</span><span
+lang=EN-US>1</span><span style='font-family:"新細明體",serif'>。但是節點之間的連線不一定能成功建立，因為有可能你的</span><span
+lang=EN-US>Outoging connections</span><span style='font-family:"新細明體",serif'>已經</span><span
+lang=EN-US>8</span><span style='font-family:"新細明體",serif'>了，或是對方的</span><span
+lang=EN-US>Incoming connections</span><span style='font-family:"新細明體",serif'>已經</span><span
+lang=EN-US>64</span><span style='font-family:"新細明體",serif'>了。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>如果你目前嘗試連過去的節點是</span><span
+lang=EN-US>preferred peer</span><span style='font-family:"新細明體",serif'>，而且網路有回應，但是</span><span
+lang=EN-US>Outoging connections</span><span style='font-family:"新細明體",serif'>已經滿了，這時會自動砍掉一個</span><span
+lang=EN-US>Outoging connection</span><span style='font-family:"新細明體",serif'>，好讓出名額。但是也要看對方的</span><span
+lang=EN-US>Incoming connections</span><span style='font-family:"新細明體",serif'>有沒有滿，若滿了，一樣無法連線。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>除非真的建立起節點之間的連線，否則不管</span><span
+lang=EN-US>TCP</span><span style='font-family:"新細明體",serif'>的封包測試成功與否，</span><span
+lang=EN-US>preferred peer</span><span style='font-family:"新細明體",serif'>的</span><span
+lang=EN-US>nextattempt</span><span style='font-family:"新細明體",serif'>都會自動增加，過一段時間再試，也就是說它會無限次嘗試連線。而其他節點嘗試失敗就算了，過去就不回頭了。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>另外，節點之間的連線一旦建立了，基本上就不會中斷，可以從</span><span
+lang=EN-US>elapsed</span><span style='font-family:"新細明體",serif'>看到已連線的秒數。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img width=616 height=258 id="圖片 1"
+src="io.files/image002.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>但偶爾還是會變動，例如對方</span><span
+lang=EN-US>(</span><span style='font-family:"新細明體",serif'>或自己</span><span
+lang=EN-US>)</span><span style='font-family:"新細明體",serif'>的節點網路斷線、換</span><span
+lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>、關機，或是為了</span><span
+lang=EN-US>preferred peer</span><span style='font-family:"新細明體",serif'>踢掉其他連線。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>四、手動連線</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas;background:
+yellow'>stellar-core http-command
+connect?&quot;peer=xxx.xxx.xxx.xxx&amp;port=31402&quot;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>上面的</span><span
+lang=EN-US>xxx.xxx.xxx.xxx</span><span style='font-family:"新細明體",serif'>是</span><span
+lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>這個指令不一定成功，原因上面講過了，可能網路根本不通，或是彼此的</span><span
+lang=EN-US>in/out</span><span style='font-family:"新細明體",serif'>連線數滿了。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>五、刪除連線</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>先查出節點的</span><span
+lang=EN-US>ID</span><span style='font-family:"新細明體",serif'>：</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas;background:
+yellow'>stellar-core http-command peers?fullkeys=true</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img width=612 height=133 id="圖片 2"
+src="io.files/image003.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>刪除連線：</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas;background:
+yellow'>stellar-core http-command droppeer?node=&quot;<span style='color:red'>GD5OPFFD2ANXGPHJ76FYAYAEMXNHRQ5JMQ5OHBWA4LJOQ3GEOGEO3EIF</span>&quot;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>填入要中斷連線的節點</span><span
+lang=EN-US>ID</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>六、結論</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>如果你的</span><span
+lang=EN-US>Incoming connections</span><span style='font-family:"新細明體",serif'>數量很低，不是什麼不正常的情況，可能其他節點不認識你（</span><span
+lang=EN-US>peers</span><span style='font-family:"新細明體",serif'>表格沒有你的資訊），或是對方嘗試過連線了，但它的</span><span
+lang=EN-US>Outoging connections</span><span style='font-family:"新細明體",serif'>已經</span><span
+lang=EN-US>8</span><span style='font-family:"新細明體",serif'>個了，所以就放棄你。</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>總之，不要再牽拖</span><span
+lang=EN-US>Docker</span><span style='font-family:"新細明體",serif'>的版本，或是下雨天了。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>
