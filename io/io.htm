@@ -58,9 +58,6 @@ ul
 <body lang=ZH-TW style='word-wrap:break-word;text-justify-trim:punctuation'>
 
 <div class=WordSection1 style='layout-grid:18.0pt'>
-<p>這篇要轉貼到PxxC節點群是沒關係啦，如果能讓更多人得到正確訊息也是一件好事。
-但不用在那個群裡提問了，我不會在那裡回覆，而其他人大概也沒有能力回答，那裡沒有人在意Stellar Node，只是搞搞網路跟安裝移除軟體。
-	</p>
 
 <p class=MsoNormal><span style='font-family:"新細明體",serif'>來談談</span><span
 lang=EN-US>Incoming connections</span><span style='font-family:"新細明體",serif'>與</span><span
@@ -108,7 +105,10 @@ lang=EN-US>out 8</span><span style='font-family:"新細明體",serif'>。</span>
 lang=EN-US>peers</span></p>
 
 <p class=MsoNormal><span lang=EN-US>core</span><span style='font-family:"新細明體",serif'>資料庫內有一個</span><span
-lang=EN-US>public.peers</span><span style='font-family:"新細明體",serif'>表格，存放了其他節點的資訊。節點跟節點之間，會彼此分享這些資料。</span></p>
+lang=EN-US>public.peers</span><span style='font-family:"新細明體",serif'>表格，存放了其他節點的資訊。節點跟節點之間，會彼此分享這些資料。分享的資料</span><span
+lang=EN-US>”</span><span style='font-family:"新細明體",serif'>猜測</span><span
+lang=EN-US>”</span><span style='font-family:"新細明體",serif'>是目前連線中的節點，而不是整個</span><span
+lang=EN-US>peers</span><span style='font-family:"新細明體",serif'>表格。</span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
@@ -173,16 +173,25 @@ lang=EN-US>0</span><span style='font-family:"新細明體",serif'>。</span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>當全部試過後，</span><span
+lang=EN-US>type = 0</span><span style='font-family:"新細明體",serif'>的節點會再重試，</span><span
+lang=EN-US>nextattempt</span><span style='font-family:"新細明體",serif'>的時間會往後延。而嘗試失敗</span><span
+lang=EN-US>120</span><span style='font-family:"新細明體",serif'>次</span><span
+lang=EN-US>(numfailures = 120)</span><span style='font-family:"新細明體",serif'>的節點，該筆資料會被刪除。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
 <p class=MsoNormal><span style='font-family:"新細明體",serif'>如果網路有通，</span><span
-lang=EN-US>TCP</span><span style='font-family:"新細明體",serif'>三向交握能完成，</span><span
+lang=EN-US>TCP</span><span style='font-family:"新細明體",serif'>三向交握能完成，會做身分驗證，建立起連線，</span><span
 lang=EN-US>numfailures</span><span style='font-family:"新細明體",serif'>會設定為</span><span
 lang=EN-US>0</span><span style='font-family:"新細明體",serif'>、</span><span
 lang=EN-US>type</span><span style='font-family:"新細明體",serif'>設定為</span><span
-lang=EN-US>1</span><span style='font-family:"新細明體",serif'>。但是節點之間的連線不一定能成功建立，因為有可能你的</span><span
+lang=EN-US>1</span><span style='font-family:"新細明體",serif'>。但這個連線不一定會持續，可能馬上就中斷</span><span
+lang=EN-US>(peer rejected)</span><span style='font-family:"新細明體",serif'>，因為你的</span><span
 lang=EN-US>Outoging connections</span><span style='font-family:"新細明體",serif'>已經</span><span
 lang=EN-US>8</span><span style='font-family:"新細明體",serif'>了，或是對方的</span><span
 lang=EN-US>Incoming connections</span><span style='font-family:"新細明體",serif'>已經</span><span
-lang=EN-US>64</span><span style='font-family:"新細明體",serif'>了。</span></p>
+lang=EN-US>64</span><span style='font-family:"新細明體",serif'>了，無法再容納新的連線。</span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
@@ -190,14 +199,15 @@ lang=EN-US>64</span><span style='font-family:"新細明體",serif'>了。</span>
 lang=EN-US>preferred peer</span><span style='font-family:"新細明體",serif'>，而且網路有回應，但是</span><span
 lang=EN-US>Outoging connections</span><span style='font-family:"新細明體",serif'>已經滿了，這時會自動砍掉一個</span><span
 lang=EN-US>Outoging connection</span><span style='font-family:"新細明體",serif'>，好讓出名額。但是也要看對方的</span><span
-lang=EN-US>Incoming connections</span><span style='font-family:"新細明體",serif'>有沒有滿，若滿了，一樣無法連線。</span></p>
+lang=EN-US>Incoming connections</span><span style='font-family:"新細明體",serif'>有沒有滿，若滿了，一樣無法維持連線。</span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
-<p class=MsoNormal><span style='font-family:"新細明體",serif'>除非真的建立起節點之間的連線，否則不管</span><span
-lang=EN-US>TCP</span><span style='font-family:"新細明體",serif'>的封包測試成功與否，</span><span
-lang=EN-US>preferred peer</span><span style='font-family:"新細明體",serif'>的</span><span
-lang=EN-US>nextattempt</span><span style='font-family:"新細明體",serif'>都會自動增加，過一段時間再試，也就是說它會無限次嘗試連線。而其他節點嘗試失敗就算了，過去就不回頭了。</span></p>
+<p class=MsoNormal><span lang=EN-US>preferred peer</span><span
+style='font-family:"新細明體",serif'>的連線如果失敗或中斷了，</span><span lang=EN-US>nextattempt</span><span
+style='font-family:"新細明體",serif'>時間都會往後延，過一段時間再試，也就是說它會無限次嘗試連線。而其他節點嘗試失敗就算了，過去就不回頭了</span><span
+lang=EN-US>(</span><span style='font-family:"新細明體",serif'>等全部試完才重試</span><span
+lang=EN-US>)</span><span style='font-family:"新細明體",serif'>。</span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
