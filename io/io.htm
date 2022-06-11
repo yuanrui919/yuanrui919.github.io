@@ -105,10 +105,7 @@ lang=EN-US>out 8</span><span style='font-family:"新細明體",serif'>。</span>
 lang=EN-US>peers</span></p>
 
 <p class=MsoNormal><span lang=EN-US>core</span><span style='font-family:"新細明體",serif'>資料庫內有一個</span><span
-lang=EN-US>public.peers</span><span style='font-family:"新細明體",serif'>表格，存放了其他節點的資訊。節點跟節點之間，會彼此分享這些資料。分享的資料</span><span
-lang=EN-US>”</span><span style='font-family:"新細明體",serif'>猜測</span><span
-lang=EN-US>”</span><span style='font-family:"新細明體",serif'>是目前連線中的節點，而不是整個</span><span
-lang=EN-US>peers</span><span style='font-family:"新細明體",serif'>表格。</span></p>
+lang=EN-US>public.peers</span><span style='font-family:"新細明體",serif'>表格，存放了其他節點的資訊。節點跟節點之間，會彼此分享這些資料。</span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
@@ -117,6 +114,14 @@ lang=EN-US>peers</span><span style='font-family:"新細明體",serif'>表格內�
 
 <p class=MsoNormal><span lang=EN-US><img width=549 height=232 id="圖片 4"
 src="io.files/image001.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>一開始你的節點並不知道網路上有哪些節點，只知道核心團隊的節點，所以起初資料是連到核心團隊節點取得的。當你</span><span
+lang=EN-US>(out)</span><span style='font-family:"新細明體",serif'>連線到其他節點</span><span
+lang=EN-US>(in)</span><span style='font-family:"新細明體",serif'>，你只會從對方節點得到幾筆</span><span
+lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>資料，而不是整個</span><span
+lang=EN-US>peers</span><span style='font-family:"新細明體",serif'>表格。但至於是哪幾筆，我並不清楚，只知道不是對方節點目前連線中的節點。</span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
@@ -138,7 +143,8 @@ lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Rom
 
 <p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
 lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
-</span></span><span lang=EN-US>numfailures</span><span style='font-family:"新細明體",serif'>：連線失敗的次數</span></p>
+</span></span><span lang=EN-US>numfailures</span><span style='font-family:"新細明體",serif'>：連線失敗的次數，超過</span><span
+lang=EN-US>120</span><span style='font-family:"新細明體",serif'>次會刪除</span></p>
 
 <p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
 lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
@@ -147,7 +153,7 @@ lang=EN-US>3</span><span style='font-family:"新細明體",serif'>種</span></p>
 
 <p class=MsoListParagraph style='margin-left:48.0pt;text-indent:-24.0pt'><span
 lang=EN-US style='font-family:Wingdings'>n<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
-</span></span><span lang=EN-US>0</span><span style='font-family:"新細明體",serif'>：還沒有連線成功</span></p>
+</span></span><span lang=EN-US>0</span><span style='font-family:"新細明體",serif'>：還沒有連線成功，會重複嘗試連線</span></p>
 
 <p class=MsoListParagraph style='margin-left:48.0pt;text-indent:-24.0pt'><span
 lang=EN-US style='font-family:Wingdings'>n<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
@@ -160,7 +166,7 @@ lang=EN-US>preferred peer</span><span style='font-family:"新細明體",serif'>�
 lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>：</span><span
 lang=EN-US>161.35.227.222</span><span style='font-family:"新細明體",serif'>、</span><span
 lang=EN-US>161.35.227.224</span><span style='font-family:"新細明體",serif'>、</span><span
-lang=EN-US>161.35.238.87</span><span style='font-family:"新細明體",serif'>。都是官方的節點。</span></p>
+lang=EN-US>161.35.238.87</span><span style='font-family:"新細明體",serif'>。都是核心團隊的節點。</span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
@@ -169,7 +175,7 @@ lang=EN-US>nextattempt</span><span style='font-family:"新細明體",serif'>的�
 lang=EN-US>SYN-SENT</span><span style='font-family:"新細明體",serif'>封包根本沒回應，</span><span
 lang=EN-US>numfailures</span><span style='font-family:"新細明體",serif'>會加一，</span><span
 lang=EN-US>type</span><span style='font-family:"新細明體",serif'>設定為</span><span
-lang=EN-US>0</span><span style='font-family:"新細明體",serif'>。</span></p>
+lang=EN-US>0</span><span style='font-family:"新細明體",serif'>。然後試下一個節點。</span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
@@ -196,7 +202,7 @@ lang=EN-US>64</span><span style='font-family:"新細明體",serif'>了，無法�
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
 <p class=MsoNormal><span style='font-family:"新細明體",serif'>如果你目前嘗試連過去的節點是</span><span
-lang=EN-US>preferred peer</span><span style='font-family:"新細明體",serif'>，而且網路有回應，但是</span><span
+lang=EN-US>preferred peer</span><span style='font-family:"新細明體",serif'>，而且有回應，但是</span><span
 lang=EN-US>Outoging connections</span><span style='font-family:"新細明體",serif'>已經滿了，這時會自動砍掉一個</span><span
 lang=EN-US>Outoging connection</span><span style='font-family:"新細明體",serif'>，好讓出名額。但是也要看對方的</span><span
 lang=EN-US>Incoming connections</span><span style='font-family:"新細明體",serif'>有沒有滿，若滿了，一樣無法維持連線。</span></p>
@@ -206,7 +212,7 @@ lang=EN-US>Incoming connections</span><span style='font-family:"新細明體",se
 <p class=MsoNormal><span lang=EN-US>preferred peer</span><span
 style='font-family:"新細明體",serif'>的連線如果失敗或中斷了，</span><span lang=EN-US>nextattempt</span><span
 style='font-family:"新細明體",serif'>時間都會往後延，過一段時間再試，也就是說它會無限次嘗試連線。而其他節點嘗試失敗就算了，過去就不回頭了</span><span
-lang=EN-US>(</span><span style='font-family:"新細明體",serif'>等全部試完才重試</span><span
+lang=EN-US>(</span><span style='font-family:"新細明體",serif'>要等全部試完一輪才重試</span><span
 lang=EN-US>)</span><span style='font-family:"新細明體",serif'>。</span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
@@ -230,8 +236,7 @@ lang=EN-US>preferred peer</span><span style='font-family:"新細明體",serif'>�
 <p class=MsoNormal><span style='font-family:"新細明體",serif'>四、手動連線</span></p>
 
 <p class=MsoNormal><span lang=EN-US style='font-family:Consolas;background:
-yellow'>stellar-core http-command
-connect?&quot;peer=xxx.xxx.xxx.xxx&amp;port=31402&quot;</span></p>
+yellow'>stellar-core http-command connect?&quot;peer=xxx.xxx.xxx.xxx&amp;port=31402&quot;</span></p>
 
 <p class=MsoNormal><span style='font-family:"新細明體",serif'>上面的</span><span
 lang=EN-US>xxx.xxx.xxx.xxx</span><span style='font-family:"新細明體",serif'>是</span><span
@@ -275,6 +280,40 @@ lang=EN-US>8</span><span style='font-family:"新細明體",serif'>個了，所�
 
 <p class=MsoNormal><span style='font-family:"新細明體",serif'>總之，不要再牽拖</span><span
 lang=EN-US>Docker</span><span style='font-family:"新細明體",serif'>的版本，或是下雨天了。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>七、附上老尼回答</span><span
+lang=EN-US>Pi</span><span style='font-family:"新細明體",serif'>友的翻譯</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>输入连接越多，表示被访问的次数自然越多。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>@</span><span style='font-family:"新細明體",serif'>尼古拉斯：“其他节点找不到您要连接的对象，并且您没有太多传入连接，这可能有多种原因。这些原因大多与运气有关。通常，当一个新节点尝试连接时（或者在计算机重新启动或从睡眠状态恢复后），它会尝试从它已“学习”的</span><span
+lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>列表中查找其他节点。如果这些节点具有可用的传入连接，则新节点将连接到它们。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>如果没有可用的传入连接，则会将其已知节点</span><span
+lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>列表提供给请求节点并关闭连接。然后新节点尝试连接到这些</span><span
+lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>并不断发现更多</span><span
+lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>，直到它成功连接到</span><span
+lang=EN-US>8</span><span style='font-family:"新細明體",serif'>个节点。由于这个过程包含一定程度的随机性，一些节点变得更加广为人知，而另一些节点则不那么广为人知。让你的</span><span
+lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>地址不经常改变，这对你在网络中的知名度有很大帮助。还有一点是你与核心团队节点的距离。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>连接到一个核心团队节点的</span><span
+lang=EN-US>64</span><span style='font-family:"新細明體",serif'>个节点很可能总是将其所有的</span><span
+lang=EN-US>64</span><span style='font-family:"新細明體",serif'>个传入连接都填满。这是因为全新的节点不知道其他节点，它们最初尝试连接到核心团队的节点，它们可能会收到“拒绝”和已知</span><span
+lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>的列表。直接连接到核心团队节点上的节点的</span><span
+lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>被这些节点明确地知道，因此也很容易被发现。在您提问之前：哪些节点最终连接到核心团队节点是完全随机的。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>核心团队节点相互优先，并始终相互接受。对于其余的</span><span
+lang=EN-US>64</span><span style='font-family:"新細明體",serif'>个传入连接，它们以先到先服务的方式接受任何其他节点。但是，连接到核心团队节点并不重要，区块链在任何地方都是相同的，甚至一个字节的差异都会立即触发错误，因为这会使块散列无效。”</span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
