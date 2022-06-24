@@ -1,0 +1,405 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:細明體;
+	panose-1:2 2 5 9 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Consolas;
+	panose-1:2 11 6 9 2 2 4 3 2 4;}
+@font-face
+	{font-family:"\@細明體";
+	panose-1:2 1 6 9 0 1 1 1 1 1;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	font-size:12.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:24.0pt;
+	font-size:12.0pt;
+	font-family:"Calibri",sans-serif;}
+.MsoChpDefault
+	{font-family:"Calibri",sans-serif;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:841.9pt 595.3pt;
+	margin:1.0cm 1.0cm 1.0cm 1.0cm;
+	layout-grid:18.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body lang=ZH-TW style='word-wrap:break-word;text-justify-trim:punctuation'>
+
+<div class=WordSection1 style='layout-grid:18.0pt'>
+
+<p class=MsoNormal><span style='font-family:細明體'>如果新裝的節點，或是按了<span lang=EN-US>Remove
+all blockchain data</span>，要怎麼知道區塊同步的進度？</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:細明體'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:細明體'>查看 <span lang=EN-US
+style='color:red'>%appdata%</span><span lang=EN-US>\Pi
+Network\docker_volumes\supervisor_logs\stellar-core-stdout---supervisor-xxx_.log
+</span>，找<span lang=EN-US>&quot;History&quot;</span>訊息。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:細明體'>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:細明體'>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:細明體'>首先會檢查本地跟網路上的區塊編號，發現有所落差，會看到類似這樣的<span
+lang=EN-US>log</span>：</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>[Ledger INFO]
+Lost sync, local LCL is <span style='color:red'>1</span>, network closed ledger
+<span style='color:white;background:purple'>7204156</span></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>[Ledger INFO]
+Changing state LM_BOOTING_STATE -&gt; LM_CATCHING_UP_STATE</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:細明體'>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:細明體'>2.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:細明體'>接著要向<span lang=EN-US>History
+Archives</span>下載資料，但歷史檔每<span lang=EN-US style='color:red'>64</span>個區塊<span
+lang=EN-US>(</span>大約<span lang=EN-US>5</span>分鐘<span lang=EN-US>)</span>才會更新一次，所以會等最新的歷史檔更新，才會開始下載<span
+lang=EN-US>(<span style='background:aqua'>7204161</span>-1=<span
+style='background:red'>7204160</span></span>，可以被<span lang=EN-US>64</span>整除<span
+lang=EN-US>)</span>，於是會看到這樣的<span lang=EN-US>log</span>：</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>[History INFO]
+Waiting for trigger ledger: <span style='color:white;background:purple'>7204156</span>/<span
+style='background:aqua'>7204161</span>, ETA: 25s</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>[History INFO]
+Waiting for trigger ledger: 7204157/<span style='background:aqua'>7204161</span>,
+ETA: 20s</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>...</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>[History INFO]
+Waiting for trigger ledger: 7204160/<span style='background:aqua'>7204161</span>,
+ETA: 5s</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:細明體'>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:細明體'>3.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:細明體'>確定區塊<span lang=EN-US
+style='background:aqua'>7204161</span>檢查點已經關閉了，就可以開始追趕了，但只往回追<span lang=EN-US
+style='color:red'>256</span>個區塊<span lang=EN-US>(<span style='background:lime'>7203903</span>~<span
+style='background:yellow'>7204159</span>)</span>，並<span style='color:red'>不會</span>下載全部的區塊。這是由<span
+lang=EN-US>CATCHUP_COMPLETE</span>、<span lang=EN-US>CATCHUP_RECENT</span>兩個參數所控制的。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>[History INFO]
+Starting catchup after ensuring checkpoint ledger <span style='background:aqua'>7204161</span>
+was closed on network</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>[History INFO]
+Starting catchup with configuration:</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'> 
+lastClosedLedger: 1</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>  toLedger: <span
+style='background:yellow'>7204159</span></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>  count: <span
+style='color:red'>256</span></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:細明體'>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:細明體'>4.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:細明體'>下載狀態文件，是<span lang=EN-US>json</span>格式。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>[History INFO]
+Catching up to ledger <span style='background:yellow'>7204159</span>:
+Downloading state file history/00/6d/ed/history-006ded3f.json for ledger <span
+style='background:yellow'>7204159</span></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>[History INFO]
+Downloading history archive state: history/00/6d/ed/history-006ded3f.json</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>[History INFO]
+Catching up to ledger <span style='background:yellow'>7204159</span>:
+Downloading state file history/00/6d/ec/history-006dec3f.json for ledger <span
+style='background:lime'>7203903</span></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>[History INFO]
+Downloading history archive state: history/00/6d/ec/history-006dec3f.json</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:細明體'>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:細明體'>5.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:細明體'>下載區塊<span lang=EN-US>XDR</span>檔。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>[History INFO]
+Catching up to ledger <span style='background:yellow'>7204159</span>:
+downloading ledger files 1/5 (20%)</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>[History INFO]
+Catching up to ledger <span style='background:yellow'>7204159</span>:
+downloading ledger files 5/5 (100%)</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>[History INFO]
+Catching up to ledger <span style='background:yellow'>7204159</span>:
+Succeeded: batch-download-ledger-006dec3f-006ded7f : 5/5 children completed</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:細明體'>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:細明體'>6.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:細明體'>驗證剛下載內容<span lang=EN-US>(</span>注意這裡的中括號和小括號，中括號有包含，小括號沒有包含<span
+lang=EN-US>)</span>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>[History INFO]
+Verifying ledgers <b><span style='background:aqua'>[</span></b><span
+style='background:lime'>7203903</span>,<span style='background:red'>7204160</span><b><span
+style='background:aqua'>)</span></b></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>[History INFO]
+Verifying ledger [seq=<span style='background:yellow'>7204159</span>,
+hash=b60608] against SCP hash</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>[History INFO]
+Catching up to ledger <span style='background:yellow'>7204159</span>: verifying
+checkpoint 1/5 (20%)</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>[History INFO]
+History chain <b><span style='background:aqua'>[</span></b><span
+style='background:lime'>7203903</span>,<span style='background:yellow'>7204159</span><b><span
+style='background:aqua'>]</span></b> verified</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>[History INFO]
+Catching up to ledger 7204159: Succeeded: verify-ledger-chain</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:細明體'>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:細明體'>7.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:細明體'>如果本地區塊是從<span lang=EN-US>1</span>開始，又會下載一個很大的檔案，有<span
+lang=EN-US>2GB</span>。我不確定是怎麼回事，應該跟歷史檔歸檔的方式有關，<span lang=EN-US>XDR</span>檔總是會不斷合併，可能是下載最近一段完整的檔案。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>[History INFO]
+Catching up to ledger <span style='background:yellow'>7204159</span>:
+downloading and verifying buckets: 0/21 (0%)</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>[History INFO]
+Catching up to ledger <span style='background:yellow'>7204159</span>:
+downloading and verifying buckets: 1/21 (4%)</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>...</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>[History INFO]
+Catching up to ledger <span style='background:yellow'>7204159</span>:
+Succeeded: download-verify-buckets : 21/21 children completed</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:細明體'>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:細明體'>8.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:細明體'>寫入本地的<span lang=EN-US>bucket</span>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>[History INFO]
+Applying buckets</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>[History INFO]
+Catching up to ledger <span style='background:yellow'>7204159</span>: Applying
+buckets 0%. Currently on level 10</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>[Bucket INFO]
+Bucket-apply: 12288 entries in 1.17MB/2.05GB in 0/21 files (0%)</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>...</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>[Bucket INFO]
+Bucket-apply: 22027837 entries in 2.05GB/2.05GB in 21/21 files (100%)</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>[History INFO]
+Catching up to ledger <span style='background:yellow'>7204159</span>: Applying
+buckets 100%. Currently on level 0</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:細明體'>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:細明體'>9.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US style='font-family:細明體'>Apply Buckets</span><span
+style='font-family:細明體'>完成。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>[History INFO]
+ApplyBuckets : done, restarting merges</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>[History INFO]
+Catching up to ledger <span style='background:yellow'>7204159</span>:
+Succeeded: download-verify-apply-buckets</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:細明體'>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:細明體'>10.<span style='font:7.0pt "Times New Roman"'>&nbsp;
+</span></span><span style='font-family:細明體'>這邊<span lang=EN-US>4</span>個<span
+lang=EN-US>checkpoint</span>是<span lang=EN-US>256</span>個區塊<span lang=EN-US>(64*4=256)(<span
+style='background:fuchsia'>7203904</span>~<span style='background:darkcyan'>7203967</span>,
+7203968~7204031, 7204032~7204095, 7204096~<span style='background:yellow'>7204159</span>)</span>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>[History INFO]
+Downloading, unzipping and applying transactions for checkpoint <span
+style='background:darkcyan'>7203967</span></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>[History INFO]
+Downloading, unzipping and applying transactions for checkpoint 7204031</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>[History INFO]
+Downloading, unzipping and applying transactions for checkpoint 7204095</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>[History INFO]
+Downloading, unzipping and applying transactions for checkpoint <span
+style='background:yellow'>7204159</span></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:細明體'>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:細明體'>11.<span style='font:7.0pt "Times New Roman"'>&nbsp;
+</span></span><span style='font-family:細明體'>開始把區塊寫入<span lang=EN-US>DB</span>及<span
+lang=EN-US>XDR</span>檔<span lang=EN-US>(<span style='background:fuchsia'>7203904</span>~<span
+style='background:yellow'>7204159</span></span>，共<span lang=EN-US>256</span>個區塊<span
+lang=EN-US>)</span>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>[History INFO]
+Catching up to ledger 7204159: Download &amp; apply checkpoints: num
+checkpoints left to apply:4 (0% done)</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>[Tx INFO]
+applying ledger <span style='background:fuchsia'>7203904</span> (txs:28,
+ops:66)</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>[Tx INFO]
+applying ledger 7203905 (txs:31, ops:31)</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>...</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>[Tx INFO]
+applying ledger <span style='background:yellow'>7204159</span> (txs:23, ops:41)</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>[History INFO]
+Catching up to ledger <span style='background:yellow'>7204159</span>: Download
+&amp; apply checkpoints: num checkpoints left to apply:0 (100% done)</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:細明體'>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:細明體'>12.<span style='font:7.0pt "Times New Roman"'>&nbsp;
+</span></span><span style='font-family:細明體'>但是在下載與驗證歷史檔的過程中，網路上仍有新的區塊產生，這些都在<span
+lang=EN-US>buffer</span>裡面，也要寫下來。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>[History INFO]
+Catching up to ledger <span style='background:yellow'>7204159</span>: Applying
+buffered ledgers: Running: apply-buffered-ledgers</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>[History INFO]
+Scheduling buffered ledger-close: [seq=<span style='background:red'>7204160</span>,
+prev=b60608, txs=24, ops=49, sv: [ SIGNED@testnet2 txH: fa44fb, ct: 1651505354,
+upgrades: [ ] ]]</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>[History INFO]
+Catching up to ledger <span style='background:yellow'>7204159</span>: Applying
+buffered ledgers: Waiting before starting apply ledger <span style='background:
+red'>7204160</span></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>[Tx INFO]
+applying ledger <span style='background:red'>7204160</span> (txs:24, ops:49)</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>...</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>[History INFO]
+Scheduling buffered ledger-close: [seq=<span style='background:olive'>7204454</span>,
+prev=eb1aee, txs=18, ops=41, sv: [ SIGNED@testnet3 txH: a22be3, ct: 1651507075,
+upgrades: [ ] ]]</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>[History INFO]
+Catching up to ledger <span style='background:yellow'>7204159</span>: Applying
+buffered ledgers: Waiting before starting apply ledger <span style='background:
+olive'>7204454</span></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>[Tx INFO]
+applying ledger <span style='background:olive'>7204454</span> (txs:18, ops:41)</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:細明體'>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:細明體'>13.<span style='font:7.0pt "Times New Roman"'>&nbsp;
+</span></span><span style='font-family:細明體'>在處理<span lang=EN-US>buffer</span>裡的區塊的過程中，網路上仍有新的區塊產生。如果某些因素造成<span
+lang=EN-US>buffer</span>跟網路的最新區塊仍有延遲，<span lang=EN-US>Catchup</span>會失敗，要再重複一次下載歷史檔的程序。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>[History
+INFO]  (<span style='color:red'>discontiguous; will fail and restart</span>):
+Catching up to ledger <span style='background:yellow'>7204159</span>: Applying
+buffered ledgers: apply ledger <span style='background:olive'>7204454</span></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>[History
+WARNING] Expected buffered ledger=<span style='color:red;background:lightgrey'>7204455</span>,
+actual=<span style='color:red;background:darkgray'>7204456</span></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>[History INFO]
+Catching up to ledger <span style='background:yellow'>7204159</span>: Applying
+buffered ledgers: Failed: apply-buffered-ledgers</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>[History
+WARNING] <span style='color:red'>Catchup failed</span></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:細明體'>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:細明體'>14.<span style='font:7.0pt "Times New Roman"'>&nbsp;
+</span></span><span style='font-family:細明體'>如果步驟<span lang=EN-US>12</span>沒問題，就同步完全了。若結果像步驟<span
+lang=EN-US>13</span>這樣，會不斷重複步驟<span lang=EN-US>2,3,4,5,6,10,11,12</span>，直到同步完成。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>[History INFO]
+Catching up to ledger <span style='background:yellow'>7204159</span>: Applying
+buffered ledgers: apply ledger <span style='background:olive'>7204454</span></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>[History INFO]
+Catchup finished</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>[Ledger INFO]
+Changing state LM_CATCHING_UP_STATE -&gt; LM_SYNCED_STATE</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:細明體'>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:細明體'>15.<span style='font:7.0pt "Times New Roman"'>&nbsp;
+</span></span><span style='font-family:細明體'>當其他狀況造成區塊延遲，如網路斷線、停電、重開機等等，<span
+lang=EN-US>Catchup</span>的作業也是跟上面相同。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:細明體'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:細明體'>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>
