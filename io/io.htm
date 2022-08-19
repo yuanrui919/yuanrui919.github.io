@@ -266,7 +266,10 @@ src="io.files/image003.png"></span></p>
 yellow'>stellar-core http-command droppeer?node=&quot;<span style='color:red'>GD5OPFFD2ANXGPHJ76FYAYAEMXNHRQ5JMQ5OHBWA4LJOQ3GEOGEO3EIF</span>&quot;</span></p>
 
 <p class=MsoNormal><span style='font-family:"新細明體",serif'>填入要中斷連線的節點</span><span
-lang=EN-US>ID</span></p>
+lang=EN-US>ID</span><span style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>這樣就能空出一個</span><span
+lang=EN-US>out</span><span style='font-family:"新細明體",serif'>連線的位置，不過通常馬上就被補上了。</span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
@@ -278,42 +281,75 @@ lang=EN-US>peers</span><span style='font-family:"新細明體",serif'>表格沒�
 lang=EN-US>Outoging connections</span><span style='font-family:"新細明體",serif'>已經</span><span
 lang=EN-US>8</span><span style='font-family:"新細明體",serif'>個了，所以就放棄你。</span></p>
 
-<p class=MsoNormal><span style='font-family:"新細明體",serif'>總之，不要再牽拖</span><span
-lang=EN-US>Docker</span><span style='font-family:"新細明體",serif'>的版本，或是下雨天了。</span></p>
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>再舉個例子說明，假設全網共有</span><span
+lang=EN-US>20000</span><span style='font-family:"新細明體",serif'>台節點，總共會發出</span><span
+lang=EN-US>160000(20000*8=160000)</span><span style='font-family:"新細明體",serif'>個</span><span
+lang=EN-US>Outoging connections</span><span style='font-family:"新細明體",serif'>，則至少要有</span><span
+lang=EN-US>2500(160000/64=2500)</span><span style='font-family:"新細明體",serif'>台節點有開通</span><span
+lang=EN-US>PORT 31402</span><span style='font-family:"新細明體",serif'>讓其他節點連入。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>如果這時候有</span><span
+lang=EN-US>8000</span><span style='font-family:"新細明體",serif'>台節點開</span><span
+lang=EN-US>PORT</span><span style='font-family:"新細明體",serif'>，則平均</span><span
+lang=EN-US>Incoming connections</span><span style='font-family:"新細明體",serif'>數量是</span><span
+lang=EN-US>20(160000/8000=20)</span><span style='font-family:"新細明體",serif'>。</span><span
+lang=EN-US>20</span><span style='font-family:"新細明體",serif'>就只是一個平均值，既然稱為平均值，就會有人多、有人少，所以沒有任何意義，不是成為超節的資格。只要有開</span><span
+lang=EN-US>PORT</span><span style='font-family:"新細明體",serif'>，就有資格被選為超節。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>而在</span><span
+lang=EN-US>8000</span><span style='font-family:"新細明體",serif'>台節點有開</span><span
+lang=EN-US>PORT</span><span style='font-family:"新細明體",serif'>的情況下，整個網路最多可容納</span><span
+lang=EN-US>64000(8000*64/8=64000)</span><span style='font-family:"新細明體",serif'>台節點，所以從</span><span
+lang=EN-US>20000</span><span style='font-family:"新細明體",serif'>台再多加</span><span
+lang=EN-US>44000</span><span style='font-family:"新細明體",serif'>台沒開</span><span
+lang=EN-US>PORT</span><span style='font-family:"新細明體",serif'>的節點也沒問題。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>上面節點數量大家能隨意替換數字，自己計算一下就了解了。總之，不要再牽拖</span><span
+lang=EN-US>Docker</span><span style='font-family:"新細明體",serif'>的版本，或是下雨天了。討論這個數字也沒意義。</span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
 <p class=MsoNormal><span style='font-family:"新細明體",serif'>七、附上老尼回答</span><span
 lang=EN-US>Pi</span><span style='font-family:"新細明體",serif'>友的翻譯</span></p>
 
-<p class=MsoNormal><span style='font-family:"新細明體",serif'>输入连接越多，表示被访问的次数自然越多。</span></p>
+<p class=MsoNormal><span lang=ZH-CN style='font-family:"新細明體",serif'>输入连接越多，表示被访问的次数自然越多。</span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
-<p class=MsoNormal><span lang=EN-US>@</span><span style='font-family:"新細明體",serif'>尼古拉斯：“其他节点找不到您要连接的对象，并且您没有太多传入连接，这可能有多种原因。这些原因大多与运气有关。通常，当一个新节点尝试连接时（或者在计算机重新启动或从睡眠状态恢复后），它会尝试从它已“学习”的</span><span
-lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>列表中查找其他节点。如果这些节点具有可用的传入连接，则新节点将连接到它们。</span></p>
+<p class=MsoNormal><span lang=EN-US>@</span><span style='font-family:"新細明體",serif'>尼古拉斯：“其他节点找不到您要连接的对象，并且您没有太多传入连接，这可能有多种原因。</span><span
+lang=ZH-CN style='font-family:"新細明體",serif'>这些原因大多与运气有关。通常，当一个新节点尝试连接时（或者在计算机重新启动或从睡眠状态恢复后），它会尝试从它已“学习”的</span><span
+lang=EN-US>IP</span><span lang=ZH-CN style='font-family:"新細明體",serif'>列表中查找其他节点。如果这些节点具有可用的传入连接，则新节点将连接到它们。</span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
-<p class=MsoNormal><span style='font-family:"新細明體",serif'>如果没有可用的传入连接，则会将其已知节点</span><span
-lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>列表提供给请求节点并关闭连接。然后新节点尝试连接到这些</span><span
-lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>并不断发现更多</span><span
-lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>，直到它成功连接到</span><span
-lang=EN-US>8</span><span style='font-family:"新細明體",serif'>个节点。由于这个过程包含一定程度的随机性，一些节点变得更加广为人知，而另一些节点则不那么广为人知。让你的</span><span
-lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>地址不经常改变，这对你在网络中的知名度有很大帮助。还有一点是你与核心团队节点的距离。</span></p>
+<p class=MsoNormal><span lang=ZH-CN style='font-family:"新細明體",serif'>如果没有可用的传入连接，则会将其已知节点</span><span
+lang=EN-US>IP</span><span lang=ZH-CN style='font-family:"新細明體",serif'>列表提供给请求节点并关闭连接。然后新节点尝试连接到这些</span><span
+lang=EN-US>IP</span><span lang=ZH-CN style='font-family:"新細明體",serif'>并不断发现更多</span><span
+lang=EN-US>IP</span><span lang=ZH-CN style='font-family:"新細明體",serif'>，直到它成功连接到</span><span
+lang=EN-US>8</span><span lang=ZH-CN style='font-family:"新細明體",serif'>个节点。由于这个过程包含一定程度的随机性，一些节点变得更加广为人知，而另一些节点则不那么广为人知。让你的</span><span
+lang=EN-US>IP</span><span lang=ZH-CN style='font-family:"新細明體",serif'>地址不经常改变，这对你在网络中的知名度有很大帮助。还有一点是你与核心团队节点的距离。</span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
-<p class=MsoNormal><span style='font-family:"新細明體",serif'>连接到一个核心团队节点的</span><span
-lang=EN-US>64</span><span style='font-family:"新細明體",serif'>个节点很可能总是将其所有的</span><span
-lang=EN-US>64</span><span style='font-family:"新細明體",serif'>个传入连接都填满。这是因为全新的节点不知道其他节点，它们最初尝试连接到核心团队的节点，它们可能会收到“拒绝”和已知</span><span
-lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>的列表。直接连接到核心团队节点上的节点的</span><span
-lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>被这些节点明确地知道，因此也很容易被发现。在您提问之前：哪些节点最终连接到核心团队节点是完全随机的。</span></p>
+<p class=MsoNormal><span lang=ZH-CN style='font-family:"新細明體",serif'>连接到一个核心团队节点的</span><span
+lang=EN-US>64</span><span lang=ZH-CN style='font-family:"新細明體",serif'>个节点很可能总是将其所有的</span><span
+lang=EN-US>64</span><span lang=ZH-CN style='font-family:"新細明體",serif'>个传入连接都填满。这是因为全新的节点不知道其他节点，它们最初尝试连接到核心团队的节点，它们可能会收到“拒绝”和已知</span><span
+lang=EN-US>IP</span><span lang=ZH-CN style='font-family:"新細明體",serif'>的列表。直接连接到核心团队节点上的节点的</span><span
+lang=EN-US>IP</span><span lang=ZH-CN style='font-family:"新細明體",serif'>被这些节点明确地知道，因此也很容易被发现。在您提问之前：哪些节点最终连接到核心团队节点是完全随机的。</span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
-<p class=MsoNormal><span style='font-family:"新細明體",serif'>核心团队节点相互优先，并始终相互接受。对于其余的</span><span
-lang=EN-US>64</span><span style='font-family:"新細明體",serif'>个传入连接，它们以先到先服务的方式接受任何其他节点。但是，连接到核心团队节点并不重要，区块链在任何地方都是相同的，甚至一个字节的差异都会立即触发错误，因为这会使块散列无效。”</span></p>
+<p class=MsoNormal><span lang=ZH-CN style='font-family:"新細明體",serif'>核心团队节点相互优先，并始终相互接受。对于其余的</span><span
+lang=EN-US>64</span><span lang=ZH-CN style='font-family:"新細明體",serif'>个传入连接，它们以先到先服务的方式接受任何其他节点。但是，连接到核心团队节点并不重要，区块链在任何地方都是相同的，甚至一个字节的差异都会立即触发错误，因为这会使块散列无效。</span><span
+style='font-family:"新細明體",serif'>”</span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
