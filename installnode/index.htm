@@ -1,0 +1,577 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:新細明體;
+	panose-1:2 2 5 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"\@新細明體";
+	panose-1:2 1 6 1 0 1 1 1 1 1;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	font-size:12.0pt;
+	font-family:"Calibri",sans-serif;}
+a:link, span.MsoHyperlink
+	{color:#0563C1;
+	text-decoration:underline;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:24.0pt;
+	font-size:12.0pt;
+	font-family:"Calibri",sans-serif;}
+.MsoChpDefault
+	{font-family:"Calibri",sans-serif;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:595.3pt 841.9pt;
+	margin:2.0cm 2.0cm 2.0cm 2.0cm;
+	layout-grid:18.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body lang=ZH-TW link="#0563C1" vlink="#954F72" style='word-wrap:break-word;
+text-justify-trim:punctuation'>
+
+<div class=WordSection1 style='layout-grid:18.0pt'>
+
+<p class=MsoNormal align=center style='text-align:center'><b><span lang=EN-US
+style='font-size:26.0pt'>How to Install Pi Node on Windows 10: a Simple
+Step-by-Step Guide</span></b></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-size:16.0pt;font-family:Wingdings;color:red;background:
+yellow'>l<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-size:16.0pt;font-family:"新細明體",serif;color:red;background:yellow'>除了懂得怎麼安裝節點以外，強烈建議也看看這篇文章，有很多和節點相關的重要觀念</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:16.0pt;color:red;
+background:yellow'><a href="https://yuanrui919.github.io/aboutnode"><span
+style='color:red'>https://yuanrui919.github.io/aboutnode</span></a></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>由「工作管理員」確認「</span><span
+lang=EN-US>CPU</span><span style='font-family:"新細明體",serif'>模擬」功能有啟用。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=642 height=442
+id="圖片 21" src="installnode.files/image001.jpg"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>2.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>若未啟用，請由</span><span
+lang=EN-US>BIOS</span><span style='font-family:"新細明體",serif'>調整設定。因各家主機板設定方式不同，請自行上網搜尋資料。</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>若不知道主機板型號，請開啟命令提示字元，輸入「</span><span
+lang=EN-US>wmic baseboard get product,Manufacturer</span><span
+style='font-family:"新細明體",serif'>」後按</span><span lang=EN-US> Enter</span><span
+style='font-family:"新細明體",serif'>，就會跳出主機板廠牌以及主機板型號。但如果要再細一點，要列出序號以及版本號，則可以使用「</span><span
+lang=EN-US>wmic baseboard get product,Manufacturer,version,serialnumber</span><span
+style='font-family:"新細明體",serif'>」。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=642 height=224
+id="圖片 22" src="installnode.files/image002.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>3.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US>BIOS</span><span style='font-family:"新細明體",serif'>設定畫面類似如下，各廠牌可能不一樣</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=642 height=481
+id="圖片 23" src="installnode.files/image003.jpg"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>4.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>按「視窗</span><span
+lang=EN-US>+R</span><span style='font-family:"新細明體",serif'>」，輸入「</span><span
+lang=EN-US>control</span><span style='font-family:"新細明體",serif'>」，按「確定」，執行控制台</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=413 height=259
+id="圖片 27" src="installnode.files/image004.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>5.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>「檢視方式」改為「類別」，按「程式集」</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=642 height=399 id="圖片 4"
+src="installnode.files/image005.jpg"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>6.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>按「開啟或關閉</span><span
+lang=EN-US>Windows</span><span style='font-family:"新細明體",serif'>功能」</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=642 height=329 id="圖片 5"
+src="installnode.files/image006.jpg"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>7.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>勾選「</span><span
+lang=EN-US>Windows</span><span style='font-family:"新細明體",serif'>子系統</span><span
+lang=EN-US>Linux</span><span style='font-family:"新細明體",serif'>版」、「虛擬機器平台」，按「確定」</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=415 height=368 id="圖片 6"
+src="installnode.files/image007.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>8.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>安裝中</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=642 height=378
+id="圖片 11" src="installnode.files/image008.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>9.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>安裝完成需要重新啟動電腦，請按「立即重新啟動」</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=642 height=395
+id="圖片 10" src="installnode.files/image009.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>10.<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:"新細明體",serif'>由官網下載節點程式，並執行它</span></p>
+
+<p class=MsoNormal><span lang=EN-US><a href="https://node.minepi.com/node/">https://node.minepi.com/node/</a></span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=643 height=211
+id="圖片 13" src="installnode.files/image010.jpg"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>11.<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:"新細明體",serif'>節點程式安裝完成後會需要登入，請按「</span><span lang=EN-US>LOGIN</span><span
+style='font-family:"新細明體",serif'>」</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=596 height=725
+id="圖片 14" src="installnode.files/image011.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>12.<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:"新細明體",serif'>會產生一組登入碼</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=596 height=725
+id="圖片 15" src="installnode.files/image012.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>13.<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:"新細明體",serif'>在手機的</span><span lang=EN-US>Pi APP</span><span
+style='font-family:"新細明體",serif'>中輸入登入碼</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=643 height=393
+id="圖片 16" src="installnode.files/image013.jpg" alt="一張含有 文字 的圖片&#10;&#10;自動產生的描述"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>14.<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:"新細明體",serif'>回到節點程式，已經登入完成，請按「</span><span lang=EN-US>Node</span><span
+style='font-family:"新細明體",serif'>」</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=596 height=725
+id="圖片 43" src="installnode.files/image014.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>15.<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:"新細明體",serif'>按「</span><span lang=EN-US>APPLY</span><span
+style='font-family:"新細明體",serif'>」</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=596 height=725
+id="圖片 18" src="installnode.files/image015.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>16.<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:"新細明體",serif'>帳號第一次設定節點時會出現問卷，以後就不會了。請自在填寫，不會有什麼影響。填完後按「</span><span
+lang=EN-US>SUBMIT</span><span style='font-family:"新細明體",serif'>」</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=596 height=725
+id="圖片 44" src="installnode.files/image016.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=596 height=725
+id="圖片 45" src="installnode.files/image017.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=596 height=725
+id="圖片 46" src="installnode.files/image018.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>17.<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:"新細明體",serif'>資料送出後，會顯示「</span><span lang=EN-US>Thanks for
+answering!</span><span style='font-family:"新細明體",serif'>」，請按左上的「</span><span
+lang=EN-US style='font-family:Wingdings'>ß</span><span style='font-family:"新細明體",serif'>」離開</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=596 height=725
+id="圖片 47" src="installnode.files/image019.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>18.<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:"新細明體",serif'>按「</span><span lang=EN-US>COUTINUE</span><span
+style='font-family:"新細明體",serif'>」繼續</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=595 height=730
+id="圖片 24" src="installnode.files/image020.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>19.<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:"新細明體",serif'>按「</span><span lang=EN-US>Install Docker</span><span
+style='font-family:"新細明體",serif'>」展開詳細內容</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=595 height=730
+id="圖片 25" src="installnode.files/image021.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>20.<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:"新細明體",serif'>按「</span><span lang=EN-US>Download Docker
+Desktop</span><span style='font-family:"新細明體",serif'>」，連到</span><span
+lang=EN-US>Docker</span><span style='font-family:"新細明體",serif'>的網站</span> <span
+lang=EN-US><a href="https://www.docker.com/products/docker-desktop">https://www.docker.com/products/docker-desktop</a></span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=596 height=725
+id="圖片 26" src="installnode.files/image022.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>21.<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:"新細明體",serif'>下載</span><span lang=EN-US>Windows</span><span
+style='font-family:"新細明體",serif'>版本安裝檔，並執行它</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=642 height=311 id="圖片 7"
+src="installnode.files/image023.jpg"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>22.<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:"新細明體",serif'>按「</span><span lang=EN-US>OK</span><span
+style='font-family:"新細明體",serif'>」開始安裝</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=607 height=417 id="圖片 8"
+src="installnode.files/image024.jpg"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>23.<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:"新細明體",serif'>安裝中</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=600 height=416 id="圖片 9"
+src="installnode.files/image025.jpg" alt="一張含有 文字 的圖片&#10;&#10;自動產生的描述"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>24.<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:"新細明體",serif'>安裝成功，必須登出再重新登入，請按「</span><span lang=EN-US>Close
+and log out</span><span style='font-family:"新細明體",serif'>」</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=599 height=416
+id="圖片 17" src="installnode.files/image026.jpg"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>25.<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:"新細明體",serif'>重新登入後，</span><span lang=EN-US>Docker</span><span
+style='font-family:"新細明體",serif'>會顯示服務協議，請勾選「</span><span lang=EN-US>I accept
+the terms</span><span style='font-family:"新細明體",serif'>」，然後按「</span><span
+lang=EN-US>Accept</span><span style='font-family:"新細明體",serif'>」</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=643 height=482
+id="圖片 19" src="installnode.files/image027.jpg"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>26.<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:"新細明體",serif'>必須安裝</span><span lang=EN-US>WSL 2</span><span
+style='font-family:"新細明體",serif'>更新檔，請按畫面中間的連結</span> <span lang=EN-US><a
+href="https://aka.ms/wsl2kernel"><span style='color:windowtext;text-decoration:
+none'>https://aka.ms/wsl2kernel</span></a></span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=642 height=364
+id="圖片 12" src="installnode.files/image028.jpg"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>27.<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:"新細明體",serif'>按「</span><span lang=EN-US>WSL2 Linux </span><span
+style='font-family:"新細明體",serif'>核心更新套件</span><span lang=EN-US> (</span><span
+style='font-family:"新細明體",serif'>適用於</span><span lang=EN-US> x64 </span><span
+style='font-family:"新細明體",serif'>電腦</span><span lang=EN-US>)</span><span
+style='font-family:"新細明體",serif'>」下載檔案，並執行它</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=641 height=291
+id="圖片 33" src="installnode.files/image029.jpg"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>28.<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:"新細明體",serif'>按「</span><span lang=EN-US>Next</span><span
+style='font-family:"新細明體",serif'>」開始安裝</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=495 height=387
+id="圖片 34" src="installnode.files/image030.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>29.<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:"新細明體",serif'>按「</span><span lang=EN-US>Finish</span><span
+style='font-family:"新細明體",serif'>」完成安裝</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=495 height=387
+id="圖片 35" src="installnode.files/image031.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>30.<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:"新細明體",serif'>回到先前的警告視窗，按「</span><span lang=EN-US>Restart</span><span
+style='font-family:"新細明體",serif'>」</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=642 height=240
+id="圖片 20" src="installnode.files/image032.jpg"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>31.<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+lang=EN-US>Docker</span><span style='font-family:"新細明體",serif'>啟動中</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=643 height=364 id="圖片 1"
+src="installnode.files/image033.jpg"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>32.<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:"新細明體",serif'>按「</span><span lang=EN-US>Skip tutorial</span><span
+style='font-family:"新細明體",serif'>」略過教學</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=642 height=363 id="圖片 3"
+src="installnode.files/image034.jpg"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>33.<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:"新細明體",serif'>可以關掉</span><span lang=EN-US>Docker</span><span
+style='font-family:"新細明體",serif'>視窗，讓它在背景執行</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=643 height=364
+id="圖片 28" src="installnode.files/image035.jpg"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>34.<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:"新細明體",serif'>回到節點程式，按「</span><span lang=EN-US>Node</span><span
+style='font-family:"新細明體",serif'>」</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=595 height=730
+id="圖片 42" src="installnode.files/image036.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>35.<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:"新細明體",serif'>按「</span><span lang=EN-US>CONTINUE</span><span
+style='font-family:"新細明體",serif'>」</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=596 height=725
+id="圖片 48" src="installnode.files/image037.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>36.<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:"新細明體",serif'>可以發現</span><span lang=EN-US>Docker</span><span
+style='font-family:"新細明體",serif'>有一個綠色勾勾，表示安裝好了，而且正在執行中。接著按「</span><span
+lang=EN-US>Open router ports</span><span style='font-family:"新細明體",serif'>」展開明細</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=596 height=725
+id="圖片 50" src="installnode.files/image038.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>37.<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:"新細明體",serif'>如果想要當「超級節點」，必須開啟</span><span lang=EN-US>TCP/IP
+port 31400-31409(</span><span style='font-family:"新細明體",serif'>但目前只用到</span><span
+lang=EN-US>31401-31403)</span><span style='font-family:"新細明體",serif'>，因為各家防火牆、路由器設定方式不同，各人網路環境也不同，無法在此說明，請自行尋求相關資源。按「</span><span
+lang=EN-US>Check now</span><span style='font-family:"新細明體",serif'>」可以測試</span><span
+lang=EN-US>port</span><span style='font-family:"新細明體",serif'>有沒有開。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=596 height=725
+id="圖片 51" src="installnode.files/image039.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>38.<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+lang=EN-US>Pi Node</span><span style='font-family:"新細明體",serif'>程式會控制</span><span
+lang=EN-US>Docker</span><span style='font-family:"新細明體",serif'>下載</span><span
+lang=EN-US>image</span><span style='font-family:"新細明體",serif'>檔，並建立一個名為「</span><span
+lang=EN-US>stellar-dummy</span><span style='font-family:"新細明體",serif'>」的</span><span
+lang=EN-US>Container</span><span style='font-family:"新細明體",serif'>，用來測試</span><span
+lang=EN-US>TCP/IP port 31400~31409</span><span style='font-family:"新細明體",serif'>有沒有打開。過程中，</span><span
+lang=EN-US>Windows</span><span style='font-family:"新細明體",serif'>內建的防火牆會詢問是否允許連線，請按「允許存取」，不然事後也要手動設定防火牆。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=642 height=363
+id="圖片 32" src="installnode.files/image040.jpg"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=615 height=435
+id="圖片 31" src="installnode.files/image041.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>39.<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:"新細明體",serif;background:aqua'>但是「</span><span lang=EN-US
+style='background:aqua'>stellar-dummy</span><span style='font-family:"新細明體",serif;
+background:aqua'>」這個工具很爛，只要網路延遲稍微長一點，就會判定</span><span lang=EN-US
+style='background:aqua'>PORT</span><span style='font-family:"新細明體",serif;
+background:aqua'>沒開，所以只要「網路設定正確」，不需要重複按到每個</span><span lang=EN-US
+style='background:aqua'>PORT</span><span style='font-family:"新細明體",serif;
+background:aqua'>狀態都是</span><span lang=EN-US style='background:aqua'>OPEN</span><span
+style='font-family:"新細明體",serif;background:aqua'>。</span><span
+style='font-family:"新細明體",serif'>要知道一個很重要的觀念，這只是一個幫忙測試</span><span lang=EN-US>PORT</span><span
+style='font-family:"新細明體",serif'>的工具，並<span style='color:red'>不是</span>用它來調整你的防火牆、路由器等網路設定，所以只要你的「網路設定沒有變動」，並不會因為你多按幾次</span><span
+lang=EN-US>Check now</span><span style='font-family:"新細明體",serif'>，</span><span
+lang=EN-US>PORT</span><span style='font-family:"新細明體",serif'>就從有開變沒開，或從沒開變有開。而且即使</span><span
+lang=EN-US>port</span><span style='font-family:"新細明體",serif'>沒開也沒關係，依舊可以當普通節點。按「</span><span
+lang=EN-US>Continue</span><span style='font-family:"新細明體",serif'>」繼續。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=591 height=674
+id="圖片 52" src="installnode.files/image042.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>40.<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:"新細明體",serif'>按下中間的開關</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=595 height=730
+id="圖片 36" src="installnode.files/image043.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>41.<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+lang=EN-US>Pi Node</span><span style='font-family:"新細明體",serif'>程式會控制</span><span
+lang=EN-US>Docker</span><span style='font-family:"新細明體",serif'>下載另一個</span><span
+lang=EN-US>image</span><span style='font-family:"新細明體",serif'>檔，並建立一個名為「</span><span
+lang=EN-US>pi-consensus</span><span style='font-family:"新細明體",serif'>」的</span><span
+lang=EN-US>Container</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=642 height=363
+id="圖片 37" src="installnode.files/image044.jpg"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>42.<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:"新細明體",serif'>保持「小紅點」亮著就可以了，視窗可以縮小或關閉都行，程式會在背景執行。</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif;color:red;background:
+yellow'>至於區塊同步的進度，請看</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='color:red;background:yellow'><a
+href="https://yuanrui919.github.io/catchup/"><span style='color:red'>https://yuanrui919.github.io/catchup/</span></a></span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=596 height=726
+id="圖片 49" src="installnode.files/image045.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>43.<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
+style='font-family:"新細明體",serif'>補充另一個方式測</span><span lang=EN-US>PORT</span><span
+style='font-family:"新細明體",serif'>的方法，用節點那台電腦連到下面這個網址</span></p>
+
+<p class=MsoNormal><span lang=EN-US><a href="https://pi-mods.de/nodeports/">https://pi-mods.de/nodeports/</a></span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=525 height=403 id="圖片 2"
+src="installnode.files/image046.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=643 height=441
+id="圖片 29" src="installnode.files/image047.jpg"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>
