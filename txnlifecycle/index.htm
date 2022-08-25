@@ -1,0 +1,295 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<title>Transaction Lifecycle</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:新細明體;
+	panose-1:2 2 5 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Cambria;
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:微軟正黑體;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+@font-face
+	{font-family:"IBM Plex Sans";}
+@font-face
+	{font-family:"\@微軟正黑體";}
+@font-face
+	{font-family:"\@新細明體";
+	panose-1:2 1 6 1 0 1 1 1 1 1;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	font-size:12.0pt;
+	font-family:"Calibri",sans-serif;}
+h2
+	{mso-style-link:"標題 2 字元";
+	margin-right:0cm;
+	margin-left:0cm;
+	font-size:18.0pt;
+	font-family:"新細明體",serif;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+span.2
+	{mso-style-name:"標題 2 字元";
+	mso-style-link:"標題 2";
+	font-family:"新細明體",serif;
+	font-weight:bold;}
+p.textlistitem-sc-37x8ut-14, li.textlistitem-sc-37x8ut-14, div.textlistitem-sc-37x8ut-14
+	{mso-style-name:text__listitem-sc-37x8ut-14;
+	margin-right:0cm;
+	margin-left:0cm;
+	font-size:12.0pt;
+	font-family:"新細明體",serif;}
+p.text-sc-37x8ut-1, li.text-sc-37x8ut-1, div.text-sc-37x8ut-1
+	{mso-style-name:text-sc-37x8ut-1;
+	margin-right:0cm;
+	margin-left:0cm;
+	font-size:12.0pt;
+	font-family:"新細明體",serif;}
+.MsoChpDefault
+	{font-family:"Calibri",sans-serif;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:595.3pt 841.9pt;
+	margin:2.0cm 2.0cm 2.0cm 2.0cm;
+	layout-grid:18.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body lang=ZH-TW link=blue vlink="#954F72" style='word-wrap:break-word;
+text-justify-trim:punctuation'>
+
+<div class=WordSection1 style='layout-grid:18.0pt'>
+
+<p class=MsoNormal><span style='font-size:16.0pt;font-family:"微軟正黑體",sans-serif'>交易生命週期</span></p>
+
+<ol start=1 type=1>
+ <li class=MsoNormal><span style='font-family:"微軟正黑體",sans-serif'>建立（交易建立者）：使用者透過設定來源賬戶、序列號、操作列表及其各自的參數、手續費以及可選的備忘錄和時限來建立交易。</span></li>
+ <li class=MsoNormal><span style='font-family:"微軟正黑體",sans-serif'>簽名（交易簽署者）：一旦交易內容被填寫完成，交易就形成了一個「交易信封」，裡面包含了交易本身和一個簽署者列表。必須收集所有必需的簽名並將其添加到交易信封的簽署者列表中。（通常只需要進行交易的賬戶的簽名，但也可設置更複雜的</span><span
+     style='font-family:"微軟正黑體",sans-serif'>多方簽名</span><span style='font-family:
+     "微軟正黑體",sans-serif'>。）</span></li>
+ <li class=MsoNormal><span style='font-family:"微軟正黑體",sans-serif'>提交（交易提交者）：簽名後，如果交易是有效的<span
+     lang=EN-US>(<a href="#_交易的有效性"><span lang=EN-US><span lang=EN-US>註1</span></span></a>)</span>，就可以提交到<span
+     lang=EN-US> Stellar </span>網絡。如果交易無效，<span lang=EN-US>stellar-core </span>將根據交易的有效性規則立即拒絕該交易，該賬戶的序列號不會增加，並且不會從來源賬戶中消耗任何手續費。可以提交同一帳戶的多筆交易，前提是它們的每個序列號都相差一個。如果它們都是有效的，<span
+     lang=EN-US>Stellar Core </span>將建立一個交易集，其中每個交易都按序列號排序。交易通常使用<span
+     lang=EN-US>Horizon</span>提交，但也可以將交易直接提交到<span lang=EN-US>Stellar Core</span>的實例。</span></li>
+ <li class=MsoNormal><span style='font-family:"微軟正黑體",sans-serif'>傳播（驗證者）：一旦<span
+     lang=EN-US> Stellar Core </span>確定交易是有效的，它就會將該交易傳播到它所連接的所有其他服務器。通過這種方式，一個有效的交易被「淹沒」到整個<span
+     lang=EN-US> Stellar </span>網路。</span></li>
+</ol>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"微軟正黑體",sans-serif'><img
+border=0 width=642 height=345 id="圖片 30" src="txnlifecycle.files/image001.jpg"></span></p>
+
+<ol start=5 type=1>
+ <li class=MsoNormal><span style='font-family:"微軟正黑體",sans-serif'>建立候選交易集（驗證者）：當需要關閉賬本時（產生新區塊），每個<span
+     lang=EN-US> Stellar Core </span>驗證器（參與共識的<span lang=EN-US> Stellar Core </span>節點）收集自從上次賬本關閉以來它知道的所有有效交易，放到候選交易集。如果它現在聽到任何傳入的交易，它會將它們放在一邊，以便下一次賬本關閉。如果候選交易集中的操作數量大於每個分類帳（區塊）的最大操作數量，則交易將按其手續費多寡進行優先排序。</span></li>
+ <li class=MsoNormal><span style='font-family:"微軟正黑體",sans-serif'>提名交易集（驗證者）：一旦每個驗證者建立了一個候選交易集，該集合就會被提名到網路。</span></li>
+</ol>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"微軟正黑體",sans-serif'><img
+border=0 width=643 height=444 id="圖片 31" src="txnlifecycle.files/image002.jpg"></span></p>
+
+<ol start=7 type=1>
+ <li class=MsoNormal><span style='font-family:"微軟正黑體",sans-serif'>恆星共識協議<span
+     lang=EN-US> (SCP) </span>確定最終交易集（驗證者網路）：<span lang=EN-US>SCP</span>解決候選交易集之間的任何差異，並最終確定要採用的單個交易集、賬本的關閉時間以及所需的協議升級。</span></li>
+ <ul type=circle>
+  <li class=MsoNormal><span style='font-family:"微軟正黑體",sans-serif'>如果一個交易沒有進入交易集，它會保存在記憶體中，以便盡最大努力添加到下一個交易集。</span></li>
+  <li class=MsoNormal><span style='font-family:"微軟正黑體",sans-serif'>如果一筆交易在一定數量的賬本關閉後仍被保存在記憶體中，它將被另外幾個賬本禁止。這意味著在此期間不會嘗試將其包含在候選交易集的附加分類賬中。（要暫停一段時間）</span></li>
+ </ul>
+</ol>
+
+<p class=MsoNormal style='margin-left:18.0pt'><span lang=EN-US
+style='font-family:"微軟正黑體",sans-serif'><img border=0 width=643 height=585
+id="圖片 40" src="txnlifecycle.files/image003.jpg"></span></p>
+
+<ol start=8 type=1>
+ <li class=MsoNormal><span style='font-family:"微軟正黑體",sans-serif'>確定交易執行順序（驗證者網路）：一旦<span
+     lang=EN-US> SCP </span>就特定交易集達成一致，就會為交易集計算執行順序。這既打亂了集合的順序，為競爭交易創造了不確定性，又維護了每個賬戶多個交易的序列號順序。</span></li>
+</ol>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"微軟正黑體",sans-serif'><img
+border=0 width=585 height=607 id="圖片 42" src="txnlifecycle.files/image004.png"></span></p>
+
+<ol start=9 type=1>
+ <li class=MsoNormal><span style='font-family:"微軟正黑體",sans-serif'>收取手續費（驗證者）：同時為所有交易收取手續費。</span></li>
+ <li class=MsoNormal><span style='font-family:"微軟正黑體",sans-serif'>應用（驗證者）：每筆交易都按照先前確定的順序執行。對於每筆交易，賬戶的序列號都會被消耗（加<span
+     lang=EN-US>1</span>），交易的有效性再次被檢查，每一個操作按照它們在交易中出現的順序被執行。由於在交易和操作有效性檢查（步驟<span
+     lang=EN-US>3</span>）之外可能發生的錯誤，操作可能在此階段失敗。例如，付款餘額不足在提交時不會檢查，此時會失敗。如果任何操作失敗，整個交易都會失敗，之前的所有操作都會回滾。</span></li>
+ <li class=MsoNormal><span style='font-family:"微軟正黑體",sans-serif'>協議升級（驗證器）：最後，如果發生升級，則會執行升級。這可以包括任意邏輯來升級賬本狀態以進行協議升級，以及賬本表頭修改，包括協議版本、基本費用、每個賬本的最大操作數等。一旦完成，生命週期將重新開始。</span></li>
+</ol>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"微軟正黑體",sans-serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"微軟正黑體",sans-serif'>註<span
+lang=EN-US>1</span></span></p>
+
+<h2><a name="_交易的有效性"></a><span style='font-size:12.0pt;font-family:"微軟正黑體",sans-serif;
+font-weight:normal'>交易的有效性</span></h2>
+
+<p class=text-sc-37x8ut-1><span style='font-family:"微軟正黑體",sans-serif'>為了確定交易是否有效，在交易的生命週期過程中會進行許多檢查。以下條件確定交易是否有效：</span></p>
+
+<p class=textlistitem-sc-37x8ut-14 style='margin-left:36.0pt;text-indent:-18.0pt'><span
+lang=EN-US style='font-size:10.0pt;font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><strong><span style='font-family:"微軟正黑體",sans-serif;font-weight:
+normal'>源賬戶</span></strong><span lang=EN-US style='font-family:"微軟正黑體",sans-serif'>-
+</span><span style='font-family:"微軟正黑體",sans-serif'>源賬戶必須存在於分類帳上。</span></p>
+
+<p class=textlistitem-sc-37x8ut-14 style='margin-left:36.0pt;text-indent:-18.0pt'><span
+lang=EN-US style='font-size:10.0pt;font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><strong><span style='font-family:"微軟正黑體",sans-serif;font-weight:
+normal'>費用</span></strong><span lang=EN-US style='font-family:"微軟正黑體",sans-serif'>——</span><span
+style='font-family:"微軟正黑體",sans-serif'>費用必須大於或等於作為交易的一部分提交的操作數量的</span><span
+lang=EN-US><a href="https://developers.stellar.org/docs/glossary/fees/"><span
+lang=EN-US style='font-family:"微軟正黑體",sans-serif;color:windowtext'><span
+lang=EN-US>網絡最低費用。</span></span></a></span><span style='font-family:"微軟正黑體",sans-serif'>請注意，這並不能保證交易將被應用；它只保證它是有效的。此外，源賬戶必須能夠支付指定的費用。在提交多筆交易但只能支付一部分交易的情況下，按序號順序檢查其有效性。</span></p>
+
+<p class=textlistitem-sc-37x8ut-14 style='margin-left:36.0pt;text-indent:-18.0pt'><span
+lang=EN-US style='font-size:10.0pt;font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><strong><span style='font-family:"微軟正黑體",sans-serif;font-weight:
+normal'>序列號</span></strong><span lang=EN-US style='font-family:"微軟正黑體",sans-serif'>——</span><span
+style='font-family:"微軟正黑體",sans-serif'>為了使交易有效，序列號必須比<em><span
+style='font-family:"微軟正黑體",sans-serif'>交易應用時存儲在源賬戶</span></em></span><span
+lang=EN-US><a href="https://developers.stellar.org/docs/glossary/accounts/"><span
+lang=EN-US style='font-family:"微軟正黑體",sans-serif;color:windowtext'><span
+lang=EN-US>賬戶條目</span></span></a></span><span lang=EN-US style='font-family:
+"微軟正黑體",sans-serif'>&nbsp;</span><span style='font-family:"微軟正黑體",sans-serif'>中的序列號大<span
+lang=EN-US> 1 </span>。這意味著在檢查候選交易集中具有相同源賬戶的多個交易的有效性時，它們必須都是有效交易，並且它們的序列號必須相互偏移<span
+lang=EN-US> 1</span>。在申請時間方面，它們是根據它們的序列號進行排序和應用的。</span></p>
+
+<p class=textlistitem-sc-37x8ut-14 style='margin-left:72.0pt;text-indent:-18.0pt'><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New"'>o<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </span></span><span
+style='font-family:"微軟正黑體",sans-serif'>例如，如果您的源賬戶的序列號是<span lang=EN-US> 5</span>，而您提交了<span
+lang=EN-US> 3 </span>筆交易，則所有交易都必須被視為有效，並且它們的序列號必須是<span lang=EN-US> 6</span>、<span
+lang=EN-US>7 </span>和<span lang=EN-US> 8</span>，以便它們中的任何一個成為候選交易集。</span></p>
+
+<p class=textlistitem-sc-37x8ut-14 style='margin-left:36.0pt;text-indent:-18.0pt'><span
+lang=EN-US style='font-size:10.0pt;font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><strong><span style='font-family:"微軟正黑體",sans-serif;font-weight:
+normal'>操作列表</span></strong><span lang=EN-US style='font-family:"微軟正黑體",sans-serif'>—
+</span><span style='font-family:"微軟正黑體",sans-serif'>每個操作都必須通過操作的所有</span><span
+lang=EN-US><a
+href="https://developers.stellar.org/docs/glossary/operations/#validity-of-an-operation"><span
+lang=EN-US style='font-family:"微軟正黑體",sans-serif;color:windowtext'><span
+lang=EN-US>有效性檢查</span></span></a></span><span style='font-family:"微軟正黑體",sans-serif'>。</span></p>
+
+<p class=textlistitem-sc-37x8ut-14 style='margin-left:36.0pt;text-indent:-18.0pt'><span
+lang=EN-US style='font-size:10.0pt;font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><strong><span style='font-family:"微軟正黑體",sans-serif;font-weight:
+normal'>簽名列表</span></strong><span lang=EN-US style='font-family:"微軟正黑體",sans-serif'>——</span><span
+style='font-family:"微軟正黑體",sans-serif'>交易中除了滿足每個操作的簽名要求外，還必須滿足以下要求：</span></p>
+
+<p class=textlistitem-sc-37x8ut-14 style='margin-left:72.0pt;text-indent:-18.0pt'><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New"'>o<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </span></span><span
+style='font-family:"微軟正黑體",sans-serif'>適當的網絡密碼是每個簽名者簽名的交易哈希的一部分。有關更多信息，請參閱</span><span
+lang=EN-US><a
+href="https://developers.stellar.org/docs/glossary/network-passphrase/"><span
+lang=EN-US style='font-family:"微軟正黑體",sans-serif;color:windowtext'><span
+lang=EN-US>網絡密碼</span></span></a></span><span style='font-family:"微軟正黑體",sans-serif'>。</span></p>
+
+<p class=textlistitem-sc-37x8ut-14 style='margin-left:72.0pt;text-indent:-18.0pt'><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New"'>o<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </span></span><em><span
+style='font-family:"微軟正黑體",sans-serif'>交易</span></em><span style='font-family:
+"微軟正黑體",sans-serif'>的源賬戶的所有簽名的組合權重滿足源賬戶的低閾值。這對於收取費用和在交易生命週期後期增加序列號是必要的。</span></p>
+
+<p class=textlistitem-sc-37x8ut-14 style='margin-left:36.0pt;text-indent:-18.0pt'><span
+lang=EN-US style='font-size:10.0pt;font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><strong><span style='font-family:"微軟正黑體",sans-serif;font-weight:
+normal'>備忘錄</span></strong><span lang=EN-US style='font-family:"微軟正黑體",sans-serif'>—
+</span><span style='font-family:"微軟正黑體",sans-serif'>備忘錄類型必須是有效類型，並且備忘錄本身必須遵循備忘錄類型的格式。</span></p>
+
+<p class=textlistitem-sc-37x8ut-14 style='margin-left:36.0pt;text-indent:-18.0pt'><span
+lang=EN-US style='font-size:10.0pt;font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><strong><span style='font-family:"微軟正黑體",sans-serif;font-weight:
+normal'>前提條件</span></strong><span lang=EN-US style='font-family:"微軟正黑體",sans-serif'>——</span><span
+style='font-family:"微軟正黑體",sans-serif'>請參閱上面描述的</span><span lang=EN-US><a
+href="https://developers.stellar.org/docs/glossary/transactions/#validity-conditions"><span
+lang=EN-US style='font-family:"微軟正黑體",sans-serif;color:windowtext'><span
+lang=EN-US>有效性條件</span></span></a></span><span style='font-family:"微軟正黑體",sans-serif'>，以獲得對這些條件的詳盡解釋。對於設置的每一項，除非提交交易，否則交易將被視為無效：</span></p>
+
+<p class=textlistitem-sc-37x8ut-14 style='margin-left:72.0pt;text-indent:-18.0pt'><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New"'>o<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </span></span><strong><span
+lang=EN-US style='font-family:"微軟正黑體",sans-serif;font-weight:normal'>Time
+Bounds</span></strong><span lang=EN-US style='font-family:"微軟正黑體",sans-serif'>&nbsp;</span><span
+lang=EN-US style='font-family:"微軟正黑體",sans-serif'>—</span><span lang=EN-US
+style='font-family:"微軟正黑體",sans-serif'> </span><span style='font-family:"微軟正黑體",sans-serif'>在交易的設定時間範圍內</span></p>
+
+<p class=textlistitem-sc-37x8ut-14 style='margin-left:72.0pt;text-indent:-18.0pt'><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New"'>o<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </span></span><strong><span
+lang=EN-US style='font-family:"微軟正黑體",sans-serif;font-weight:normal'>Ledger
+Bounds</span></strong><span lang=EN-US style='font-family:"微軟正黑體",sans-serif'>&nbsp;</span><span
+lang=EN-US style='font-family:"微軟正黑體",sans-serif'>—</span><span lang=EN-US
+style='font-family:"微軟正黑體",sans-serif'> </span><span style='font-family:"微軟正黑體",sans-serif'>在交易的設定分類賬範圍內</span></p>
+
+<p class=textlistitem-sc-37x8ut-14 style='margin-left:72.0pt;text-indent:-18.0pt'><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New"'>o<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </span></span><strong><span
+style='font-family:"微軟正黑體",sans-serif;font-weight:normal'>最小序列號</span></strong><span
+lang=EN-US style='font-family:"微軟正黑體",sans-serif'>— </span><span
+style='font-family:"微軟正黑體",sans-serif'>由序列號大於或等於此值的源帳戶</span></p>
+
+<p class=textlistitem-sc-37x8ut-14 style='margin-left:72.0pt;text-indent:-18.0pt'><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New"'>o<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </span></span><strong><span
+style='font-family:"微軟正黑體",sans-serif;font-weight:normal'>最小序列年齡</span></strong><span
+lang=EN-US style='font-family:"微軟正黑體",sans-serif'>- </span><span
+style='font-family:"微軟正黑體",sans-serif'>在持續時間會議之後或超過源帳戶的</span><span lang=EN-US><a
+href="https://developers.stellar.org/docs/glossary/accounts/#sequence-time-and-ledger"><span
+lang=EN-US style='font-family:"微軟正黑體",sans-serif;color:windowtext'><span
+lang=EN-US>序列號年齡</span></span></a></span></p>
+
+<p class=textlistitem-sc-37x8ut-14 style='margin-left:72.0pt;text-indent:-18.0pt'><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New"'>o<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </span></span><strong><span
+style='font-family:"微軟正黑體",sans-serif;font-weight:normal'>最小序列分類帳差距</span></strong><span
+lang=EN-US style='font-family:"微軟正黑體",sans-serif'>——</span><span
+style='font-family:"微軟正黑體",sans-serif'>在分類帳會議中或超過源帳戶的</span><span lang=EN-US><a
+href="https://developers.stellar.org/docs/glossary/accounts/#sequence-time-and-ledger"><span
+lang=EN-US style='font-family:"微軟正黑體",sans-serif;color:windowtext'><span
+lang=EN-US>序列號年齡</span></span></a></span></p>
+
+<p class=textlistitem-sc-37x8ut-14 style='margin-left:72.0pt;text-indent:-18.0pt'><span
+lang=EN-US style='font-size:10.0pt;font-family:"Courier New"'>o<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </span></span><strong><span
+style='font-family:"微軟正黑體",sans-serif;font-weight:normal'>額外簽名者</span></strong><span
+lang=EN-US style='font-family:"微軟正黑體",sans-serif'>——</span><span
+style='font-family:"微軟正黑體",sans-serif'>具有滿足每個額外簽名者的簽名</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"微軟正黑體",sans-serif'>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>
