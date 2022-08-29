@@ -1,0 +1,910 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<title>Understanding the Stellar Consensus Protocol</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:新細明體;
+	panose-1:2 2 5 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"MS Gothic";
+	panose-1:2 11 6 9 7 2 5 8 2 4;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"\@新細明體";
+	panose-1:2 1 6 1 0 1 1 1 1 1;}
+@font-face
+	{font-family:"\@MS Gothic";
+	panose-1:2 11 6 9 7 2 5 8 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	font-size:12.0pt;
+	font-family:"Calibri",sans-serif;}
+a:link, span.MsoHyperlink
+	{color:#0563C1;
+	text-decoration:underline;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:24.0pt;
+	font-size:12.0pt;
+	font-family:"Calibri",sans-serif;}
+.MsoChpDefault
+	{font-family:"Calibri",sans-serif;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:595.3pt 841.9pt;
+	margin:2.0cm 2.0cm 2.0cm 2.0cm;
+	layout-grid:18.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body lang=ZH-TW link="#0563C1" vlink="#954F72" style='word-wrap:break-word;
+text-justify-trim:punctuation'>
+
+<div class=WordSection1 style='layout-grid:18.0pt'>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>原文</span></p>
+
+<p class=MsoNormal><span lang=EN-US><a
+href="https://medium.com/interstellar/understanding-the-stellar-consensus-protocol-423409aad32e"><span
+style='font-family:"新細明體",serif'>https://medium.com/interstellar/understanding-the-stellar-consensus-protocol-423409aad32e</span></a></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><b><span style='font-family:"新細明體",serif'>了解恆星共識協議</span></b></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+style='font-family:"新細明體",serif'><img border=0 width=643 height=353 id="圖片 1"
+src="scp.files/image001.gif"></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>恆星共識協議<span
+lang=EN-US>(Stellar Consensus Protocol)</span>最初由<span lang=EN-US>David Mazi</span>è<span
+lang=EN-US>res</span>在<span lang=EN-US>2015</span>年的</span><span lang=EN-US><a
+href="https://www.stellar.org/papers/stellar-consensus-protocol.pdf"><span
+lang=EN-US style='font-family:"新細明體",serif'><span lang=EN-US>白皮書</span></span></a></span><span
+style='font-family:"新細明體",serif'>中描述。它是一個“聯邦拜占庭協議系統”，允許去中心化、無領導的計算網路，有效地就某些決策達成共識結果。<span
+lang=EN-US>Stellar</span>支付網路使用<span lang=EN-US>SCP</span>向所有參與者提供網路交易歷史的一致視圖。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>共識協議以難以理解而著稱。<span
+lang=EN-US>SCP</span>比大多數更簡單，但仍然享有這種聲譽——部分原因是人們錯誤地認為白皮書前半部分描述的“聯邦投票”就是<span
+lang=EN-US>SCP</span>。但事實並非如此！相反，它是白皮書後半部分用來構建實際恆星共識協議的重要組成部分。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>在本文中，我們將簡要介紹什麼是“協議系統”，什麼可以使一個“拜占庭”，以及為什麼要使拜占庭成為“聯邦”。然後我們將解釋<span
+lang=EN-US>SCP</span>白皮書中描述的聯邦投票程序，最後解釋<span lang=EN-US>SCP</span>本身。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><b><span style='font-family:"新細明體",serif'>協議系統<span
+lang=EN-US>(Agreement systems)</span></span></b></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>協議系統允許一組參與者就某事達成相同的決定——例如，午餐點什麼。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>在星際辦公室裡，我們實施了我們自己的午餐協議系統：我們訂購我們的運營經理<span
+lang=EN-US>John</span>說的任何東西。這是一個簡單有效的協議系統。我們都相信<span lang=EN-US>John</span>每天都會點一些有趣而有營養的東西。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>但是如果<span lang=EN-US>John</span>濫用這種信任呢？他可以單方面決定我們都必須成為素食主義者。一兩個星期後，我們可能會罷免他並將他的權力交給<span
+lang=EN-US>Elizabeth</span>，但也許她正在吃酪梨鯷魚三明治，並認為我們都應該這樣做。權力會腐敗，我們可能會做出決定，因此我們會尋求一些更民主的方法：某種方式來確保聽到不同的偏好，同時仍能達到及時、明確的結果，這樣我們就不會最終沒有人點午餐，或者我們五個人重複下了午餐訂單，或者直到下午<span
+lang=EN-US>4</span>點才決定點什麼。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal style='line-height:21.0pt'><span style='font-size:13.5pt;
+font-family:"新細明體",serif;color:black'>看起來解決方案很簡單：只需進行投票！但這是騙人的。誰來收集選票並報告結果？為什麼我們其他人應該相信他們所說的話？也許我們可以先投票給一個我們都信任的領導人來進行投票——但是然後誰來進行投票呢？如果我們不能就一個領導人達成一致怎麼辦？或者，如果我們可以達成一致，但那個領導卻被困在會議中，或者病倒了怎麼辦？</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>類似的問題在分散式計算網路中很常見。所有參與者或節點必須就某個決定達成一致，例如輪到誰更新共享文件或從處理隊列中拉出任務。在加密貨幣網路中，節點必須反復從多個可能發生衝突的版本中決定共享賬本的完整歷史是什麼樣的。該網路範圍的協議允許加密硬幣的接收者相信該硬幣<span
+lang=EN-US>(a)</span>有效（非偽造）和<span lang=EN-US>(b)</span>尚未在其他地方使用。它還向他們保證他們將來能夠使用它，因為新的接收者將出於同樣的原因對它有同樣的信心。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif;background:lightgrey'>分散式計算網路中的任何協議系統都需要容錯：它必須產生一致的結果，儘管出現諸如通訊線路緩慢、節點無回應和消息排序錯亂等錯誤。拜占庭協議系統還可以容忍“拜占庭式”錯誤：節點提供虛假信息，無論是由於錯誤還是蓄意試圖顛覆系統，或為了獲得某些好處。</span><span
+lang=EN-US><a href="#註1"><span style='font-size:8.0pt;font-family:"新細明體",serif'>(</span><span
+lang=EN-US style='font-size:8.0pt;font-family:"新細明體",serif'><span lang=EN-US>註1)</span></span></a></span><span
+style='font-family:"新細明體",serif'>考慮加密貨幣的擁有者<span lang=EN-US>Alice</span>，她必須選擇從<span
+lang=EN-US>Bob</span>那裡購買美味的冰淇淋，或者將其支付給<span lang=EN-US>Carol</span>以償還債務。<span
+lang=EN-US>Alice</span>可能希望通過欺詐性地向<span lang=EN-US>Bob</span>和<span lang=EN-US>Carol</span>支付相同的硬幣來實現這兩種方式。為此，她必須讓<span
+lang=EN-US>Bob</span>的電腦相信硬幣從未支付給<span lang=EN-US>Carol</span>，並且她必須讓<span
+lang=EN-US>Carol</span>的電腦也相信硬幣從未支付給<span lang=EN-US>Bob</span>。拜占庭協議系統可以使用一種稱為仲裁<span
+lang=EN-US>(quorum)</span>的多數規則來有效地實現這一點。這種網路中的節點拒絕承諾<span lang=EN-US>(commit
+to)</span>特定版本的歷史，直到它看到足夠多的對等節點（仲裁）也準備承諾。一旦發生這種情況，他們就形成了一個足夠大的投票集團，以迫使網路中的其餘節點同意他們的決定。<span
+lang=EN-US>Alice</span>也許可以讓一些節點代表她撒謊，但如果網路足夠大，她的嘗試將被誠實節點的投票壓倒。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>形成一個仲裁需要多少個節點？至少要多數，更典型的是絕對多數，以打擊錯誤和欺詐行為。但是知道你何時擁有多數意味著知道你有多少參與者。在星際辦公室或縣市選舉中，這些數字很容易知道。但是，如果您的參與者集合是一個定義鬆散的網路，成員可以隨意加入和離開，而無需與任何中央機構協調，那麼您需要一個聯邦拜占庭協議系統：它可以不是從某個預定的節點名冊中確定仲裁人數，而是動態地從某個時間點不斷變化，且不可避免地不完整的成員快照中確定仲裁人數。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>僅從龐大網路中單個節點的有限視角來構建仲裁似乎是不可能的，但確實如此。這個仲裁甚至可以對去中心化投票的結果產生信心。<span
+lang=EN-US>SCP</span>白皮書展示了如何使用稱為聯邦投票的程序來做到這一點。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><b><span style='font-family:"新細明體",serif'>對於不耐煩的人</span></b></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>本文的其餘部分詳細描述了聯邦投票和恆星共識協議。作為後續內容的指南——或者如果你不關心細節而只想要長話短說——這裡是該過程的概述。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US style='font-family:"新細明體",serif'>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>節點們對“被提名人<span lang=EN-US>(nominees)</span>”進行多輪聯邦投票。一輪聯邦投票意味著：</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>一個節點投票給某個陳述，例如“我提名 <span
+lang=EN-US>V</span>”；</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>該節點監聽來自其對等節點的投票，直到找到一個它可以“接受<span
+lang=EN-US>(accept)</span>”的投票；</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>該節點尋找一個也接受該陳述的“仲裁<span
+lang=EN-US>(quorum)</span>”。這樣就“確認<span lang=EN-US>(confirms)</span>”了這一陳述。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US style='font-family:"新細明體",serif'>2.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>一旦一個節點可以確認一個或多個被提名人，它就會開始嘗試通過更多輪聯邦投票來“準備<span
+lang=EN-US>(prepare)</span>”“選票<span lang=EN-US>(ballot)</span>”。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US style='font-family:"新細明體",serif'>3.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>一旦一個節點可以驗證選票已準備好，它就會開始嘗試通過更多輪聯邦投票來“承諾<span
+lang=EN-US>(commit)</span>”選票。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US style='font-family:"新細明體",serif'>4.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>當一個節點可以確認選票已承諾，它就可以“外部化<span
+lang=EN-US>(externalize)</span>”該選票中的值，將它當作共識的結果。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>這些步驟涉及多輪聯邦投票，共同形成單輪<span
+lang=EN-US>SCP</span>。要了解每個步驟的含義、為什麼需要這麼多步驟、它們是如何工作的以及可能出現的問題，請繼續閱讀！</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><b><span style='font-family:"新細明體",serif'>聯邦投票<span
+lang=EN-US>(Federated voting)</span></span></b></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>聯邦投票是一種用於發現參與者網路是否可以就提案達成一致的程序。在一輪聯邦投票中，每個節點必須從潛在的許多可能值中選擇一個作為該輪的結果。但在確定網路中的其他節點不會選擇任何不同的結果之前，節點不能做出上述的選擇<span
+lang=EN-US>(</span>也就是大家的選擇都要一樣<span lang=EN-US>)</span>。為了確保這一點，節點來回交換一系列消息，使每個節點都確認「仲裁內的節點接受相同的投票」。本節的其餘部分解釋了該句子中的術語以及如何實現這種確認。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><b><span style='font-family:"新細明體",serif'>仲裁和仲裁切片<span
+lang=EN-US>(Quorums and quorum slices)</span></span></b></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>讓我們從確定仲裁開始。正如我們上面所討論的，在具有動態成員資格的去中心化網路中，不可能提前知道有多少節點，以及有多少節點才叫做多數。聯邦投票通過引入仲裁切片<span
+lang=EN-US>(quorum slice)</span>的新穎思想解決了這個問題：節點信任的對等點的小集合，以傳達有關網路其餘部分投票狀態的信息。每個節點都定義了自己的仲裁切片（本身也是其成員）。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>要形成仲裁，請從仲裁切片開始。對於每個成員，添加其仲裁切片的成員。然後添加這些成員切片的成員，依此類推。隨著您的繼續，您會遇到越來越多無法添加的節點，因為它們已經包含在內。當沒有更多新節點要添加時，停止：您已經從起始節點的仲裁切片的“傳遞閉路<span
+lang=EN-US>(transitive closure)</span>”形成了一個仲裁。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+style='font-family:"新細明體",serif'><img border=0 width=643 height=484 id="圖片 2"
+src="scp.files/image002.jpg"></span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='font-size:10.0pt;font-family:"新細明體",serif'>要從給定節點中找到仲裁<span lang=EN-US>…</span></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+style='font-family:"新細明體",serif'><img border=0 width=643 height=484 id="圖片 3"
+src="scp.files/image003.jpg"></span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+style='font-size:10.0pt;font-family:"新細明體",serif'>…</span><span lang=ZH-CN
+style='font-size:10.0pt;font-family:"新細明體",serif'>添加其仲裁切片的成员</span><span
+lang=EN-US style='font-size:10.0pt;font-family:"新細明體",serif'>…</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+style='font-family:"新細明體",serif'><img border=0 width=643 height=484 id="圖片 4"
+src="scp.files/image004.jpg"></span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+style='font-size:10.0pt;font-family:"新細明體",serif'>…</span><span
+style='font-size:10.0pt;font-family:"新細明體",serif'>然後添加這些節點切片的成員</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+style='font-family:"新細明體",serif'><img border=0 width=643 height=484 id="圖片 5"
+src="scp.files/image005.jpg"></span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='font-size:10.0pt;font-family:"新細明體",serif'>繼續，直到沒有要添加的節點</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+style='font-family:"新細明體",serif'><img border=0 width=643 height=484 id="圖片 6"
+src="scp.files/image006.jpg"></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+style='font-family:"新細明體",serif'><img border=0 width=643 height=484 id="圖片 7"
+src="scp.files/image007.jpg"></span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='font-size:10.0pt;font-family:"新細明體",serif'>沒有剩餘的節點要添加。這就是一個仲裁。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>事實上，每個節點可能有多個仲裁切片。要形成仲裁，只需選擇其中一個切片並添加成員；然後為每個成員選擇任何一個切片並添加這些成員，依此類推。這意味著每個節點都是許多可能的仲裁的成員。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+style='font-family:"新細明體",serif'><img border=0 width=643 height=484 id="圖片 8"
+src="scp.files/image008.jpg"></span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='font-size:10.0pt;font-family:"新細明體",serif'>在每個步驟中只選擇一個仲裁切片</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+style='font-family:"新細明體",serif'><img border=0 width=643 height=484 id="圖片 9"
+src="scp.files/image009.jpg"></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+style='font-family:"新細明體",serif'><img border=0 width=643 height=509 id="圖片 10"
+src="scp.files/image010.jpg"></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+style='font-family:"新細明體",serif'><img border=0 width=643 height=484 id="圖片 11"
+src="scp.files/image011.jpg"></span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='font-size:10.0pt;font-family:"新細明體",serif'>一種可能的仲裁。或者<span lang=EN-US>…</span></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+style='font-family:"新細明體",serif'><img border=0 width=643 height=484 id="圖片 12"
+src="scp.files/image012.jpg"></span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+style='font-size:10.0pt;font-family:"新細明體",serif'>…</span><span
+style='font-size:10.0pt;font-family:"新細明體",serif'>選擇不同的切片<span lang=EN-US>…</span></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+style='font-family:"新細明體",serif'><img border=0 width=643 height=484 id="圖片 13"
+src="scp.files/image013.jpg"></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+style='font-family:"新細明體",serif'><img border=0 width=643 height=509 id="圖片 14"
+src="scp.files/image014.jpg"></span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+style='font-size:10.0pt;font-family:"新細明體",serif'>…(</span><span
+style='font-size:10.0pt;font-family:"新細明體",serif'>若有可能<span lang=EN-US>)…</span></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+style='font-family:"新細明體",serif'><img border=0 width=643 height=484 id="圖片 15"
+src="scp.files/image015.jpg"></span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+style='font-size:10.0pt;font-family:"新細明體",serif'>…</span><span
+style='font-size:10.0pt;font-family:"新細明體",serif'>產生不同的仲裁</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>一個節點如何知道另一個節點的仲裁切片的成員？它以同樣的方式了解其他節點的任何其他信息：來自每個節點在其投票狀態發生變化時發送到網路的廣播。每個廣播都包含發送節點切片的詳細信息。</span><span
+lang=EN-US><a href="#註2"><span style='font-size:8.0pt;font-family:"新細明體",serif'>(</span><span
+lang=EN-US style='font-size:8.0pt;font-family:"新細明體",serif'><span lang=EN-US>註2)</span></span></a></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>回想一下，在非聯邦拜占庭協議系統中，仲裁被定義為所有節點的多數。</span><span
+lang=EN-US><a href="#註3"><span style='font-size:8.0pt;font-family:"新細明體",serif'>(</span><span
+lang=EN-US style='font-size:8.0pt;font-family:"新細明體",serif'><span lang=EN-US>註3)</span></span></a></span><span
+style='font-family:"新細明體",serif'>一旦提案超過仲裁臨界點，其他網路成員就會確信任何競爭提案都會失敗。這就是網路如何收斂到一個結果。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>但是在聯邦拜占庭協議系統中，不僅不能有多數（因為沒有人知道網路的總規模），而且多數的概念甚至沒有用處！如果系統中的成員資格是開放的，那麼某人可以通過進行所謂的<span
+lang=EN-US>Sybil</span>攻擊來獲得多數：使用多個節點多次加入網路。那麼，什麼是一個節點的仲裁切片的傳遞閉路使其成為一個仲裁？又是什麼使它能夠壓倒競爭的提案呢？</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>從技術上講，什麼都沒有！想像一個包含<span
+lang=EN-US>Alice</span>、<span lang=EN-US>Bob</span>、<span lang=EN-US>Carol</span>、<span
+lang=EN-US>Dave</span>、<span lang=EN-US>Elsie</span>和<span lang=EN-US>Frank</span>的網路。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>Alice</span><span
+style='font-family:"新細明體",serif'>在她的仲裁切片中有<span lang=EN-US>Bob</span>和<span
+lang=EN-US>Carol</span>。<span lang=EN-US>Bob</span>有<span lang=EN-US>Alice</span>和<span
+lang=EN-US>Carol</span>，<span lang=EN-US>Carol</span>有<span lang=EN-US>Alice</span>和<span
+lang=EN-US>Bob</span>。同時，<span lang=EN-US>Dave</span>、<span lang=EN-US>Elsie</span>和<span
+lang=EN-US>Frank</span>在各自的仲裁切片中都有彼此。<span lang=EN-US>Alice-Bob-Carol</span>子群組可以做出<span
+lang=EN-US>Dave-Elsie-Frank</span>群組永遠不會聽到的決定，反之亦然。該網路無法達成共識（意外除外）。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>因此，為了使聯邦投票發揮作用（並且為了應用論文的重要定理），<span
+lang=EN-US>SCP</span>要求網路必須具備仲裁交集<span lang=EN-US>(quorum intersection)</span>的特性。在具有此特性的網路中，您可以建構的任何兩個仲裁總是至少有一個節點重疊。網路的普遍觀點，這種方式與擁有多數一樣好。直觀地說，這意味著如果任何仲裁同意陳述<span
+lang=EN-US>X</span>，則沒有其他仲裁可以同意非<span lang=EN-US>X</span>，因為它必然包括第一個仲裁中已經投票給<span
+lang=EN-US>X</span>的某個節點。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US><img
+border=0 width=643 height=484 id="圖片 16" src="scp.files/image016.jpg"></span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='font-size:10.0pt;font-family:"新細明體",serif'>如果網路有“仲裁交集”<span lang=EN-US>…</span></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US><img
+border=0 width=643 height=484 id="圖片 17" src="scp.files/image017.jpg"></span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='font-size:10.0pt;font-family:"新細明體",serif'>…然後你可以建構任何兩個仲裁…</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US><img
+border=0 width=643 height=484 id="圖片 18" src="scp.files/image018.jpg"></span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='font-size:10.0pt;font-family:"新細明體",serif'>…總是會重疊的</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US><img
+border=0 width=643 height=484 id="圖片 19" src="scp.files/image019.jpg"></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US><img
+border=0 width=643 height=484 id="圖片 20" src="scp.files/image020.jpg"></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>（當然，重疊的節點可能都是拜占庭式的——撒謊或行為不端。在這種情況下，具有仲裁交叉點並不能幫助網路達成一致。因此，<span
+lang=EN-US>SCP</span>白皮書中的許多結果都依賴於明確陳述的假設，例如<i>即使將行為不端的節點從網路中刪除</i>，網路也享有仲裁交集。為了清楚起見，我們將在本文的其餘部分隱含這些假設。）</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>期望一組獨立的節點以這樣的方式組織它們的切片，可靠地享有仲裁交集，似乎是不合理的。但是有兩個原因可以說明這不是那麼牽強。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>第一個原因是網際網路本身的存在。網際網路是具有仲裁交集的獨立節點網路的完美範例。網際網路上的大多數節點只連接到其他幾個本地節點，但是這些小集合重疊得足夠多，以至於每個節點都可以通過一條或另一條路由到達其他每個節點。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>第二個原因是針對於<span
+lang=EN-US>Stellar</span>支付網路（<span lang=EN-US>SCP</span>最廣泛的應用）。<span
+lang=EN-US>Stellar</span>網路中的每種資產類型都有一個發行人，而<span lang=EN-US>Stellar</span>最佳實踐要求每個發行人在網路中指定一個或多個節點來處理贖回請求。為了您的利益，對於您關心的每個資產，應該直接或間接地將這些節點包含在您的仲裁切片中。然後，對這些資產感興趣的所有節點組成的仲裁，將至少在那些贖回節點中重疊。對多種資產感興趣的節點，將在其仲裁切片中包含所有相關發行人的贖回節點，這些節點往往會將所有資產連接在一起。另外，並不是任何資產都要以這種方式連接到網路上其他資產——沒有仲裁交集的網路是可以的。（想想以美元運營的銀行有時希望與以歐元運營的銀行、以比索運營的銀行進行交易，因此它們在一個網路上，但他們都不關心孩子們交易棒球卡的獨立網路。）</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>當然，期望網路應該享有仲裁交集並不等於保證。其他拜占庭協議系統的複雜性很大程度上歸功於對仲裁的保證。<span
+lang=EN-US>SCP</span>的一個重要革新是它從共識算法本身中刪除了製定仲裁的責任，並將其推送到應用層。這表明，儘管聯邦投票足以適用於任何類型的投票值，但實際上它的穩健性主要取決於這些值的更廣泛含義。一些假設的用途可能不像其他用途那樣容易產生連接良好的網路。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><b><span style='font-family:"新細明體",serif'>投票、接受和確認<span
+lang=EN-US>(Voting, accepting, and confirming)</span></span></b></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>在一輪聯邦投票中，一個節點可以選擇從投票給某個值<span
+lang=EN-US> V </span>開始。這意味著向網路廣播一條消息，說：“我是節點<span lang=EN-US> N</span>，我的仲裁切片是<span
+lang=EN-US> Q</span>，我投票給<span lang=EN-US> V</span>。”當一個節點以這種方式投票時，它承諾它從未投票反對<span
+lang=EN-US> V</span>，也永遠不會。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>一個節點可以從他們的廣播消息中看到它的對等點是如何投票的。一旦該節點收集到足夠多的此類消息，它就可以遍歷其中的仲裁切片以找到仲裁。如果它可以看到仲裁內所有的節點都投票給<span
+lang=EN-US> V</span>，那麼它可以轉為接受<span lang=EN-US> V</span>，並將這條新消息廣播到網絡。（“我是節點<span
+lang=EN-US> N</span>，我的仲裁切片是<span lang=EN-US> Q</span>，我接受<span lang=EN-US> V</span>。”）接受<span
+lang=EN-US>(Accepting)</span>比單純的投票<span lang=EN-US>(Voting)</span>提供了更強的保證。當一個節點投票給<span
+lang=EN-US> V </span>時，它永遠不會投票給非<span lang=EN-US> V</span>。但是當一個節點接受<span
+lang=EN-US> V </span>時，網路中的任何節點都不會接受非<span lang=EN-US> V</span>。（<span
+lang=EN-US>SCP</span>白皮書中的定理<span lang=EN-US>8</span>證明了這一點。）</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>當然，<span lang=EN-US>N
+</span>很有可能不會立即看到大量節點同意其<span lang=EN-US> V </span>投票。其他節點可能會投票給其他值。但是還有另一種方式可以讓節點從單純的投票推進到接受。<span
+lang=EN-US>N </span>可以接受一個不同的值<span lang=EN-US> W</span>，即使<span lang=EN-US> N </span>沒有投票給它，也沒有看到投票給它的仲裁，但只要它看到一個阻塞集<span
+lang=EN-US>(blocking set)</span>接受它。阻塞集是從<span lang=EN-US> N </span>的每個仲裁切片中選擇一個節點來組成。顧名思義，它能夠阻止任何其他值。如果這樣一個集合中的所有節點都接受<span
+lang=EN-US> W</span>，那麼（根據定理<span lang=EN-US>8</span>）將永遠不可能形成一個接受非<span
+lang=EN-US> W </span>的群體，因此<span lang=EN-US> N </span>也接受<span lang=EN-US> W </span>是安全的。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+style='font-family:"新細明體",serif'><img border=0 width=642 height=275 id="圖片 27"
+src="scp.files/image021.jpg"></span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='font-size:10.0pt;font-family:"新細明體",serif'>具有三個仲裁切片的節點<span lang=EN-US>
+N</span>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US><img
+border=0 width=643 height=275 id="圖片 22" src="scp.files/image022.jpg"></span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+style='font-size:10.0pt;font-family:"新細明體",serif'>B-D-F </span><span
+style='font-size:10.0pt;font-family:"新細明體",serif'>是<span lang=EN-US> N </span>的阻塞集：它包含來自<span
+lang=EN-US> N </span>的每個切片中的一個節點。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US><img
+border=0 width=643 height=275 id="圖片 23" src="scp.files/image023.jpg"></span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+style='font-size:10.0pt;font-family:"新細明體",serif'>B-E </span><span
+style='font-size:10.0pt;font-family:"新細明體",serif'>也是<span lang=EN-US> N </span>的阻塞集，因為<span
+lang=EN-US> E </span>出現在<span lang=EN-US> N </span>的兩個切片中。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>但是阻塞集不是仲裁。如果有人可以在<span
+lang=EN-US> N </span>的每個切片中破壞一個節點，那麼就很容易欺騙節點<span lang=EN-US> N </span>接受一個不應該接受的值。所以接受一個值並不是投票的結束。相反，<span
+lang=EN-US>N </span>必須確認該值，這意味著它看到一個仲裁的節點全都接受它。如果它走到這一步，那麼正如<span lang=EN-US>SCP</span>白皮書所證明的（在定理<span
+lang=EN-US>11</span>中），網路的其餘部分最終也將確認相同的值，因此<span lang=EN-US> N </span>已經以該值作為聯邦投票結束的結果。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+style='font-family:"新細明體",serif'><img border=0 width=858 height=499 id="圖片 25"
+src="scp.files/image024.png" alt="一張含有 文字 的圖片&#10;&#10;自動產生的描述"></span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='font-size:10.0pt;font-family:"新細明體",serif'>聯邦投票</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>投票、接受和確認的過程構成了一輪完整的聯邦投票。恆星共識協議結合了許多這樣的回合來創建一個完整的共識系統。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><b><span style='font-family:"新細明體",serif'>恆星共識協議<span
+lang=EN-US>(The Stellar Consensus Protocol)</span></span></b></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>共識系統的兩個最重要的屬性是<i>安全性<span
+lang=EN-US>(safety)</span></i>和<i>活性<span lang=EN-US>(liveness)</span></i>。如果共識算法永遠不會為不同的參與者產生不同的結果，那麼它就是“安全的”。（<span
+lang=EN-US>Bob</span>的歷史副本永遠不會與<span lang=EN-US>Carol</span>的不一致。）同時，“活性”意味著算法永遠不會不產生結果——即它不會卡住。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>剛剛描述的聯邦投票程序在某種意義上是<i>安全的</i>，如果一個節點確認值<span
+lang=EN-US>V</span>，則沒有其他節點會確認不同的值。但“不會確認不同的事情”與“會確認某事”是兩回事。可能有太多不同的值被投票，甚至沒有達到“接受”門檻。這意味著聯邦投票缺乏<i>活性</i>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>恆星共識協議以保證安全性和活性的方式使用聯邦投票。</span><span
+lang=EN-US><a href="#註4"><span style='font-size:8.0pt;font-family:"新細明體",serif'>(</span><span
+lang=EN-US style='font-size:8.0pt;font-family:"新細明體",serif'><span lang=EN-US>註4)</span></span></a></span><span
+style='font-family:"新細明體",serif'>簡而言之，這個想法是對多個值進行多次聯邦投票，直到一個值通過<span
+lang=EN-US>SCP</span>的各個投票階段，如下所述。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>SCP</span><span
+style='font-family:"新細明體",serif'>尋求共識的值可能是恆星賬本、午餐訂單或其他任何東西，但要注意的是，<span
+lang=EN-US>SCP</span>的聯邦投票輪所投票、接受或確認的對象，並不是這些值。相反的，聯邦投票發生在關於這些值的陳述<span
+lang=EN-US>(statements)</span>上。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>第一輪聯邦投票發生在提名階段，在一系列形式為“我提名<span
+lang=EN-US> V</span>”的陳述中，可能有許多不同值的<span lang=EN-US>V</span>。提名的目標是找到一個或多個這樣的陳述，可以通過一直接受和確認來達成。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>在找到可確認的被提名人後，<span
+lang=EN-US>SCP</span>進入<i>投票階段<span lang=EN-US>(balloting phase)</span></i>，目標是找到一些<i>選票<span
+lang=EN-US>(ballot)</span></i>（這是一個被提名值的容器）和可以<i>承諾<span lang=EN-US>(commit)</span></i>它的仲裁。如果仲裁承諾本次投票，其值就是這一輪共識的結果。但在節點可以表決要承諾選票之前，它必須先確認所有較小的選票都已<i>中止<span
+lang=EN-US>(aborted)</span></i>。這些步驟——中止選票以找到可以確認承諾的投票——涉及對有關選票的多項陳述進行多輪聯邦投票。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>以下部分更詳細地描述了提名和投票。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><b><span style='font-family:"新細明體",serif'>提名<span
+lang=EN-US>(Nomination)</span></span></b></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>在提名階段開始時，每個節點可以自發地選擇一個值<span
+lang=EN-US> V</span>，並投票支持“我提名<span lang=EN-US> V</span>”這個陳述。此階段的目標是通過聯邦投票確認某些值的提名。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>有可能有足夠多的節點投票支持足夠多不同的“我提名”陳述，這是一個不受控制的局面——沒有提名可以達到“接受”的門檻。因此，除了投出自己的提名票外，節點還會“附和”其對等節點的提名。附和意味著節點投票給“我提名<span
+lang=EN-US> V</span>”，在看到來自節點提名<span lang=EN-US> W </span>的消息後，現在同時投票“我提名<span
+lang=EN-US> V</span>”和“我提名<span lang=EN-US> W</span>”。</span><span lang=EN-US><a
+href="#註5"><span style='font-size:8.0pt;font-family:"新細明體",serif'>(</span><span
+lang=EN-US style='font-size:8.0pt;font-family:"新細明體",serif'><span lang=EN-US>註5)</span></span></a></span><span
+style='font-family:"新細明體",serif'>從概念上講，這些是並行發生的單獨的聯邦投票，每個單獨的投票都能夠達到接受或確認。在實踐中，<span
+lang=EN-US>SCP</span>協議消息將這些單獨的投票集中在一起。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>儘管投票提名<span
+lang=EN-US> V </span>是承諾永遠不會投票反對提名<span lang=EN-US> V</span>，但聯邦投票之上的應用層（在本例中為<span
+lang=EN-US> SCP</span>）可以定義“反對”的含義。<span lang=EN-US>SCP</span>沒有定義任何與“我提名<span
+lang=EN-US> X</span>”投票相矛盾的陳述——沒有“我拒絕對<span lang=EN-US> X </span>的提名”——因此節點可以投票提名任意數量的值。其中許多提名可能無處可去，但最終會有一個或多個提名可以被節點接受或確認。一旦被提名人被確認，它被稱為<i>候選人<span
+lang=EN-US>(candidate)</span></i>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+style='font-family:"新細明體",serif'><img border=0 width=1397 height=842 id="圖片 28"
+src="scp.files/image025.png"></span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='font-size:10.0pt;font-family:"新細明體",serif'>使用聯邦投票的<span lang=EN-US>SCP</span>提名。可能有許多值“<span
+lang=EN-US>B</span>”由對等點提名並由節點“附和”。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>提名可能會產生多個可確認的候選人，因此<span
+lang=EN-US>SCP</span>要求應用層提供某種方法將候選人合併成一個組合。合併方法可以是應用層要求的任何方法，只要該方法是確定性的，也就是說每個節點合併相同的兩個候選對象時，都會產生相同的組合。在午餐訂購系統中，“合併<span
+lang=EN-US>(combining)</span>”可能只是單純地丟棄兩個候選人中的一個。（但是，確定性地：每個節點都必須選擇相同的值來丟棄。例如，按字母順序較早的選擇。）在<span
+lang=EN-US>Stellar</span>支付網路中，被提名人是分類賬<span lang=EN-US>(ledgers</span>，在此可視同為區塊鏈中的<span
+lang=EN-US>blocks)</span>，合併兩個被提名人涉及合併它們包含的交易，以及它們兩個時間戳記中的後者。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>SCP</span><span
+style='font-family:"新細明體",serif'>白皮書證明（定理<span lang=EN-US>12</span>）提名導致網路最終在提名結束時收斂到單個複合候選人。但是有一個問題：聯邦投票是一種非同步協議。（<span
+lang=EN-US>SCP</span>也是如此。）換句話說，節點不是按時間協調的，而是通過它們發送的消息來協調的。從節點的角度來看，提名何時結束尚不清楚。儘管所有節點最終都會到達同一個複合候選人，但它們可能會採取不同的路線到達那裡，沿途產生不同的、有效的複合候選人，永遠無法分辨哪一個是最後一個。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>不過這沒關係。提名只是為了產生並限制候選人的數量以達成共識。其餘的共識由稱為投票<span
+lang=EN-US>(balloting)</span>的過程處理。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><b><span style='font-family:"新細明體",serif'>投票<span
+lang=EN-US>(balloting)</span></span></b></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>選票是一對：<span
+lang=EN-US>&lt;counter,value&gt;</span>，其中<span lang=EN-US> counter </span>是從<span
+lang=EN-US> 1 </span>開始的整數，<span lang=EN-US>value </span>是提名階段的候選人。它可能是節點自己的候選人，也可能是節點接受的某個對等點的候選人。粗略地說，投票通過對有關選票的陳述進行可能的多次聯邦投票，反复嘗試讓網路在某些選票中就某個候選人達成共識。選票中的計數器跟踪所做的嘗試，具有較高計數器的選票優先於具有較低計數器的選票。如果選票<span
+lang=EN-US> &lt;counter,value&gt; </span>似乎卡住了，則開始新的投票，現在在選票<span lang=EN-US>
+&lt;counter+1,value&gt; </span>上。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>區分<i>值<span
+lang=EN-US>(values)</span></i>（例如，午餐訂單應該是什麼，例如比薩餅或沙拉）、<i>選票<span lang=EN-US>(ballots)</span></i>（一對<span
+lang=EN-US>&lt;counter,value&gt;</span>）和有關選票的<i>陳述<span lang=EN-US>(statements)</span></i>這三者，是非常重要的。一輪<span
+lang=EN-US>SCP</span>包括對此類陳述的多輪聯邦投票，特別是：</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>“我準備承諾選票<span lang=EN-US>B</span>，”和</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>“我承諾選票<span lang=EN-US>B</span>。”</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>從某個節點的角度來看，當它找到能夠確認（找到接受的仲裁）“我承諾選票<span
+lang=EN-US>B</span>”陳述的選票<span lang=EN-US>B</span>時，就達成了共識。此時，對<span
+lang=EN-US>B</span>中的值採取行動是安全的——例如，下午餐訂單。這被稱為<i>外部化<span lang=EN-US>(externalizing)</span></i>該值。一旦選票被確認承諾了，一個節點就可以確定每個其他節點都已外部化或不可避免地會外部化相同的值。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>儘管從概念上講，許多聯邦投票發生在關於許多不同選票的陳述上，但交換的實際協議消息要少得多，因為每個消息都封裝了一系列選票。因此，一條消息會同時提升許多聯邦投票的狀態，例如：“我接受<span
+lang=EN-US> &lt;min,V&gt; </span>到<span lang=EN-US> &lt;max,V&gt; </span>範圍內的選票已承諾。”</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>那麼“準備<span
+lang=EN-US>(prepared)</span>”和“承諾<span lang=EN-US>(committed)</span>”是什麼意思呢？</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>當一個節點確信其他節點不會承諾具有不同值的選票時，它會投票承諾選票。對這一點深信不疑是準備<span
+lang=EN-US>(prepare)</span>的目的。一張寫著“我準備承諾選票<span lang=EN-US>B</span>”的投票是保證永遠不會投任何小於<span
+lang=EN-US>B</span>的選票——即，一個計數器較小的選票。</span><span lang=EN-US style='font-size:
+8.0pt;font-family:"新細明體",serif'><a href="#註6">(<span lang=EN-US><span
+lang=EN-US>註6)</span></span></a></span><span style='font-family:"新細明體",serif'>那些較小的選票被準備投票所“中止”，而<span
+lang=EN-US>B</span>是“準備好的”。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>為什麼“我準備承諾選票<span
+lang=EN-US>B</span>”意味著“我保證永遠不會承諾低於<span lang=EN-US>B</span>的選票”？這是因為<span
+lang=EN-US>SCP</span>將“中止<span lang=EN-US>(abort)</span>”定義為“承諾<span
+lang=EN-US>(commit)</span>”的反義詞。正如我們之前討論的，投票支持某事是保證永遠不會投票反對它，所以對準備選票的投票也隱含著中止其他選票。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>在進行“承諾”的投票之前，節點必須先找到它可以確認已準備好的選票。換句話說，它對可能許多不同的“我準備承諾選票<span
+lang=EN-US>B</span>”選票進行聯邦投票，直到找到一個仲裁接受的選票。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>準備投票的選票從哪裡來？節點投出的第一個準備投票是針對<span
+lang=EN-US> &lt;1,C&gt; </span>的，其中<span lang=EN-US> C </span>是提名階段產生的複合候選人。然而，即使在準備投票開始後，提名也可能產生額外的候選人，因此這些成為新的選票。同時，對等節點可能有不同的候選人，他們可以形成一個接受“我準備承諾選票<span
+lang=EN-US>B2</span>”的阻塞集，這將說服節點也接受它。最後，如果當前的選票似乎被卡住了，那麼有一個逾時機制會導致新一輪的聯邦投票在具有更高計數器的新選票上開始。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>一旦節點發現選票<span
+lang=EN-US>B</span>可以確認已準備好了，它就會為“我承諾選票<span lang=EN-US>B</span>”投下新票。該投票告訴對等節點該節點永遠不會中止<span
+lang=EN-US>B</span>。事實上，如果<span lang=EN-US>B</span>是選票<span lang=EN-US>
+&lt;N,C&gt;</span>，那麼“我承諾選票<span lang=EN-US> &lt;N,C&gt;</span>”也隱含地為準備從<span
+lang=EN-US> &lt;N,C&gt; </span>到<span lang=EN-US> &lt;</span>∞<span lang=EN-US>,C&gt;
+</span>的每張選票進行投票。如果其他節點仍處於協議的早期階段，則此額外含義有助於接收此消息的其他節點趕上。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>在這一點上值得再次強調的是，這些是非同步協議。僅僅因為一個節點正在發送承諾投票，並不意味著它的對等節點也是如此。有些人可能仍在對準備進行投票，有些人可能已經外部化了一個值。<span
+lang=EN-US>SCP</span>說明了節點應如何處理每種類型的對等消息，無論它處於哪個階段。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>如果“我承諾<span
+lang=EN-US> &lt;N,C&gt;</span>”不能被接受或確認，也許<span lang=EN-US> &lt;N+1,C&gt; </span>可以，或者<span
+lang=EN-US> &lt;N+2,C&gt; </span>，或者，在任何情況下，一些帶有<span lang=EN-US>C</span>的選票，而不是任何其他值，因為節點現在已保證永不中止<span
+lang=EN-US> &lt;N,C&gt;</span>。當一個節點進行承諾投票時，就共識而言，結果是<span lang=EN-US>C</span>或失敗。然而，這還不足以讓節點將<span
+lang=EN-US>C</span>外部化。一些拜占庭節點（根據我們的安全假設，數量少於仲裁）可能會對節點撒謊。接受然後確認一些選票（或選票範圍）是使節點最終有信心將<span
+lang=EN-US>C</span>外部化的原因。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+style='font-family:"新細明體",serif'><img border=0 width=1397 height=720 id="圖片 29"
+src="scp.files/image026.png" alt="一張含有 文字 的圖片&#10;&#10;自動產生的描述"></span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+style='font-size:10.0pt;font-family:"新細明體",serif'>SCP</span><span
+style='font-size:10.0pt;font-family:"新細明體",serif'>投票使用聯邦投票。未描繪的：計時器可以在任何時候觸發，以增加選票中的計數器（也許會從其他提名候選人中產生一個新的組合）。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>就是這樣！一旦網路達成共識，就可以準備再做一次。在<span
+lang=EN-US>Stellar</span>支付網路中，這大約每<span lang=EN-US>5</span>秒發生一次：這一壯舉需要<span
+lang=EN-US>SCP</span>保證的安全性和活性。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>SCP</span><span
+style='font-family:"新細明體",serif'>能夠依靠多回合聯邦投票來實現這一目標。仲裁切片的概念使聯邦投票成為可能：每個節點選擇信任的對等點集作為其自己（主觀）的仲裁的一部分。這種配置意味著，即使在具有開放成員資格和拜占庭失敗的網路中，也可以達成共識。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><b><span style='font-family:"新細明體",serif'>延伸閱讀</span></b></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>可在此處找到原始</span><span
+lang=EN-US><a
+href="https://www.stellar.org/papers/stellar-consensus-protocol.pdf"><span
+style='font-family:"新細明體",serif'>SCP</span><span lang=EN-US style='font-family:
+"新細明體",serif'><span lang=EN-US>白皮書</span></span></a></span><span
+style='font-family:"新細明體",serif'>。實施者的</span><span lang=EN-US><a
+href="https://datatracker.ietf.org/doc/draft-mazieres-dinrg-scp/"><span
+lang=EN-US style='font-family:"新細明體",serif'><span lang=EN-US>規範草案</span></span></a></span><span
+style='font-family:"新細明體",serif'>在這裡。</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span lang=EN-US style='font-family:"新細明體",serif'>SCP</span><span
+style='font-family:"新細明體",serif'>的原作者<span lang=EN-US>David Mazi</span>è<span
+lang=EN-US>res</span>在這裡有一個<span lang=EN-US><a
+href="http://www.scs.stanford.edu/~dm/blog/simplified-scp.html"><span
+lang=EN-US><span lang=EN-US>簡化的（但仍然是技術性的）解釋</span></span></a></span>。</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>您可能會驚訝地沒有在本文中找到“挖礦”或“工作證明”這些術語。<span
+lang=EN-US>SCP</span>不使用這些技術，但其他一些共識算法會使用。可參考<span lang=EN-US>Zane Witherspoon</span>撰寫的關於<span
+lang=EN-US><a
+href="https://hackernoon.com/a-hitchhikers-guide-to-consensus-algorithms-d81aae3eb0e3"><span
+lang=EN-US><span lang=EN-US>共識算法的簡要介紹</span></span></a></span>。</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>在<span lang=EN-US><a
+href="https://github.com/bobg/scp/blob/master/Lunch.md">A round of lunch</a></span>中可以看到通過一輪完整的<span
+lang=EN-US>SCP</span>達成共識的簡單網路的分步描述。</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>對於對<span lang=EN-US>SCP</span>的實現感興趣的讀者，請參閱<span
+lang=EN-US><a href="https://github.com/stellar/stellar-core/tree/master/src/scp">Stellar<span
+lang=EN-US><span lang=EN-US>支付網路使用的C++</span></span><span lang=EN-US><span
+lang=EN-US>代碼</span></span></a></span>或作者為更好地理解<span lang=EN-US>SCP</span>而編寫的<span
+lang=EN-US><a href="https://github.com/bobg/scp/blob/master/Lunch.md">Go<span
+lang=EN-US><span lang=EN-US>代碼</span></span></a></span>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><b><span style='font-family:"新細明體",serif'>註</span></b></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><a
+name=註1><span lang=EN-US style='font-family:"新細明體",serif'>1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>“拜占庭式”容錯能力——即使群體中的某些成員可能撒謊或不遵守決策規則，也能信任群體決策——之所以如此命名，是因為拜占庭帝國的將軍們試圖協調一個進攻。<span
+lang=EN-US>Anthony Stevens</span>寫了一個</span></a><a
+href="https://medium.com/coinmonks/a-note-from-anthony-if-you-havent-already-please-read-the-article-gaining-clarity-on-key-787989107969"><span
+style='font-family:"新細明體",serif'>很好的描述</span></a><span style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><a
+name=註2><span lang=EN-US style='font-family:"新細明體",serif'>2.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US style='font-family:"新細明體",serif'>SCP</span></a><span
+style='font-family:"新細明體",serif'>白皮書未指定通信機制。實現通常會使用</span><a
+href="https://en.wikipedia.org/wiki/Gossip_protocol"><span lang=EN-US
+style='font-family:"新細明體",serif'>gossip</span><span style='font-family:"新細明體",serif'>協議</span></a><span
+style='font-family:"新細明體",serif'>來確保消息在整個網路中傳播。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><a
+name=註3><span lang=EN-US style='font-family:"新細明體",serif'>3.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>拜占庭協議系統是根據以下問題設計的：在多少個行為不端的節點下，系統還能存活？在一個有<span
+lang=EN-US>N</span>個節點的系統中，打算在<span lang=EN-US>f</span>個節點故障中倖存下來，一個節點必須能夠在收到<span
+lang=EN-US>N-f</span>個對等方的消息後繼續運行，因為其中<span lang=EN-US>f</span>個節點可能已經崩潰。但是，在收到<span
+lang=EN-US>N-f</span>個對等點的消息後，可能所有剩餘的<span lang=EN-US>f</span>個對等點（尚未收到消息的節點）都是誠實的，並且<span
+lang=EN-US>N-f</span>個對等點中最多<span lang=EN-US>f</span>個（已收到消息的節點）是惡意的。為了確保所有節點都得出相同的結論，那麼從<span
+lang=EN-US>N</span></span></a><span style='font-family:"MS Gothic"'>−</span><span
+lang=EN-US style='font-family:"新細明體",serif'>f</span><span style='font-family:
+"新細明體",serif'>個節點中聽到的大多數節點必須是誠實的，這意味著我們需要<span lang=EN-US>N</span></span><span
+style='font-family:"MS Gothic"'>−</span><span lang=EN-US style='font-family:
+"新細明體",serif'>f &gt; 2f</span><span style='font-family:"新細明體",serif'>或<span
+lang=EN-US>N &gt; 3f</span>。因此，通常設計為能夠承受<span lang=EN-US>f</span>個節點故障的系統總共會有<span
+lang=EN-US>N=3f+1</span>個節點和<span lang=EN-US>2f+1</span>大小的仲裁。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><a
+name=註4><span lang=EN-US style='font-family:"新細明體",serif'>4.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US style='font-family:"新細明體",serif'>SCP</span></a><span
+style='font-family:"新細明體",serif'>的安全性和活性保證受理論限制。<span lang=EN-US>SCP</span>的設計以非常強的安全性保證換取了稍弱的活性保證：如果充分的時限，將很有可能達成共識。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><a
+name=註5><span lang=EN-US style='font-family:"新細明體",serif'>5.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>並非所有來自對等點的投票都會在提名期間得到節點的附和，因為這可能導致不同被提名者的爆炸式增長。<span
+lang=EN-US>SCP</span>包括一個限制這些附和投票的機制。簡而言之，有一個公式可以從節點的角度確定對等點的“優先權”，只有高優先權的節點才能獲得投票附和。提名花費的時間越長，閾值越低，因此節點擴展了會附和其投票的對等點集合。優先權公式將插槽編號作為其輸入之一，因此一個節點在某時段是高優先權，在下一個時段可能是低優先權，反之亦然。</span></a></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><a
+name=註6><span lang=EN-US style='font-family:"新細明體",serif'>6.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US style='font-family:"新細明體",serif'>SCP</span></a><span
+style='font-family:"新細明體",serif'>要求選票中的值有一些定義的順序。因此，如果<span lang=EN-US>
+N1&lt;N2</span>，或者如果<span lang=EN-US> N1=N2 </span>且<span lang=EN-US> V1&lt;V2</span>，則選票<span
+lang=EN-US> &lt;N1,V1&gt; </span>小於<span lang=EN-US> &lt;N2,V2&gt;</span>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><b><span style='font-family:"新細明體",serif'>致謝</span></b></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>非常感謝那些為本文檔提供反饋、建議和內容的人：<span
+lang=EN-US>David Mazi</span>è<span lang=EN-US>res; Tess Rinearson; Oleg
+Andreev; Vicki Niu; Cathie Yun; Adam Diehl; Lindsay Lin; Suzanne Glickstein</span>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><b><span style='font-family:"新細明體",serif'>中文致謝</span></b></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>感謝<span lang=EN-US>Pi</span>先鋒</span><span
+lang=EN-US><a href="https://github.com/0205miss"><span lang=EN-US
+style='font-family:"新細明體",serif'><span lang=EN-US>善逸</span></span></a></span><span
+style='font-family:"新細明體",serif'>在<span lang=EN-US>SCP</span>方面對我的啟蒙。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"新細明體",serif'>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>
