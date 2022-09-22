@@ -1,0 +1,193 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<title>如何處理Pi節點的網路延遲</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:新細明體;
+	panose-1:2 2 5 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"IBM Plex Mono";}
+@font-face
+	{font-family:"\@新細明體";
+	panose-1:2 1 6 1 0 1 1 1 1 1;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	font-size:12.0pt;
+	font-family:"Calibri",sans-serif;}
+.MsoChpDefault
+	{font-family:"Calibri",sans-serif;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:595.3pt 841.9pt;
+	margin:2.0cm 2.0cm 2.0cm 2.0cm;
+	layout-grid:18.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style>
+
+</head>
+
+<body lang=ZH-TW style='word-wrap:break-word;text-justify-trim:punctuation'>
+
+<div class=WordSection1 style='layout-grid:18.0pt'>
+
+<p class=MsoNormal><span lang=EN-US>Pi</span><span style='font-family:"新細明體",serif'>節點是一個點對點網路（</span><span
+lang=EN-US>peer-to-peer</span><span style='font-family:"新細明體",serif'>，</span><span
+lang=EN-US>P2P</span><span style='font-family:"新細明體",serif'>），節點透過「單向廣播」傳遞</span><span
+lang=EN-US>TRANSACTION</span><span style='font-family:"新細明體",serif'>及</span><span
+lang=EN-US>SCP_MESSAGE</span><span style='font-family:"新細明體",serif'>訊息。</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>如下圖所示，你的節點如何得知最新的區塊資訊，可能有很多條路徑。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img width=955 height=614 id="圖片 7"
+src="latency.files/image001.jpg"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img width=958 height=609 id="圖片 8"
+src="latency.files/image002.jpg"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img width=955 height=620 id="圖片 9"
+src="latency.files/image003.jpg"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>當執行</span><span
+lang=EN-US style='font-size:9.5pt;font-family:"IBM Plex Mono";color:#1C1E21;
+background:#F6F7F8'>stellar-core http-command 'info'</span><span
+style='font-family:"新細明體",serif'>，將輸出如下結果：</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img width=1089 height=574 id="圖片 1"
+src="latency.files/image004.jpg"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>ledger</span><span style='font-family:"新細明體",serif'>的</span><span
+lang=EN-US>age</span><span style='font-family:"新細明體",serif'>是本地賬本（區塊）自關閉以來經過的時間，在正常形況下應少於</span><span
+lang=EN-US>10</span><span style='font-family:"新細明體",serif'>秒。</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>你也可以從</span><span
+lang=EN-US>%appdata%\Pi Network\docker_volumes\supervisor_logs\stellar-core-stdout---supervisor-xxx_.log</span><span
+style='font-family:"新細明體",serif'>中發現，大約</span><span lang=EN-US>5~6</span><span
+style='font-family:"新細明體",serif'>秒就會關閉一個區塊。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img width=1092 height=575 id="圖片 6"
+src="latency.files/image005.jpg" alt="一張含有 文字 的圖片&#10;&#10;自動產生的描述"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>但如果你多檢查幾次，發現</span><span
+lang=EN-US>age</span><span style='font-family:"新細明體",serif'>一直增加，你會在</span><span
+lang=EN-US>log</span><span style='font-family:"新細明體",serif'>看到「</span><span
+lang=EN-US>[Herder WARNING] Ledger took xxx seconds</span><span
+style='font-family:"新細明體",serif'>」訊息，前後區塊關閉的間隔時間很長，但後面的區塊時間卻都擠在一起，因為資料有所延遲，是後來才一口氣收到。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img width=1108 height=587 id="圖片 11"
+src="latency.files/image006.jpg"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>甚至延遲時間再長一點，還會有「</span><span
+lang=EN-US>[Herder WARNING] Lost track of consensus</span><span
+style='font-family:"新細明體",serif'>」、「</span><span lang=EN-US>[Herder WARNING]
+Out of sync context</span><span style='font-family:"新細明體",serif'>」訊息。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img width=1092 height=575 id="圖片 3"
+src="latency.files/image007.jpg"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>也有可能就進到</span><span
+lang=EN-US>Catching up</span><span style='font-family:"新細明體",serif'>的狀態了。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img width=1181 height=209 id="圖片 12"
+src="latency.files/image008.jpg"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>如果不是因為你設備或網路的問題，那就是運氣不好，如一開頭所講的，在這個</span><span
+lang=EN-US>P2P</span><span style='font-family:"新細明體",serif'>網路中，你無法控制資料如何傳遞。</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif;color:red;background:
+yellow'>怎麼辦？不需要怎麼辦，這是一個正常現象，你無法改善全世界的網路，而且也跟節點獎勵無關。</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>但如果你真的很龜毛，實在是受不，可以試試連接其他節點，</span><span
+lang=EN-US>”</span><span style='font-family:"新細明體",serif'>也許</span><span
+lang=EN-US>”</span><span style='font-family:"新細明體",serif'>狀況能好一點。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>先執行</span><span
+lang=EN-US style='font-size:9.5pt;font-family:"IBM Plex Mono";color:#1C1E21;
+background:#F6F7F8'>stellar-core http-command peers?fullkeys=true</span><span
+style='font-family:"新細明體",serif'>，查出目前連接的節點。</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>結果如下，可看到</span><span
+lang=EN-US>inbound</span><span style='font-family:"新細明體",serif'>及</span><span
+lang=EN-US>outbound</span><span style='font-family:"新細明體",serif'>兩部分，還有每個節點的</span><span
+lang=EN-US>id</span><span style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img width=1092 height=904 id="圖片 4"
+src="latency.files/image009.jpg"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>挑一個你看不順眼的，比如</span><span
+lang=EN-US>latency</span><span style='font-family:"新細明體",serif'>特別高的，用</span><span
+lang=EN-US style='font-size:9.5pt;font-family:"IBM Plex Mono";color:#1C1E21;
+background:#F6F7F8'>stellar-core http-command droppeer?node=&quot;xxx&quot;</span><span
+style='font-family:"新細明體",serif'>，指令刪掉它。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>xxx</span><span style='font-family:"新細明體",serif'>就填剛剛查出來的節點</span><span
+lang=EN-US>id</span><span style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img width=1092 height=364 id="圖片 5"
+src="latency.files/image010.jpg"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>如果你刪掉的是一個</span><span
+lang=EN-US>outbound</span><span style='font-family:"新細明體",serif'>連線，你的節點馬上就會再重新連上另一個節點；但如果你刪的是</span><span
+lang=EN-US>inbound</span><span style='font-family:"新細明體",serif'>連線，就看運氣了，不見得立刻會有人連進來。</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>換掉幾個節點，看看區塊同步會不會比較順暢。<span
+style='color:red;background:yellow'>但真的沒必要。</span></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>
