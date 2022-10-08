@@ -1,0 +1,552 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<title>使用軟體多撥方式取得不同IP</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:新細明體;
+	panose-1:2 2 5 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"\@新細明體";
+	panose-1:2 1 6 1 0 1 1 1 1 1;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	font-size:12.0pt;
+	font-family:"Calibri",sans-serif;}
+a:link, span.MsoHyperlink
+	{color:#0563C1;
+	text-decoration:underline;}
+.MsoChpDefault
+	{font-family:"Calibri",sans-serif;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:595.3pt 841.9pt;
+	margin:42.55pt 1.0cm 42.55pt 1.0cm;
+	layout-grid:18.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style>
+
+</head>
+
+<body lang=ZH-TW link="#0563C1" vlink="#954F72" style='word-wrap:break-word;
+text-justify-trim:punctuation'>
+
+<div class=WordSection1 style='layout-grid:18.0pt'>
+
+<p class=MsoNormal><span style='font-size:18.0pt;font-family:"新細明體",serif'>使用軟體多撥方式取得不同</span><span
+lang=EN-US style='font-size:18.0pt'>IP</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>當家中有多台節點，如果只靠一台</span><span
+lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>分享器，對外只有一個</span><span
+lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>，無法每一台節點都開</span><span
+lang=EN-US>port</span><span style='font-family:"新細明體",serif'>。若是每台節點都各自用</span><span
+lang=EN-US>PPPoE</span><span style='font-family:"新細明體",serif'>撥號，又缺少防火牆的保護</span><span
+lang=EN-US>(</span><span style='font-family:"新細明體",serif'>只有</span><span
+lang=EN-US>Windows</span><span style='font-family:"新細明體",serif'>本機防火牆</span><span
+lang=EN-US>)</span><span style='font-family:"新細明體",serif'>。如果買多台</span><span
+lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>分享器，一來太傷錢包，二來也要有電力、空間放這些設備，這時就能透過軟體路由來搞定，一台舊</span><span
+lang=EN-US>PC</span><span style='font-family:"新細明體",serif'>就能同時撥好幾路。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>因為軟體路由的硬體需求非常低，我是使用</span><span
+lang=EN-US>VMware Workstation Pro</span><span style='font-family:"新細明體",serif'>建立一台虛擬機，這樣這台</span><span
+lang=EN-US>PC</span><span style='font-family:"新細明體",serif'>還能做其他事</span><span
+lang=EN-US>(</span><span style='font-family:"新細明體",serif'>但是不能關機</span><span
+lang=EN-US>)</span><span style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>架構圖如下：</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img width=575 height=398 id="圖片 36"
+src="router.files/image001.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>先去高格官網下載軟體路由，連結如下：</span></p>
+
+<p class=MsoNormal><span lang=EN-US><a
+href="http://docs.gocloud.cn/docs/chanpinshouce003/chanpinshouce003-1b7oth096hub8">http://docs.gocloud.cn/docs/chanpinshouce003/chanpinshouce003-1b7oth096hub8</a></span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>下載「</span><span
+lang=EN-US>SX1200 </span><span style='font-family:"新細明體",serif'>二合一刷机包」中的最新版</span><span
+lang=EN-US>(</span><span style='font-family:"新細明體",serif'>我寫文件時是</span><span
+lang=EN-US>5.2.1.21406)</span><span style='font-family:"新細明體",serif'>，載完是一個</span><span
+lang=EN-US>iso</span><span style='font-family:"新細明體",serif'>檔。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>開啟</span><span
+lang=EN-US>VMware Workstation Pro</span><span style='font-family:"新細明體",serif'>，創建新的虛擬機。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=549 height=199 id="圖片 1"
+src="router.files/image002.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>選擇「自定義</span><span
+lang=EN-US>(</span><span style='font-family:"新細明體",serif'>高級</span><span
+lang=EN-US>)</span><span style='font-family:"新細明體",serif'>」</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=499 height=433 id="圖片 2"
+src="router.files/image003.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>硬體兼容性選</span><span
+lang=EN-US>Workstation 16.2.x</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=499 height=433 id="圖片 3"
+src="router.files/image004.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>選擇之前下載的</span><span
+lang=EN-US>iso</span><span style='font-family:"新細明體",serif'>檔</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=499 height=433 id="圖片 4"
+src="router.files/image005.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>作業系統選擇</span><span
+lang=EN-US>Linux</span><span style='font-family:"新細明體",serif'>，版本為其它</span><span
+lang=EN-US>Linux 5.x</span><span style='font-family:"新細明體",serif'>內核</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=499 height=433 id="圖片 5"
+src="router.files/image006.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>為虛擬機取名，以及選擇位置</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=499 height=433 id="圖片 6"
+src="router.files/image007.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>2</span><span style='font-family:"新細明體",serif'>個</span><span
+lang=EN-US>core</span><span style='font-family:"新細明體",serif'>就夠了</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=499 height=433 id="圖片 7"
+src="router.files/image008.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>記憶體</span><span
+lang=EN-US>256MB</span><span style='font-family:"新細明體",serif'>已足夠</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=499 height=433 id="圖片 8"
+src="router.files/image009.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>使用橋接網路</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=499 height=433 id="圖片 9"
+src="router.files/image010.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>I/O</span><span style='font-family:"新細明體",serif'>採用預設就可以</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=499 height=433
+id="圖片 10" src="router.files/image011.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>磁碟類型也是預設</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=499 height=433
+id="圖片 11" src="router.files/image012.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>創建新虛擬磁碟</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=499 height=433
+id="圖片 12" src="router.files/image013.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>8GB</span><span style='font-family:"新細明體",serif'>已足夠用</span><span
+lang=EN-US>(</span><span style='font-family:"新細明體",serif'>事實上用不到</span><span
+lang=EN-US>500MB)</span><span style='font-family:"新細明體",serif'>，所以下面要不要拆檔也不重要</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=499 height=433
+id="圖片 13" src="router.files/image014.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>虛擬磁碟的檔案會自動命名，改不改都無所謂</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=499 height=433
+id="圖片 14" src="router.files/image015.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>自定義硬體</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=499 height=433
+id="圖片 15" src="router.files/image016.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>把</span><span
+lang=EN-US>USB</span><span style='font-family:"新細明體",serif'>、音效卡、印表機都移除，這些都用不到</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=729 height=777
+id="圖片 22" src="router.files/image017.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>按「添加」</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=729 height=777
+id="圖片 23" src="router.files/image018.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>增加一張網卡</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=518 height=420
+id="圖片 24" src="router.files/image019.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>第二張網卡改成「橋接」模式，然後按「關閉」，讓設定生效</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=729 height=777
+id="圖片 25" src="router.files/image020.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>完成</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=499 height=433
+id="圖片 26" src="router.files/image021.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>啟動虛擬機</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=301 height=344
+id="圖片 27" src="router.files/image022.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>之後會開一個視窗跑一堆文字，直到出現下面畫面</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=606 height=503
+id="圖片 29" src="router.files/image023.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>按</span><span
+lang=EN-US>1</span><span style='font-family:"新細明體",serif'>接著按</span><span
+lang=EN-US>enter</span><span style='font-family:"新細明體",serif'>鍵，出現要格式化，打</span><span
+lang=EN-US>y</span><span style='font-family:"新細明體",serif'>再按</span><span
+lang=EN-US>enter</span><span style='font-family:"新細明體",serif'>，完成後會提示燒錄成功，</span><span
+lang=EN-US>5</span><span style='font-family:"新細明體",serif'>秒後重啟</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='color:red'>(</span><span
+style='font-family:"新細明體",serif;color:red'>註</span><span lang=EN-US
+style='color:red'>:</span><span style='font-family:"新細明體",serif;color:red'>滑鼠如果被鎖在虛擬機視窗中，可按一下</span><span
+lang=EN-US style='color:red'>Ctrl+Alt</span><span style='font-family:"新細明體",serif;
+color:red'>退出</span><span lang=EN-US style='color:red'>)</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=586 height=470
+id="圖片 30" src="router.files/image024.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>重啟後，最後應會停留在下面畫面</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=616 height=500
+id="圖片 31" src="router.files/image025.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>高格系統預設</span><span
+lang=EN-US>Lan</span><span style='font-family:"新細明體",serif'>口</span><span
+lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>是</span><span
+lang=EN-US>192.168.1.1</span><span style='font-family:"新細明體",serif'>，這容易跟中華的小烏龜或家用分享器相衝，要修改。</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>按</span><span
+lang=EN-US>2</span><span style='font-family:"新細明體",serif'>再按</span><span
+lang=EN-US>enter</span><span style='font-family:"新細明體",serif'>鍵，輸入一個沒有在用的同網段的</span><span
+lang=EN-US>IP(</span><span style='font-family:"新細明體",serif'>或另一個網段的</span><span
+lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>，如果你的節點想獨立一個網段的話</span><span
+lang=EN-US>)</span><span style='font-family:"新細明體",serif'>，這邊就</span><span
+lang=EN-US>192.168.100.1</span><span style='font-family:"新細明體",serif'>，好了</span><span
+lang=EN-US>enter</span><span style='font-family:"新細明體",serif'>繼續。</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>子網路遮罩輸入</span><span
+lang=EN-US>255.255.255.0</span><span style='font-family:"新細明體",serif'>，</span><span
+lang=EN-US>enter</span><span style='font-family:"新細明體",serif'>鍵完成，回到上面選單介面。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=550 height=506
+id="圖片 32" src="router.files/image026.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>到此，虛擬機的部份完成，等下我們要用瀏覽器登入軟體路由。</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif;color:red'>將節點的</span><span
+lang=EN-US style='color:red'>IP</span><span style='font-family:"新細明體",serif;
+color:red'>改成與軟體路由虛擬機「同網段」，「預設閘道」、「</span><span lang=EN-US style='color:red'>DNS</span><span
+style='font-family:"新細明體",serif;color:red'>」都填軟體路由的</span><span lang=EN-US
+style='color:red'>IP</span><span style='font-family:"新細明體",serif;color:red'>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=465 height=518
+id="圖片 35" src="router.files/image027.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>從節點電腦開啟瀏覽器，在網址列輸入</span><span
+lang=EN-US>192.168.100.1(</span><span style='font-family:"新細明體",serif'>剛上面設定的軟體路由</span><span
+lang=EN-US>IP)</span><span style='font-family:"新細明體",serif'>連到高恪路由管理介面。</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>預設帳戶是</span><span
+lang=EN-US style='color:red'>admin</span><span style='font-family:"新細明體",serif'>，第一次登入會要求設定密碼。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=865 height=211
+id="圖片 37" src="router.files/image028.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>密碼設好後，進入快速向導，按「下一步」。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=815 height=382
+id="圖片 38" src="router.files/image029.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>「線路類型」選「不使用該接口」，再按「下一步」。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=816 height=207
+id="圖片 39" src="router.files/image030.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>將「啟用</span><span
+lang=EN-US>DHCP</span><span style='font-family:"新細明體",serif'>」關閉</span><span
+lang=EN-US>(</span><span style='font-family:"新細明體",serif'>不關可能會衝到小烏龜或分享器的</span><span
+lang=EN-US>DHCP</span><span style='font-family:"新細明體",serif'>，而且節點會指定</span><span
+lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>，所以</span><span
+lang=EN-US>DHCP</span><span style='font-family:"新細明體",serif'>沒用途</span><span
+lang=EN-US>)</span><span style='font-family:"新細明體",serif'>，再下一步。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=816 height=358
+id="圖片 40" src="router.files/image031.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>最後提交，等它套完設定，就會出現管理介面。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=816 height=377
+id="圖片 41" src="router.files/image032.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>點右上角地球的圖示，可切換繁體中文。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=299 height=180
+id="圖片 42" src="router.files/image033.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>「流控多線」</span><span
+lang=EN-US>--&gt;</span><span style='font-family:"新細明體",serif'>「單線多撥」</span><span
+lang=EN-US>--&gt;</span><span style='font-family:"新細明體",serif'>「</span><span
+lang=EN-US>+ </span><span style='font-family:"新細明體",serif'>新建」</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=1218 height=639
+id="圖片 43" src="router.files/image034.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>下面會多出一排選項：</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>綁定接口選「</span><span
+lang=EN-US>wan</span><span style='font-family:"新細明體",serif'>」。</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>用戶帳號跟密碼輸入你</span><span
+lang=EN-US>ISP</span><span style='font-family:"新細明體",serif'>撥號的帳密。</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>併發多撥要選「<span
+style='color:red'>不併發多撥</span>」</span><span lang=EN-US>(</span><span
+style='font-family:"新細明體",serif'>注意！併發多撥是指極短時間同時撥出，</span><span lang=EN-US>ISP</span><span
+style='font-family:"新細明體",serif'>可能會以為你在攻擊它，會暫時鎖你數分鐘無法撥接</span><span
+lang=EN-US>)</span><span style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>撥號個數這邊設定</span><span
+lang=EN-US>6</span><span style='font-family:"新細明體",serif'>個為例</span><span
+lang=EN-US>(</span><span style='font-family:"新細明體",serif'>小烏龜與分享器有開硬撥的，記得總數不要超過</span><span
+lang=EN-US>ISP</span><span style='font-family:"新細明體",serif'>分配的數量</span><span
+lang=EN-US>)</span><span style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>後面項目</span><span
+lang=EN-US>(</span><span style='font-family:"新細明體",serif'>運營商、類型、頻寬</span><span
+lang=EN-US>)</span><span style='font-family:"新細明體",serif'>都照預設不動即可，反正</span><span
+lang=EN-US>QOS</span><span style='font-family:"新細明體",serif'>沒開啟沒作用，設完按一下「提交」。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=1707 height=309
+id="圖片 44" src="router.files/image035.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>接著可以到「網路設置」</span><span
+lang=EN-US>--&gt;</span><span style='font-family:"新細明體",serif'>「外網設置」</span><span
+lang=EN-US>--&gt;</span><span style='font-family:"新細明體",serif'>「外網口設置」看到</span><span
+lang=EN-US>WAN_M1~WAN_M6</span><span style='font-family:"新細明體",serif'>等</span><span
+lang=EN-US>6</span><span style='font-family:"新細明體",serif'>個連線設定。</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>依序點上方</span><span
+lang=EN-US>WAN_M1~WAN_M6</span><span style='font-family:"新細明體",serif'>可以查看下面分別取得不同的</span><span
+lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>了。</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>註：官方建議單線多撥時，原</span><span
+lang=EN-US>WAN</span><span style='font-family:"新細明體",serif'>口不要設定任何連線方式，所以在之前快速向導時已設成「不使用該接口」。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=1105 height=1516
+id="圖片 45" src="router.files/image036.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>接著設定哪個節點的</span><span
+lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>走哪個撥號出去，讓每個節點走不同</span><span
+lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>點「流控多線」</span><span
+lang=EN-US>--&gt;</span><span style='font-family:"新細明體",serif'>「多線策略」</span><span
+lang=EN-US>--&gt;</span><span style='font-family:"新細明體",serif'>「多線策略」，照著下圖選「負載均衡」、「</span><span
+lang=EN-US>wan</span><span style='font-family:"新細明體",serif'>」、「源</span><span
+lang=EN-US>+</span><span style='font-family:"新細明體",serif'>目的地址」，設好按「提交」。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=1103 height=806
+id="圖片 16" src="router.files/image037.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>接著點「流控多線」</span><span
+lang=EN-US>--&gt;</span><span style='font-family:"新細明體",serif'>「多線策略」</span><span
+lang=EN-US>--&gt;</span><span style='font-family:"新細明體",serif'>「策略路由規則」，「啟用」後按旁邊的「提交」。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=706 height=272
+id="圖片 17" src="router.files/image038.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>點一下「</span><span
+lang=EN-US>+ </span><span style='font-family:"新細明體",serif'>新建」。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=698 height=270
+id="圖片 18" src="router.files/image039.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>建立規則跳到下面畫面：</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>照著下面紅框設定「啟用」，來源內網類型選「</span><span
+lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>地址」，來源內網</span><span
+lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>範圍輸入你想給走</span><span
+lang=EN-US>wan_m1</span><span style='font-family:"新細明體",serif'>撥號出去的節點</span><span
+lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>，這邊就設成</span><span
+lang=EN-US>192.168.100.101</span><span style='font-family:"新細明體",serif'>這個</span><span
+lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>地址走</span><span
+lang=EN-US>wan_m1</span><span style='font-family:"新細明體",serif'>這個線路，接著下面指定出口勾選「</span><span
+lang=EN-US>wan_m1</span><span style='font-family:"新細明體",serif'>」，啟動「強制指派」，其它都照預設不動，然後「提交」，完成第一條規則設定。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>(</span><span style='font-family:"新細明體",serif'>如果沒有強制指派，則該線路如果斷線或撥沒成功，則會跑去用別條線路，造成跟別台同</span><span
+lang=EN-US>IP)</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=1105 height=1225
+id="圖片 19" src="router.files/image040.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>回到策略路由規則主畫面，再繼續新建規則，第二規則設定走</span><span
+lang=EN-US>wan_m2</span><span style='font-family:"新細明體",serif'>出去的節點</span><span
+lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>為</span><span
+lang=EN-US>192.168.100.102</span><span style='font-family:"新細明體",serif'>。同上改紅框處成如下圖：</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=1103 height=1217
+id="圖片 20" src="router.files/image041.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>同理，繼續完成其他幾條規則，下面是設好的畫面，最後記得按「提交」。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=1709 height=583
+id="圖片 21" src="router.files/image042.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>根據</span><span
+lang=EN-US>Pi Network</span><span style='font-family:"新細明體",serif'>白皮書，必須有開通</span><span
+lang=EN-US>port</span><span style='font-family:"新細明體",serif'>才有資格當超級節點，節點獎勵公式也包含了開</span><span
+lang=EN-US>port</span><span style='font-family:"新細明體",serif'>這部分，所以還要設定端口映射</span><span
+lang=EN-US>(Port Mapping)</span><span style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>點「網路設置」</span><span
+lang=EN-US>--&gt;</span><span style='font-family:"新細明體",serif'>「端口映射」</span><span
+lang=EN-US>--&gt;</span><span style='font-family:"新細明體",serif'>「端口映射」</span><span
+lang=EN-US>--&gt;</span><span style='font-family:"新細明體",serif'>「</span><span
+lang=EN-US>+ </span><span style='font-family:"新細明體",serif'>新建」</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=1103 height=806
+id="圖片 28" src="router.files/image043.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>設定</span><span
+lang=EN-US>wan_m1</span><span style='font-family:"新細明體",serif'>對外的</span><span
+lang=EN-US>TCP port 31401-31403</span><span style='font-family:"新細明體",serif'>映射到內部</span><span
+lang=EN-US>192.168.100.101</span><span style='font-family:"新細明體",serif'>這台節點的</span><span
+lang=EN-US>TCP port 31401-31403</span><span style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>要啟用「端口回流」，節點之間才可以互連。完成後「提交」。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=1103 height=805
+id="圖片 33" src="router.files/image044.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>繼續新增其他規則，如</span><span
+lang=EN-US>wan_m2</span><span style='font-family:"新細明體",serif'>映射</span><span
+lang=EN-US>192.168.100.102</span><span style='font-family:"新細明體",serif'>、</span><span
+lang=EN-US>wan_m3</span><span style='font-family:"新細明體",serif'>映射</span><span
+lang=EN-US>192.168.100.103</span><span style='font-family:"新細明體",serif'>等等。以下為完成畫面。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=1103 height=706
+id="圖片 34" src="router.files/image045.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>最後就是節點的</span><span
+lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>設定正確，就能走不同的路線出去了。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>
