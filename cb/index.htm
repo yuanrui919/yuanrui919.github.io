@@ -1,0 +1,333 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<title>鎖倉與Claimable Balance</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:新細明體;
+	panose-1:2 2 5 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"\@新細明體";
+	panose-1:2 1 6 1 0 1 1 1 1 1;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	font-size:12.0pt;
+	font-family:"Calibri",sans-serif;}
+a:link, span.MsoHyperlink
+	{color:#0563C1;
+	text-decoration:underline;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:24.0pt;
+	font-size:12.0pt;
+	font-family:"Calibri",sans-serif;}
+.MsoChpDefault
+	{font-family:"Calibri",sans-serif;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:595.3pt 841.9pt;
+	margin:2.0cm 2.0cm 2.0cm 2.0cm;
+	layout-grid:18.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body lang=ZH-TW link="#0563C1" vlink="#954F72" style='word-wrap:break-word;
+text-justify-trim:punctuation'>
+
+<div class=WordSection1 style='layout-grid:18.0pt'>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:24.0pt'>Claimable Balance</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>Pi Network</span><span style='font-family:
+"新細明體",serif'>的鎖倉是透過「</span><span lang=EN-US>Claimable Balance</span><span
+style='font-family:"新細明體",serif'>」功能來實現。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>Claimable Balance</span><span
+style='font-family:"新細明體",serif'>把付款“拆分”為兩部分，發送的帳戶只管發送，接收的帳戶只管接收。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>聽起來好像怪怪的，付款不就是這樣嗎？不然還要怎樣？不！還真的不是這樣呢，一般付款是發送和接收同時發生，而不是分成兩個步驟。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>而且在</span><span
+lang=EN-US>Stellar</span><span style='font-family:"新細明體",serif'>網路上的標準支付中，你若要發送資產給別人，除了原生代幣</span><span
+lang=EN-US>XLM</span><span style='font-family:"新細明體",serif'>以外，接收者都必須為你發送的資產啟用信任線</span><span
+lang=EN-US>(Trustline)</span><span style='font-family:"新細明體",serif'>。在</span><span
+lang=EN-US>Pi</span><span style='font-family:"新細明體",serif'>網路中，無須信任的資產則是</span><span
+lang=EN-US>Pi</span><span style='font-family:"新細明體",serif'>幣。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>當進行標準付款但未啟用信任線時，發送人將收到錯誤消息，因為網路不允許他們發送付款。儘管這對發送人來說很麻煩，因為必須要求每位接收者啟用資產信任線，但卻是一項重要的安全功能，這意味著使用者不會被迫接受他們不想要的資產，錢包不會被不信任的垃圾資產淹沒。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>Claimable Balance</span><span
+style='font-family:"新細明體",serif'>可以幫助避免這些問題，並將錢包的安全性掌握在你手中。</span><span
+lang=EN-US>Claimable Balance</span><span style='font-family:"新細明體",serif'>將付款拆成「發送」與「接收」兩部分，這意味著有人可以向你發送一筆你沒有啟用信任線的資產的付款，而你再來決定是否要接受它。當接受時，信任線會自動建立。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>P.S. Claimable Balance</span><span
+style='font-family:"新細明體",serif'>仍然會產生新的問題，如果沒有人接受資產，它將永遠保留在區塊上，佔用空間、造成網路效能下降。這裡有一篇討論：</span></p>
+
+<p class=MsoNormal><span lang=EN-US><a
+href="https://groups.google.com/g/stellar-dev/c/BpLxedn4Gpg">https://groups.google.com/g/stellar-dev/c/BpLxedn4Gpg</a></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:24.0pt'>Claimable Balance</span><span
+style='font-size:24.0pt;font-family:"新細明體",serif'>如何操作？</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>Claimable Balance</span><span
+style='font-family:"新細明體",serif'>將付款分為兩部分：</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>第</span><span lang=EN-US>1</span><span
+style='font-family:"新細明體",serif'>部分：發送賬戶使用</span><span lang=EN-US>Create
+Claimable Balance</span><span style='font-family:"新細明體",serif'>操作建立付款</span><span
+lang=EN-US>(</span><span style='font-family:"新細明體",serif'>建立</span><span
+lang=EN-US>ClaimableBalanceEntry)</span><span style='font-family:"新細明體",serif'>，本質上是在鏈上進行質押。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>帳戶可以通過建立一個</span><span
+lang=EN-US>ClaimableBalanceEntry</span><span style='font-family:"新細明體",serif'>來啟動「發送」，將指定數量的資產移動到</span><span
+lang=EN-US>ClaimableBalanceEntry</span><span style='font-family:"新細明體",serif'>內，並且指定數個</span><span
+lang=EN-US>Claimant(</span><span style='font-family:"新細明體",serif'>包含接收帳戶及時間限制</span><span
+lang=EN-US>)</span><span style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>(</span><span style='font-family:"新細明體",serif'>請注意，一旦您建立了</span><span
+lang=EN-US>ClaimableBalanceEntry</span><span style='font-family:"新細明體",serif'>，您將無法再次使用這些資產，除非您已將自己設置為申領人之一。</span><span
+lang=EN-US>)</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>Claimable Balance</span><span
+style='font-family:"新細明體",serif'>可以設計多種時間限制，例如：</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>使用相對時間</span><span
+lang=EN-US> - Claimable Balance</span><span style='font-family:"新細明體",serif'>建立後，必須經過多少秒才能執行</span><span
+lang=EN-US>Claim(</span><span style='font-family:"新細明體",serif'>申領</span><span
+lang=EN-US>)</span><span style='font-family:"新細明體",serif'>。</span><span
+lang=EN-US>Pi</span><span style='font-family:"新細明體",serif'>就是利用這種方式來鎖倉。</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>2.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>使用絕對時間</span><span
+lang=EN-US> - </span><span style='font-family:"新細明體",serif'>設定可以執行</span><span
+lang=EN-US>Claim</span><span style='font-family:"新細明體",serif'>的最後期限。</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>3.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>要滿足多個條件</span><span
+lang=EN-US> - </span><span style='font-family:"新細明體",serif'>如必須經過</span><span
+lang=EN-US>X</span><span style='font-family:"新細明體",serif'>分鐘，並且需要在</span><span
+lang=EN-US>Y</span><span style='font-family:"新細明體",serif'>日期之前執行</span><span
+lang=EN-US>Claim</span><span style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>4.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>只要滿足其中一個條件</span><span
+lang=EN-US> - </span><span style='font-family:"新細明體",serif'>在</span><span
+lang=EN-US>X</span><span style='font-family:"新細明體",serif'>分鐘過去</span><span
+lang=EN-US> &quot;</span><span style='font-family:"新細明體",serif'>或</span><span
+lang=EN-US>&quot; Y</span><span style='font-family:"新細明體",serif'>日期之後執行</span><span
+lang=EN-US>Claim</span><span style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>5.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>在特定情況下不能執行</span><span
+lang=EN-US>Claim - </span><span style='font-family:"新細明體",serif'>如在經過</span><span
+lang=EN-US>X</span><span style='font-family:"新細明體",serif'>時間之前不能執行</span><span
+lang=EN-US>Claim</span><span style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>第</span><span lang=EN-US>2</span><span
+style='font-family:"新細明體",serif'>部分：目標賬戶或申領人使用</span><span lang=EN-US>Claim
+Claimable Balance</span><span style='font-family:"新細明體",serif'>操作接受</span><span
+lang=EN-US>ClaimableBalanceEntry</span><span style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>只要知道</span><span
+lang=EN-US>Balance ID</span><span style='font-family:"新細明體",serif'>，任何帳戶都能執行</span><span
+lang=EN-US>Claim</span><span style='font-family:"新細明體",serif'>，但需要在鏈上進行</span><span
+lang=EN-US>Claimant</span><span style='font-family:"新細明體",serif'>比對，不只帳戶的地址必須符合，時間限制也必須符合，才可以接收資產。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>Claimable Balance</span><span
+style='font-family:"新細明體",serif'>只能被申領一次。如果您列出了</span><span lang=EN-US>10</span><span
+style='font-family:"新細明體",serif'>個</span><span lang=EN-US>Claimant</span><span
+style='font-family:"新細明體",serif'>，那麼首先</span><span lang=EN-US>Claim</span><span
+style='font-family:"新細明體",serif'>成功的人將收到全部資產。一旦</span><span lang=EN-US>Claim</span><span
+style='font-family:"新細明體",serif'>成功，</span><span lang=EN-US>ClaimableBalanceEntry</span><span
+style='font-family:"新細明體",serif'>也會從網路中被刪除。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:24.0pt;font-family:"新細明體",serif'>鏈上資料說明</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>來看看</span><span
+lang=EN-US>GBIKRRKXD53UHTOYEMVW4XZN6S73ONFBMPODVOX3YRYNWSZDDRIGKUSJ</span><span
+style='font-family:"新細明體",serif'>這個帳戶的例子好了。為什麼看他呢？因為他在</span><span lang=EN-US>2022/7/15
+18:05</span><span style='font-family:"新細明體",serif'>時，於馬來西亞用</span><span
+lang=EN-US>18.5Pi</span><span style='font-family:"新細明體",serif'>換了一台總價</span><span
+lang=EN-US>5800</span><span style='font-family:"新細明體",serif'>馬幣的</span><span
+lang=EN-US>Intel i7-12700</span><span style='font-family:"新細明體",serif'>電腦，這消息可是傳遍了整個</span><span
+lang=EN-US>Pi</span><span style='font-family:"新細明體",serif'>圈。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><a
+href="https://minepi.com/blockexplorer/tx/2943d3f5a5fc810e366ca9a627ef1f85a9c25bc0e3585215bc7304b53cb8855c">https://minepi.com/blockexplorer/tx/2943d3f5a5fc810e366ca9a627ef1f85a9c25bc0e3585215bc7304b53cb8855c</a></span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=612 height=129 id="圖片 1"
+src="cb.files/image001.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>GABT</span><span style='font-family:"新細明體",serif'>是專門為先鋒建立錢包</span><span
+lang=EN-US>(</span><span style='font-family:"新細明體",serif'>帳戶</span><span
+lang=EN-US>)</span><span style='font-family:"新細明體",serif'>以及鎖倉的帳戶。當它建立</span><span
+lang=EN-US>GBIK</span><span style='font-family:"新細明體",serif'>之後，也執行了兩次</span><span
+lang=EN-US>Create Claimable Balance</span><span style='font-family:"新細明體",serif'>操作，可以點右邊</span><span
+lang=EN-US>JSON</span><span style='font-family:"新細明體",serif'>看內容</span><span
+lang=EN-US>(</span><span style='font-family:"新細明體",serif'>從下往上看</span><span
+lang=EN-US>)</span><span style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>第一個</span><span
+lang=EN-US>JSON</span></p>
+
+<p class=MsoNormal><span lang=EN-US><a
+href="https://api.mainnet.minepi.com/operations/14754277813653526">https://api.mainnet.minepi.com/operations/14754277813653526</a></span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=1310 height=843
+id="圖片 3" src="cb.files/image002.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>第二個</span><span
+lang=EN-US>JSON</span></p>
+
+<p class=MsoNormal><span lang=EN-US><a
+href="https://api.mainnet.minepi.com/operations/14754277813653527">https://api.mainnet.minepi.com/operations/14754277813653527</a></span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=1285 height=834
+id="圖片 4" src="cb.files/image003.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>由以上訊息可以發現幾件事：</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>遷移主網的</span><span
+lang=EN-US>14</span><span style='font-family:"新細明體",serif'>天等待期也是透過</span><span
+lang=EN-US>Claimable Balance</span><span style='font-family:"新細明體",serif'>來實現。</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>2.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>官方有一個</span><span
+lang=EN-US>GC5R</span><span style='font-family:"新細明體",serif'>帳戶，在這</span><span
+lang=EN-US>14</span><span style='font-family:"新細明體",serif'>天等待期內，如果發現有問題，可以透過它來收回</span><span
+lang=EN-US>Pi</span><span style='font-family:"新細明體",serif'>幣。</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>3.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>這個案例是鎖倉</span><span
+lang=EN-US>50%</span><span style='font-family:"新細明體",serif'>，鎖倉時間</span><span
+lang=EN-US>1</span><span style='font-family:"新細明體",serif'>年。但為什麼扣除</span><span
+lang=EN-US>14</span><span style='font-family:"新細明體",serif'>天等待期後，不是</span><span
+lang=EN-US>365</span><span style='font-family:"新細明體",serif'>天，而是</span><span
+lang=EN-US>363.7</span><span style='font-family:"新細明體",serif'>天？這是為了避免許多先鋒同時釋放他們的鎖倉，所以有一個提早結束的隨機天數。鎖</span><span
+lang=EN-US>1</span><span style='font-family:"新細明體",serif'>年的，最多可能提前</span><span
+lang=EN-US>1</span><span style='font-family:"新細明體",serif'>個月結束鎖倉。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>再來是看</span><span
+lang=EN-US>Claim Claimable Balance</span><span style='font-family:"新細明體",serif'>操作</span></p>
+
+<p class=MsoNormal><span lang=EN-US><a
+href="https://minepi.com/blockexplorer/tx/bfe5445d5e9dc1ee85637c834e03f71a8c6ca5e5a75343f7e798c18f474add41">https://minepi.com/blockexplorer/tx/bfe5445d5e9dc1ee85637c834e03f71a8c6ca5e5a75343f7e798c18f474add41</a></span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=616 height=77 id="圖片 5"
+src="cb.files/image004.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>JSON</span><span style='font-family:"新細明體",serif'>內容</span></p>
+
+<p class=MsoNormal><span lang=EN-US><a
+href="https://api.mainnet.minepi.com/operations/15742790306639873">https://api.mainnet.minepi.com/operations/15742790306639873</a></span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=1312 height=313
+id="圖片 6" src="cb.files/image005.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>重點是怎麼知道</span><span
+lang=EN-US>Balance ID</span><span style='font-family:"新細明體",serif'>？它並不會隨著</span><span
+lang=EN-US>Create Claimable Balance</span><span style='font-family:"新細明體",serif'>的交易回應一起傳回來，但我們仍可透過一些搜索條件（例如來源帳戶或申領人地址）來搜索</span><span
+lang=EN-US>Balance ID</span><span style='font-family:"新細明體",serif'>。可是目前</span><span
+lang=EN-US>Pi Block Explorer</span><span style='font-family:"新細明體",serif'>並沒有提供搜尋</span><span
+lang=EN-US>Balance ID</span><span style='font-family:"新細明體",serif'>的功能，應該是</span><span
+lang=EN-US>CT</span><span style='font-family:"新細明體",serif'>幫我們把</span><span
+lang=EN-US>Balance ID</span><span style='font-family:"新細明體",serif'>寫在錢包的遷移功能裡了。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>
