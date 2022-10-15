@@ -1,0 +1,144 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<title>解決節點程式轉圈圈</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:新細明體;
+	panose-1:2 2 5 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Consolas;
+	panose-1:2 11 6 9 2 2 4 3 2 4;}
+@font-face
+	{font-family:"\@新細明體";
+	panose-1:2 1 6 1 0 1 1 1 1 1;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	font-size:12.0pt;
+	font-family:"Calibri",sans-serif;}
+.MsoChpDefault
+	{font-family:"Calibri",sans-serif;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:595.3pt 841.9pt;
+	margin:2.0cm 2.0cm 2.0cm 2.0cm;
+	layout-grid:18.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style>
+
+</head>
+
+<body lang=ZH-TW style='word-wrap:break-word;text-justify-trim:punctuation'>
+
+<div class=WordSection1 style='layout-grid:18.0pt'>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>如果你的節點是</span><span
+lang=EN-US>10/1</span><span style='font-family:"新細明體",serif'>以後才安裝的，會卡在這裡轉圈圈，解決方法如下</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img width=596 height=726 id="圖片 14"
+src="circling.files/image001.png" alt="一張含有 文字 的圖片&#10;&#10;自動產生的描述"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>結束節點程式，由</span><span
+lang=EN-US>File </span><span lang=EN-US style='font-family:Wingdings'>à</span><span
+lang=EN-US> Exit</span><span style='font-family:"新細明體",serif'>，不是按右上的</span><span
+lang=EN-US>X</span><span style='font-family:"新細明體",serif'>喔</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img width=400 height=486 id="圖片 16"
+src="circling.files/image002.jpg"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>手動下載</span><span
+lang=EN-US>image</span><span style='font-family:"新細明體",serif'>檔，開啟命令提示字元，執行</span></p>
+
+<p class=MsoNormal><span lang=EN-US>docker pull pinetwork/pi-node-docker</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img width=640 height=341 id="圖片 4"
+src="circling.files/image003.jpg"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>到</span><span
+lang=EN-US>Docker</span><span style='font-family:"新細明體",serif'>確定</span><span
+lang=EN-US>image</span><span style='font-family:"新細明體",serif'>下載完成</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img width=642 height=342 id="圖片 5"
+src="circling.files/image004.jpg"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>找到</span><span
+lang=EN-US>%appdata%\Pi Network\user-preferences.json</span><span
+style='font-family:"新細明體",serif'>，用記事本開啟它，內容如下</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>{&quot;windowWidth&quot;:800,&quot;windowHeight&quot;:600,&quot;uuid&quot;:&quot;xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxxxxxxx&quot;,&quot;switchStatus&quot;:true,&quot;dockerImage&quot;:&quot;pinetwork/pi-node-docker:latest&quot;}</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>在最後的</span> <span
+lang=EN-US>} </span><span style='font-family:"新細明體",serif'>前加上</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>,&quot;containerFlavor&quot;:&quot;stellar&quot;,&quot;testnetResetCount&quot;:&quot;2&quot;,&quot;stellarConfigVersion&quot;:&quot;0.0.9&quot;,&quot;testnetResetLatestNodeUIVersion&quot;:&quot;0.4.4&quot;,&quot;horizonStatusPreference&quot;:false</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>重新執行節點程式，並觀察</span><span
+lang=EN-US>Docker</span><span style='font-family:"新細明體",serif'>，</span><span
+lang=EN-US>Containers</span><span style='font-family:"新細明體",serif'>會多出一個</span><span
+lang=EN-US>pi-consensus</span><span style='font-family:"新細明體",serif'>，注意看它的</span><span
+lang=EN-US>Log</span><span style='font-family:"新細明體",serif'>，等它出現「</span><span
+lang=EN-US style='color:red'>setllar-core entered RUNNING state</span><span
+style='font-family:"新細明體",serif'>」這一行</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img width=642 height=335 id="圖片 17"
+src="circling.files/image005.jpg"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>關掉節點小紅點，結束節點程式。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img width=400 height=487 id="圖片 19"
+src="circling.files/image006.jpg"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>檢查</span><span
+lang=EN-US>%appdata%\Pi Network\user-preferences.json</span><span
+style='font-family:"新細明體",serif'>，最後應該多出一段</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>,&quot;stellarSecretSeed&quot;:&quot;XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>再重新啟動節點程式，一切就正常了。</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>千萬聽信奇怪的方法，去手動修改</span><span
+lang=EN-US>user-preferences.json</span><span style='font-family:"新細明體",serif'>內的</span><span
+lang=EN-US style='font-family:Consolas'>stellarSecretSeed</span><span
+style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>
