@@ -66,6 +66,13 @@ src="circling.files/image002.jpg"></span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
+<p class=MsoNormal><span lang=EN-US style='background:silver'>(</span><span
+style='font-family:"新細明體",serif;background:silver'>下面的步驟其實可以略過，只不過手動下載</span><span
+lang=EN-US style='background:silver'>image</span><span style='font-family:"新細明體",serif;
+background:silver'>檔後，待會兒可以比較快看到建立</span><span lang=EN-US style='background:
+silver'>Container</span><span style='font-family:"新細明體",serif;background:silver'>的結果，不用再等</span><span
+lang=EN-US style='background:silver'>)</span></p>
+
 <p class=MsoNormal><span style='font-family:"新細明體",serif'>手動下載</span><span
 lang=EN-US>image</span><span style='font-family:"新細明體",serif'>檔，開啟命令提示字元，執行</span></p>
 
@@ -130,10 +137,47 @@ style='font-family:"新細明體",serif'>，最後應該多出一段</span></p>
 
 <p class=MsoNormal><span style='font-family:"新細明體",serif'>再重新啟動節點程式，一切就正常了。</span></p>
 
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
 <p class=MsoNormal><span style='font-family:"新細明體",serif'>千萬別聽信奇怪的方法，去手動修改</span><span
 lang=EN-US>user-preferences.json</span><span style='font-family:"新細明體",serif'>內的</span><span
 lang=EN-US style='font-family:Consolas'>stellarSecretSeed</span><span
 style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>最後說明一下原因，其實只要加</span><span
+lang=EN-US> &quot;containerFlavor&quot;:&quot;stellar&quot; </span><span
+style='font-family:"新細明體",serif'>就可以，但</span><span lang=EN-US>testnetResetCount</span><span
+style='font-family:"新細明體",serif'>、</span><span lang=EN-US>stellarConfigVersion</span><span
+style='font-family:"新細明體",serif'>、</span><span lang=EN-US>testnetResetLatestNodeUIVersion</span><span
+style='font-family:"新細明體",serif'>這些值不會自動產生，所以還是手動加。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>在</span><span
+lang=EN-US>2022/3/14</span><span style='font-family:"新細明體",serif'>之前，只有少數人被允許執行</span><span
+lang=EN-US>pi-consensus</span><span style='font-family:"新細明體",serif'>容器，其他人都只能跑</span><span
+lang=EN-US>Stellar-Dummy</span><span style='font-family:"新細明體",serif'>。那時大部分人的</span><span
+lang=EN-US> &quot;containerFlavor&quot; </span><span style='font-family:"新細明體",serif'>的值是</span><span
+lang=EN-US> &quot;dummy&quot;</span><span style='font-family:"新細明體",serif'>，而天選之人的值是</span><span
+lang=EN-US> &quot;stellar&quot;</span><span style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>從</span><span
+lang=EN-US>2022/3/14</span><span style='font-family:"新細明體",serif'>以後，全部架設節點的人都能獲得</span><span
+lang=EN-US>pi-consensus</span><span style='font-family:"新細明體",serif'>容器，所以大家的</span><span
+lang=EN-US> &quot;containerFlavor&quot; </span><span style='font-family:"新細明體",serif'>的值都改成了</span><span
+lang=EN-US> &quot;stellar&quot;</span><span style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>但從</span><span
+lang=EN-US>2022/10/1</span><span style='font-family:"新細明體",serif'>起，官方不知道在幹嘛，可能某個服務連不上，新節點的</span><span
+lang=EN-US>user-preferences.json</span><span style='font-family:"新細明體",serif'>無法修改</span><span
+lang=EN-US>containerFlavor</span><span style='font-family:"新細明體",serif'>的值，造成節點程式不知道要啟動哪個</span><span
+lang=EN-US>Container</span><span style='font-family:"新細明體",serif'>，所以就一直轉圈圈。</span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
