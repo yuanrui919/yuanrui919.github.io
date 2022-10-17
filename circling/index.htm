@@ -3,14 +3,11 @@
 <head>
 <meta http-equiv=Content-Type content="text/html; charset=utf-8">
 <meta name=Generator content="Microsoft Word 15 (filtered)">
-<title>解決10/1後新節點轉圈圈</title>
+<title>解決10/1以後新節點轉圈圈</title>
 <style>
 <!--
  /* Font Definitions */
  @font-face
-	{font-family:Wingdings;
-	panose-1:5 0 0 0 0 0 0 0 0 0;}
-@font-face
 	{font-family:新細明體;
 	panose-1:2 2 5 0 0 0 0 0 0 0;}
 @font-face
@@ -30,6 +27,9 @@
 	{margin:0cm;
 	font-size:12.0pt;
 	font-family:"Calibri",sans-serif;}
+a:link, span.MsoHyperlink
+	{color:#0563C1;
+	text-decoration:underline;}
 .MsoChpDefault
 	{font-family:"Calibri",sans-serif;}
  /* Page Definitions */
@@ -44,7 +44,8 @@ div.WordSection1
 
 </head>
 
-<body lang=ZH-TW style='word-wrap:break-word;text-justify-trim:punctuation'>
+<body lang=ZH-TW link="#0563C1" vlink="#954F72" style='word-wrap:break-word;
+text-justify-trim:punctuation'>
 
 <div class=WordSection1 style='layout-grid:18.0pt'>
 
@@ -57,8 +58,7 @@ src="circling.files/image001.jpg" alt="一張含有 文字 的圖片&#10;&#10;�
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
 <p class=MsoNormal><span style='font-family:"新細明體",serif'>結束節點程式，由</span><span
-lang=EN-US>File </span><span lang=EN-US style='font-family:Wingdings'>à</span><span
-lang=EN-US> Exit</span><span style='font-family:"新細明體",serif'>，不是按右上的</span><span
+lang=EN-US>File --&gt; Exit</span><span style='font-family:"新細明體",serif'>，不是按右上的</span><span
 lang=EN-US>X</span><span style='font-family:"新細明體",serif'>喔</span></p>
 
 <p class=MsoNormal><span lang=EN-US><img width=400 height=486 id="圖片 16"
@@ -74,7 +74,8 @@ style='background:lightgrey'>Container</span><span style='font-family:"新細明
 background:lightgrey'>的結果，不用再等</span><span lang=EN-US style='background:lightgrey'>)</span></p>
 
 <p class=MsoNormal><span style='font-family:"新細明體",serif'>手動下載</span><span
-lang=EN-US>image</span><span style='font-family:"新細明體",serif'>檔，開啟命令提示字元，執行</span></p>
+lang=EN-US>image</span><span style='font-family:"新細明體",serif'>檔，開啟命令提示字元</span><span
+lang=EN-US>(cmd)</span><span style='font-family:"新細明體",serif'>，執行</span></p>
 
 <p class=MsoNormal><span lang=EN-US>docker pull pinetwork/pi-node-docker</span></p>
 
@@ -100,10 +101,20 @@ style='font-family:"新細明體",serif'>，用記事本開啟它，內容如下
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
-<p class=MsoNormal><span style='font-family:"新細明體",serif'>在最後的</span><span
-lang=EN-US> } </span><span style='font-family:"新細明體",serif'>前加上</span></p>
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>在最後的</span> <b><span
+lang=EN-US style='background:yellow'>}</span></b><span lang=EN-US> </span><span
+style='font-family:"新細明體",serif'>前加上</span></p>
 
 <p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>,&quot;containerFlavor&quot;:&quot;stellar&quot;,&quot;testnetResetCount&quot;:&quot;2&quot;,&quot;stellarConfigVersion&quot;:&quot;0.0.9&quot;,&quot;testnetResetLatestNodeUIVersion&quot;:&quot;0.4.4&quot;,&quot;horizonStatusPreference&quot;:false</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>注意，這檔案是</span><span
+lang=EN-US>JSON</span><span style='font-family:"新細明體",serif'>格式。頭尾用大括號</span><span
+lang=EN-US> {} </span><span style='font-family:"新細明體",serif'>包起來的是物件</span><span
+lang=EN-US>(object)</span><span style='font-family:"新細明體",serif'>，物件使用</span><span
+lang=EN-US> &quot;Key&quot;:&quot;Values&quot; </span><span style='font-family:
+"新細明體",serif'>的方式儲存，物件跟物件之間用逗號隔開。如果你打錯字或漏了什麼符號，可能導致格式不正確，請再次檢查。</span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
@@ -153,9 +164,9 @@ style='font-family:"新細明體",serif'>、</span><span lang=EN-US>stellarConfi
 style='font-family:"新細明體",serif'>、</span><span lang=EN-US>testnetResetLatestNodeUIVersion</span><span
 style='font-family:"新細明體",serif'>這些值不會自動產生，所以還是手動加。</span></p>
 
-<p class=MsoNormal><span lang=EN-US style='background:silver'>(</span><span
-style='font-family:"新細明體",serif;background:silver'>先鋒善逸補充：另外三個是運行很久的人才會有的設定，自行添加也沒差，那個紀錄正確的是在官方那</span><span
-lang=EN-US style='background:silver'>)</span></p>
+<p class=MsoNormal><span lang=EN-US style='background:lightgrey'>(</span><span
+style='font-family:"新細明體",serif;background:lightgrey'>先鋒善逸補充：另外三個是運行很久的人才會有的設定，自行添加也沒差，那個紀錄正確的是在官方那</span><span
+lang=EN-US style='background:lightgrey'>)</span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
@@ -182,6 +193,16 @@ lang=EN-US>2022/10/1</span><span style='font-family:"新細明體",serif'>起，
 lang=EN-US>user-preferences.json</span><span style='font-family:"新細明體",serif'>無法修改</span><span
 lang=EN-US>containerFlavor</span><span style='font-family:"新細明體",serif'>的值，造成節點程式不知道要啟動哪個</span><span
 lang=EN-US>Container</span><span style='font-family:"新細明體",serif'>，所以就一直轉圈圈。</span></p>
+
+<div style='border:none;border-bottom:solid windowtext 1.0pt;padding:0cm 0cm 1.0pt 0cm'>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=EN-US>&nbsp;</span></p>
+
+</div>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US><a
+href="https://yuanrui919.github.io/"><span lang=EN-US style='font-family:"新細明體",serif'><span
+lang=EN-US>回首頁</span></span></a></span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
