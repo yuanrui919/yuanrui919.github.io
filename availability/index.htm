@@ -1,0 +1,168 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<title>搞懂節點可用率(在線率)</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:新細明體;
+	panose-1:2 2 5 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"\@新細明體";
+	panose-1:2 1 6 1 0 1 1 1 1 1;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	font-size:12.0pt;
+	font-family:"Calibri",sans-serif;}
+a:link, span.MsoHyperlink
+	{color:#0563C1;
+	text-decoration:underline;}
+.MsoChpDefault
+	{font-family:"Calibri",sans-serif;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:595.3pt 841.9pt;
+	margin:72.0pt 90.0pt 72.0pt 90.0pt;
+	layout-grid:18.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style>
+
+</head>
+
+<body lang=ZH-TW link="#0563C1" vlink="#954F72" style='word-wrap:break-word;
+text-justify-trim:punctuation'>
+
+<div class=WordSection1 style='layout-grid:18.0pt'>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>比率是什麼？根據小學五年級的數學課本說明，比率就是「部分除以全體」。例如全班</span><span
+lang=EN-US>50</span><span style='font-family:"新細明體",serif'>人，有</span><span
+lang=EN-US>18</span><span style='font-family:"新細明體",serif'>人小考分數低於</span><span
+lang=EN-US>60</span><span style='font-family:"新細明體",serif'>分，請問不及格的比率是多少？答案是</span><span
+lang=EN-US>18/50=36%</span><span style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>所以節點可用率</span><span
+lang=EN-US>(</span><span style='font-family:"新細明體",serif'>在線率</span><span
+lang=EN-US>)</span><span style='font-family:"新細明體",serif'>是什麼？就是從安裝節點之後，一直到現在，「節點在線的時間」除以「安裝節點之後到現在的總時間」。但是在本機只顯示最近</span><span
+lang=EN-US>90</span><span style='font-family:"新細明體",serif'>天。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>根據</span><span
+lang=EN-US><a
+href="https://pinetwork-official.medium.com/pi-whitepaper-chapters-mainnet-token-model-mining-and-roadmap-19f4a6774e71">2021<span
+lang=EN-US style='font-family:"新細明體",serif'><span lang=EN-US>年</span></span>12<span
+lang=EN-US style='font-family:"新細明體",serif'><span lang=EN-US>月新版白皮書</span></span></a></span><span
+style='font-family:"新細明體",serif'>，只要節點軟體有執行，並且連上網路，那段時間就算在線。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=700 height=484 id="圖片 2"
+src="availability.files/image001.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>但如果你的節點才剛安裝幾天，討論可用率的高低是沒什麼意義的。舉例來說，我這輩子只揮棒過兩次，狗屎運的打出一支安打，我一直到處屁我的</span><span
+style='font-size:24.0pt;font-family:"新細明體",serif;color:red'>打擊率有</span><span
+lang=EN-US style='font-size:24.0pt;color:red'>50%</span><span style='font-family:
+"新細明體",serif'>，有意義嗎？</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>節點可用率只顯示最近的</span><span
+lang=EN-US>90</span><span style='font-family:"新細明體",serif'>天，例如</span><span
+lang=EN-US>[</span><span style='font-family:"新細明體",serif'>今天</span><span
+lang=EN-US>]</span><span style='font-family:"新細明體",serif'>顯示</span></p>
+
+<p class=MsoNormal><span lang=EN-US>Availability (up to 90 days): 78.63% from
+2021-11-11 to 2022-02-09</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>表示</span><span
+lang=EN-US>2021-11-11 ~ 2022-02-09</span><span style='font-family:"新細明體",serif'>這</span><span
+lang=EN-US>90</span><span style='font-family:"新細明體",serif'>天內有</span><span
+lang=EN-US>70</span><span style='font-family:"新細明體",serif'>天</span><span
+lang=EN-US>18</span><span style='font-family:"新細明體",serif'>小時</span><span
+lang=EN-US>24</span><span style='font-family:"新細明體",serif'>分</span><span
+lang=EN-US>29</span><span style='font-family:"新細明體",serif'>秒在線。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>起訖日期會隨著時間推移而改變，例如過了</span><span
+lang=EN-US>1</span><span style='font-family:"新細明體",serif'>天，</span><span
+lang=EN-US>[</span><span style='font-family:"新細明體",serif'>明天</span><span
+lang=EN-US>]</span><span style='font-family:"新細明體",serif'>會顯示</span></p>
+
+<p class=MsoNormal><span lang=EN-US>Availability (up to 90 days): xx.xx% from
+2021-11-12 to 2022-02-10</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>但是即使</span><span
+lang=EN-US>2022-02-10</span><span style='font-family:"新細明體",serif'>整天都在線，可用率卻不一定會增加，以下舉例說明：</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>情境一：</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>當初</span><span
+lang=EN-US>2021-11-11</span><span style='font-family:"新細明體",serif'>整天節點都關機。</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>到了</span><span
+lang=EN-US>2022-02-10</span><span style='font-family:"新細明體",serif'>時，最近</span><span
+lang=EN-US>90</span><span style='font-family:"新細明體",serif'>天</span><span
+lang=EN-US>(2021-11-12 ~ 2022-02-10)</span><span style='font-family:"新細明體",serif'>在線的時間是</span><span
+lang=EN-US>71</span><span style='font-family:"新細明體",serif'>天</span><span
+lang=EN-US>18</span><span style='font-family:"新細明體",serif'>小時</span><span
+lang=EN-US>24</span><span style='font-family:"新細明體",serif'>分</span><span
+lang=EN-US>29</span><span style='font-family:"新細明體",serif'>秒，可用率是</span><span
+lang=EN-US>79.74%</span><span style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>情境二：</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>當初</span><span
+lang=EN-US>2021-11-11</span><span style='font-family:"新細明體",serif'>整天節點都在線。</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>到了</span><span
+lang=EN-US>2022-02-10</span><span style='font-family:"新細明體",serif'>時，最近</span><span
+lang=EN-US>90</span><span style='font-family:"新細明體",serif'>天</span><span
+lang=EN-US>(2021-11-12 ~ 2022-02-10)</span><span style='font-family:"新細明體",serif'>在線的時間依舊是</span><span
+lang=EN-US>70</span><span style='font-family:"新細明體",serif'>天</span><span
+lang=EN-US>18</span><span style='font-family:"新細明體",serif'>小時</span><span
+lang=EN-US>24</span><span style='font-family:"新細明體",serif'>分</span><span
+lang=EN-US>29</span><span style='font-family:"新細明體",serif'>秒，可用率也維持不變是</span><span
+lang=EN-US>78.63%</span><span style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>也就是說，隨著時間的推移，節點的不在線時間必須被移出統計區間</span><span
+lang=EN-US>(</span><span style='font-family:"新細明體",serif'>最近</span><span
+lang=EN-US>90</span><span style='font-family:"新細明體",serif'>天</span><span
+lang=EN-US>)</span><span style='font-family:"新細明體",serif'>，而且新增的統計區間節點是在線的，可用率才會緩慢的提升。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>看圖說明就知道了。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=989 height=741
+id="圖片 20" src="availability.files/image002.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>
