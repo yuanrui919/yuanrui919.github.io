@@ -1,0 +1,190 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<title>超級節點需要固定IP嗎？</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:新細明體;
+	panose-1:2 2 5 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"\@新細明體";
+	panose-1:2 1 6 1 0 1 1 1 1 1;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	font-size:12.0pt;
+	font-family:"Calibri",sans-serif;}
+a:link, span.MsoHyperlink
+	{color:#0563C1;
+	text-decoration:underline;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:24.0pt;
+	font-size:12.0pt;
+	font-family:"Calibri",sans-serif;}
+.MsoChpDefault
+	{font-family:"Calibri",sans-serif;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:595.3pt 841.9pt;
+	margin:72.0pt 90.0pt 72.0pt 90.0pt;
+	layout-grid:18.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body lang=ZH-TW link="#0563C1" vlink="#954F72" style='word-wrap:break-word;
+text-justify-trim:punctuation'>
+
+<div class=WordSection1 style='layout-grid:18.0pt'>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>官網對於</span><span
+lang=EN-US><a href="https://minepi.com/node-info"><span lang=EN-US
+style='font-family:"新細明體",serif'><span lang=EN-US>超級<span lang=EN-US>節點<span
+lang=EN-US>的<span lang=EN-US>選擇<span lang=EN-US>標準</span></span></span></span></span></span></a></span><span
+style='font-family:"新細明體",serif'>是這麼描述的：</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=906 height=266 id="圖片 1"
+src="staticip.files/image001.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>所以穩定地在線以及<span
+style='color:red'>開通</span></span><span lang=EN-US style='color:red'>port</span><span
+style='font-family:"新細明體",serif'>才是重要。但是固定</span><span lang=EN-US>IP</span><span
+style='font-family:"新細明體",serif'>有沒有好處？回答這個問題之前，要先了解「共識」如何產生。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>SCP</span><span style='font-family:"新細明體",serif'>透過</span><span
+lang=EN-US>Validator</span><span style='font-family:"新細明體",serif'>的投票來達成共識，在配置</span><span
+lang=EN-US>Stellar Core</span><span style='font-family:"新細明體",serif'>時，必須設定一組仲裁集</span><span
+lang=EN-US>(Quorum Set)</span><span style='font-family:"新細明體",serif'>，裡面包含</span><span
+lang=EN-US>Validator</span><span style='font-family:"新細明體",serif'>的</span><span
+lang=EN-US>domain name</span><span style='font-family:"新細明體",serif'>或</span><span
+lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>，以及公鑰</span><span
+lang=EN-US>(public key)</span><span style='font-family:"新細明體",serif'>。如果你自己的節點也要成為</span><span
+lang=EN-US>Validator</span><span style='font-family:"新細明體",serif'>，除了必須填寫</span><span
+lang=EN-US>NODE_SEED</span><span style='font-family:"新細明體",serif'>參數、將</span><span
+lang=EN-US>NODE_IS_VALIDATOR</span><span style='font-family:"新細明體",serif'>改成</span><span
+lang=EN-US>true</span><span style='font-family:"新細明體",serif'>，還要發布你的</span><span
+lang=EN-US>public key</span><span style='font-family:"新細明體",serif'>，讓其他人能加進</span><span
+lang=EN-US>QUORUM_SET</span><span style='font-family:"新細明體",serif'>裡。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>但是</span><span
+lang=EN-US>Pi</span><span style='font-family:"新細明體",serif'>節點不是這麼做，原因有二：</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US>Pi</span><span style='font-family:"新細明體",serif'>節點不完全去中心化，它還綁定了</span><span
+lang=EN-US>Pi</span><span style='font-family:"新細明體",serif'>帳號，必須是通過</span><span
+lang=EN-US>KYC</span><span style='font-family:"新細明體",serif'>的真人，且由官方核准。不像其他公有鏈的節點，真的隨時能加入與退出。</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>2.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>降低技術門檻，所以很多事情會由</span><span
+lang=EN-US>Pi Node Software</span><span style='font-family:"新細明體",serif'>來自動完成。換個角度說，你可能無法完全隨心所欲的控制</span><span
+lang=EN-US>Stellar Core</span><span style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>因此推測主網的</span><span
+lang=EN-US>Quorum Set</span><span style='font-family:"新細明體",serif'>會透過某個機制來自動設定。所以固定</span><span
+lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>就不重要了嗎？因為</span><span
+lang=EN-US>Pi</span><span style='font-family:"新細明體",serif'>帳號能對應到節點</span><span
+lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>，即使</span><span
+lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>改了也沒關係？</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>並非完全沒影響，要看每一家</span><span
+lang=EN-US>ISP</span><span style='font-family:"新細明體",serif'>的政策，有些浮動</span><span
+lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>是</span><span
+lang=EN-US>72</span><span style='font-family:"新細明體",serif'>小時換一次</span><span
+lang=EN-US>(</span><span style='font-family:"新細明體",serif'>中華電信</span><span
+lang=EN-US>)</span><span style='font-family:"新細明體",serif'>，有些只要你不主動斷線就不會換</span><span
+lang=EN-US>(</span><span style='font-family:"新細明體",serif'>遠傳，而且短時間內再撥號，仍有可能取得相同的</span><span
+lang=EN-US>IP)</span><span style='font-family:"新細明體",serif'>，有些可能是天天換。當你更換</span><span
+lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>時，路由器可能會立刻自動撥號，所以你的網路可能中斷不到</span><span
+lang=EN-US>10</span><span style='font-family:"新細明體",serif'>秒鐘，你的節點在線率幾乎不受影響。但是如果你是</span><span
+lang=EN-US>Validator</span><span style='font-family:"新細明體",serif'>，你的</span><span
+lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>換了，會有非常多節點的</span><span
+lang=EN-US>Quorum Set</span><span style='font-family:"新細明體",serif'>必須調整，還是增加了一些不必要的工作出來。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>所以固定</span><span
+lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>不是必要條件，但如果情況允許，使用固定</span><span
+lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>會更好。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>另外，固定</span><span
+lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>、浮動</span><span
+lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>跟網路的穩定度也沒有關係，網路穩定度跟你用的</span><span
+lang=EN-US>ISP</span><span style='font-family:"新細明體",serif'>、你家到機房的線路、你家自己的佈線及網路設備有關。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>節點獎勵也跟固定</span><span
+lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>、浮動</span><span
+lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>沒有任何關係，理由很簡單，因為根本無法區分哪個是固定</span><span
+lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>、哪個是浮動</span><span
+lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>。對於某個</span><span
+lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>而言，我們只能知道它是屬於某個</span><span
+lang=EN-US>ISP</span><span style='font-family:"新細明體",serif'>所擁有，但</span><span
+lang=EN-US>ISP</span><span style='font-family:"新細明體",serif'>將此</span><span
+lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>給哪個用戶？是大家輪流共用嗎？我們並不知道。即使是目前分配給某用戶的固定</span><span
+lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>，在這位用戶合約簽定前</span><span
+lang=EN-US>/</span><span style='font-family:"新細明體",serif'>到期後，還不是給其他用戶使用。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>所以根本不存在真正的「固定</span><span
+lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>」。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>再舉個例子，若用遠傳的浮動</span><span
+lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>，連線三個月都沒中斷過，跟中華電信固定</span><span
+lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>，但三天兩頭斷線或是沒開機，你說誰的獎勵會高？</span></p>
+
+<div style='border:none;border-bottom:solid windowtext 1.0pt;padding:0cm 0cm 1.0pt 0cm'>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=EN-US>&nbsp;</span></p>
+
+</div>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US><a
+href="https://yuanrui919.github.io/"><span lang=EN-US style='font-family:"新細明體",serif'><span
+lang=EN-US>回首頁</span></span></a></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>
