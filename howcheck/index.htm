@@ -1,0 +1,201 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<title>如何檢查節點狀況？</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:新細明體;
+	panose-1:2 2 5 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Consolas;
+	panose-1:2 11 6 9 2 2 4 3 2 4;}
+@font-face
+	{font-family:"\@新細明體";
+	panose-1:2 1 6 1 0 1 1 1 1 1;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	font-size:12.0pt;
+	font-family:"Calibri",sans-serif;}
+a:link, span.MsoHyperlink
+	{color:#0563C1;
+	text-decoration:underline;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:24.0pt;
+	font-size:12.0pt;
+	font-family:"Calibri",sans-serif;}
+.MsoChpDefault
+	{font-family:"Calibri",sans-serif;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:595.3pt 841.9pt;
+	margin:72.0pt 90.0pt 72.0pt 90.0pt;
+	layout-grid:18.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body lang=ZH-TW link="#0563C1" vlink="#954F72" style='word-wrap:break-word;
+text-justify-trim:punctuation'>
+
+<div class=WordSection1 style='layout-grid:18.0pt'>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>最簡單的方式就是看區塊的數字有沒有同步</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img width=595 height=725 id="圖片 3"
+src="howcheck.files/image001.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>或者是</span><span
+lang=EN-US>Troubleshooting</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img width=595 height=725 id="圖片 4"
+src="howcheck.files/image002.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>但我很少看</span><span
+lang=EN-US>Pi Node Software</span><span style='font-family:"新細明體",serif'>的畫面，因為資料有所延遲，它沒有即時刷新。而且我平時都把</span><span
+lang=EN-US>Pi Node Software</span><span style='font-family:"新細明體",serif'>及</span><span
+lang=EN-US>Docker Desktop</span><span style='font-family:"新細明體",serif'>的視窗關掉，讓它們在背景執行。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>我會直接以</span><span
+lang=EN-US>Stellar Core</span><span style='font-family:"新細明體",serif'>指令來查詢，請先開啟</span><span
+lang=EN-US>Docker Command Line Interface (CLI)</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img width=1130 height=344 id="圖片 14"
+src="howcheck.files/image003.png" alt="一張含有 文字 的圖片&#10;&#10;自動產生的描述"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>或在命令提示字元</span><span
+lang=EN-US>(cmd)</span><span style='font-family:"新細明體",serif'>輸入</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas;color:black;
+background:#D9D9D9'>docker exec -it pi-consensus bash</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img width=659 height=126 id="圖片 15"
+src="howcheck.files/image004.jpg" alt="一張含有 文字 的圖片&#10;&#10;自動產生的描述"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:Wingdings'>²<span style='font:7.0pt "Times New Roman"'>&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>查看節點資訊</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas;color:black;
+background:#D9D9D9'>stellar-core http-command info</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img width=1153 height=1370 id="圖片 16"
+src="howcheck.files/image005.jpg" alt="一張含有 文字 的圖片&#10;&#10;自動產生的描述"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>重點是看本地跟仲裁集的區塊編號，還有</span><span
+lang=EN-US>age</span><span style='font-family:"新細明體",serif'>秒數，就知道你的區塊落後多少。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:Wingdings'>²<span style='font:7.0pt "Times New Roman"'>&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>點對點的連線結果</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas;color:black;
+background:#D9D9D9'>stellar-core http-command peers</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img width=1062 height=3145 id="圖片 5"
+src="howcheck.files/image006.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>這裡要說明一下，常有人認為</span><span
+lang=EN-US>Incoming connections</span><span style='font-family:"新細明體",serif'>要大於</span><span
+lang=EN-US>0</span><span style='font-family:"新細明體",serif'>才正常，或是看到數字就很嗨，覺得自己的節點很了不起，有</span><span
+lang=EN-US>Support</span><span style='font-family:"新細明體",serif'>其他節點，或是認為官方在做壓力測試。其實並‧不‧是！</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>SCP</span><span style='font-family:"新細明體",serif'>是點對點</span><span
+lang=EN-US>(peer-to-peer)</span><span style='font-family:"新細明體",serif'>協議，節點之間本來就是會互相連接。如果你用過</span><span
+lang=EN-US>BT</span><span style='font-family:"新細明體",serif'>，就知道我講什麼。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif;background:yellow'>更詳細的說明，請看另一篇文章：</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='background:yellow'><a
+href="https://yuanrui919.github.io/io">https://yuanrui919.github.io/io</a></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:Wingdings'>²<span style='font:7.0pt "Times New Roman"'>&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>不想每次都打指令的人，乾脆做一個批次檔，以後只要點兩下滑鼠就好：</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas;color:black;
+background:#D9D9D9'>docker exec -it pi-consensus stellar-core http-command info</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas;color:black;
+background:#D9D9D9'>pause</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:Wingdings'>²<span style='font:7.0pt "Times New Roman"'>&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>如果要從</span><span
+lang=EN-US>log</span><span style='font-family:"新細明體",serif'>查區塊不同步的紀錄，可以用</span><span
+lang=EN-US>PowerShell</span><span style='font-family:"新細明體",serif'>執行以下指令：</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas;color:black;
+background:#D9D9D9'>Select-String -pattern &quot;Lost sync|LM_CATCHING_UP_STATE
+-&gt; LM_SYNCED_STATE&quot; $env:APPDATA\&quot;Pi
+Network&quot;\docker_volumes\supervisor_logs\stellar-core-stdout---supervisor-*.log
+| select-object -ExpandProperty Line</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=879 height=493
+id="圖片 18" src="howcheck.files/image007.jpg" alt="一張含有 文字 的圖片&#10;&#10;自動產生的描述"></span></p>
+
+<div style='border:none;border-bottom:solid windowtext 1.0pt;padding:0cm 0cm 1.0pt 0cm'>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=EN-US>&nbsp;</span></p>
+
+</div>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US><a
+href="https://yuanrui919.github.io/"><span lang=EN-US style='font-family:"新細明體",serif'><span
+lang=EN-US>回首頁</span></span></a></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>
