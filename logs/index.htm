@@ -1,0 +1,334 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<title>節點log簡介</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:新細明體;
+	panose-1:2 2 5 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Consolas;
+	panose-1:2 11 6 9 2 2 4 3 2 4;}
+@font-face
+	{font-family:"\@新細明體";
+	panose-1:2 1 6 1 0 1 1 1 1 1;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	font-size:12.0pt;
+	font-family:"Calibri",sans-serif;}
+a:link, span.MsoHyperlink
+	{color:#0563C1;
+	text-decoration:underline;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:24.0pt;
+	font-size:12.0pt;
+	font-family:"Calibri",sans-serif;}
+.MsoChpDefault
+	{font-family:"Calibri",sans-serif;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:595.3pt 841.9pt;
+	margin:72.0pt 90.0pt 72.0pt 90.0pt;
+	layout-grid:18.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body lang=ZH-TW link="#0563C1" vlink="#954F72" style='word-wrap:break-word;
+text-justify-trim:punctuation'>
+
+<div class=WordSection1 style='layout-grid:18.0pt'>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>節點主要的</span><span
+lang=EN-US>log</span><span style='font-family:"新細明體",serif'>位於</span> <span
+lang=EN-US style='background:yellow'>%appdata%\Pi
+Network\docker_volumes\supervisor_logs</span><span lang=EN-US> </span><span
+style='font-family:"新細明體",serif'>目錄，如圖所示：</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img width=852 height=470 id="圖片 2"
+src="logs.files/image001.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>該目錄有</span><span
+lang=EN-US>6</span><span style='font-family:"新細明體",serif'>種檔案：</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=293 valign=top style='width:219.5pt;border:solid windowtext 1.0pt;
+  background:#BFBFBF;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:"新細明體",serif;color:black'>檔名</span></p>
+  </td>
+  <td width=260 valign=top style='width:195.3pt;border:solid windowtext 1.0pt;
+  border-left:none;background:#BFBFBF;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-family:"新細明體",serif;color:black'>說明</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=293 valign=top style='width:219.5pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>horizon-stdout---supervisor-xxxxxx.log</span></p>
+  </td>
+  <td width=260 valign=top style='width:195.3pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>API Services (Horizon)</span><span
+  style='font-family:"新細明體",serif'>的標準輸出。</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=293 valign=top style='width:219.5pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>postgresql-stderr---supervisor-xxxxxx.log</span></p>
+  </td>
+  <td width=260 valign=top style='width:195.3pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>PostgreSQL</span><span style='font-family:
+  "新細明體",serif'>的標準錯誤輸出。</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=293 valign=top style='width:219.5pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>postgresql-stdout---supervisor-xxxxxx.log</span></p>
+  </td>
+  <td width=260 valign=top style='width:195.3pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>PostgreSQL</span><span style='font-family:
+  "新細明體",serif'>的標準輸出，</span><span lang=EN-US>PostgreSQL</span><span
+  style='font-family:"新細明體",serif'>是</span><span lang=EN-US>Stellar Core</span><span
+  style='font-family:"新細明體",serif'>及</span><span lang=EN-US>Horizon</span><span
+  style='font-family:"新細明體",serif'>的資料庫。</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=293 valign=top style='width:219.5pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>stellar-core-stderr---supervisor-xxxxxx.log</span></p>
+  </td>
+  <td width=260 valign=top style='width:195.3pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Stellar Core</span><span
+  style='font-family:"新細明體",serif'>的標準錯誤輸出。</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=293 valign=top style='width:219.5pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US style='color:red'>stellar-core-stdout---supervisor-xxxxxx.log</span></p>
+  </td>
+  <td width=260 valign=top style='width:195.3pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US style='color:red'>Stellar Core</span><span
+  style='font-family:"新細明體",serif;color:red'>的標準輸出，這是本文討論的重點。</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=293 valign=top style='width:219.5pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>supervisord.log</span></p>
+  </td>
+  <td width=260 valign=top style='width:195.3pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Supervisor</span><span style='font-family:
+  "新細明體",serif'>的</span><span lang=EN-US>log</span><span style='font-family:
+  "新細明體",serif'>，</span><span lang=EN-US>Supervisor</span><span
+  style='font-family:"新細明體",serif'>可用來管理容器中的多個程式，</span><span lang=EN-US>Horizon</span><span
+  style='font-family:"新細明體",serif'>、</span><span lang=EN-US>PostgreSQL</span><span
+  style='font-family:"新細明體",serif'>及</span><span lang=EN-US>Stellar Core</span><span
+  style='font-family:"新細明體",serif'>都是透過</span><span lang=EN-US>Supervisor</span><span
+  style='font-family:"新細明體",serif'>來啟動、停止。</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>其中</span><span
+lang=EN-US>xxxxxx</span><span style='font-family:"新細明體",serif'>是隨機產生的，每台節點的檔名都不一樣。當檔案大小到達</span><span
+lang=EN-US>50MB</span><span style='font-family:"新細明體",serif'>的時候，會自動產生一個新檔，而舊檔案則在檔名後面接上</span>
+<span lang=EN-US>.1 .2 .3 </span><span style='font-family:"新細明體",serif'>等數字。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>但</span><span
+lang=EN-US>log</span><span style='font-family:"新細明體",serif'>裡面紀錄的時間是時區</span><span
+lang=EN-US>UTC+0</span><span style='font-family:"新細明體",serif'>，跟台灣的時間差了</span><span
+lang=EN-US>8</span><span style='font-family:"新細明體",serif'>小時，閱讀起來不是很方便，還要自己在腦袋中加</span><span
+lang=EN-US>8</span><span style='font-family:"新細明體",serif'>小時，建議裝好節點後先調整時區</span><span
+lang=EN-US>(</span><span style='font-family:"新細明體",serif'>不改也沒關係，這不是必要的</span><span
+lang=EN-US>)</span><span style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>到</span><span
+lang=EN-US>pi-consensus</span><span style='font-family:"新細明體",serif'>開</span><span
+lang=EN-US>CLI</span><span style='font-family:"新細明體",serif'>，執行</span><span
+lang=EN-US style='font-family:Consolas;background:lightgrey'>sudo dpkg-reconfigure
+tzdata</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img width=970 height=676 id="圖片 1"
+src="logs.files/image002.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>stellar-core-stdout---supervisor-xxxxxx.log</span><span
+style='font-family:"新細明體",serif'>範例：</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img width=791 height=355 id="圖片 4"
+src="logs.files/image003.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><b><span style='font-family:"新細明體",serif;color:red'>時間</span></b><span
+style='font-family:"新細明體",serif'>，包含日期和時間，精準到毫秒。要注意，如果沒有改時區，這裡的時間要再加</span><span
+lang=EN-US>8</span><span style='font-family:"新細明體",serif'>小時才是台灣時間。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><b><span style='font-family:"新細明體",serif;color:#00B050'>節點</span><span
+lang=EN-US style='color:#00B050'>ID</span></b><span style='font-family:"新細明體",serif'>，或稱節點的</span><span
+lang=EN-US>Public Key</span><span style='font-family:"新細明體",serif'>，每個節點都是獨一無二的，這裡只顯示前</span><span
+lang=EN-US>5</span><span style='font-family:"新細明體",serif'>碼。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><b><span lang=EN-US style='color:#00B0F0'>log</span></b><b><span
+style='font-family:"新細明體",serif;color:#00B0F0'>類型</span></b><span
+style='font-family:"新細明體",serif'>，</span><span lang=EN-US>Stellar Core</span><span
+style='font-family:"新細明體",serif'>由好幾個元件組成，各自負責不同的功能，由</span><span lang=EN-US>log</span><span
+style='font-family:"新細明體",serif'>類型可以知道是哪個元件的</span><span lang=EN-US>log</span><span
+style='font-family:"新細明體",serif'>，還可以看出來是錯誤</span><span lang=EN-US>(ERROR)</span><span
+style='font-family:"新細明體",serif'>、警告</span><span lang=EN-US>(WARNING)</span><span
+style='font-family:"新細明體",serif'>還是訊息</span><span lang=EN-US>(INFO)</span><span
+style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span lang=EN-US>[SCP] </span><span style='font-family:"新細明體",serif'>恆星共識協議子系統，負責產生共識。</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span lang=EN-US>[Herder] </span><span style='font-family:"新細明體",serif'>負責</span><span
+lang=EN-US>SCP</span><span style='font-family:"新細明體",serif'>和</span><span
+lang=EN-US>Stellar Core</span><span style='font-family:"新細明體",serif'>的其餘部分之間的接口。</span><span
+lang=EN-US>Herder</span><span style='font-family:"新細明體",serif'>經常通過委派給其他元件來完成其任務。</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span lang=EN-US>[Overlay] </span><span style='font-family:"新細明體",serif'>負責節點之間的點對點連線，以及管理廣播</span><span
+lang=EN-US>(broadcast)</span><span style='font-family:"新細明體",serif'>消息、任播</span><span
+lang=EN-US>(anycast)</span><span style='font-family:"新細明體",serif'>請求</span><span
+lang=EN-US>/</span><span style='font-family:"新細明體",serif'>回复消息。</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span lang=EN-US>[Ledger] </span><span style='font-family:"新細明體",serif'>套用</span><span
+lang=EN-US>SCP</span><span style='font-family:"新細明體",serif'>共識的結果，將帳本內容提交給</span><span
+lang=EN-US>[Bucket]</span><span style='font-family:"新細明體",serif'>存儲，觸發歷史帳本的發布。當</span><span
+lang=EN-US>Ledger</span><span style='font-family:"新細明體",serif'>檢測到本地帳本落後於網路太多時，它也會觸發歷史系統的</span><span
+lang=EN-US>catchup</span><span style='font-family:"新細明體",serif'>程序。</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span lang=EN-US>[History] </span><span style='font-family:"新細明體",serif'>將交易和帳本發佈到異地永久存儲以供審計，並作為其他節點的追趕資料來源。當該節點落後時，歷史系統會獲取追趕數據並將其提交給</span><span
+lang=EN-US> Ledger </span><span style='font-family:"新細明體",serif'>兩次：首先驗證</span><span
+lang=EN-US>(Verify)</span><span style='font-family:"新細明體",serif'>其安全性，然後套用</span><span
+lang=EN-US>(Apply</span><span style='font-family:"新細明體",serif'>，寫到</span><span
+lang=EN-US>core DB</span><span style='font-family:"新細明體",serif'>及</span><span
+lang=EN-US>XDR</span><span style='font-family:"新細明體",serif'>檔</span><span
+lang=EN-US>)</span><span style='font-family:"新細明體",serif'>它。</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span lang=EN-US>[Bucket] </span><span style='font-family:"新細明體",serif'>將帳本存儲在磁碟上。</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span lang=EN-US>[Tx] </span><span style='font-family:"新細明體",serif'>執行各種交易與操作。</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span lang=EN-US>[Perf] </span><span style='font-family:"新細明體",serif'>效能相關的訊息。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><b><span lang=EN-US style='color:#7030A0'>log</span></b><b><span
+style='font-family:"新細明體",serif;color:#7030A0'>內容</span></b><span
+style='font-family:"新細明體",serif'>，詳細的訊息。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>案例：</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img width=1176 height=360 id="圖片 6"
+src="logs.files/image004.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>上面的</span><span
+lang=EN-US>log</span><span style='font-family:"新細明體",serif'>是因為我不小心重啟了路由器，外部</span><span
+lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>也變了，所以原本已經連上的節點</span><span
+lang=EN-US>(</span><span style='font-family:"新細明體",serif'>不管是</span><span
+lang=EN-US>in</span><span style='font-family:"新細明體",serif'>或</span><span
+lang=EN-US>out</span><span style='font-family:"新細明體",serif'>連線</span><span
+lang=EN-US>)</span><span style='font-family:"新細明體",serif'>，通通都中斷了，重新連線。還記得節點間的連線是由</span><span
+lang=EN-US>Overlay</span><span style='font-family:"新細明體",serif'>負責嗎？所以</span><span
+lang=EN-US>log</span><span style='font-family:"新細明體",serif'>類型是</span><span
+lang=EN-US>[Overlay INFO]</span><span style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>以上只是大略介紹，至少在節點有問題時，知道要去哪裡找</span><span
+lang=EN-US>log</span><span style='font-family:"新細明體",serif'>。</span></p>
+
+<div style='border:none;border-bottom:solid windowtext 1.0pt;padding:0cm 0cm 1.0pt 0cm'>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=EN-US>&nbsp;</span></p>
+
+</div>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US><a
+href="https://yuanrui919.github.io/"><span lang=EN-US style='font-family:"新細明體",serif'><span
+lang=EN-US>回首頁</span></span></a></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>
