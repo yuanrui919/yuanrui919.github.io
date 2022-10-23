@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv=Content-Type content="text/html; charset=utf-8">
 <meta name=Generator content="Microsoft Word 15 (filtered)">
-<title>Transaction Lifecycle</title>
+<title>交易生命週期</title>
 <style>
 <!--
  /* Font Definitions */
@@ -20,11 +20,11 @@
 	{font-family:Calibri;
 	panose-1:2 15 5 2 2 2 4 3 2 4;}
 @font-face
-	{font-family:Cambria;
-	panose-1:2 4 5 3 5 4 6 3 2 4;}
-@font-face
 	{font-family:微軟正黑體;
 	panose-1:2 11 6 4 3 5 4 4 2 4;}
+@font-face
+	{font-family:Cambria;
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
 @font-face
 	{font-family:"IBM Plex Sans";}
 @font-face
@@ -95,8 +95,11 @@ text-justify-trim:punctuation'>
      style='font-family:"微軟正黑體",sans-serif'>多方簽名</span><span style='font-family:
      "微軟正黑體",sans-serif'>。）</span></li>
  <li class=MsoNormal><span style='font-family:"微軟正黑體",sans-serif'>提交（交易提交者）：簽名後，如果交易是有效的<span
-     lang=EN-US>(<a href="#_交易的有效性"><span lang=EN-US><span lang=EN-US>註1</span></span></a>)</span>，就可以提交到<span
-     lang=EN-US> Stellar </span>網絡。如果交易無效，<span lang=EN-US>stellar-core </span>將根據交易的有效性規則立即拒絕該交易，該賬戶的序列號不會增加，並且不會從來源賬戶中消耗任何手續費。可以提交同一帳戶的多筆交易，前提是它們的每個序列號都相差一個。如果它們都是有效的，<span
+     lang=EN-US>(</span></span><span lang=EN-US><a href="#_交易的有效性"><span
+     lang=EN-US style='font-family:"微軟正黑體",sans-serif'><span lang=EN-US>註1</span></span></a></span><span
+     lang=EN-US style='font-family:"微軟正黑體",sans-serif'>)</span><span
+     style='font-family:"微軟正黑體",sans-serif'>，就可以提交到<span lang=EN-US> Stellar </span>網路。如果交易無效，<span
+     lang=EN-US>stellar-core </span>將根據交易的有效性規則立即拒絕該交易，該賬戶的序列號不會增加，並且不會從來源賬戶中消耗任何手續費。可以提交同一帳戶的多筆交易，前提是它們的每個序列號都相差一個。如果它們都是有效的，<span
      lang=EN-US>Stellar Core </span>將建立一個交易集，其中每個交易都按序列號排序。交易通常使用<span
      lang=EN-US>Horizon</span>提交，但也可以將交易直接提交到<span lang=EN-US>Stellar Core</span>的實例。</span></li>
  <li class=MsoNormal><span style='font-family:"微軟正黑體",sans-serif'>傳播（驗證者）：一旦<span
@@ -105,7 +108,7 @@ text-justify-trim:punctuation'>
 </ol>
 
 <p class=MsoNormal><span lang=EN-US style='font-family:"微軟正黑體",sans-serif'><img
-border=0 width=642 height=345 id="圖片 30" src="txnlifecycle.files/image001.jpg"></span></p>
+border=0 width=1020 height=548 id="圖片 30" src="txnlifecycle.files/image001.png"></span></p>
 
 <ol start=5 type=1>
  <li class=MsoNormal><span style='font-family:"微軟正黑體",sans-serif'>建立候選交易集（驗證者）：當需要關閉賬本時（產生新區塊），每個<span
@@ -114,7 +117,7 @@ border=0 width=642 height=345 id="圖片 30" src="txnlifecycle.files/image001.jp
 </ol>
 
 <p class=MsoNormal><span lang=EN-US style='font-family:"微軟正黑體",sans-serif'><img
-border=0 width=643 height=444 id="圖片 31" src="txnlifecycle.files/image002.jpg"></span></p>
+border=0 width=931 height=643 id="圖片 31" src="txnlifecycle.files/image002.png"></span></p>
 
 <ol start=7 type=1>
  <li class=MsoNormal><span style='font-family:"微軟正黑體",sans-serif'>恆星共識協議<span
@@ -126,8 +129,8 @@ border=0 width=643 height=444 id="圖片 31" src="txnlifecycle.files/image002.jp
 </ol>
 
 <p class=MsoNormal style='margin-left:18.0pt'><span lang=EN-US
-style='font-family:"微軟正黑體",sans-serif'><img border=0 width=643 height=585
-id="圖片 40" src="txnlifecycle.files/image003.jpg"></span></p>
+style='font-family:"微軟正黑體",sans-serif'><img border=0 width=756 height=688
+id="圖片 40" src="txnlifecycle.files/image003.png"></span></p>
 
 <ol start=8 type=1>
  <li class=MsoNormal><span style='font-family:"微軟正黑體",sans-serif'>確定交易執行順序（驗證者網路）：一旦<span
@@ -285,6 +288,17 @@ style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </span></span><strong><s
 style='font-family:"微軟正黑體",sans-serif;font-weight:normal'>額外簽名者</span></strong><span
 lang=EN-US style='font-family:"微軟正黑體",sans-serif'>——</span><span
 style='font-family:"微軟正黑體",sans-serif'>具有滿足每個額外簽名者的簽名</span></p>
+
+<div style='border:none;border-bottom:solid windowtext 1.0pt;padding:0cm 0cm 1.0pt 0cm'>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=EN-US
+style='font-family:"微軟正黑體",sans-serif'>&nbsp;</span></p>
+
+</div>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+style='font-family:"微軟正黑體",sans-serif'><a href="https://yuanrui919.github.io/"><span
+lang=EN-US><span lang=EN-US>回首頁</span></span></a></span></p>
 
 <p class=MsoNormal><span lang=EN-US style='font-family:"微軟正黑體",sans-serif'>&nbsp;</span></p>
 
