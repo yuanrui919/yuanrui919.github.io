@@ -1,0 +1,431 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<title>Pi Network與智能合約</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:新細明體;
+	panose-1:2 2 5 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"\@新細明體";
+	panose-1:2 1 6 1 0 1 1 1 1 1;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	font-size:12.0pt;
+	font-family:"Calibri",sans-serif;}
+a:link, span.MsoHyperlink
+	{color:#0563C1;
+	text-decoration:underline;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:24.0pt;
+	font-size:12.0pt;
+	font-family:"Calibri",sans-serif;}
+.MsoChpDefault
+	{font-family:"Calibri",sans-serif;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:595.3pt 841.9pt;
+	margin:72.0pt 90.0pt 72.0pt 90.0pt;
+	layout-grid:18.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body lang=ZH-TW link="#0563C1" vlink="#954F72" style='word-wrap:break-word;
+text-justify-trim:punctuation'>
+
+<div class=WordSection1 style='layout-grid:18.0pt'>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:24.0pt'>Pi Network</span><span
+style='font-size:24.0pt;font-family:"新細明體",serif'>與智能合約</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>先說結論，如果你想的是跟以太坊一樣的</span><span
+lang=EN-US>DApp</span><span style='font-family:"新細明體",serif'>，</span><span
+lang=EN-US>Pi Network</span><span style='font-family:"新細明體",serif'>目前沒有這樣的功能。但目前沒有，不代表將來沒有。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:24.0pt;font-family:"新細明體",serif'>智能合約</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>智能合約</span><span
+lang=EN-US>(Smart Contract)</span><span style='font-family:"新細明體",serif'>一詞是由學者</span><span
+lang=EN-US>Nick Szabo</span><span style='font-family:"新細明體",serif'>於</span><span
+lang=EN-US>1990</span><span style='font-family:"新細明體",serif'>年代初期提出，倡議可以將交易的條款透過電腦化來落實，只可惜當時沒有合適的環境來實現。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>直到這幾年，智能合約才隨著區塊鏈</span><span
+lang=EN-US>(Blockchain)</span><span style='font-family:"新細明體",serif'>技術的興起，逐漸有了大展拳腳的舞台。</span><span
+lang=EN-US>2015</span><span style='font-family:"新細明體",serif'>年中推出的區塊鏈平台－以太坊</span><span
+lang=EN-US> (Ethereum)</span><span style='font-family:"新細明體",serif'>，其白皮書名為「新一代智能合約與分散式應用平台」</span><span
+lang=EN-US>(A Next-Generation Smart Contract and Decentralized Application
+Platform)</span><span style='font-family:"新細明體",serif'>，強調智能合約為其平台特色，一舉將智能合約這個名詞推到一個新的層次，讓大家開始注意到智能合約的重要性，甚至視其為「區塊鏈</span><span
+lang=EN-US> 2.0</span><span style='font-family:"新細明體",serif'>」的主要技術與應用。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>現今我們談論的智能合約跟區塊鏈是息息相關的，簡化一點甚至可以說，智能合約就是在區塊鏈平台上執行的程式。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>智能合約是以應用程式的邏輯，來實現交易合約中的條款與條件；因此，不同的區塊鏈平台所提供的智能合約，多少會有些差異。但一般說來，智能合約的運作，多半是以「事件驅動」的方式進行；智能合約程式一旦部署到區塊鏈平台上後，當合約所設定的事件發生時，一些條件就會成立而觸發合約的指定功能，開始執行程式；執行的結果，通常就會引發資產的移轉。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>另外，有些事件是發生在區塊鏈之外的，智能合約必須去跟這些外部系統要求相關資訊。例如我們可以開發一個防疫險的智能合約，只要通報確診，就能自動獲得理賠。這時智能合約就必須定期去跟衛福部的系統索取確診資料。我們稱這種具權威性的外部資料源為「神諭」</span><span
+lang=EN-US>(Oracle)</span><span style='font-family:"新細明體",serif'>，安全又有效取得外部</span><span
+lang=EN-US>Oracle</span><span style='font-family:"新細明體",serif'>資料，是很多智能合約運行的一個重要依據。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:24.0pt'>DApp</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>DApp</span><span style='font-family:"新細明體",serif'>的全名是去中心化應用程式</span><span
+lang=EN-US>(Decentralized Application)</span><span style='font-family:"新細明體",serif'>，相對於過往運行在中心化服務器的</span><span
+lang=EN-US>App</span><span style='font-family:"新細明體",serif'>，</span><span
+lang=EN-US>DApp</span><span style='font-family:"新細明體",serif'>的程式部署在分散式的網路上，所有的資料皆公開透明且不可篡改。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>只要區塊鏈上開發的</span><span
+lang=EN-US>App</span><span style='font-family:"新細明體",serif'>都是</span><span
+lang=EN-US>DApp</span><span style='font-family:"新細明體",serif'>嗎？答案是否定的。</span><span
+lang=EN-US>2014</span><span style='font-family:"新細明體",serif'>年的一篇名為「去中心化應用程式的一般理論，</span><span
+lang=EN-US>DApps </span><span style='font-family:"新細明體",serif'>」</span><span
+lang=EN-US>(The General Theory of Decentralized Applications, DApps) </span><span
+style='font-family:"新細明體",serif'>的論文列出了</span><span lang=EN-US>DApp</span><span
+style='font-family:"新細明體",serif'>的主要標準。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><a
+href="https://github.com/DavidJohnstonCEO/DecentralizedApplications">https://github.com/DavidJohnstonCEO/DecentralizedApplications</a></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>根據該論文，去中心化應用程式必須滿足四個主要標準：</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>它必須具有開源代碼，並且可以在不依賴集中式網路的情況下自主運行。用戶必須達成共識才能實現對應用程序代碼的更改。</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>2.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>資料和操作記錄必須以加密方式存儲在公共、分散的區塊鏈中，而不是集中式服務器。</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>3.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>使用應用程式必須花費加密代幣，並且質押者、礦工、農民的任何價值貢獻都應獲得代幣作為獎勵。</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>4.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>依賴於工作量證明或權益證明等共識機制來生成代幣。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>但是現在我們所知曉的</span><span
+lang=EN-US>DApp</span><span style='font-family:"新細明體",serif'>並不完全遵守這些標準，為了方便，我們可以簡化地說，以太坊上基於智能合約的應用程式就是</span><span
+lang=EN-US>DApp</span><span style='font-family:"新細明體",serif'>，也就是說智能合約可以用來串聯</span><span
+lang=EN-US>DApp</span><span style='font-family:"新細明體",serif'>與區塊鏈，當做它們兩者間的橋樑。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>DApp</span><span style='font-family:"新細明體",serif'>和我們常使用的應用程式</span><span
+lang=EN-US>App</span><span style='font-family:"新細明體",serif'>類似，但</span><span
+lang=EN-US>App</span><span style='font-family:"新細明體",serif'>為中心化、</span><span
+lang=EN-US>DApp</span><span style='font-family:"新細明體",serif'>為去中心化程式。</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span lang=EN-US>APP</span><span style='font-family:"新細明體",serif'>：前端介面</span><span
+lang=EN-US> + </span><span style='font-family:"新細明體",serif'>一個中心化的伺服器。</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span lang=EN-US>Dapp</span><span style='font-family:"新細明體",serif'>：前端介面</span><span
+lang=EN-US> + </span><span style='font-family:"新細明體",serif'>去中心化的智能合約，因為放在區塊鏈上，不需要伺服器。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:24.0pt;font-family:"新細明體",serif'>如何做到？</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>到目前為止的內容，在網路上都查的到，講得也大同小異，但卻省略了實作上的技術細節。大家是否想過，智能合約是怎麼存放在區塊鏈上的？沒有伺服器，又是在哪裡執行這些程式的？</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>細節可以參考這兩篇連結</span></p>
+
+<p class=MsoNormal><span lang=EN-US><a
+href="https://medium.com/pelith/howethsmartcontractwork-328bd8b9bb62">https://medium.com/pelith/howethsmartcontractwork-328bd8b9bb62</a></span></p>
+
+<p class=MsoNormal><span lang=EN-US><a
+href="https://medium.com/pelith/structure-of-ethereum-blockchain-35fd4849f609">https://medium.com/pelith/structure-of-ethereum-blockchain-35fd4849f609</a></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>我只提兩個重點：</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>智慧合約的程式碼</span><span
+lang=EN-US>(</span><span style='font-family:"新細明體",serif'>嚴格來說是二進位碼</span><span
+lang=EN-US>)</span><span style='font-family:"新細明體",serif'>是放在交易的</span><span
+lang=EN-US>Input Data</span><span style='font-family:"新細明體",serif'>中，由節點</span><span
+lang=EN-US>(</span><span style='font-family:"新細明體",serif'>礦工</span><span
+lang=EN-US>)</span><span style='font-family:"新細明體",serif'>部署上鏈，生成「合約地址」。</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>2.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>以太坊的節點可以運行</span><span
+lang=EN-US>EVM(Ethereum Virtual Machine</span><span style='font-family:"新細明體",serif'>，以太坊虛擬機器</span><span
+lang=EN-US>)</span><span style='font-family:"新細明體",serif'>，當節點</span><span
+lang=EN-US>(</span><span style='font-family:"新細明體",serif'>礦工</span><span
+lang=EN-US>)</span><span style='font-family:"新細明體",serif'>執行交易時，就是由</span><span
+lang=EN-US>EVM</span><span style='font-family:"新細明體",serif'>執行合約程式碼。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>所以如果拿這兩點來檢視</span><span
+lang=EN-US>Pi Network(</span><span style='font-family:"新細明體",serif'>或者</span><span
+lang=EN-US>Stellar)</span><span style='font-family:"新細明體",serif'>，結果是什麼呢？</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>首先，</span><span
+lang=EN-US>Stellar</span><span style='font-family:"新細明體",serif'>不提供內建的智能合約語言或像以太坊這樣的虛擬機器來編寫智能合約代碼。但不表示</span><span
+lang=EN-US>Stellar</span><span style='font-family:"新細明體",serif'>沒有智能合約，讓我們回頭看看什麼是智能合約，它只是將彼此的交易條款與條件，表達成自動執行的程式碼，透過智能合約將兩造之間的資產移轉，變成可程式化的。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>Stellar</span><span style='font-family:
+"新細明體",serif'>上的智能合約不是圖靈完備</span><span lang=EN-US>(Turing-complete)</span><span
+style='font-family:"新細明體",serif'>，無法解決所有的可計算的問題，但它結合了交易和各種約束來提供預期的結果。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>Stellar</span><span style='font-family:
+"新細明體",serif'>智能合約</span><span lang=EN-US>(Stellar Smart Contract, SSC)</span><span
+style='font-family:"新細明體",serif'>是通過不同的約束條件執行交易。這些約束條件包含：</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><b><span style='font-family:"新細明體",serif'>多重簽名</span><span
+lang=EN-US>(Multisignature)</span></b><span style='font-family:"新細明體",serif'>：授權特定操作需要哪些私鑰？多重簽名是需要各方賬戶來簽署交易的概念。</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><b><span style='font-family:"新細明體",serif'>原子性</span><span
+lang=EN-US>/</span></b><b><span style='font-family:"新細明體",serif'>批次處理</span><span
+lang=EN-US>(Atomicity/Batching)</span></b><span style='font-family:"新細明體",serif'>：所有操作必須同時發生或失敗？必須發生什麼才能迫使它失敗或通過？批次處理是在一個交易中涉及多個操作的概念。原子性確保給定的一系列操作在提交到網路後，如果一個操作失敗，則交易中的所有操作都會失敗。</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><b><span style='font-family:"新細明體",serif'>順序</span><span
+lang=EN-US>(Sequence)</span></b><span style='font-family:"新細明體",serif'>：應按什麼順序處理一系列交易？有哪些依賴和限制？比如有組二擇一的交易，利用序列號可以確保在提交其中一個交易時，不會執行另一個交易。</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><b><span style='font-family:"新細明體",serif'>時間限制</span><span
+lang=EN-US>(Time Bounds)</span></b><span style='font-family:"新細明體",serif'>：什麼時候可以執行交易？時間限制是對交易有效時間的限制。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>舉例一種實作方法，我們需要三個帳戶，即來源帳戶</span><span
+lang=EN-US>(S)</span><span style='font-family:"新細明體",serif'>、目的帳戶</span><span
+lang=EN-US>(D)</span><span style='font-family:"新細明體",serif'>和託管帳戶</span><span
+lang=EN-US>(E)</span><span style='font-family:"新細明體",serif'>，來執行兩方之間的時間鎖定託管合約。</span><span
+lang=EN-US>(S)</span><span style='font-family:"新細明體",serif'>建立</span><span
+lang=EN-US>(E)</span><span style='font-family:"新細明體",serif'>，把適當數量的資產存入</span><span
+lang=EN-US>(E)</span><span style='font-family:"新細明體",serif'>，並將</span><span
+lang=EN-US>(D)</span><span style='font-family:"新細明體",serif'>添加為</span><span
+lang=EN-US>(E)</span><span style='font-family:"新細明體",serif'>的簽名者，然後設定一些時間限制的約束條件。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>更多關於以太坊智能合約與恆星智能合約的比較可參閱</span><span
+lang=EN-US>Espeo Blockchain blog</span></p>
+
+<p class=MsoNormal><span lang=EN-US><a
+href="https://espeoblockchain.com/blog/ethereum-smart-contracts-vs-stellar-smart-contracts/">https://espeoblockchain.com/blog/ethereum-smart-contracts-vs-stellar-smart-contracts/</a></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:24.0pt'>Soroban</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>SDF(Stellar Development Foundation)</span><span
+style='font-family:"新細明體",serif'>在</span><span lang=EN-US>2022</span><span
+style='font-family:"新細明體",serif'>年的規劃藍圖中，智能合約是一項重要的目標。名為「</span><span
+lang=EN-US>Jump Cannon</span><span style='font-family:"新細明體",serif'>」的專案在</span><span
+lang=EN-US>2022</span><span style='font-family:"新細明體",serif'>年</span><span
+lang=EN-US>8</span><span style='font-family:"新細明體",serif'>月發佈了預覽版的原生智能合約平台</span><span
+lang=EN-US>Soroban<span style='background:lightgrey'>(</span></span><span
+style='font-family:"新細明體",serif;background:lightgrey'>台灣的</span><span
+lang=EN-US style='background:lightgrey'>Pi</span><span style='font-family:"新細明體",serif;
+background:lightgrey'>先鋒善逸也有參與</span><span lang=EN-US style='background:lightgrey'>)</span><span
+style='font-family:"新細明體",serif'>。同年</span><span lang=EN-US>10</span><span
+style='font-family:"新細明體",serif'>月，</span><span lang=EN-US>Soroban</span><span
+style='font-family:"新細明體",serif'>在</span><span lang=EN-US>Futurenet</span><span
+style='font-family:"新細明體",serif'>上線，提供開發人員測試環境，</span><span lang=EN-US>SDF</span><span
+style='font-family:"新細明體",serif'>還宣布了一項</span><span lang=EN-US>1</span><span
+style='font-family:"新細明體",serif'>億美元的基金，以支持在</span><span lang=EN-US>Soroban</span><span
+style='font-family:"新細明體",serif'>上進行開發的開發人員。預計在</span><span lang=EN-US>2023</span><span
+style='font-family:"新細明體",serif'>年上半年在</span><span lang=EN-US>Stellar</span><span
+style='font-family:"新細明體",serif'>主網上推出</span><span lang=EN-US>Soroban</span><span
+style='font-family:"新細明體",serif'>，正式將圖靈完備</span><span lang=EN-US>(Turing-complete)</span><span
+style='font-family:"新細明體",serif'>的智能合約引入</span><span lang=EN-US>Stellar</span><span
+style='font-family:"新細明體",serif'>網路。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>Soroban</span><span style='font-family:
+"新細明體",serif'>是一個獨立的智能合約平台，根本不依賴也不需要</span><span lang=EN-US>Stellar</span><span
+style='font-family:"新細明體",serif'>，甚至可以被其他區塊鏈、</span><span lang=EN-US>L2s</span><span
+style='font-family:"新細明體",serif'>使用。</span><span lang=EN-US>Stellar</span><span
+style='font-family:"新細明體",serif'>通過提交</span><span lang=EN-US>InvokeContractOp</span><span
+style='font-family:"新細明體",serif'>操作來調用</span><span lang=EN-US>Soroban</span><span
+style='font-family:"新細明體",serif'>合約。雖然</span><span lang=EN-US>Soroban</span><span
+style='font-family:"新細明體",serif'>是發展中的新東西，但卻是建立在成熟的技術之上：</span><span
+lang=EN-US>WASM</span><span style='font-family:"新細明體",serif'>和</span><span
+lang=EN-US>Rust</span><span style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>WASM(WebAssembly)</span><span
+style='font-family:"新細明體",serif'>是為在瀏覽器中運行沙盒應用程式而建立的程式碼規範。它被各種不同配置的鏈使用：</span><span
+lang=EN-US>Polkadot</span><span style='font-family:"新細明體",serif'>、</span><span
+lang=EN-US>Terra</span><span style='font-family:"新細明體",serif'>、</span><span
+lang=EN-US>Near</span><span style='font-family:"新細明體",serif'>、</span><span
+lang=EN-US>Elrond</span><span style='font-family:"新細明體",serif'>、</span><span
+lang=EN-US>Dfinity</span><span style='font-family:"新細明體",serif'>等。它最常使用</span><span
+lang=EN-US>Rust</span><span style='font-family:"新細明體",serif'>程式語言，但也支援其他語言，如</span><span
+lang=EN-US>C</span><span style='font-family:"新細明體",serif'>、</span><span
+lang=EN-US>C++</span><span style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>從本質上講，</span><span
+lang=EN-US>WASM</span><span style='font-family:"新細明體",serif'>是一個運行在所有現代瀏覽器上的虛擬機器，由</span><span
+lang=EN-US>W3C</span><span style='font-family:"新細明體",serif'>建立與定義，專為網路而生。它具有</span><span
+lang=EN-US>EVM</span><span style='font-family:"新細明體",serif'>的所有功能，並且速度快、效率高、可移植。通過使用</span><span
+lang=EN-US>WASM</span><span style='font-family:"新細明體",serif'>，我們可以在瀏覽器中使用任何程式語言開發的應用程式，開發人員也不必直接編寫</span><span
+lang=EN-US>WASM</span><span style='font-family:"新細明體",serif'>代碼，而是把其他語言編寫的程式編譯成</span><span
+lang=EN-US>WASM</span><span style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>有趣的是，以太坊社區早在</span><span
+lang=EN-US>2015</span><span style='font-family:"新細明體",serif'>年就一直在倡導在以太坊中使用</span><span
+lang=EN-US>WASM</span><span style='font-family:"新細明體",serif'>，以太坊基金會還開發了</span><span
+lang=EN-US>eWASM</span><span style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>而</span><span
+lang=EN-US>Rust</span><span style='font-family:"新細明體",serif'>是由</span><span
+lang=EN-US>Mozilla</span><span style='font-family:"新細明體",serif'>主導開發的通用、編譯型程式語言。設計準則為「安全、並行、實用」，支援函數式、並行式、程序式以及物件導向的程式設計風格。它雖然由</span><span
+lang=EN-US>Mozilla</span><span style='font-family:"新細明體",serif'>資助，但其實是一個共有專案，有很大部分的程式碼是來自於社群的貢獻者。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>Rust</span><span style='font-family:"新細明體",serif'>的設計目標之一，是要使設計大型的網際網路客戶端和伺服器的任務變得更容易。因此更加強調安全性、記憶體組態、以及並行處理等方面的特性。在效能上，具有額外安全保證的代碼會比</span><span
+lang=EN-US>C++</span><span style='font-family:"新細明體",serif'>慢一些，否則兩者效能上是相似的。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>選擇</span><span
+lang=EN-US>Rust</span><span style='font-family:"新細明體",serif'>還意味著我們可以在智能合約及其宿主環境之間共享程式碼</span><span
+lang=EN-US>(</span><span style='font-family:"新細明體",serif'>在</span><span
+lang=EN-US>Stellar</span><span style='font-family:"新細明體",serif'>的情況下，這是指</span><span
+lang=EN-US>stellar-core)</span><span style='font-family:"新細明體",serif'>，</span><span
+lang=EN-US>SDF</span><span style='font-family:"新細明體",serif'>正在這樣做！</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>至於將來的發展會怎麼走？</span><span
+lang=EN-US>Pi Network</span><span style='font-family:"新細明體",serif'>會不會也採用</span><span
+lang=EN-US>Soroban</span><span style='font-family:"新細明體",serif'>？還是另外發展自己的智能合約？就靠全體的先鋒一起努力了。</span></p>
+
+<div style='border:none;border-bottom:solid windowtext 1.0pt;padding:0cm 0cm 1.0pt 0cm'>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span style='font-size:24.0pt;
+font-family:"新細明體",serif'>補充觀點</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span style='font-family:
+"新細明體",serif'>關於</span><span lang=EN-US>DApp</span><span style='font-family:
+"新細明體",serif'>也有人持不同的見解，定義廣義來說只要使用去中心化系統即為</span><span lang=EN-US>DApp</span><span
+style='font-family:"新細明體",serif'>。以下補充</span><span lang=EN-US>CT</span><span
+style='font-family:"新細明體",serif'>及先鋒善逸的見解：</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=EN-US>CT</span><span
+style='font-family:"新細明體",serif'>：世界上沒有一個</span><span lang=EN-US>DApp</span><span
+style='font-family:"新細明體",serif'>是真正去中心化，目前認同的</span><span lang=EN-US>DApp</span><span
+style='font-family:"新細明體",serif'>都是有使用到去中心化系統的。</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=EN-US>Kai</span><span
+style='font-family:"新細明體",serif'>：我這邊假設常常有的系統會擁有資料庫</span><span lang=EN-US>/</span><span
+style='font-family:"新細明體",serif'>儲存系統</span><span lang=EN-US>/</span><span
+style='font-family:"新細明體",serif'>雲端運算</span><span lang=EN-US>/</span><span
+style='font-family:"新細明體",serif'>網域</span><span lang=EN-US>/</span><span
+style='font-family:"新細明體",serif'>雲端託管…目前很多都是只有其中之一為去中心化系統。</span><span
+lang=EN-US>Soroban</span><span style='font-family:"新細明體",serif'>目前還有很多限制，很多開發者也在測試目前現有的功能，未來功能也會慢慢新增。</span><span
+lang=EN-US>Soroban</span><span style='font-family:"新細明體",serif'>的宗旨和</span><span
+lang=EN-US>Stellar</span><span style='font-family:"新細明體",serif'>一樣，必須是讓開發者容易使用並且保留快速的效率，這也是為什麼當初選擇</span><span
+lang=EN-US>WASM</span><span style='font-family:"新細明體",serif'>和</span><span
+lang=EN-US>Rust</span><span style='font-family:"新細明體",serif'>考慮重點之一。</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=EN-US>&nbsp;</span></p>
+
+</div>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US><a
+href="https://yuanrui919.github.io/"><span lang=EN-US style='font-family:"新細明體",serif'><span
+lang=EN-US>回首頁</span></span></a></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>
