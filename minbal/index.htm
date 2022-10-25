@@ -1,0 +1,160 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<title>帳戶最低餘額與Base Reserve</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:新細明體;
+	panose-1:2 2 5 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Consolas;
+	panose-1:2 11 6 9 2 2 4 3 2 4;}
+@font-face
+	{font-family:"\@新細明體";
+	panose-1:2 1 6 1 0 1 1 1 1 1;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	font-size:12.0pt;
+	font-family:"Calibri",sans-serif;}
+a:link, span.MsoHyperlink
+	{color:#0563C1;
+	text-decoration:underline;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:24.0pt;
+	font-size:12.0pt;
+	font-family:"Calibri",sans-serif;}
+.MsoChpDefault
+	{font-family:"Calibri",sans-serif;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:595.3pt 841.9pt;
+	margin:72.0pt 90.0pt 72.0pt 90.0pt;
+	layout-grid:18.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body lang=ZH-TW link="#0563C1" vlink="#954F72" style='word-wrap:break-word;
+text-justify-trim:punctuation'>
+
+<div class=WordSection1 style='layout-grid:18.0pt'>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>有沒有發現主網每個帳戶</span><span
+lang=EN-US>(</span><span style='font-family:"新細明體",serif'>錢包</span><span
+lang=EN-US>)</span><span style='font-family:"新細明體",serif'>建立的時候，帳戶的金額都是</span><span
+lang=EN-US>1</span><span style='font-family:"新細明體",serif'>？</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img width=554 height=447 id="圖片 1"
+src="minbal.files/image001.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>這是因為每個帳戶都必須保持最低餘額才能存在，該餘額是使用</span><span
+lang=EN-US>Base Reserve(</span><span style='font-family:"新細明體",serif'>基本儲備</span><span
+lang=EN-US>)</span><span style='font-family:"新細明體",serif'>計算的。這樣的限制可以避免有人來亂，建一堆垃圾帳戶，塞爆區塊。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>目前主網上的</span><span
+lang=EN-US>Base Reserve</span><span style='font-family:"新細明體",serif'>是</span><span
+lang=EN-US>0.49 Pi</span><span style='font-family:"新細明體",serif'>，它跟手續費一樣是可以調整的，只要全部的節點都同意即可。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img width=971 height=307 id="圖片 2"
+src="minbal.files/image002.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>帳戶最低餘額的公式是：</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas;background:
+yellow'>Minimum Balance = (2 + # of entries + # of sponsoring entries - # of sponsored
+entries) * base reserve</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>以封閉式主網階段來講，我們的帳戶不太可能擁有其他的</span><span
+lang=EN-US>entries</span><span style='font-family:"新細明體",serif'>，所以公式就簡化成</span><span
+lang=EN-US>2</span><span style='font-family:"新細明體",serif'>倍的</span><span
+lang=EN-US>Base Reserve</span><span style='font-family:"新細明體",serif'>，也就是</span><span
+lang=EN-US>0.98 Pi</span><span style='font-family:"新細明體",serif'>。剩餘的</span><span
+lang=EN-US>0.02 Pi</span><span style='font-family:"新細明體",serif'>可以讓我們支付兩次鎖倉的解鎖</span>
+<span lang=EN-US>(</span><span lang=EN-US style='color:black'>Claim Claimable
+Balance</span><span style='font-family:"新細明體",serif;color:black'>，請參考</span><span
+style='color:black'> </span><span lang=EN-US><a
+href="https://yuanrui919.github.io/cb">https://yuanrui919.github.io/cb</a></span><span
+lang=EN-US style='color:black'> </span><span lang=EN-US>) </span><span
+style='font-family:"新細明體",serif'>的手續費。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>補充說明，由上述的公式可以發現每一項</span><span
+lang=EN-US>Subentries</span><span style='font-family:"新細明體",serif'>都會將帳戶的最低餘額增加一個</span><span
+lang=EN-US>Base Reserve(0.49 Pi)</span><span style='font-family:"新細明體",serif'>。一個帳戶不能超過</span><span
+lang=EN-US>1000</span><span style='font-family:"新細明體",serif'>個</span><span
+lang=EN-US>Subentries</span><span style='font-family:"新細明體",serif'>，這些</span><span
+lang=EN-US>Subentries</span><span style='font-family:"新細明體",serif'>包含了：</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span lang=EN-US>Trustlines(</span><span style='font-family:"新細明體",serif'>如果帳戶要持有</span><span
+lang=EN-US>Pi</span><span style='font-family:"新細明體",serif'>以外的其他資產</span><span
+lang=EN-US>)</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span lang=EN-US>Offers(</span><span style='font-family:"新細明體",serif'>訂單</span><span
+lang=EN-US>)</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span lang=EN-US>Additional signers(</span><span
+style='font-family:"新細明體",serif'>額外的簽名</span><span lang=EN-US>)</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span lang=EN-US>Data entries(</span><span style='font-family:
+"新細明體",serif'>例如</span><span lang=EN-US>NFT</span><span style='font-family:
+"新細明體",serif'>的鏈下資料</span><span lang=EN-US>)</span></p>
+
+<div style='border:none;border-bottom:solid windowtext 1.0pt;padding:0cm 0cm 1.0pt 0cm'>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=EN-US>&nbsp;</span></p>
+
+</div>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US><a
+href="https://yuanrui919.github.io/"><span lang=EN-US style='font-family:"新細明體",serif'><span
+lang=EN-US>回首頁</span></span></a></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>
