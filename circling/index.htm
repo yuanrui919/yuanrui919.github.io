@@ -8,6 +8,9 @@
 <!--
  /* Font Definitions */
  @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
 	{font-family:新細明體;
 	panose-1:2 2 5 0 0 0 0 0 0 0;}
 @font-face
@@ -30,6 +33,13 @@
 a:link, span.MsoHyperlink
 	{color:#0563C1;
 	text-decoration:underline;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:24.0pt;
+	font-size:12.0pt;
+	font-family:"Calibri",sans-serif;}
 .MsoChpDefault
 	{font-family:"Calibri",sans-serif;}
  /* Page Definitions */
@@ -39,6 +49,11 @@ a:link, span.MsoHyperlink
 	layout-grid:18.0pt;}
 div.WordSection1
 	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
 -->
 </style>
 
@@ -94,10 +109,25 @@ src="circling.files/image004.jpg"></span></p>
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
 <p class=MsoNormal><span style='font-family:"新細明體",serif'>找到</span><span
-lang=EN-US>%appdata%\Pi Network\user-preferences.json</span><span
-style='font-family:"新細明體",serif'>，用記事本開啟它，內容如下</span></p>
+lang=EN-US style='background:yellow'>user-preferences.json</span><span
+style='font-family:"新細明體",serif'>，不同的作業系統的路徑不一樣</span></p>
 
-<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>{&quot;windowWidth&quot;:800,&quot;windowHeight&quot;:600,&quot;uuid&quot;:&quot;xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxxxxxxx&quot;,&quot;switchStatus&quot;:true,&quot;dockerImage&quot;:&quot;pinetwork/pi-node-docker:latest&quot;}</span></p>
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span lang=EN-US>Windows 10</span><span style='font-family:"新細明體",serif'>是位於</span>
+<span lang=EN-US style='background:lime'>%appdata%\Pi Network\</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span lang=EN-US>MAC</span><span style='font-family:"新細明體",serif'>檔案在</span>
+<span lang=EN-US style='background:lime'>/Users/</span><i><span
+style='font-family:"新細明體",serif;color:red;background:lime'>使用者名稱</span></i><span
+lang=EN-US style='background:lime'>/Library/Application Support/Pi Network/</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>用記事本或純文字編輯軟體開啟它，內容如下</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>{&quot;windowWidth&quot;:800,&quot;windowHeight&quot;:600,&quot;uuid&quot;:&quot;xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxxxxxxx&quot;,&quot;switchStatus&quot;:true,&quot;dockerImage&quot;:&quot;pinetwork/pi-node-docker:latest&quot;<span
+style='background:yellow'>}</span></span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 

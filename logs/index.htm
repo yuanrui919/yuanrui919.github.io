@@ -64,14 +64,135 @@ text-justify-trim:punctuation'>
 
 <div class=WordSection1 style='layout-grid:18.0pt'>
 
-<p class=MsoNormal><span style='font-family:"新細明體",serif'>節點主要的</span><span
-lang=EN-US>log</span><span style='font-family:"新細明體",serif'>位於</span> <span
-lang=EN-US style='background:yellow'>%appdata%\Pi
-Network\docker_volumes\supervisor_logs</span><span lang=EN-US> </span><span
-style='font-family:"新細明體",serif'>目錄，如圖所示：</span></p>
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>先說明</span><span
+lang=EN-US>Pi</span><span style='font-family:"新細明體",serif'>節點怎麼運作的。</span></p>
 
-<p class=MsoNormal><span lang=EN-US><img width=852 height=470 id="圖片 2"
-src="logs.files/image001.png"></span></p>
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><i><span lang=EN-US style='color:#0070C0'>Pi Network</span></i><i><span
+style='font-family:"新細明體",serif;color:#0070C0'>採用的共識協議是「恆星共識協議</span><span
+lang=EN-US style='color:#0070C0'> (Stellar Consensus Protocol, SCP)</span></i><i><span
+style='font-family:"新細明體",serif;color:#0070C0'>」，</span><span lang=EN-US
+style='color:#0070C0'>SCP</span></i><i><span style='font-family:"新細明體",serif;
+color:#0070C0'>的節點程式就叫做</span><span lang=EN-US style='color:#0070C0'>Stellar
+Core</span></i><i><span style='font-family:"新細明體",serif;color:#0070C0'>。</span></i></p>
+
+<p class=MsoNormal><i><span lang=EN-US style='color:#0070C0'>&nbsp;</span></i></p>
+
+<p class=MsoNormal><i><span style='font-family:"新細明體",serif;color:#0070C0'>因為不是每個人都有足夠的技術能力可以自行安裝與設定</span><span
+lang=EN-US style='color:#0070C0'>Stellar Core</span></i><i><span
+style='font-family:"新細明體",serif;color:#0070C0'>，所以</span><span lang=EN-US
+style='color:#0070C0'>Pi</span></i><i><span style='font-family:"新細明體",serif;
+color:#0070C0'>核心團隊想了一個辦法，將相關的程式與設定都打包好，做成一個</span><span lang=EN-US
+style='color:#0070C0'>image</span></i><i><span style='font-family:"新細明體",serif;
+color:#0070C0'>檔，只要安裝了</span><span lang=EN-US style='color:#0070C0'>Docker
+Desktop</span></i><i><span style='font-family:"新細明體",serif;color:#0070C0'>這個虛擬化軟體，就能執行。</span></i></p>
+
+<p class=MsoNormal><i><span lang=EN-US style='color:#0070C0'>&nbsp;</span></i></p>
+
+<p class=MsoNormal><i><span lang=EN-US style='color:#0070C0'>Docker Desktop</span></i><i><span
+style='font-family:"新細明體",serif;color:#0070C0'>是一個虛擬化軟體，它載入</span><span
+lang=EN-US style='color:#0070C0'>image</span></i><i><span style='font-family:
+"新細明體",serif;color:#0070C0'>檔，建立一個</span><span lang=EN-US style='color:#0070C0'>Container(</span></i><i><span
+style='font-family:"新細明體",serif;color:#0070C0'>容器</span><span lang=EN-US
+style='color:#0070C0'>)</span></i><i><span style='font-family:"新細明體",serif;
+color:#0070C0'>。</span><span lang=EN-US style='color:#0070C0'>Container</span></i><i><span
+style='font-family:"新細明體",serif;color:#0070C0'>就是一個執行的應用程式</span><span
+lang=EN-US style='color:#0070C0'>(</span></i><i><span style='font-family:"新細明體",serif;
+color:#0070C0'>此例是</span><span lang=EN-US style='color:#0070C0'>Stellar Core)</span></i><i><span
+style='font-family:"新細明體",serif;color:#0070C0'>加上執行它的簡易版</span><span
+lang=EN-US style='color:#0070C0'>Linux</span></i><i><span style='font-family:
+"新細明體",serif;color:#0070C0'>環境</span><span lang=EN-US style='color:#0070C0'>(</span></i><i><span
+style='font-family:"新細明體",serif;color:#0070C0'>包括</span><span lang=EN-US
+style='color:#0070C0'>root</span></i><i><span style='font-family:"新細明體",serif;
+color:#0070C0'>使用者權限、程式空間、使用者空間和網路空間等</span><span lang=EN-US style='color:#0070C0'>)</span></i><i><span
+style='font-family:"新細明體",serif;color:#0070C0'>。</span></i></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>(</span><span style='font-family:"新細明體",serif'>以上內容摘至於</span>
+<span lang=EN-US><a href="https://yuanrui919.github.io/whatisnode/">https://yuanrui919.github.io/whatisnode/</a>
+)</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>所以第一個要看的</span><span
+lang=EN-US>log</span><span style='font-family:"新細明體",serif'>就是</span><span
+lang=EN-US>Container</span><span style='font-family:"新細明體",serif'>運行的</span><span
+lang=EN-US>log</span><span style='font-family:"新細明體",serif'>，如果有重大的問題，這裡應該都能看出來，例如</span><span
+lang=EN-US>Linux</span><span style='font-family:"新細明體",serif'>環境啟動失敗。另外它也包含了</span><span
+lang=EN-US>supervisor</span><span style='font-family:"新細明體",serif'>的</span><span
+lang=EN-US>log(</span><span style='font-family:"新細明體",serif'>後面說明</span><span
+lang=EN-US>)</span><span style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=523 height=679 id="圖片 7"
+src="logs.files/image001.png" alt="一張含有 文字 的圖片&#10;&#10;自動產生的描述"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>而</span><span
+lang=EN-US>pi-consensus Container</span><span style='font-family:"新細明體",serif'>主要運行三個程式：</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><b><span lang=EN-US>PostgreSQL</span></b><span style='font-family:
+"新細明體",serif'>：</span><span lang=EN-US>Stellar Core</span><span
+style='font-family:"新細明體",serif'>及</span><span lang=EN-US>Horizon</span><span
+style='font-family:"新細明體",serif'>的資料庫，它一定要先啟動，其餘兩個才能正常執行。</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><b><span lang=EN-US>Stellar Core</span></b><span
+style='font-family:"新細明體",serif'>：就是</span><span lang=EN-US>SCP</span><span
+style='font-family:"新細明體",serif'>的節點程式。</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><b><span lang=EN-US>Horizon</span></b><span style='font-family:
+"新細明體",serif'>：</span><span lang=EN-US>Troubleshooting</span><span
+style='font-family:"新細明體",serif'>頁面中的</span><span lang=EN-US>API Services</span><span
+style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>另外還有</span><span
+lang=EN-US>Supervisor</span><span style='font-family:"新細明體",serif'>這個程式管理工具要提，它可用來管理容器中的多個程式，上述三個程式都是透過</span><span
+lang=EN-US>Supervisor</span><span style='font-family:"新細明體",serif'>來管理、啟動、停止。所以進一步要看的</span><span
+lang=EN-US>log</span><span style='font-family:"新細明體",serif'>就是這幾個程式的</span><span
+lang=EN-US>log</span><span style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>Log</span><span style='font-family:"新細明體",serif'>的位置可以從</span><span
+lang=EN-US>Docker</span><span style='font-family:"新細明體",serif'>查看</span> <span
+lang=EN-US>/VAR/LOG/SUPERVISOR </span><span style='font-family:"新細明體",serif'>在本機的掛載路徑，</span><span
+lang=EN-US>Windows</span><span style='font-family:"新細明體",serif'>跟</span><span
+lang=EN-US>MAC</span><span style='font-family:"新細明體",serif'>不一樣：</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=1258 height=713
+id="圖片 3" src="logs.files/image002.png" alt="一張含有 文字 的圖片&#10;&#10;自動產生的描述"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=1202 height=435
+id="圖片 9" src="logs.files/image003.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>Windows</span><span style='font-family:
+"新細明體",serif'>位於</span> <span lang=EN-US style='font-family:Consolas;
+background:yellow'>%appdata%\Pi Network\docker_volumes\supervisor_logs</span><span
+lang=EN-US> </span><span style='font-family:"新細明體",serif'>目錄；</span><span
+lang=EN-US>MAC</span><span style='font-family:"新細明體",serif'>位於</span> <span
+lang=EN-US style='font-family:Consolas;background:yellow'>/Users/</span><i><span
+style='font-family:"新細明體",serif;background:yellow'>使用者名稱</span></i><span
+lang=EN-US style='font-family:Consolas;background:yellow'>/Library/Application
+Support/Pi Network/docker_volumes/supervisor_logs</span><span lang=EN-US> </span><span
+style='font-family:"新細明體",serif'>目錄。如下圖是</span><span lang=EN-US>Windows</span><span
+style='font-family:"新細明體",serif'>的範例：</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=852 height=470 id="圖片 2"
+src="logs.files/image004.png"></span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
@@ -125,10 +246,7 @@ lang=EN-US>6</span><span style='font-family:"新細明體",serif'>種檔案：</
   none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   padding:0cm 5.4pt 0cm 5.4pt'>
   <p class=MsoNormal><span lang=EN-US>PostgreSQL</span><span style='font-family:
-  "新細明體",serif'>的標準輸出，</span><span lang=EN-US>PostgreSQL</span><span
-  style='font-family:"新細明體",serif'>是</span><span lang=EN-US>Stellar Core</span><span
-  style='font-family:"新細明體",serif'>及</span><span lang=EN-US>Horizon</span><span
-  style='font-family:"新細明體",serif'>的資料庫。</span></p>
+  "新細明體",serif'>的標準輸出。</span></p>
   </td>
  </tr>
  <tr>
@@ -165,12 +283,7 @@ lang=EN-US>6</span><span style='font-family:"新細明體",serif'>種檔案：</
   padding:0cm 5.4pt 0cm 5.4pt'>
   <p class=MsoNormal><span lang=EN-US>Supervisor</span><span style='font-family:
   "新細明體",serif'>的</span><span lang=EN-US>log</span><span style='font-family:
-  "新細明體",serif'>，</span><span lang=EN-US>Supervisor</span><span
-  style='font-family:"新細明體",serif'>可用來管理容器中的多個程式，</span><span lang=EN-US>Horizon</span><span
-  style='font-family:"新細明體",serif'>、</span><span lang=EN-US>PostgreSQL</span><span
-  style='font-family:"新細明體",serif'>及</span><span lang=EN-US>Stellar Core</span><span
-  style='font-family:"新細明體",serif'>都是透過</span><span lang=EN-US>Supervisor</span><span
-  style='font-family:"新細明體",serif'>來啟動、停止。</span></p>
+  "新細明體",serif'>。</span></p>
   </td>
  </tr>
 </table>
@@ -200,16 +313,16 @@ lang=EN-US>CLI</span><span style='font-family:"新細明體",serif'>，執行</s
 lang=EN-US style='font-family:Consolas;background:lightgrey'>sudo dpkg-reconfigure
 tzdata</span></p>
 
-<p class=MsoNormal><span lang=EN-US><img width=970 height=676 id="圖片 1"
-src="logs.files/image002.png"></span></p>
+<p class=MsoNormal><span lang=EN-US><img border=0 width=970 height=676 id="圖片 1"
+src="logs.files/image005.png"></span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
 <p class=MsoNormal><span lang=EN-US>stellar-core-stdout---supervisor-xxxxxx.log</span><span
 style='font-family:"新細明體",serif'>範例：</span></p>
 
-<p class=MsoNormal><span lang=EN-US><img width=791 height=355 id="圖片 4"
-src="logs.files/image003.png"></span></p>
+<p class=MsoNormal><span lang=EN-US><img border=0 width=791 height=355 id="圖片 4"
+src="logs.files/image006.png"></span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
@@ -294,8 +407,8 @@ style='font-family:"新細明體",serif'>，詳細的訊息。</span></p>
 
 <p class=MsoNormal><span style='font-family:"新細明體",serif'>案例：</span></p>
 
-<p class=MsoNormal><span lang=EN-US><img width=1176 height=360 id="圖片 6"
-src="logs.files/image004.png"></span></p>
+<p class=MsoNormal><span lang=EN-US><img border=0 width=1176 height=360
+id="圖片 6" src="logs.files/image007.png"></span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
