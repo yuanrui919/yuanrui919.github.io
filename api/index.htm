@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv=Content-Type content="text/html; charset=utf-8">
 <meta name=Generator content="Microsoft Word 15 (filtered)">
-<title>API Services是什麼？</title>
+<title>API Services是什麼</title>
 <style>
 <!--
  /* Font Definitions */
@@ -14,6 +14,9 @@
 	{font-family:新細明體;
 	panose-1:2 2 5 0 0 0 0 0 0 0;}
 @font-face
+	{font-family:細明體;
+	panose-1:2 2 5 9 0 0 0 0 0 0;}
+@font-face
 	{font-family:"Cambria Math";
 	panose-1:2 4 5 3 5 4 6 3 2 4;}
 @font-face
@@ -22,6 +25,9 @@
 @font-face
 	{font-family:"\@新細明體";
 	panose-1:2 1 6 1 0 1 1 1 1 1;}
+@font-face
+	{font-family:"\@細明體";
+	panose-1:2 1 6 9 0 1 1 1 1 1;}
  /* Style Definitions */
  p.MsoNormal, li.MsoNormal, div.MsoNormal
 	{margin:0cm;
@@ -61,8 +67,11 @@ text-justify-trim:punctuation'>
 
 <div class=WordSection1 style='layout-grid:18.0pt'>
 
-<p class=MsoNormal><span lang=EN-US style='font-size:24.0pt'>API Services</span><span
-style='font-size:24.0pt;font-family:"新細明體",serif'>是什麼？</span></p>
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-size:24.0pt;font-family:Wingdings'>l<span
+style='font:7.0pt "Times New Roman"'> </span></span><span lang=EN-US
+style='font-size:24.0pt'>API Services</span><span style='font-size:24.0pt;
+font-family:"新細明體",serif'>是什麼？</span></p>
 
 <p class=MsoNormal><span lang=EN-US><img width=595 height=725 id="圖片 1"
 src="api.files/image001.png"></span></p>
@@ -90,7 +99,8 @@ SDK</span><span style='font-family:"新細明體",serif'>。<span style='backgro
 lang=EN-US style='background:yellow'>port</span><span style='font-family:"新細明體",serif;
 background:yellow'>，啟用</span><span lang=EN-US style='background:yellow'>API
 Services</span><span style='font-family:"新細明體",serif;background:yellow'>就沒意義，因為外部連不進來。</span><span
-style='font-family:"新細明體",serif'>除非你自己會寫程式，要在本機提交交易。</span></p>
+style='font-family:"新細明體",serif'>除非你自己會寫程式，要在本機提交交易。（但有另一件詭異的事，如果你會寫程式，也一定是在自己的機器上提交交易，不會用別人的機器，所以一般人啟用</span><span
+lang=EN-US>API Services</span><span style='font-family:"新細明體",serif'>到底有什麼意義？）</span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
@@ -125,7 +135,7 @@ style='font-family:"新細明體",serif'>檔難以閱讀，且缺乏有用的索
 
 <p class=MsoNormal><span lang=EN-US>Horizon</span><span style='font-family:
 "新細明體",serif'>旨在允許開發人員提交交易並有效地使用網路資料。它從</span><span lang=EN-US>Stellar Core</span><span
-style='font-family:"新細明體",serif'>獲取</span><span lang=EN-US>XDR</span><span
+style='font-family:"新細明體",serif'>攝取</span><span lang=EN-US>(Ingest) XDR</span><span
 style='font-family:"新細明體",serif'>資料並將其解碼為更容易使用的</span><span lang=EN-US>JSON</span><span
 style='font-family:"新細明體",serif'>，讓閱讀區塊的當前狀態或探索歷史資料變得容易。同時讓</span><span
 lang=EN-US>Stellar Core</span><span style='font-family:"新細明體",serif'>可以專注於共識的工作。</span></p>
@@ -141,22 +151,20 @@ lang=EN-US>Horizon</span><span style='font-family:"新細明體",serif'>會消�
 
 <p class=MsoNormal><span lang=EN-US>Horizon</span><span style='font-family:
 "新細明體",serif'>從</span><span lang=EN-US>Stellar Core</span><span
-style='font-family:"新細明體",serif'>讀取資料，將其處理成「</span><span lang=EN-US>transaction
-metadata</span><span style='font-family:"新細明體",serif'>」</span><span lang=EN-US>(</span><span
-style='font-family:"新細明體",serif'>例如</span><span lang=EN-US>balance history</span><span
-style='font-family:"新細明體",serif'>、</span><span lang=EN-US>account effects</span><span
-style='font-family:"新細明體",serif'>等資料依照時間序列處理</span><span lang=EN-US>)</span><span
-style='font-family:"新細明體",serif'>，然後儲存在</span><span lang=EN-US>Horizon DB(</span><span
-style='font-family:"新細明體",serif'>使用</span><span lang=EN-US>PostgreSQL</span><span
-style='font-family:"新細明體",serif'>資料庫</span><span lang=EN-US>)</span><span
-style='font-family:"新細明體",serif'>，所以會消耗磁碟空間。</span></p>
+style='font-family:"新細明體",serif'>攝取資料，將其處理成「</span><span lang=EN-US>transaction
+metadata</span><span style='font-family:"新細明體",serif'>」（例如</span><span
+lang=EN-US>balance history</span><span style='font-family:"新細明體",serif'>、</span><span
+lang=EN-US>account effects</span><span style='font-family:"新細明體",serif'>等資料依照時間序列處理），然後儲存在</span><span
+lang=EN-US>Horizon DB</span><span style='font-family:"新細明體",serif'>（使用</span><span
+lang=EN-US>PostgreSQL</span><span style='font-family:"新細明體",serif'>資料庫），所以會消耗磁碟空間。</span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
-<p class=MsoNormal><span style='font-family:"新細明體",serif'>隨著時間的推移，歷史紀錄不斷累積，從而增加資料庫使用的存儲空間。可以使用</span><span
-lang=EN-US>--history-retention-count flag</span><span style='font-family:"新細明體",serif'>或</span><span
-lang=EN-US>HISTORY_RETENTION_COUNT</span><span style='font-family:"新細明體",serif'>環境變數來設定希望保留的區塊數量，但是</span><span
-lang=EN-US>Pi</span><span style='font-family:"新細明體",serif'>沒有設定，所以會無限增長。</span></p>
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>隨著時間的推移，歷史紀錄不斷累積，從而增加資料庫使用的存儲空間。可以使用</span>
+<span lang=EN-US>--history-retention-count flag </span><span style='font-family:
+"新細明體",serif'>或</span> <span lang=EN-US>HISTORY_RETENTION_COUNT </span><span
+style='font-family:"新細明體",serif'>環境變數來設定希望保留的區塊數量，但是</span><span lang=EN-US>Pi</span><span
+style='font-family:"新細明體",serif'>沒有設定，所以會無限增長。</span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
@@ -169,89 +177,391 @@ lang=EN-US>Pi Network</span><span style='font-family:"新細明體",serif'>多�
 
 <p class=MsoNormal><span style='font-family:"新細明體",serif'>附上老尼的回答：</span></p>
 
-<p class=MsoNormal><span lang=EN-US><img width=803 height=616 id="圖片 2"
+<p class=MsoNormal><span lang=EN-US><img width=811 height=621 id="圖片 2"
 src="api.files/image002.jpg"></span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
-<p class=MsoNormal><span style='font-size:24.0pt;font-family:"新細明體",serif'>為什麼有人說追區塊時要關閉</span><span
-lang=EN-US style='font-size:24.0pt'>API</span><span style='font-size:24.0pt;
-font-family:"新細明體",serif'>，同步後再打開？</span></p>
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-size:24.0pt;font-family:Wingdings;color:red'>l<span
+style='font:7.0pt "Times New Roman"'> </span></span><span style='font-size:
+24.0pt;font-family:"新細明體",serif;color:red'>絕大多數人的</span><span lang=EN-US
+style='font-size:24.0pt;color:red'>Horizon</span><span style='font-size:24.0pt;
+font-family:"新細明體",serif;color:red'>都沒有正常運作！</span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
-<p class=MsoNormal><span style='font-family:"新細明體",serif'>網路上流傳一個說法，當本地區塊落後網路很多時，只要將</span><span
-lang=EN-US>API Services</span><span style='font-family:"新細明體",serif'>關閉，就能趕上同步了，之後再將</span><span
-lang=EN-US>API Services</span><span style='font-family:"新細明體",serif'>打開。具體原因並沒有人說明，只是大家嘗試出來的方法，然後口耳相傳。我試著來分析一下原因。</span></p>
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>你以為只要打開</span><span
+lang=EN-US>API Services</span><span style='font-family:"新細明體",serif'>小紅點，它就有正常運作嗎？其實並．沒．有！來看看幾個證據：</span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
-<p class=MsoNormal><span style='font-family:"新細明體",serif'>先講一個重點，</span><span
-lang=EN-US>SCP</span><span style='font-family:"新細明體",serif'>的點對點</span><span
-lang=EN-US>(peer-to-peer)</span><span style='font-family:"新細明體",serif'>協議中，節點之間交換的只有「當前」區塊的</span><span
-lang=EN-US>XDR</span><span style='font-family:"新細明體",serif'>資料，歷史資料一律都是由</span><span
-lang=EN-US>History Archives</span><span style='font-family:"新細明體",serif'>下載</span><span
-lang=EN-US>(</span><span style='font-family:"新細明體",serif'>此行為稱</span><span
-lang=EN-US>Catchup)</span><span style='font-family:"新細明體",serif'>，下載後會先驗證其安全性，然後才寫入</span><span
-lang=EN-US>Core DB</span><span style='font-family:"新細明體",serif'>及本地磁碟上的</span><span
-lang=EN-US>XDR</span><span style='font-family:"新細明體",serif'>檔中</span><span
-lang=EN-US>(</span><span style='font-family:"新細明體",serif'>稱為</span><span
-lang=EN-US>Buckets)</span><span style='font-family:"新細明體",serif'>。</span></p>
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>這是一台運作了半年的節點，區塊大小有</span><span
+lang=EN-US>9GB</span><span style='font-family:"新細明體",serif'>多，將近</span><span
+lang=EN-US>10GB</span><span style='font-family:"新細明體",serif'>了，但</span><span
+lang=EN-US>Horizon</span><span style='font-family:"新細明體",serif'>資料庫只有</span><span
+lang=EN-US>8MB</span><span style='font-family:"新細明體",serif'>，而且裡面的表格的資料筆數都是</span><span
+lang=EN-US>0</span><span style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img width=651 height=237 id="圖片 3"
+src="api.files/image003.png"></span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
-<p class=MsoNormal><span style='font-family:"新細明體",serif'>在目前的測試網中，大家的</span><span
-lang=EN-US>History Archives</span><span style='font-family:"新細明體",serif'>都設定為</span><span
-lang=EN-US>history.testnet.minepi.com</span><span style='font-family:"新細明體",serif'>這台機器，其負載可想而知。</span></p>
+<p class=MsoNormal><span lang=EN-US>Horizon</span><span style='font-family:
+"新細明體",serif'>的主頁面</span><span lang=EN-US>( <a href="http://localhost:31401/">http://localhost:31401/</a>
+)</span><span style='font-family:"新細明體",serif'>顯示最後攝取的區塊編號是</span><span
+lang=EN-US>0</span><span style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=936 height=364 id="圖片 4"
+src="api.files/image004.png"></span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
-<p class=MsoNormal><span style='font-family:"新細明體",serif'>觀察節點的</span><span
-lang=EN-US>stellar-core-stdout.log</span><span style='font-family:"新細明體",serif'>，可發現一開始可能是某些原因</span><span
-lang=EN-US>(CPU</span><span style='font-family:"新細明體",serif'>、</span><span
-lang=EN-US>I/O</span><span style='font-family:"新細明體",serif'>、網路？</span><span
-lang=EN-US>)</span><span style='font-family:"新細明體",serif'>造成共識失敗、有一些</span><span
-lang=EN-US>Perf WARNING</span><span style='font-family:"新細明體",serif'>、</span><span
-lang=EN-US>Out of sync</span><span style='font-family:"新細明體",serif'>，然後開始了</span><span
-lang=EN-US>Catchup</span><span style='font-family:"新細明體",serif'>行為，以期望能趕上區塊</span><span
-lang=EN-US>(Catchup</span><span style='font-family:"新細明體",serif'>詳細的過程請參考</span>
-<span lang=EN-US><a href="https://yuanrui919.github.io/catchup">https://yuanrui919.github.io/catchup</a>
-)</span><span style='font-family:"新細明體",serif'>。</span></p>
+<p class=MsoNormal><span lang=EN-US>%appdata%\Pi
+Network\docker_volumes\supervisor_logs\horizon-stdout---supervisor-xxxxxx.log </span><span
+style='font-family:"新細明體",serif'>全都是如下的錯誤：</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=870 height=190 id="圖片 5"
+src="api.files/image005.png"></span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
-<p class=MsoNormal><span style='font-family:"新細明體",serif'>可是</span><span
-lang=EN-US>History Archives</span><span style='font-family:"新細明體",serif'>下載緩慢，下載完還要處理它，</span><span
-lang=EN-US>Horizon</span><span style='font-family:"新細明體",serif'>又在一旁湊熱鬧，讓原本效能就不好的情況雪上加霜，最後區塊的落差越來越大，一直趕不上。</span></p>
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>原來當</span><span
+lang=EN-US>Horizon</span><span style='font-family:"新細明體",serif'>開始執行時，</span><span
+lang=EN-US>Horizon</span><span style='font-family:"新細明體",serif'>不會立即開始攝取，必須等到</span><span
+lang=EN-US>Stellar Core</span><span style='font-family:"新細明體",serif'>建立其第一個歷史存檔快照（</span><span
+lang=EN-US>Stellar Core</span><span style='font-family:"新細明體",serif'>每</span><span
+lang=EN-US>64</span><span style='font-family:"新細明體",serif'>個區塊建立一次快照，這意味著攝取將延遲到第</span><span
+lang=EN-US>64</span><span style='font-family:"新細明體",serif'>個區塊）。所以</span><span
+lang=EN-US>Horizon</span><span style='font-family:"新細明體",serif'>必須先向歷史主機取得最新的歷史存檔快照，但是歷史主機的</span><span
+lang=EN-US>URL</span><span style='font-family:"新細明體",serif'>設定錯誤，因此永遠無法開始攝取。</span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
-<p class=MsoNormal><span style='font-family:"新細明體",serif'>停掉</span><span
-lang=EN-US>Horizon</span><span style='font-family:"新細明體",serif'>之後，</span><span
-lang=EN-US>CPU</span><span style='font-family:"新細明體",serif'>跟</span><span
-lang=EN-US>I/O</span><span style='font-family:"新細明體",serif'>都輕鬆多了，就能逐漸趕上區塊。所以問題可能是在於機器的效能。</span></p>
+<p class=MsoNormal><span lang=EN-US>Horizon</span><span style='font-family:
+"新細明體",serif'>的設定檔位於</span> <span lang=EN-US>%appdata%\Pi
+Network\docker_volumes\stellar\horizon\etc\<span style='background:yellow'>horizon.env</span></span><span
+style='font-family:"新細明體",serif'>。內容如下，正是</span><span lang=EN-US
+style='background:yellow'>HISTORY_ARCHIVE_URLS</span><span style='font-family:
+"新細明體",serif'>這個環境變數設定錯誤。原因是</span><span lang=EN-US>CT</span><span
+style='font-family:"新細明體",serif'>在發佈</span><span lang=EN-US>pi-node-docker
+image</span><span style='font-family:"新細明體",serif'>檔之後才改了歷史主機，反正沒什麼大影響，所以就沒有修正</span><span
+lang=EN-US>image</span><span style='font-family:"新細明體",serif'>檔了。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=926 height=367 id="圖片 8"
+src="api.files/image006.png"></span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
-<p class=MsoNormal><span style='font-family:"新細明體",serif'>除了網路延遲是不可控因素以外</span><span
-lang=EN-US>(</span><span style='font-family:"新細明體",serif'>請參考</span> <span
-lang=EN-US><a href="https://yuanrui919.github.io/latency">https://yuanrui919.github.io/latency</a>
-)</span><span style='font-family:"新細明體",serif'>，如果真的是</span><span lang=EN-US>CPU</span><span
-style='font-family:"新細明體",serif'>或</span><span lang=EN-US>I/O</span><span
-style='font-family:"新細明體",serif'>效能太差，建議要升級設備，否則等開放式主網之後的交易量更多，肯定是無法負荷。</span></p>
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>正確的</span><span
+lang=EN-US>HISTORY_ARCHIVE_URLS</span><span style='font-family:"新細明體",serif'>是</span><span
+lang=EN-US style='background:yellow'>https://history.testnet.minepi.com/</span><span
+lang=EN-US> </span><span style='font-family:"新細明體",serif'>（跟</span><span
+lang=EN-US>stellar-core.cfg</span><span style='font-family:"新細明體",serif'>中</span><span
+lang=EN-US>[HISTORY.cache] get</span><span style='font-family:"新細明體",serif'>的</span><span
+lang=EN-US>URL</span><span style='font-family:"新細明體",serif'>相同）。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=926 height=367 id="圖片 9"
+src="api.files/image007.png"></span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
-<p class=MsoNormal><span style='font-family:"新細明體",serif'>另外一提，</span><span
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>改完之後，再重新啟動</span><span
+lang=EN-US>API</span><span style='font-family:"新細明體",serif'>小紅點即可。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=596 height=726
+id="圖片 10" src="api.files/image008.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='color:#0070C0'>P.S.</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif;color:#0070C0'>啟動</span><span
+lang=EN-US style='color:#0070C0'>/</span><span style='font-family:"新細明體",serif;
+color:#0070C0'>停止</span><span lang=EN-US style='color:#0070C0'>Horizon</span><span
+style='font-family:"新細明體",serif;color:#0070C0'>最好用</span><span lang=EN-US
+style='color:#0070C0'>API Services</span><span style='font-family:"新細明體",serif;
+color:#0070C0'>小紅點介面，而不是</span><span lang=EN-US style='color:#0070C0'>supervisorctl</span><span
+style='font-family:"新細明體",serif;color:#0070C0'>指令。</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif;color:#0070C0'>因為，</span><span
+lang=EN-US style='color:#0070C0'>API Services</span><span style='font-family:
+"新細明體",serif;color:#0070C0'>小紅點開啟的情況下，即使用</span><span lang=EN-US
+style='color:#0070C0'>supervisorctl stop horizon</span><span style='font-family:
+"新細明體",serif;color:#0070C0'>指令關閉，</span><span lang=EN-US style='color:#0070C0'>Pi
+Node Software</span><span style='font-family:"新細明體",serif;color:#0070C0'>仍會再把它帶起來。</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif;color:#0070C0'>反之，</span><span
+lang=EN-US style='color:#0070C0'>API Services</span><span style='font-family:
+"新細明體",serif;color:#0070C0'>小紅點關閉的情況下，即使用</span><span lang=EN-US
+style='color:#0070C0'>supervisorctl start horizon</span><span style='font-family:
+"新細明體",serif;color:#0070C0'>指令啟動，</span><span lang=EN-US style='color:#0070C0'>Pi
+Node Software</span><span style='font-family:"新細明體",serif;color:#0070C0'>仍會再把它關閉。</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif;color:#0070C0'>但如果只是要重新啟動，可以用</span><span
+lang=EN-US style='color:#0070C0'>supervisorctl restart horizon</span><span
+style='font-family:"新細明體",serif;color:#0070C0'>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>查看</span> <span
+lang=EN-US>%appdata%\Pi Network\docker_volumes\supervisor_logs\horizon-stdout---supervisor-xxxxxx.log
+</span><span style='font-family:"新細明體",serif'>的訊息。</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>首先是有關狀態</span><span
+lang=EN-US>(state)</span><span style='font-family:"新細明體",serif'>攝取的訊息：</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=1772 height=164
+id="圖片 11" src="api.files/image009.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>在狀態攝取期間，每處理</span><span
+lang=EN-US>100000</span><span style='font-family:"新細明體",serif'>個條目</span><span
+lang=EN-US>(entry)</span><span style='font-family:"新細明體",serif'>，會記錄目前處理的數量（至</span><span
+lang=EN-US>2022/11/27</span><span style='font-family:"新細明體",serif'>為止，測試網有將近</span><span
+lang=EN-US>29500000</span><span style='font-family:"新細明體",serif'>個條目，我的節點</span><span
+lang=EN-US>CPU</span><span style='font-family:"新細明體",serif'>是</span><span
+lang=EN-US>i7-12700</span><span style='font-family:"新細明體",serif'>，<span
+style='background:yellow'>處理時間約</span></span><span lang=EN-US style='background:
+yellow'>3</span><span style='font-family:"新細明體",serif;background:yellow'>小時</span><span
+lang=EN-US style='background:yellow'>45</span><span style='font-family:"新細明體",serif;
+background:yellow'>分，資料庫空間</span><span lang=EN-US style='background:yellow'>26GB</span><span
+style='font-family:"新細明體",serif'>）。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=1779 height=184
+id="圖片 12" src="api.files/image010.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>狀態攝取完成後，它將繼續從檢查點區塊（本例中為</span><span
+lang=EN-US>10118015+1</span><span style='font-family:"新細明體",serif'>）之後的下一個區塊開始區塊攝取，以更新</span><span
+lang=EN-US>transaction metadata</span><span style='font-family:"新細明體",serif'>狀態：</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=1778 height=85
+id="圖片 13" src="api.files/image011.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>Horizon</span><span style='font-family:
+"新細明體",serif'>的主頁面</span><span lang=EN-US>( <a href="http://localhost:31401/">http://localhost:31401/</a>
+)</span><span style='font-family:"新細明體",serif'>可看到區塊攝取的進度。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=992 height=338
+id="圖片 24" src="api.files/image012.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>Horizon</span><span style='font-family:
+"新細明體",serif'>攝取區塊很吃系統資源，在這個過程中，我的</span><span lang=EN-US>CPU</span><span
+style='font-family:"新細明體",serif'>使用率增加約</span><span lang=EN-US>30%~40%</span><span
+style='font-family:"新細明體",serif'>。機器效能不好的人請三思。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-size:24.0pt;font-family:Wingdings'>l<span
+style='font:7.0pt "Times New Roman"'> </span></span><span style='font-size:
+24.0pt;font-family:"新細明體",serif'>初始化</span><span lang=EN-US style='font-size:
+24.0pt'>Horizon</span><span style='font-size:24.0pt;font-family:"新細明體",serif'>資料庫</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>當你把事情搞砸了怎麼辦？永遠要知道怎麼復原才開始動手。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='display:none'>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US style='display:none'>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>先停止</span><span
+lang=EN-US>Horizon</span><span style='font-family:"新細明體",serif'>，關掉</span><span
+lang=EN-US>API Services</span><span style='font-family:"新細明體",serif'>小紅點。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>2.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>刪除</span><span lang=EN-US>Horizon</span><span
+style='font-family:"新細明體",serif'>資料庫：</span><span lang=EN-US>DROP DATABASE
+horizon;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=268 height=36 id="圖片 16"
+src="api.files/image013.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>3.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>建立</span><span lang=EN-US>Horizon</span><span
+style='font-family:"新細明體",serif'>資料庫：</span><span lang=EN-US>CREATE DATABASE
+horizon;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=285 height=36 id="圖片 17"
+src="api.files/image014.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>4.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>賦予</span><span lang=EN-US>stellar</span><span
+style='font-family:"新細明體",serif'>帳號存取資料庫權限：</span><span lang=EN-US>GRANT ALL ON
+DATABASE horizon TO stellar;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=422 height=35 id="圖片 18"
+src="api.files/image015.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>5.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>初始化資料庫：</span><span
+lang=EN-US>stellar-horizon db init</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=445 height=52 id="圖片 19"
+src="api.files/image016.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>6.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>重新開啟</span><span
+lang=EN-US>API Services</span><span style='font-family:"新細明體",serif'>小紅點。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-size:24.0pt;font-family:Wingdings'>l<span
+style='font:7.0pt "Times New Roman"'> </span></span><span style='font-size:
+24.0pt;font-family:"新細明體",serif'>設定</span><span lang=EN-US style='font-size:
+24.0pt'>Horizon</span><span style='font-size:24.0pt;font-family:"新細明體",serif'>保留的歷史區塊數量</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>隨著時間的推移，不斷有新的區塊產生，</span><span
+lang=EN-US>Horizon</span><span style='font-family:"新細明體",serif'>資料庫的空間也將無限增長。但除非你需要維護歷史檔案，否則應該將</span><span
+lang=EN-US>Horizon</span><span style='font-family:"新細明體",serif'>配置為僅在資料庫中保留一定數量的區塊。可以使用</span><span
+lang=EN-US> --history-retention-count flag </span><span style='font-family:
+"新細明體",serif'>或</span><span lang=EN-US> HISTORY_RETENTION_COUNT </span><span
+style='font-family:"新細明體",serif'>環境變數來設定希望保留的區塊數量。</span><span lang=EN-US>Horizon</span><span
+style='font-family:"新細明體",serif'>子系統每小時都會清除過期資料，或者，</span><span lang=EN-US>Horizon</span><span
+style='font-family:"新細明體",serif'>提供了一個強制清除的命令：</span> <span lang=EN-US
+style='background:yellow'>stellar-horizon db reap</span><span lang=EN-US> </span><span
+style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>修改</span><span
+lang=EN-US> %appdata%\Pi Network\docker_volumes\stellar\horizon\etc\horizon.env
+</span><span style='font-family:"新細明體",serif'>，加入一行</span> <span lang=EN-US
+style='background:yellow'>export HISTORY_RETENTION_COUNT=nnn</span><span
+lang=EN-US> </span><span style='font-family:"新細明體",serif'>。範例中的</span><span
+lang=EN-US>17280</span><span style='font-family:"新細明體",serif'>個區塊大約是</span><span
+lang=EN-US>1</span><span style='font-family:"新細明體",serif'>天。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=918 height=382 id="圖片 6"
+src="api.files/image017.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>然後重新啟動</span><span
+lang=EN-US>Horizon</span><span style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>一個小時後可以看到清除的紀錄：</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=1132 height=183
+id="圖片 31" src="api.files/image018.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>最早歷史區塊也跟著變動：</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=992 height=338
+id="圖片 29" src="api.files/image019.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>或者是用</span><span
+lang=EN-US>stellar-horizon db reap</span><span style='font-family:"新細明體",serif'>指令手動清除：</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=887 height=66 id="圖片 30"
+src="api.files/image020.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-size:24.0pt;font-family:Wingdings'>l<span
+style='font:7.0pt "Times New Roman"'> </span></span><span style='font-size:
+24.0pt;font-family:"新細明體",serif'>從哪裡開始攝取區塊？</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>當</span><span
 lang=EN-US>Horizon</span><span style='font-family:"新細明體",serif'>啟動時，並不是將</span><span
 lang=EN-US>Core DB</span><span style='font-family:"新細明體",serif'>全部的資料都抓過來。</span><span
 lang=EN-US>Stellar Core</span><span style='font-family:"新細明體",serif'>有一個</span><span
 lang=EN-US>cursor</span><span style='font-family:"新細明體",serif'>用來保留資料不會被</span><span
 lang=EN-US>Stellar Core garbage collection</span><span style='font-family:"新細明體",serif'>清除，如果</span><span
 lang=EN-US>Horizon</span><span style='font-family:"新細明體",serif'>只是短暫停止再啟動停，就會從</span><span
-lang=EN-US>cursor</span><span style='font-family:"新細明體",serif'>的地方開始讀；但如果停太久了，</span><span
-lang=EN-US>cursor</span><span style='font-family:"新細明體",serif'>資料早已過期，或是第一次啟動</span><span
-lang=EN-US>Horizon</span><span style='font-family:"新細明體",serif'>，就會從目前的區塊開始。</span></p>
+lang=EN-US>cursor</span><span style='font-family:"新細明體",serif'>的地方開始讀；但如果是第一次啟動</span><span
+lang=EN-US>Horizon</span><span style='font-family:"新細明體",serif'>，或</span><span
+lang=EN-US>cursor</span><span style='font-family:"新細明體",serif'>被清除了，就會從目前的區塊開始。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>查看</span><span
+lang=EN-US>cursor</span><span style='font-family:"新細明體",serif'>：</span></p>
+
+<p class=MsoNormal><span lang=EN-US>stellar-core http-command
+getcursor?id=&quot;HORIZON&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=546 height=303
+id="圖片 32" src="api.files/image021.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>Horizon</span><span style='font-family:
+"新細明體",serif'>重啟時就是從</span><span lang=EN-US>cursor+1</span><span
+style='font-family:"新細明體",serif'>的區塊開始攝取。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=1619 height=204
+id="圖片 26" src="api.files/image022.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-size:24.0pt;font-family:Wingdings'>l<span
+style='font:7.0pt "Times New Roman"'> </span></span><span style='font-size:
+24.0pt;font-family:"新細明體",serif'>關</span><span lang=EN-US style='font-size:
+24.0pt'>API</span><span style='font-size:24.0pt;font-family:"新細明體",serif'>追區塊的迷思</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>網路上流傳一個說法，當節點剛安裝，或是按了「</span><span
+lang=EN-US>Remove all blockchain data</span><span style='font-family:"新細明體",serif'>」，或是本地區塊落後網路很多時，要先把</span><span
+lang=EN-US>API Services</span><span style='font-family:"新細明體",serif'>關閉，等區塊同步了，再將</span><span
+lang=EN-US>API Services</span><span style='font-family:"新細明體",serif'>打開。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>其實這種說法一點根據都沒有，也沒有必要，因為</span><span
+lang=EN-US>Horizon</span><span style='font-family:"新細明體",serif'>根本沒有正常運作。如果說</span><span
+lang=EN-US>Horizon</span><span style='font-family:"新細明體",serif'>有在攝取區塊，會消耗大量</span><span
+lang=EN-US>CPU</span><span style='font-family:"新細明體",serif'>、</span><span
+lang=EN-US>I/O</span><span style='font-family:"新細明體",serif'>資源，效能比較差的機器可能會處理不來。但現在開著</span><span
+lang=EN-US>API Services</span><span style='font-family:"新細明體",serif'>大概也只多</span><span
+lang=EN-US>1% CPU</span><span style='font-family:"新細明體",serif'>資源而已，根本沒影響。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>關於區塊延遲原因及</span><span
+lang=EN-US>Catchup</span><span style='font-family:"新細明體",serif'>的過程，請參考</span> <span
+lang=EN-US><a href="https://yuanrui919.github.io/latency/">https://yuanrui919.github.io/latency/</a>
+</span><span style='font-family:"新細明體",serif'>和</span> <span lang=EN-US><a
+href="https://yuanrui919.github.io/catchup/">https://yuanrui919.github.io/catchup/</a>
+</span><span style='font-family:"新細明體",serif'>。</span></p>
 
 <div style='border:none;border-bottom:solid windowtext 1.0pt;padding:0cm 0cm 1.0pt 0cm'>
 
