@@ -135,7 +135,8 @@ style='font-family:"新細明體",serif'>檔難以閱讀，且缺乏有用的索
 
 <p class=MsoNormal><span lang=EN-US>Horizon</span><span style='font-family:
 "新細明體",serif'>旨在允許開發人員提交交易並有效地使用網路資料。它從</span><span lang=EN-US>Stellar Core</span><span
-style='font-family:"新細明體",serif'>攝取</span><span lang=EN-US>(Ingest) XDR</span><span
+style='font-family:"新細明體",serif'>攝取（</span><span lang=EN-US>Ingest</span><span
+style='font-family:"新細明體",serif'>）</span> <span lang=EN-US>XDR</span><span
 style='font-family:"新細明體",serif'>資料並將其解碼為更容易使用的</span><span lang=EN-US>JSON</span><span
 style='font-family:"新細明體",serif'>，讓閱讀區塊的當前狀態或探索歷史資料變得容易。同時讓</span><span
 lang=EN-US>Stellar Core</span><span style='font-family:"新細明體",serif'>可以專注於共識的工作。</span></p>
@@ -309,8 +310,8 @@ style='font-family:"新細明體",serif;color:#0070C0'>。</span></p>
 lang=EN-US>%appdata%\Pi Network\docker_volumes\supervisor_logs\horizon-stdout---supervisor-xxxxxx.log
 </span><span style='font-family:"新細明體",serif'>的訊息。</span></p>
 
-<p class=MsoNormal><span style='font-family:"新細明體",serif'>首先是有關狀態</span><span
-lang=EN-US>(state)</span><span style='font-family:"新細明體",serif'>攝取的訊息：</span></p>
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>首先是有關狀態（</span><span
+lang=EN-US>state</span><span style='font-family:"新細明體",serif'>）攝取的訊息：</span></p>
 
 <p class=MsoNormal><span lang=EN-US><img border=0 width=1772 height=164
 id="圖片 11" src="api.files/image009.png"></span></p>
@@ -318,8 +319,8 @@ id="圖片 11" src="api.files/image009.png"></span></p>
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
 <p class=MsoNormal><span style='font-family:"新細明體",serif'>在狀態攝取期間，每處理</span><span
-lang=EN-US>100000</span><span style='font-family:"新細明體",serif'>個條目</span><span
-lang=EN-US>(entry)</span><span style='font-family:"新細明體",serif'>，會記錄目前處理的數量（至</span><span
+lang=EN-US>100000</span><span style='font-family:"新細明體",serif'>個條目（</span><span
+lang=EN-US>entry</span><span style='font-family:"新細明體",serif'>），會記錄目前處理的數量（至</span><span
 lang=EN-US>2022/11/27</span><span style='font-family:"新細明體",serif'>為止，測試網有將近</span><span
 lang=EN-US>29500000</span><span style='font-family:"新細明體",serif'>個條目，我的節點</span><span
 lang=EN-US>CPU</span><span style='font-family:"新細明體",serif'>是</span><span
@@ -500,16 +501,56 @@ style='font:7.0pt "Times New Roman"'> </span></span><span style='font-size:
 
 <p class=MsoNormal><span style='font-family:"新細明體",serif'>當</span><span
 lang=EN-US>Horizon</span><span style='font-family:"新細明體",serif'>啟動時，並不是將</span><span
-lang=EN-US>Core DB</span><span style='font-family:"新細明體",serif'>全部的資料都抓過來。</span><span
-lang=EN-US>Stellar Core</span><span style='font-family:"新細明體",serif'>有一個</span><span
-lang=EN-US>cursor</span><span style='font-family:"新細明體",serif'>用來保留資料不會被</span><span
-lang=EN-US>Stellar Core garbage collection</span><span style='font-family:"新細明體",serif'>清除，如果</span><span
-lang=EN-US>Horizon</span><span style='font-family:"新細明體",serif'>只是短暫停止再啟動停，就會從</span><span
-lang=EN-US>cursor</span><span style='font-family:"新細明體",serif'>的地方開始讀；但如果是第一次啟動</span><span
-lang=EN-US>Horizon</span><span style='font-family:"新細明體",serif'>，或</span><span
-lang=EN-US>cursor</span><span style='font-family:"新細明體",serif'>被清除了，就會從目前的區塊開始。</span></p>
+lang=EN-US>Core DB</span><span style='font-family:"新細明體",serif'>全部的資料都抓過來。它會先檢查</span><span
+lang=EN-US>horizon DB</span><span style='font-family:"新細明體",serif'>兩個資料：</span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>一是，最後攝取的區塊紀錄（這只是一個數字，沒有區塊的實際內容）</span></p>
+
+<p class=MsoNormal><span lang=EN-US>SELECT value FROM key_value_store WHERE key
+= 'exp_ingest_last_ledger';</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=656 height=83 id="圖片 15"
+src="api.files/image021.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>二是，實際上</span><span
+lang=EN-US>horizon DB</span><span style='font-family:"新細明體",serif'>所儲存的最大區塊序號</span></p>
+
+<p class=MsoNormal><span lang=EN-US>SELECT COALESCE(MAX(sequence), 0) FROM
+history_ledgers;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=528 height=85 id="圖片 20"
+src="api.files/image022.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>理論上這兩個數字應該是相同的。如果是</span><span
+lang=EN-US>0</span><span style='font-family:"新細明體",serif'>（第一次啟動</span><span
+lang=EN-US>Horizon</span><span style='font-family:"新細明體",serif'>），就會從</span><span
+lang=EN-US>Stellar Core</span><span style='font-family:"新細明體",serif'>目前的區塊開始攝取，否則就從該數字</span><span
+lang=EN-US>+1</span><span style='font-family:"新細明體",serif'>的區塊開始攝取。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=1618 height=203
+id="圖片 22" src="api.files/image023.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>另外，</span><span
+lang=EN-US>Stellar Core</span><span style='font-family:"新細明體",serif'>還用</span><span
+lang=EN-US>cursor</span><span style='font-family:"新細明體",serif'>來保留資料不會被</span><span
+lang=EN-US>Stellar Core garbage collection</span><span style='font-family:"新細明體",serif'>清除（如果</span><span
+lang=EN-US>Horizon</span><span style='font-family:"新細明體",serif'>要攝取的區塊已被清除，會出現「</span><span
+lang=EN-US>ledger does not exist</span><span style='font-family:"新細明體",serif'>」錯誤），大部分情況下</span><span
+lang=EN-US>cursor</span><span style='font-family:"新細明體",serif'>的數字也是跟前者相同（說大部分情況是因為可以手動</span><span
+lang=EN-US>drop cursor</span><span style='font-family:"新細明體",serif'>或</span><span
+lang=EN-US>set cursor</span><span style='font-family:"新細明體",serif'>）。但</span><span
+lang=EN-US>cursor</span><span style='font-family:"新細明體",serif'>的值並不影響</span><span
+lang=EN-US>Horizon</span><span style='font-family:"新細明體",serif'>從哪裡開始攝取，反而是</span><span
+lang=EN-US>Horizon</span><span style='font-family:"新細明體",serif'>會去修改</span><span
+lang=EN-US>cursor</span><span style='font-family:"新細明體",serif'>的值。</span></p>
 
 <p class=MsoNormal><span style='font-family:"新細明體",serif'>查看</span><span
 lang=EN-US>cursor</span><span style='font-family:"新細明體",serif'>：</span></p>
@@ -517,17 +558,8 @@ lang=EN-US>cursor</span><span style='font-family:"新細明體",serif'>：</span
 <p class=MsoNormal><span lang=EN-US>stellar-core http-command
 getcursor?id=&quot;HORIZON&quot;</span></p>
 
-<p class=MsoNormal><span lang=EN-US><img border=0 width=546 height=303
-id="圖片 32" src="api.files/image021.png"></span></p>
-
-<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
-
-<p class=MsoNormal><span lang=EN-US>Horizon</span><span style='font-family:
-"新細明體",serif'>重啟時就是從</span><span lang=EN-US>cursor+1</span><span
-style='font-family:"新細明體",serif'>的區塊開始攝取。</span></p>
-
-<p class=MsoNormal><span lang=EN-US><img border=0 width=1619 height=204
-id="圖片 26" src="api.files/image022.png"></span></p>
+<p class=MsoNormal><span lang=EN-US><img border=0 width=541 height=293
+id="圖片 21" src="api.files/image024.png"></span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
