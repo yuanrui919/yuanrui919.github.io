@@ -204,6 +204,9 @@ lang=EN-US>Horizon</span><span style='font-family:"新細明體",serif'>資料�
 lang=EN-US>8MB</span><span style='font-family:"新細明體",serif'>，而且裡面的表格的資料筆數都是</span><span
 lang=EN-US>0</span><span style='font-family:"新細明體",serif'>。</span></p>
 
+<p class=MsoNormal><span lang=EN-US>SELECT pg_size_pretty(
+pg_database_size('horizon') );</span></p>
+
 <p class=MsoNormal><span lang=EN-US><img width=651 height=237 id="圖片 3"
 src="api.files/image003.png"></span></p>
 
@@ -314,7 +317,7 @@ lang=EN-US>%appdata%\Pi Network\docker_volumes\supervisor_logs\horizon-stdout---
 lang=EN-US>state</span><span style='font-family:"新細明體",serif'>）攝取的訊息：</span></p>
 
 <p class=MsoNormal><span lang=EN-US><img border=0 width=1772 height=164
-id="圖片 11" src="api.files/image009.png"></span></p>
+id="圖片 14" src="api.files/image009.png"></span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
@@ -332,7 +335,7 @@ background:yellow'>分，資料庫空間</span><span lang=EN-US style='backgroun
 style='font-family:"新細明體",serif'>）。</span></p>
 
 <p class=MsoNormal><span lang=EN-US><img border=0 width=1779 height=184
-id="圖片 12" src="api.files/image010.png"></span></p>
+id="圖片 23" src="api.files/image010.png"></span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
@@ -341,7 +344,7 @@ lang=EN-US>10118015+1</span><span style='font-family:"新細明體",serif'>）�
 lang=EN-US>transaction metadata</span><span style='font-family:"新細明體",serif'>狀態：</span></p>
 
 <p class=MsoNormal><span lang=EN-US><img border=0 width=1778 height=85
-id="圖片 13" src="api.files/image011.png"></span></p>
+id="圖片 25" src="api.files/image011.png"></span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
@@ -506,7 +509,9 @@ lang=EN-US>horizon DB</span><span style='font-family:"新細明體",serif'>兩�
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
-<p class=MsoNormal><span style='font-family:"新細明體",serif'>一是，最後攝取的區塊紀錄（這只是一個數字，沒有區塊的實際內容）</span></p>
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>一是，最後攝取的區塊紀錄（</span><span
+lang=EN-US>exp_ingest_last_ledger</span><span style='font-family:"新細明體",serif'>只是一個數字，不代表</span><span
+lang=EN-US>horizon DB</span><span style='font-family:"新細明體",serif'>內真的有這個區塊）</span></p>
 
 <p class=MsoNormal><span lang=EN-US>SELECT value FROM key_value_store WHERE key
 = 'exp_ingest_last_ledger';</span></p>
@@ -560,6 +565,43 @@ getcursor?id=&quot;HORIZON&quot;</span></p>
 
 <p class=MsoNormal><span lang=EN-US><img border=0 width=541 height=293
 id="圖片 21" src="api.files/image024.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>如果</span><span
+lang=EN-US>exp_ingest_last_ledger</span><span style='font-family:"新細明體",serif'>（</span><span
+lang=EN-US>10212300</span><span style='font-family:"新細明體",serif'>）大於實際的區塊序號（</span><span
+lang=EN-US>10212256</span><span style='font-family:"新細明體",serif'>），</span><span
+lang=EN-US>Horizon</span><span style='font-family:"新細明體",serif'>啟動時，仍然會把缺少的區塊補齊。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=1640 height=285
+id="圖片 26" src="api.files/image025.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>但在隨後的狀態驗證卻會出錯。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=1466 height=225
+id="圖片 27" src="api.files/image026.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>反之，如果</span><span
+lang=EN-US>exp_ingest_last_ledger</span><span style='font-family:"新細明體",serif'>小於實際的區塊序號（</span><span
+lang=EN-US style='color:#0070C0'>10269450</span><span style='font-family:"新細明體",serif'>），</span><span
+lang=EN-US>Horizon</span><span style='font-family:"新細明體",serif'>啟動時，</span><span
+lang=EN-US>exp_ingest_last_ledger</span><span style='font-family:"新細明體",serif'>會被重設為</span><span
+lang=EN-US>0</span><span style='font-family:"新細明體",serif'>，並重新從</span><span
+lang=EN-US>History Archive Snapshot</span><span style='font-family:"新細明體",serif'>攝取資料（就跟</span><span
+lang=EN-US>Horizon</span><span style='font-family:"新細明體",serif'>第一次啟動一樣）。</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>（此處的</span><span
+lang=EN-US style='color:#00B050'>10269350</span><span style='font-family:"新細明體",serif'>是</span><span
+lang=EN-US>offer_compaction_sequence</span><span style='font-family:"新細明體",serif'>，最新的檢查點區塊是</span><span
+lang=EN-US style='color:red'>10270463</span><span style='font-family:"新細明體",serif'>）</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=1637 height=624
+id="圖片 7" src="api.files/image027.png"></span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
