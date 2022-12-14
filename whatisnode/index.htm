@@ -3,11 +3,14 @@
 <head>
 <meta http-equiv=Content-Type content="text/html; charset=utf-8">
 <meta name=Generator content="Microsoft Word 15 (filtered)">
-<title>什麼是節點？</title>
+<title>什麼是節點</title>
 <style>
 <!--
  /* Font Definitions */
  @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
 	{font-family:新細明體;
 	panose-1:2 2 5 0 0 0 0 0 0 0;}
 @font-face
@@ -30,6 +33,13 @@
 a:link, span.MsoHyperlink
 	{color:#0563C1;
 	text-decoration:underline;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:24.0pt;
+	font-size:12.0pt;
+	font-family:"Calibri",sans-serif;}
 .MsoChpDefault
 	{font-family:"Calibri",sans-serif;}
  /* Page Definitions */
@@ -39,6 +49,11 @@ a:link, span.MsoHyperlink
 	layout-grid:18.0pt;}
 div.WordSection1
 	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
 -->
 </style>
 
@@ -73,7 +88,7 @@ src="whatisnode.files/image001.png"></span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
-<p class=MsoNormal><span lang=EN-US><img width=852 height=563 id="圖片 13"
+<p class=MsoNormal><span lang=EN-US><img width=861 height=568 id="圖片 13"
 src="whatisnode.files/image002.png"></span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
@@ -210,6 +225,118 @@ lang=EN-US>Container</span><span style='font-family:"新細明體",serif'>等作
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
+<p class=MsoNormal><span lang=EN-US style='font-size:24.0pt'>Image</span><span
+style='font-size:24.0pt;font-family:"新細明體",serif'>檔與</span><span lang=EN-US
+style='font-size:24.0pt'>Container(</span><span style='font-size:24.0pt;
+font-family:"新細明體",serif'>容器</span><span lang=EN-US style='font-size:24.0pt'>)</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>從</span><span
+lang=EN-US>Troubleshooting</span><span style='font-family:"新細明體",serif'>畫面可以看到有</span><span
+lang=EN-US>PortsChecker</span><span style='font-family:"新細明體",serif'>及</span><span
+lang=EN-US>Consensus</span><span style='font-family:"新細明體",serif'>兩個</span><span
+lang=EN-US>container</span><span style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=596 height=726 id="圖片 3"
+src="whatisnode.files/image004.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>這兩者分別就是</span><span
+lang=EN-US style='background:yellow'>pi-consensus</span><span lang=EN-US> (Consensus
+container)</span><span style='font-family:"新細明體",serif'>與</span><span
+lang=EN-US style='background:yellow'>stellar-dummy</span><span lang=EN-US> (PortsChecker
+container)</span><span style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=1025 height=599
+id="圖片 8" src="whatisnode.files/image005.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>而它們的</span><span
+lang=EN-US>image</span><span style='font-family:"新細明體",serif'>檔是</span><span
+lang=EN-US style='background:yellow'>ese7en/node-port-test</span><span
+lang=EN-US> (PortsChecker container)</span><span style='font-family:"新細明體",serif'>與</span><span
+lang=EN-US style='background:yellow'>pinetwork/pi-node-docker</span><span
+lang=EN-US> (Consensus container)</span><span style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=1040 height=599
+id="圖片 9" src="whatisnode.files/image006.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='background:yellow'>pi-consensus</span><span
+lang=EN-US> container (Consensus container)</span><span style='font-family:
+"新細明體",serif'>就是</span><span lang=EN-US style='color:red'>Stellar Core</span><span
+style='font-family:"新細明體",serif'>，</span><span lang=EN-US>SCP</span><span
+style='font-family:"新細明體",serif'>的節點程式。</span><span lang=EN-US
+style='background:yellow'>stellar-dummy</span><span lang=EN-US> container (PortsChecker
+container)</span><span style='font-family:"新細明體",serif'>則是測試</span><span
+lang=EN-US>Port</span><span style='font-family:"新細明體",serif'>有沒有開的</span><span
+lang=EN-US>(</span><span style='font-family:"新細明體",serif'>爛</span><span
+lang=EN-US>)</span><span style='font-family:"新細明體",serif'>工具，有沒有它都無所謂。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>Troubleshooting</span><span
+style='font-family:"新細明體",serif'>的</span><span lang=EN-US>container</span><span
+style='font-family:"新細明體",serif'>狀態有三種：</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span lang=EN-US>absent</span><span style='font-family:"新細明體",serif'>：不存在</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span lang=EN-US>running</span><span style='font-family:"新細明體",serif'>：執行中</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span lang=EN-US>exited</span><span style='font-family:"新細明體",serif'>：未執行</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>如果你從未執行過「</span><span
+lang=EN-US>Check now</span><span style='font-family:"新細明體",serif'>」，就不會有</span><span
+lang=EN-US>stellar-dummy container</span><span style='font-family:"新細明體",serif'>，狀態會是</span><span
+lang=EN-US>absent</span><span style='font-family:"新細明體",serif'>，這是正常的，不用理會它。它執行幾秒鐘後也會自動停止，所以狀態通常不是</span><span
+lang=EN-US>absent</span><span style='font-family:"新細明體",serif'>就是</span><span
+lang=EN-US>exited</span><span style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>stellar-dummy container</span><span
+style='font-family:"新細明體",serif'>跟</span><span lang=EN-US>pi-consensus
+container</span><span style='font-family:"新細明體",serif'>因為用到相同的</span><span
+lang=EN-US>port</span><span style='font-family:"新細明體",serif'>，所以也不能同時執行。「</span><span
+lang=EN-US>Check now</span><span style='font-family:"新細明體",serif'>」其實有提醒，但大部分人可能都沒注意到。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=596 height=726 id="圖片 5"
+src="whatisnode.files/image007.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>如前面所述，</span><span
+lang=EN-US>Pi Node Software</span><span style='font-family:"新細明體",serif'>管理了下載</span><span
+lang=EN-US>image</span><span style='font-family:"新細明體",serif'>檔、建立</span><span
+lang=EN-US>container</span><span style='font-family:"新細明體",serif'>的工作，但</span><span
+lang=EN-US>image</span><span style='font-family:"新細明體",serif'>檔也是可以手動下載，只要在命令提示字元</span><span
+lang=EN-US>(CMD)</span><span style='font-family:"新細明體",serif'>執行以下指令：</span></p>
+
+<p class=MsoNormal><span lang=EN-US>docker pull pinetwork/pi-node-docker</span></p>
+
+<p class=MsoNormal><span lang=EN-US>docker pull ese7en/node-port-test</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>但是</span><span
+lang=EN-US>container</span><span style='font-family:"新細明體",serif'>就不建議手動建立了，因為有一些隱藏的參數及跟</span><span
+lang=EN-US>Pi</span><span style='font-family:"新細明體",serif'>帳號相關的資料，所以還是老實點讓</span><span
+lang=EN-US>Pi Node Software</span><span style='font-family:"新細明體",serif'>來管理。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
 <p class=MsoNormal><span style='font-size:24.0pt;font-family:"新細明體",serif'>節點與其他虛擬系統</span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
@@ -222,7 +349,7 @@ lang=EN-US>WSL 2 (Windows Subsystem for Linux 2)</span><span style='font-family:
 lang=EN-US>Hyper-V</span><span style='font-family:"新細明體",serif'>架構來啟用其虛擬化。此架構將在「虛擬機器平台」選用元件中提供。</span></p>
 
 <p class=MsoNormal><span lang=EN-US><img border=0 width=415 height=368 id="圖片 4"
-src="whatisnode.files/image004.png"></span></p>
+src="whatisnode.files/image008.png"></span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
@@ -239,7 +366,7 @@ lang=EN-US>VirtualBox</span><span style='font-family:"新細明體",serif'>和</
 lang=EN-US>VMware</span><span style='font-family:"新細明體",serif'>就不能執行。其他手機模擬器也是相同原因。</span></p>
 
 <p class=MsoNormal><span lang=EN-US><img border=0 width=583 height=380 id="圖片 2"
-src="whatisnode.files/image005.jpg" alt=虚拟方式></span></p>
+src="whatisnode.files/image009.jpg" alt=虚拟方式></span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
@@ -266,8 +393,8 @@ lang=EN-US style='font-family:Consolas;color:black;background:#D9D9D9'>&gt;&quot
 lang=EN-US>VirtualBox</span><span style='font-family:"新細明體",serif'>所有虛擬系統開啟</span></p>
 
 <p class=MsoNormal><span lang=EN-US style='font-family:Consolas;color:black;
-background:#D9D9D9'>VBoxManage setextradata global &quot;VBoxInternal/NEM/UseRing0Runloop&quot;
-0</span></p>
+background:#D9D9D9'>VBoxManage setextradata global
+&quot;VBoxInternal/NEM/UseRing0Runloop&quot; 0</span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
