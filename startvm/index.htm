@@ -1,0 +1,187 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<title>啟動VM</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:新細明體;
+	panose-1:2 2 5 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Consolas;
+	panose-1:2 11 6 9 2 2 4 3 2 4;}
+@font-face
+	{font-family:"\@新細明體";
+	panose-1:2 1 6 1 0 1 1 1 1 1;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	font-size:12.0pt;
+	font-family:"Calibri",sans-serif;}
+a:link, span.MsoHyperlink
+	{color:#0563C1;
+	text-decoration:underline;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:24.0pt;
+	font-size:12.0pt;
+	font-family:"Calibri",sans-serif;}
+.MsoChpDefault
+	{font-family:"Calibri",sans-serif;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:595.3pt 841.9pt;
+	margin:2.0cm 2.0cm 2.0cm 2.0cm;
+	layout-grid:18.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body lang=ZH-TW link="#0563C1" vlink="#954F72" style='word-wrap:break-word;
+text-justify-trim:punctuation'>
+
+<div class=WordSection1 style='layout-grid:18.0pt'>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>如果節點是採用</span><span
+lang=EN-US>VMware Workstation Pro</span><span style='font-family:"新細明體",serif'>的虛擬機，除了</span><span
+lang=EN-US>Guest OS</span><span style='font-family:"新細明體",serif'>要參考</span> <span
+lang=EN-US><a href="https://yuanrui919.github.io/autorun/">https://yuanrui919.github.io/autorun/</a>
+</span><span style='font-family:"新細明體",serif'>設定以外，</span><span lang=EN-US>Host
+OS</span><span style='font-family:"新細明體",serif'>同樣也要取消帳戶密碼，讓它能自動登入，並且還要啟動虛擬機。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>針對每一個虛擬機都編寫一個批次檔，例如</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span lang=EN-US>start_Router.bat</span><span style='font-family:
+"新細明體",serif'>：</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas;background:
+silver'>&quot;C:\Program Files (x86)\VMware\VMware Workstation\vmware.exe&quot;
+-t -x C:\VM\Router\Router.<span style='color:red'>vmx</span></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas;background:
+silver'>exit</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=771 height=141 id="圖片 1"
+src="startvm.files/image001.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span lang=EN-US>start_Yuanrui.bat</span><span style='font-family:
+"新細明體",serif'>：</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas;background:
+silver'>&quot;C:\Program Files (x86)\VMware\VMware Workstation\vmware.exe&quot;
+-t -x C:\VM\Pi_Node_Yuanrui\Pi_Node_Yuanrui.<span style='color:red'>vmx</span></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas;background:
+silver'>exit</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=915 height=140 id="圖片 2"
+src="startvm.files/image002.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span lang=EN-US>start_Grace.bat</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas;background:
+silver'>&quot;C:\Program Files (x86)\VMware\VMware Workstation\vmware.exe&quot;
+-t -x C:\VM\Pi_Node_Grace\Pi_Node_Grace.<span style='color:red'>vmx</span></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas;background:
+silver'>exit</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=879 height=141 id="圖片 3"
+src="startvm.files/image003.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>再編寫另一個批次檔</span><span
+lang=EN-US>start_vm.bat</span><span style='font-family:"新細明體",serif'>，依序呼叫先前的批次檔，啟動虛擬機（請先啟動單線多撥的</span><span
+lang=EN-US>VM</span><span style='font-family:"新細明體",serif'>）</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span lang=EN-US>start_vm.bat</span><span style='font-family:
+"新細明體",serif'>：</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas;background:
+silver'>start C:\VM\start_Router.bat</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas;background:
+silver'>timeout /t 60</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas;background:
+silver'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas;background:
+silver'>start C:\VM\start_Yuanrui.bat</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas;background:
+silver'>timeout /t 60</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas;background:
+silver'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas;background:
+silver'>start C:\VM\start_Grace.bat</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas;background:
+silver'>exit</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=402 height=241 id="圖片 5"
+src="startvm.files/image004.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>將</span><span
+lang=EN-US>start_vm.bat</span><span style='font-family:"新細明體",serif'>放在</span><span
+lang=EN-US>C:\Users\</span><span style='font-family:"新細明體",serif'>使用者帳戶</span><span
+lang=EN-US>\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup</span></p>
+
+<div style='border:none;border-bottom:solid windowtext 1.0pt;padding:0cm 0cm 1.0pt 0cm'>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=EN-US>&nbsp;</span></p>
+
+</div>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US><a
+href="https://yuanrui919.github.io/"><span lang=EN-US style='font-family:"新細明體",serif'><span
+lang=EN-US>回首頁</span></span></a></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>
