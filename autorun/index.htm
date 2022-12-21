@@ -1,0 +1,255 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<title>自動執行</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:新細明體;
+	panose-1:2 2 5 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Consolas;
+	panose-1:2 11 6 9 2 2 4 3 2 4;}
+@font-face
+	{font-family:"\@新細明體";
+	panose-1:2 1 6 1 0 1 1 1 1 1;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	font-size:12.0pt;
+	font-family:"Calibri",sans-serif;}
+a:link, span.MsoHyperlink
+	{color:#0563C1;
+	text-decoration:underline;}
+.MsoChpDefault
+	{font-family:"Calibri",sans-serif;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:595.3pt 841.9pt;
+	margin:2.0cm 2.0cm 2.0cm 2.0cm;
+	layout-grid:18.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style>
+
+</head>
+
+<body lang=ZH-TW link="#0563C1" vlink="#954F72" style='word-wrap:break-word;
+text-justify-trim:punctuation'>
+
+<div class=WordSection1 style='layout-grid:18.0pt'>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>電腦可能會因為一些原因自動重開機（如當機、</span><span
+lang=EN-US>Windows Update</span><span style='font-family:"新細明體",serif'>），如果沒有及時發現，節點就斷線好幾個小時，獎勵也受到影響，所以有必要想個方法讓它自動執行。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>首先確定「工作管理員</span> <span
+lang=EN-US style='font-family:Wingdings'>à</span><span lang=EN-US> </span><span
+style='font-family:"新細明體",serif'>開機」的</span><span lang=EN-US>Docker Desktop</span><span
+style='font-family:"新細明體",serif'>與</span><span lang=EN-US>Pi Network</span><span
+style='font-family:"新細明體",serif'>的狀態都是「已啟用」。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img width=589 height=408 id="圖片 1"
+src="autorun.files/image001.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>但是它們只會在「登入」</span><span
+lang=EN-US>Windows</span><span style='font-family:"新細明體",serif'>之後才執行，所以要讓電腦能自動登入，也就是取消帳戶的密碼（但是帳戶沒有密碼會存在被駭的風險，請自行評估是否要這樣做）。方法如下：</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>設定</span> <span
+lang=EN-US style='font-family:Wingdings'>à</span><span lang=EN-US> </span><span
+style='font-family:"新細明體",serif'>帳戶</span> <span lang=EN-US style='font-family:
+Wingdings'>à</span><span lang=EN-US> </span><span style='font-family:"新細明體",serif'>登入選項</span>
+<span lang=EN-US style='font-family:Wingdings'>à</span><span lang=EN-US> </span><span
+style='font-family:"新細明體",serif'>密碼</span> <span lang=EN-US style='font-family:
+Wingdings'>à</span><span lang=EN-US> </span><span style='font-family:"新細明體",serif'>變更</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img width=823 height=696 id="圖片 2"
+src="autorun.files/image002.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>輸入目前的密碼。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img width=683 height=678 id="圖片 3"
+src="autorun.files/image003.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>不輸入新密碼，直接按下一步。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img width=680 height=675 id="圖片 4"
+src="autorun.files/image004.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>完成。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img width=680 height=675 id="圖片 5"
+src="autorun.files/image005.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>如此一來，開機之後就會自動登入</span><span
+lang=EN-US>Windows</span><span style='font-family:"新細明體",serif'>。但如果你需要用「遠端桌面」連線到該電腦，會發現帳戶沒有密碼是無法連線的，就還需要修改群組原則。</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>按「視窗按鈕</span><span
+lang=EN-US> + R</span><span style='font-family:"新細明體",serif'>」輸入</span><span
+lang=EN-US>gpedit.msc</span><span style='font-family:"新細明體",serif'>，然後按「確定」，以啟動「本機群組原則編輯器」。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img width=399 height=206 id="圖片 6"
+src="autorun.files/image006.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>依序開啟</span><span
+lang=EN-US> [</span><span style='font-family:"新細明體",serif'>電腦設定</span><span
+lang=EN-US>]</span><span style='font-family:"新細明體",serif'>、</span><span
+lang=EN-US>[Windows </span><span style='font-family:"新細明體",serif'>設定</span><span
+lang=EN-US>]</span><span style='font-family:"新細明體",serif'>、</span><span
+lang=EN-US>[</span><span style='font-family:"新細明體",serif'>安全性設定</span><span
+lang=EN-US>]</span><span style='font-family:"新細明體",serif'>、</span><span
+lang=EN-US>[</span><span style='font-family:"新細明體",serif'>本機原則</span><span
+lang=EN-US>]</span><span style='font-family:"新細明體",serif'>、</span><span
+lang=EN-US>[</span><span style='font-family:"新細明體",serif'>安全性選項</span><span
+lang=EN-US>] </span><span style='font-family:"新細明體",serif'>及</span><span
+lang=EN-US> [</span><span style='font-family:"新細明體",serif'>帳戶：限制使用空白密碼的本機帳戶僅能登入到主控台</span><span
+lang=EN-US>]</span><span style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img width=754 height=538 id="圖片 8"
+src="autorun.files/image007.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>選擇「已停用」，再按「確定」。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img width=484 height=578 id="圖片 9"
+src="autorun.files/image008.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>如果你的電腦是開機就能上網（可能是透過</span><span
+lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>分享器撥號，或是小烏龜硬撥），可以不理會下一個步驟，否則還要讓</span><span
+lang=EN-US>PPPoE</span><span style='font-family:"新細明體",serif'>自動撥號。</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>新增一個</span><span
+lang=EN-US>PPPoE</span><span style='font-family:"新細明體",serif'>撥號，如此例名稱為</span><span
+lang=EN-US>SeedNet</span><span style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img width=730 height=505 id="圖片 7"
+src="autorun.files/image009.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>將下列程式存為</span><span
+lang=EN-US>repppoe.vbs</span><span style='font-family:"新細明體",serif'>，修改連線資訊並放置在安全的地方。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas;background:
+silver'>DIALNAME = &quot;SeedNet&quot;   '</span><span style='font-family:"新細明體",serif;
+background:silver'>連線名稱</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas;background:
+silver'>DIALUSER = &quot;t1234567&quot;  '</span><span style='font-family:"新細明體",serif;
+background:silver'>連線帳號</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas;background:
+silver'>DIALPASS = &quot;P@ssw0rd&quot;  '</span><span style='font-family:"新細明體",serif;
+background:silver'>連線密碼</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas;background:
+silver'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas;background:
+silver'>Set WshShell = CreateObject(&quot;WScript.Shell&quot;)</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas;background:
+silver'>RetCode = WshShell.Run(&quot;ping www.hinet.net&quot;, 0, true)</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas;background:
+silver'>If RetCode &lt;&gt; 0 Then</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas;background:
+silver'>    WshShell.Run &quot;rasdial &quot; &amp; DIALNAME &amp; &quot;
+/DISCONNECT&quot;, 0, true</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas;background:
+silver'>    WScript.Sleep(3000)</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas;background:
+silver'>    WshShell.Run &quot;rasdial &quot; &amp; DIALNAME &amp; &quot;
+&quot; &amp; DIALUSER &amp; &quot; &quot; &amp; DIALPASS, 0</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Consolas;background:
+silver'>End If</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img width=625 height=272 id="圖片 10"
+src="autorun.files/image010.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>開始</span> <span
+lang=EN-US style='font-family:Wingdings'>à</span><span lang=EN-US> Windows </span><span
+style='font-family:"新細明體",serif'>系統管理工具</span> <span lang=EN-US
+style='font-family:Wingdings'>à</span><span lang=EN-US> </span><span
+style='font-family:"新細明體",serif'>工作排程器</span> <span lang=EN-US
+style='font-family:Wingdings'>à</span><span lang=EN-US> </span><span
+style='font-family:"新細明體",serif'>建立工作</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>名稱自取，執行工作的帳號使用「</span><span
+lang=EN-US>SYSTEM</span><span style='font-family:"新細明體",serif'>」，它可以不需要儲存密碼，也不用登入就能執行。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img width=632 height=510 id="圖片 11"
+src="autorun.files/image011.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>觸發的時間為「啟動時」、「延遲</span><span
+lang=EN-US>1</span><span style='font-family:"新細明體",serif'>分鐘執行」執行，「每</span><span
+lang=EN-US>5</span><span style='font-family:"新細明體",serif'>分鐘重複工作」，持續時間為「不限制」。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img width=632 height=510 id="圖片 13"
+src="autorun.files/image012.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US><img width=591 height=516 id="圖片 12"
+src="autorun.files/image013.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>動作為啟動剛才編輯的</span><span
+lang=EN-US>repppoe.vbs</span><span style='font-family:"新細明體",serif'>程式。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img width=632 height=510 id="圖片 14"
+src="autorun.files/image014.png"></span></p>
+
+<div style='border:none;border-bottom:solid windowtext 1.0pt;padding:0cm 0cm 1.0pt 0cm'>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=EN-US>&nbsp;</span></p>
+
+</div>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US><a
+href="https://yuanrui919.github.io/"><span lang=EN-US style='font-family:"新細明體",serif'><span
+lang=EN-US>回首頁</span></span></a></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>
