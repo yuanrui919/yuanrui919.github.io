@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv=Content-Type content="text/html; charset=utf-8">
 <meta name=Generator content="Microsoft Word 15 (filtered)">
-<title>API Services是什麼</title>
+<title>API Services是什麼？</title>
 <style>
 <!--
  /* Font Definitions */
@@ -460,11 +460,10 @@ lang=EN-US> %appdata%\Pi Network\docker_volumes\stellar\horizon\etc\horizon.env
 </span><span style='font-family:"新細明體",serif'>，加入一行</span> <span lang=EN-US
 style='background:yellow'>export HISTORY_RETENTION_COUNT=nnn</span><span
 lang=EN-US> </span><span style='font-family:"新細明體",serif'>。範例中的</span><span
-lang=EN-US>360</span><span style='font-family:"新細明體",serif'>個區塊大約是</span><span
-lang=EN-US>30</span><span style='font-family:"新細明體",serif'>分鐘。</span></p>
+lang=EN-US>17280</span><span style='font-family:"新細明體",serif'>個區塊大約是一天。</span></p>
 
-<p class=MsoNormal><span lang=EN-US><img border=0 width=927 height=416
-id="圖片 13" src="api.files/image017.png"></span></p>
+<p class=MsoNormal><span lang=EN-US><img border=0 width=900 height=413 id="圖片 6"
+src="api.files/image017.png"></span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
@@ -474,26 +473,78 @@ lang=EN-US>Horizon</span><span style='font-family:"新細明體",serif'>。</spa
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
 <p class=MsoNormal><span style='font-family:"新細明體",serif'>一個小時後可以看到清除的紀錄，只保留</span><span
-lang=EN-US>360</span><span style='font-family:"新細明體",serif'>個區塊（</span><span
-lang=EN-US>10390832 - 10390473 + 1 = 360</span><span style='font-family:"新細明體",serif'>）。每個小時也都會執行。</span></p>
+lang=EN-US>17280</span><span style='font-family:"新細明體",serif'>個區塊（</span><span
+lang=EN-US>10494012 - 10476733 + 1 = 17280</span><span style='font-family:"新細明體",serif'>）。每個小時也都會執行。</span></p>
 
-<p class=MsoNormal><span lang=EN-US><img border=0 width=1254 height=305
-id="圖片 28" src="api.files/image018.png"></span></p>
+<p class=MsoNormal><span lang=EN-US><img border=0 width=1303 height=303
+id="圖片 11" src="api.files/image018.png"></span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
 <p class=MsoNormal><span style='font-family:"新細明體",serif'>最早歷史區塊也跟著變動：</span></p>
 
 <p class=MsoNormal><span lang=EN-US><img border=0 width=937 height=342
-id="圖片 12" src="api.files/image019.png"></span></p>
+id="圖片 31" src="api.files/image019.png"></span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
 <p class=MsoNormal><span style='font-family:"新細明體",serif'>或者是用</span><span
 lang=EN-US>stellar-horizon db reap</span><span style='font-family:"新細明體",serif'>指令手動清除：</span></p>
 
-<p class=MsoNormal><span lang=EN-US><img border=0 width=887 height=66 id="圖片 30"
+<p class=MsoNormal><span lang=EN-US><img border=0 width=887 height=68 id="圖片 32"
 src="api.files/image020.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>詳細來講，是先檢查</span><span
+lang=EN-US>history_ledgers</span><span style='font-family:"新細明體",serif'>的最大最小區塊序號，如果差距小於</span><span
+lang=EN-US>HISTORY_RETENTION_COUNT</span><span style='font-family:"新細明體",serif'>，就不用刪除資料。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>SELECT COALESCE(MAX(sequence), 0) FROM
+history_ledgers;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>SELECT COALESCE(MIN(sequence), 0) FROM
+history_ledgers;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>接著查詢</span><span
+lang=EN-US>exp_ingest_last_ledger</span><span style='font-family:"新細明體",serif'>，基本上應該是跟前述的最小區塊序號相同。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>SELECT key_value_store.value FROM
+key_value_store WHERE key_value_store.key = 'exp_ingest_last_ledger';</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>將此數字減去</span><span
+lang=EN-US>HISTORY_RETENTION_COUNT</span><span style='font-family:"新細明體",serif'>，即得到</span><span
+lang=EN-US>new_elder</span><span style='font-family:"新細明體",serif'>區塊序號，再由</span><span
+lang=EN-US>new_elder</span><span style='font-family:"新細明體",serif'>查詢</span><span
+lang=EN-US>history_ledgers</span><span style='font-family:"新細明體",serif'>中的</span><span
+lang=EN-US>id</span><span style='font-family:"新細明體",serif'>，即得到要刪除的鍵值。會刪除以下</span><span
+lang=EN-US>7</span><span style='font-family:"新細明體",serif'>個表格的資料：</span></p>
+
+<p class=MsoNormal><span lang=EN-US>DELETE FROM history_effects WHERE
+history_operation_id &gt;= 0 AND history_operation_id &lt; $1;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>DELETE FROM history_operation_participants
+WHERE history_operation_id &gt;= 0 AND history_operation_id &lt; $1;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>DELETE FROM history_operations WHERE id
+&gt;= 0 AND id &lt; $1;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>DELETE FROM
+history_transaction_participants WHERE history_transaction_id &gt;= 0 AND
+history_transaction_id &lt; $1;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>DELETE FROM history_transactions WHERE id
+&gt;= 0 AND id &lt; $1;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>DELETE FROM history_ledgers WHERE id &gt;=
+0 AND id &lt; $1;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>DELETE FROM history_trades WHERE
+history_operation_id &gt;= 0 AND history_operation_id &lt; $1;</span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
