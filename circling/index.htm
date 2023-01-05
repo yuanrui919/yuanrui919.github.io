@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv=Content-Type content="text/html; charset=utf-8">
 <meta name=Generator content="Microsoft Word 15 (filtered)">
-<title>解決10/1以後新節點轉圈圈</title>
+<title>解決2022/10/1以後新節點轉圈圈</title>
 <style>
 <!--
  /* Font Definitions */
@@ -65,7 +65,7 @@ text-justify-trim:punctuation'>
 <div class=WordSection1 style='layout-grid:18.0pt'>
 
 <p class=MsoNormal><span style='font-family:"新細明體",serif'>如果你的節點是</span><span
-lang=EN-US>10/1</span><span style='font-family:"新細明體",serif'>以後才安裝的，會卡在這裡轉圈圈，解決方法如下</span></p>
+lang=EN-US>2022/10/1</span><span style='font-family:"新細明體",serif'>以後才安裝的，會卡在這裡轉圈圈，解決方法如下</span></p>
 
 <p class=MsoNormal><span lang=EN-US><img width=596 height=726 id="圖片 14"
 src="circling.files/image001.png" alt="一張含有 文字 的圖片&#10;&#10;自動產生的描述"></span></p>
@@ -238,12 +238,40 @@ lang=EN-US> &quot;stellar&quot;</span><span style='font-family:"新細明體",se
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
 <p class=MsoNormal><span style='font-family:"新細明體",serif'>但從</span><span
-lang=EN-US>2022/10/1</span><span style='font-family:"新細明體",serif'>起，官方不知道在幹嘛，可能某個服務連不上，新節點的</span><span
-lang=EN-US>user-preferences.json</span><span style='font-family:"新細明體",serif'>無法修改</span><span
-lang=EN-US>containerFlavor</span><span style='font-family:"新細明體",serif'>的值，造成節點程式不知道要啟動哪個</span><span
+lang=EN-US>2022/10/1</span><span style='font-family:"新細明體",serif'>起，因為節點程式的憑證過期，無法連上</span><span
+lang=EN-US>sync.minepi.com</span><span style='font-family:"新細明體",serif'>取得資料，而新節點的</span><span
+lang=EN-US>user-preferences.json</span><span style='font-family:"新細明體",serif'>又缺少</span><span
+lang=EN-US>containerFlavor</span><span style='font-family:"新細明體",serif'>這對鍵值，造成節點程式不知道要啟動哪個</span><span
 lang=EN-US>Container</span><span style='font-family:"新細明體",serif'>，所以就一直轉圈圈。</span></p>
 
+<p class=MsoNormal><span lang=EN-US><img border=0 width=599 height=343 id="圖片 1"
+src="circling.files/image008.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>同理，節點的可用率都顯示「</span><span
+lang=EN-US>N/A</span><span style='font-family:"新細明體",serif'>」也是這個原因</span> <span
+lang=EN-US>(</span><span style='font-family:"新細明體",serif'>可以自行在瀏覽器輸入</span> <span
+lang=EN-US>https://sync.minepi.com/node-selection-stats?uuid=xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxxxxxxx
+</span><span style='font-family:"新細明體",serif'>來查詢可用率</span><span lang=EN-US>)</span><span
+style='font-family:"新細明體",serif'>。</span></p>
+
 <div style='border:none;border-bottom:solid windowtext 1.0pt;padding:0cm 0cm 1.0pt 0cm'>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span style='font-family:
+"新細明體",serif'>另外，有少數人曾經在</span><span lang=EN-US>2022/3/14</span><span
+style='font-family:"新細明體",serif'>之前安裝節點</span><span lang=EN-US>(</span><span
+style='font-family:"新細明體",serif'>且沒有獲得</span><span lang=EN-US>pi-consensus</span><span
+style='font-family:"新細明體",serif'>容器，只有</span><span lang=EN-US>stellar-dummy</span><span
+style='font-family:"新細明體",serif'>容器</span><span lang=EN-US>)</span><span
+style='font-family:"新細明體",serif'>，但後來因為某些原因在</span><span lang=EN-US>2022/3/14~2022/10/1</span><span
+style='font-family:"新細明體",serif'>這段期間關機了，直到</span><span lang=EN-US>2022/10/1</span><span
+style='font-family:"新細明體",serif'>以後才開機的人，他的</span> <span lang=EN-US>&quot;containerFlavor&quot;
+</span><span style='font-family:"新細明體",serif'>的值是</span><span lang=EN-US>
+&quot;dummy&quot;</span><span style='font-family:"新細明體",serif'>，也是需要改成</span><span
+lang=EN-US>&quot;stellar&quot;</span><span style='font-family:"新細明體",serif'>。</span></p>
 
 <p class=MsoNormal style='border:none;padding:0cm'><span lang=EN-US>&nbsp;</span></p>
 
