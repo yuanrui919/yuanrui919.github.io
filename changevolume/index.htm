@@ -1,0 +1,218 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<title>真‧把節點檔案搬到D磁碟吧</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:新細明體;
+	panose-1:2 2 5 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"\@新細明體";
+	panose-1:2 1 6 1 0 1 1 1 1 1;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	font-size:12.0pt;
+	font-family:"Calibri",sans-serif;}
+a:link, span.MsoHyperlink
+	{color:#0563C1;
+	text-decoration:underline;}
+.MsoChpDefault
+	{font-family:"Calibri",sans-serif;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:595.3pt 841.9pt;
+	margin:2.0cm 2.0cm 2.0cm 2.0cm;
+	layout-grid:18.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style>
+
+</head>
+
+<body lang=ZH-TW link="#0563C1" vlink="#954F72" style='word-wrap:break-word;
+text-justify-trim:punctuation'>
+
+<div class=WordSection1 style='layout-grid:18.0pt'>
+
+<p class=MsoNormal><span lang=EN-US><a
+href="https://yuanrui919.github.io/mvappdata/"><span lang=PL>https://yuanrui919.github.io/mvappdata/</span></a></span><span
+lang=PL> </span><span style='font-family:"新細明體",serif'>這篇說明了如何透過移動</span><span
+lang=PL> %appdata% </span><span style='font-family:"新細明體",serif'>目錄來變更節點檔案位置，但如果是一台已經裝了許多亂七八糟的軟體、不確定移動</span><span
+lang=PL> %appdata% </span><span style='font-family:"新細明體",serif'>目錄是否會有影響的舊電腦呢？</span></p>
+
+<p class=MsoNormal><span lang=PL>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>有些人可能會想移動</span><span
+lang=PL>Docker</span><span style='font-family:"新細明體",serif'>的虛擬硬碟（</span><span
+lang=PL>.vhdx</span><span style='font-family:"新細明體",serif'>檔），是可以，但幫助不大，因為它大概只有</span><span
+lang=PL>3GB</span><span style='font-family:"新細明體",serif'>左右而已。真正佔空間的節點資料是以「</span><span
+lang=PL>Bind mounts</span><span style='font-family:"新細明體",serif'>」的方式儲存在</span>
+<span lang=PL>%appdata%\Pi Network\docker_volumes</span><span style='font-family:
+"新細明體",serif'>，它會隨著區塊的增長而使用更多磁碟空間。</span></p>
+
+<p class=MsoNormal><span lang=PL><img border=0 width=501 height=358 id="圖片 7"
+src="changevolume.files/image001.png"></span></p>
+
+<p class=MsoNormal><span lang=PL>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>其實還是有辦法的，只要手動建立</span><span
+lang=PL>pi-consensus Container</span><span style='font-family:"新細明體",serif'>就能改位置了。</span></p>
+
+<p class=MsoNormal><span lang=PL>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>首先請備份</span><span
+lang=PL> %appdata%\Pi Network\stellar.env</span><span style='font-family:"新細明體",serif'>，因為等一下它會被刪除。</span></p>
+
+<p class=MsoNormal><span lang=PL><img border=0 width=690 height=425 id="圖片 4"
+src="changevolume.files/image002.png"></span></p>
+
+<p class=MsoNormal><span lang=PL>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=PL>stellar.env</span><span style='font-family:
+"新細明體",serif'>是一個純文字檔，是由節點程式在建立</span><span lang=PL>pi-consensus Container</span><span
+style='font-family:"新細明體",serif'>時產生的</span><span lang=PL>PostgreSQL</span><span
+style='font-family:"新細明體",serif'>資料庫的隨機密碼。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=428 height=144 id="圖片 6"
+src="changevolume.files/image003.png"></span></p>
+
+<p class=MsoNormal><span lang=PL>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>按「</span><span
+lang=PL>Remove all blockchain data</span><span style='font-family:"新細明體",serif'>」，它會刪除</span><span
+lang=PL>pi-consensus Container</span><span style='font-family:"新細明體",serif'>，也會刪除</span><span
+lang=PL>stellar.env</span><span style='font-family:"新細明體",serif'>（所以剛才才說要備份）。</span></p>
+
+<p class=MsoNormal><span lang=PL><img border=0 width=596 height=726 id="圖片 1"
+src="changevolume.files/image004.png"></span></p>
+
+<p class=MsoNormal><span lang=PL>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>檢查</span><span
+lang=PL>Docker</span><span style='font-family:"新細明體",serif'>的</span><span
+lang=PL>pi-consensus Container</span><span style='font-family:"新細明體",serif'>已經刪除。</span></p>
+
+<p class=MsoNormal><span lang=PL><img border=0 width=1035 height=598 id="圖片 2"
+src="changevolume.files/image005.png"></span></p>
+
+<p class=MsoNormal><span lang=PL>&nbsp;</span></p>
+
+<div style='border:none;border-bottom:solid windowtext 1.0pt;padding:0cm 0cm 1.0pt 0cm'>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span style='font-family:
+"新細明體",serif'>結束節點程式（按了</span><span lang=EN-US>Remove all blockchain data</span><span
+style='font-family:"新細明體",serif'>，小紅點也會關閉</span><span style='font-family:"新細明體",serif'>）。</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=PL><img border=0
+width=596 height=726 id="圖片 3" src="changevolume.files/image006.png"></span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=PL>&nbsp;</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span style='font-family:
+"新細明體",serif'>在你喜歡的地方建立新資料夾，例如</span><span lang=PL style='background:yellow'>D:\Pi
+Network\docker_volumes</span><span style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span style='font-family:
+"新細明體",serif'>將剛才備份的</span><span lang=PL>stellar.env</span><span
+style='font-family:"新細明體",serif'>也放到你高興的地方，例如</span><span lang=PL
+style='background:aqua'>D:\Pi Network\stellar.env</span><span style='font-family:
+"新細明體",serif'>。如果忘了備份，就自己用記事本建立一個同名的檔案，內容為</span><span lang=PL>POSTGRES_PASSWORD=xxxxxxxxxxxxxxxxxxxx</span><span
+style='font-family:"新細明體",serif'>（密碼隨便打）。</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=PL><img border=0
+width=555 height=358 id="圖片 10" src="changevolume.files/image007.png"></span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=PL>&nbsp;</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span style='font-family:
+"新細明體",serif'>在命令提示字元</span><span style='font-family:"新細明體",serif'>（</span><span
+lang=PL>CMD</span><span style='font-family:"新細明體",serif'>）執行：</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=EN-US>docker run
+-t --env-file=&quot;<span style='background:aqua'>D:\Pi Network\stellar.env</span>&quot;
+-v &quot;<span style='background:yellow'>D:\Pi Network\docker_volumes</span>\stellar:/opt/stellar&quot;
+-v &quot;<span style='background:yellow'>D:\Pi Network\docker_volumes</span>\supervisor_logs:/var/log/supervisor&quot;
+-v &quot;<span style='background:yellow'>D:\Pi Network\docker_volumes</span>\history:/history&quot;
+-p 31401:8000 -p 31402:31402 -p 31403:1570 --name pi-consensus -d
+pinetwork/pi-node-docker:latest --testnet</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span style='font-family:
+"新細明體",serif'>（彩色的字請改成你自己的路徑，其餘一字不漏的照抄）</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=EN-US><img
+border=0 width=751 height=214 id="圖片 11" src="changevolume.files/image008.png"></span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span style='font-family:
+"新細明體",serif'>檢查</span><span lang=PL>pi-consensus Container</span><span
+style='font-family:"新細明體",serif'>成功執行。</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=EN-US><img
+border=0 width=1214 height=600 id="圖片 13" src="changevolume.files/image009.png"></span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span style='font-family:
+"新細明體",serif'>檢查密碼跟</span><span lang=EN-US>Mounts</span><span style='font-family:
+"新細明體",serif'>路徑也都正確。</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=EN-US><img
+border=0 width=1214 height=600 id="圖片 14" src="changevolume.files/image010.png"></span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span style='font-family:
+"新細明體",serif'>檢查檔案都有產生在新的路徑底下。</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=EN-US><img
+border=0 width=749 height=483 id="圖片 15" src="changevolume.files/image011.png"></span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span style='font-family:
+"新細明體",serif'>啟動節點程式，結果發現</span><span lang=PL>pi-consensus Container</span><span
+style='font-family:"新細明體",serif'>又停止了，這是因為上次結束節點程式時，小紅點是關閉的，所以再重新開起來時也是關閉的</span><span
+style='font-family:"新細明體",serif'>。重新開小紅點就好了。</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=EN-US><img
+border=0 width=596 height=726 id="圖片 17" src="changevolume.files/image012.png"></span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span style='font-family:
+"新細明體",serif'>或者熟悉</span><span lang=EN-US>user-preferences.json</span><span
+style='font-family:"新細明體",serif'>的人，也可以先把</span><span lang=EN-US>&quot;switchStatus&quot;</span><span
+style='font-family:"新細明體",serif'>的值改成</span><span lang=EN-US>true</span><span
+style='font-family:"新細明體",serif'>，再執行節點程式，小紅點就會自動亮了（</span><span lang=EN-US>user-preferences.json</span><span
+style='font-family:"新細明體",serif'>請參考</span> <span lang=EN-US><a
+href="https://yuanrui919.github.io/circling/">https://yuanrui919.github.io/circling/</a>
+</span><span style='font-family:"新細明體",serif'>）。</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=EN-US>&nbsp;</span></p>
+
+</div>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US><a
+href="https://yuanrui919.github.io/"><span lang=EN-US style='font-family:"新細明體",serif'><span
+lang=EN-US>回首頁</span></span></a></span></p>
+
+<p class=MsoNormal><span lang=PL>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>
