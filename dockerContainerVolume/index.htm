@@ -1,0 +1,125 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<title>搬移節點檔案三部曲(三)</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:新細明體;
+	panose-1:2 2 5 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"\@新細明體";
+	panose-1:2 1 6 1 0 1 1 1 1 1;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	font-size:12.0pt;
+	font-family:"Calibri",sans-serif;}
+a:link, span.MsoHyperlink
+	{color:#0563C1;
+	text-decoration:underline;}
+.MsoChpDefault
+	{font-family:"Calibri",sans-serif;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:595.3pt 841.9pt;
+	margin:2.0cm 2.0cm 2.0cm 2.0cm;
+	layout-grid:18.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style>
+
+</head>
+
+<body lang=ZH-TW link="#0563C1" vlink="#954F72" style='word-wrap:break-word;
+text-justify-trim:punctuation'>
+
+<div class=WordSection1 style='layout-grid:18.0pt'>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif;background:yellow'>此方法需要修改</span><span
+lang=EN-US style='background:yellow'>user-preferences.json</span><span
+style='font-family:"新細明體",serif;background:yellow'>，關於</span><span lang=EN-US
+style='background:yellow'>user-preferences.json</span><span style='font-family:
+"新細明體",serif;background:yellow'>請參考</span><span style='background:yellow'> <span
+lang=EN-US><a href="https://yuanrui919.github.io/circling/">https://yuanrui919.github.io/circling/</a>
+</span></span><span style='font-family:"新細明體",serif;background:yellow'>，這裡不再重複敘述。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>按「</span><span
+lang=EN-US>Remove all blockchain data</span><span style='font-family:"新細明體",serif'>」</span><span
+style='font-family:"新細明體",serif'>，</span><span style='font-family:"新細明體",serif'>它會刪除</span><span
+lang=EN-US>pi-consensus Container</span><span style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoNormal><span lang=PL><img border=0 width=596 height=726 id="圖片 1"
+src="dockerContainerVolume.files/image001.png"></span></p>
+
+<p class=MsoNormal><span lang=PL>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>檢查</span><span
+lang=PL>Docker</span><span style='font-family:"新細明體",serif'>的</span><span
+lang=PL>pi-consensus Container</span><span style='font-family:"新細明體",serif'>已經刪除。</span></p>
+
+<p class=MsoNormal><span lang=PL><img border=0 width=1035 height=598 id="圖片 2"
+src="dockerContainerVolume.files/image002.png"></span></p>
+
+<p class=MsoNormal><span lang=PL>&nbsp;</span></p>
+
+<div style='border:none;border-bottom:solid windowtext 1.0pt;padding:0cm 0cm 1.0pt 0cm'>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span style='font-family:
+"新細明體",serif'>結束節點程式（按了</span><span lang=EN-US>Remove all blockchain data</span><span
+style='font-family:"新細明體",serif'>，小紅點也會關閉</span><span style='font-family:"新細明體",serif'>）。</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=PL><img border=0
+width=596 height=726 id="圖片 3" src="dockerContainerVolume.files/image003.png"></span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=PL>&nbsp;</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span style='font-family:
+"新細明體",serif'>用記事本開啟</span><span lang=PL> %appdata%\Pi
+Network\user-preferences.json </span><span style='font-family:"新細明體",serif'>，加上</span>
+<span lang=PL>&quot;dockerContainerVolume&quot;:&quot;D:\\Pi
+Network\\docker_volumes&quot; </span><span style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=PL>D:\\Pi
+Network\\docker_volumes</span><span style='font-family:"新細明體",serif'>是你指定的新路徑，記得是兩個斜線「</span><span
+lang=PL>\\</span><span style='font-family:"新細明體",serif'>」。</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=PL><img border=0
+width=985 height=252 id="圖片 5" src="dockerContainerVolume.files/image004.png"></span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=PL>&nbsp;</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span style='font-family:
+"新細明體",serif'>啟動節點程式，重新開小紅點。</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=EN-US><img
+border=0 width=596 height=726 id="圖片 17"
+src="dockerContainerVolume.files/image005.png"></span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=EN-US>&nbsp;</span></p>
+
+</div>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US><a
+href="https://yuanrui919.github.io/"><span lang=EN-US style='font-family:"新細明體",serif'><span
+lang=EN-US>回首頁</span></span></a></span></p>
+
+<p class=MsoNormal><span lang=PL>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>
