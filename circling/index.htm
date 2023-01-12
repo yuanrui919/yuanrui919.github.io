@@ -65,10 +65,79 @@ text-justify-trim:punctuation'>
 <div class=WordSection1 style='layout-grid:18.0pt'>
 
 <p class=MsoNormal><span style='font-family:"新細明體",serif'>如果你的節點是</span><span
-lang=EN-US>2022/10/1</span><span style='font-family:"新細明體",serif'>以後才安裝的，會卡在這裡轉圈圈，解決方法如下</span></p>
+lang=EN-US>2022/10/1</span><span style='font-family:"新細明體",serif'>以後才安裝的，會卡在這裡轉圈圈。</span></p>
 
 <p class=MsoNormal><span lang=EN-US><img width=596 height=726 id="圖片 14"
 src="circling.files/image001.png" alt="一張含有 文字 的圖片&#10;&#10;自動產生的描述"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>原因是節點程式會根據</span><span
+lang=EN-US>containerFlavor</span><span style='font-family:"新細明體",serif'>這項參數的設定值來決定啟動哪個</span><span
+lang=EN-US>Container</span><span style='font-family:"新細明體",serif'>。如果是</span><span
+lang=EN-US>stellar</span><span style='font-family:"新細明體",serif'>，則執行</span><span
+lang=EN-US>pi-consensus Container</span><span style='font-family:"新細明體",serif'>；如果是</span><span
+lang=EN-US>dummy</span><span style='font-family:"新細明體",serif'>，則執行</span><span
+lang=EN-US>stellar-dummy Container</span><span style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>在</span><span
+lang=EN-US>2022/3/14</span><span style='font-family:"新細明體",serif'>之前，只有少數人被允許執行</span><span
+lang=EN-US>pi-consensus Container</span><span style='font-family:"新細明體",serif'>，其他人都只能跑</span><span
+lang=EN-US>stellar-dummy Container</span><span style='font-family:"新細明體",serif'>。那時大部分人的</span><span
+lang=EN-US>containerFlavor</span><span style='font-family:"新細明體",serif'>的值是</span><span
+lang=EN-US>dummy</span><span style='font-family:"新細明體",serif'>，而少數天選之人的值是</span><span
+lang=EN-US>stellar</span><span style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>從</span><span
+lang=EN-US>2022/3/14</span><span style='font-family:"新細明體",serif'>以後，全部架設節點的人都能獲得</span><span
+lang=EN-US>pi-consensus Container</span><span style='font-family:"新細明體",serif'>，所以大家的</span><span
+lang=EN-US>containerFlavor</span><span style='font-family:"新細明體",serif'>的值都改成了</span><span
+lang=EN-US>stellar</span><span style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>節點程式在啟動時會連線到</span><span
+lang=EN-US>sync.minepi.com</span><span style='font-family:"新細明體",serif'>，以</span><span
+lang=EN-US>uuid</span><span style='font-family:"新細明體",serif'>查詢</span><span
+lang=EN-US>containerFlavor</span><span style='font-family:"新細明體",serif'>的值，並且更新本機的</span><span
+lang=EN-US>user-preferences.json</span><span style='font-family:"新細明體",serif'>檔案。如果</span><span
+lang=EN-US>sync.minepi.com</span><span style='font-family:"新細明體",serif'>連不上，則查詢本機的</span><span
+lang=EN-US>user-preferences.json</span><span style='font-family:"新細明體",serif'>檔案的內容。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>但從</span><span
+lang=EN-US>2022/10/1</span><span style='font-family:"新細明體",serif'>起，因為節點程式的憑證過期，無法連上</span><span
+lang=EN-US>sync.minepi.com</span><span style='font-family:"新細明體",serif'>取得資料，而新節點的</span><span
+lang=EN-US>user-preferences.json</span><span style='font-family:"新細明體",serif'>預設情況下又缺少</span><span
+lang=EN-US>containerFlavor</span><span style='font-family:"新細明體",serif'>這項參數，造成節點程式不知道要啟動哪個</span><span
+lang=EN-US>Container</span><span style='font-family:"新細明體",serif'>，所以就一直轉圈圈。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img width=599 height=343 id="圖片 9"
+src="circling.files/image002.png" alt="一張含有 文字 的圖片&#10;&#10;自動產生的描述"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>其實不只</span><span
+lang=EN-US>containerFlavor</span><span style='font-family:"新細明體",serif'>，還有</span><span
+lang=EN-US>testnetResetCount</span><span style='font-family:"新細明體",serif'>、</span><span
+lang=EN-US>stellarConfigVersion</span><span style='font-family:"新細明體",serif'>、</span><span
+lang=EN-US>testnetResetLatestNodeUIVersion</span><span style='font-family:"新細明體",serif'>等參數也都是透過</span><span
+lang=EN-US>sync.minepi.com</span><span style='font-family:"新細明體",serif'>更新。包括節點的可用率也是，所以現在都顯示「</span><span
+lang=EN-US>N/A</span><span style='font-family:"新細明體",serif'>」</span> <span
+lang=EN-US>(</span><span style='font-family:"新細明體",serif'>可以自行在瀏覽器輸入</span> <span
+lang=EN-US>https://sync.minepi.com/node-selection-stats?uuid=xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxxxxxxx
+</span><span style='font-family:"新細明體",serif'>來查詢可用率</span><span lang=EN-US>)</span><span
+style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>解決方法就是手動修改</span><span
+lang=EN-US>user-preferences.json</span><span style='font-family:"新細明體",serif'>的內容。</span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
@@ -77,7 +146,7 @@ lang=EN-US>File --&gt; Exit</span><span style='font-family:"新細明體",serif'
 lang=EN-US>X</span><span style='font-family:"新細明體",serif'>喔</span></p>
 
 <p class=MsoNormal><span lang=EN-US><img width=596 height=726 id="圖片 2"
-src="circling.files/image002.png"></span></p>
+src="circling.files/image003.png"></span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
@@ -95,7 +164,7 @@ lang=EN-US>(cmd)</span><span style='font-family:"新細明體",serif'>，執行�
 <p class=MsoNormal><span lang=EN-US>docker pull pinetwork/pi-node-docker</span></p>
 
 <p class=MsoNormal><span lang=EN-US><img width=958 height=512 id="圖片 3"
-src="circling.files/image003.png"></span></p>
+src="circling.files/image004.png"></span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
@@ -104,7 +173,7 @@ lang=EN-US>Docker</span><span style='font-family:"新細明體",serif'>確定</s
 lang=EN-US>image</span><span style='font-family:"新細明體",serif'>下載完成</span></p>
 
 <p class=MsoNormal><span lang=EN-US><img width=1188 height=631 id="圖片 6"
-src="circling.files/image004.png"></span></p>
+src="circling.files/image005.png"></span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
@@ -154,7 +223,7 @@ style='font-family:"新細明體",serif'>前加上</span></p>
 <p class=MsoNormal><span style='font-family:"新細明體",serif'>結果就像這樣：</span></p>
 
 <p class=MsoNormal><span lang=EN-US><img border=0 width=1210 height=285
-id="圖片 4" src="circling.files/image005.png"></span></p>
+id="圖片 4" src="circling.files/image006.png"></span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
@@ -173,105 +242,35 @@ lang=EN-US>Containers</span><span style='font-family:"新細明體",serif'>會�
 lang=EN-US>pi-consensus</span><span style='font-family:"新細明體",serif'>，注意看它的</span><span
 lang=EN-US>Log</span><span style='font-family:"新細明體",serif'>，等它出現「</span><span
 lang=EN-US style='color:red'>setllar-core entered RUNNING state</span><span
-style='font-family:"新細明體",serif'>」這一行</span></p>
+style='font-family:"新細明體",serif'>」這一行就成功了。</span></p>
 
 <p class=MsoNormal><span lang=EN-US><img border=0 width=1202 height=628
-id="圖片 7" src="circling.files/image006.png"></span></p>
+id="圖片 7" src="circling.files/image007.png"></span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
-<p class=MsoNormal><span style='font-family:"新細明體",serif'>關掉節點小紅點，結束節點程式。</span></p>
-
-<p class=MsoNormal><span lang=EN-US><img border=0 width=596 height=726 id="圖片 5"
-src="circling.files/image007.png"></span></p>
-
-<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
-
-<p class=MsoNormal><span style='font-family:"新細明體",serif'>檢查</span><span
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>再檢查</span><span
 lang=EN-US>%appdata%\Pi Network\user-preferences.json</span><span
-style='font-family:"新細明體",serif'>，最後應該多出一段</span></p>
+style='font-family:"新細明體",serif'>，最後應該多出一段</span><span lang=EN-US> (</span><span
+style='font-family:"新細明體",serif'>如果沒有，過幾分鐘再看看</span><span lang=EN-US>)</span></p>
 
 <p class=MsoNormal><span lang=EN-US style='font-family:Consolas'>,&quot;stellarSecretSeed&quot;:&quot;XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX&quot;</span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
-<p class=MsoNormal><span style='font-family:"新細明體",serif'>再重新啟動節點程式，一切就正常了。</span></p>
-
-<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
-
-<p class=MsoNormal><span style='font-family:"新細明體",serif'>千萬別聽信奇怪的方法，去手動修改</span><span
-lang=EN-US>user-preferences.json</span><span style='font-family:"新細明體",serif'>內的</span><span
-lang=EN-US style='font-family:Consolas'>stellarSecretSeed</span><span
-style='font-family:"新細明體",serif'>。</span></p>
-
-<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
-
-<p class=MsoNormal><span style='font-family:"新細明體",serif'>最後說明一下原因，其實只要加</span><span
-lang=EN-US> &quot;containerFlavor&quot;:&quot;stellar&quot; </span><span
-style='font-family:"新細明體",serif'>就可以，但</span><span lang=EN-US>testnetResetCount</span><span
-style='font-family:"新細明體",serif'>、</span><span lang=EN-US>stellarConfigVersion</span><span
-style='font-family:"新細明體",serif'>、</span><span lang=EN-US>testnetResetLatestNodeUIVersion</span><span
-style='font-family:"新細明體",serif'>這些值不會自動產生，所以還是手動加。</span></p>
-
-<p class=MsoNormal><span lang=EN-US style='background:lightgrey'>(</span><span
-style='font-family:"新細明體",serif;background:lightgrey'>先鋒善逸補充：另外三個是運行很久的人才會有的設定，自行添加也沒差，那個紀錄正確的是在官方那</span><span
-lang=EN-US style='background:lightgrey'>)</span></p>
-
-<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
-
-<p class=MsoNormal><span style='font-family:"新細明體",serif'>在</span><span
-lang=EN-US>2022/3/14</span><span style='font-family:"新細明體",serif'>之前，只有少數人被允許執行</span><span
-lang=EN-US>pi-consensus</span><span style='font-family:"新細明體",serif'>容器，其他人都只能跑</span><span
-lang=EN-US>Stellar-Dummy</span><span style='font-family:"新細明體",serif'>。那時大部分人的</span><span
-lang=EN-US> &quot;containerFlavor&quot; </span><span style='font-family:"新細明體",serif'>的值是</span><span
-lang=EN-US> &quot;dummy&quot;</span><span style='font-family:"新細明體",serif'>，而天選之人的值是</span><span
-lang=EN-US> &quot;stellar&quot;</span><span style='font-family:"新細明體",serif'>。</span></p>
-
-<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
-
-<p class=MsoNormal><span style='font-family:"新細明體",serif'>從</span><span
-lang=EN-US>2022/3/14</span><span style='font-family:"新細明體",serif'>以後，全部架設節點的人都能獲得</span><span
-lang=EN-US>pi-consensus</span><span style='font-family:"新細明體",serif'>容器，所以大家的</span><span
-lang=EN-US> &quot;containerFlavor&quot; </span><span style='font-family:"新細明體",serif'>的值都改成了</span><span
-lang=EN-US> &quot;stellar&quot;</span><span style='font-family:"新細明體",serif'>。</span></p>
-
-<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
-
-<p class=MsoNormal><span style='font-family:"新細明體",serif'>但從</span><span
-lang=EN-US>2022/10/1</span><span style='font-family:"新細明體",serif'>起，因為節點程式的憑證過期，無法連上</span><span
-lang=EN-US>sync.minepi.com</span><span style='font-family:"新細明體",serif'>取得資料，而新節點的</span><span
-lang=EN-US>user-preferences.json</span><span style='font-family:"新細明體",serif'>又缺少</span><span
-lang=EN-US>containerFlavor</span><span style='font-family:"新細明體",serif'>這對鍵值，造成節點程式不知道要啟動哪個</span><span
-lang=EN-US>Container</span><span style='font-family:"新細明體",serif'>，所以就一直轉圈圈。</span></p>
-
-<p class=MsoNormal><span lang=EN-US><img border=0 width=599 height=343 id="圖片 1"
-src="circling.files/image008.png"></span></p>
-
-<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
-
-<p class=MsoNormal><span style='font-family:"新細明體",serif'>同理，節點的可用率都顯示「</span><span
-lang=EN-US>N/A</span><span style='font-family:"新細明體",serif'>」也是這個原因</span> <span
-lang=EN-US>(</span><span style='font-family:"新細明體",serif'>可以自行在瀏覽器輸入</span> <span
-lang=EN-US>https://sync.minepi.com/node-selection-stats?uuid=xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxxxxxxx
-</span><span style='font-family:"新細明體",serif'>來查詢可用率</span><span lang=EN-US>)</span><span
-style='font-family:"新細明體",serif'>。</span></p>
-
 <div style='border:none;border-bottom:solid windowtext 1.0pt;padding:0cm 0cm 1.0pt 0cm'>
-
-<p class=MsoNormal style='border:none;padding:0cm'><span lang=EN-US>&nbsp;</span></p>
 
 <p class=MsoNormal style='border:none;padding:0cm'><span style='font-family:
 "新細明體",serif'>另外，有少數人曾經在</span><span lang=EN-US>2022/3/14</span><span
 style='font-family:"新細明體",serif'>之前安裝節點</span><span lang=EN-US>(</span><span
-style='font-family:"新細明體",serif'>且沒有獲得</span><span lang=EN-US>pi-consensus</span><span
-style='font-family:"新細明體",serif'>容器，只有</span><span lang=EN-US>stellar-dummy</span><span
-style='font-family:"新細明體",serif'>容器</span><span lang=EN-US>)</span><span
+style='font-family:"新細明體",serif'>且沒有獲得</span><span lang=EN-US>pi-consensus Container</span><span
+style='font-family:"新細明體",serif'>，只有</span><span lang=EN-US>stellar-dummy Container)</span><span
 style='font-family:"新細明體",serif'>，但後來因為某些原因在</span><span lang=EN-US>2022/3/14~2022/10/1</span><span
 style='font-family:"新細明體",serif'>這段期間關機了，直到</span><span lang=EN-US>2022/10/1</span><span
-style='font-family:"新細明體",serif'>以後才開機的人，他的</span> <span lang=EN-US>&quot;containerFlavor&quot;
-</span><span style='font-family:"新細明體",serif'>的值是</span><span lang=EN-US>
-&quot;dummy&quot;</span><span style='font-family:"新細明體",serif'>，也是需要改成</span><span
-lang=EN-US>&quot;stellar&quot;</span><span style='font-family:"新細明體",serif'>。</span></p>
+style='font-family:"新細明體",serif'>以後才開機的人，他的</span><span lang=EN-US>containerFlavor</span><span
+style='font-family:"新細明體",serif'>的值是</span> <span lang=EN-US>&quot;dummy&quot;</span><span
+style='font-family:"新細明體",serif'>，也是需要改成</span> <span lang=EN-US>&quot;stellar&quot;</span><span
+style='font-family:"新細明體",serif'>。</span></p>
 
 <p class=MsoNormal style='border:none;padding:0cm'><span lang=EN-US>&nbsp;</span></p>
 
