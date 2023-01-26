@@ -1,0 +1,261 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<title>網路拓撲</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:新細明體;
+	panose-1:2 2 5 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"\@新細明體";
+	panose-1:2 1 6 1 0 1 1 1 1 1;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	font-size:12.0pt;
+	font-family:"Calibri",sans-serif;}
+a:link, span.MsoHyperlink
+	{color:#0563C1;
+	text-decoration:underline;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:24.0pt;
+	font-size:12.0pt;
+	font-family:"Calibri",sans-serif;}
+.MsoChpDefault
+	{font-family:"Calibri",sans-serif;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:595.3pt 841.9pt;
+	margin:2.0cm 2.0cm 2.0cm 2.0cm;
+	layout-grid:18.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body lang=ZH-TW link="#0563C1" vlink="#954F72" style='word-wrap:break-word;
+text-justify-trim:punctuation'>
+
+<div class=WordSection1 style='layout-grid:18.0pt'>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>這篇談談怎麼開</span><span
+lang=EN-US>Port</span><span style='font-family:"新細明體",serif'>，不了解什麼是開</span><span
+lang=EN-US>Port</span><span style='font-family:"新細明體",serif'>的人，建議搜尋「</span><span
+lang=EN-US>port forwarding</span><span style='font-family:"新細明體",serif'>」。下面這個影片講得很簡單清楚，也有中文字幕：</span></p>
+
+<p class=MsoNormal><span lang=EN-US><a href="https://youtu.be/2G1ueMDgwxw">https://youtu.be/2G1ueMDgwxw</a></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>要開</span><span
+lang=EN-US>Port</span><span style='font-family:"新細明體",serif'>之前，請先了解你的網路拓撲是長什麼樣子，才知道要去哪裡調整設定。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='background:yellow'>p.s.</span><span
+style='font-family:"新細明體",serif;background:yellow'>這裡討論的是光世代網路</span><span
+lang=EN-US style='background:yellow'>ISP</span><span style='font-family:"新細明體",serif;
+background:yellow'>業者的「光纖到</span><span lang=EN-US style='background:yellow'>x</span><span
+style='font-family:"新細明體",serif;background:yellow'>」（</span><span lang=EN-US
+style='background:yellow'>FTTx, Fiber To The x</span><span style='font-family:
+"新細明體",serif;background:yellow'>），至於「</span><span lang=EN-US style='background:
+yellow'>CABLE</span><span style='font-family:"新細明體",serif;background:yellow'>第四台上網」或者「社區網路」，請洽該業者開</span><span
+lang=EN-US style='background:yellow'>port</span><span style='font-family:"新細明體",serif;
+background:yellow'>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>p.s.</span><span style='font-family:"新細明體",serif'>因為各家網路設備情況不同，本文不可能一一詳解操作步驟，只是說明該設定哪個設備，至於如何操作，請自行以「設備的廠牌</span><span
+lang=EN-US>/</span><span style='font-family:"新細明體",serif'>型號」上網搜索。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><span
+lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>圖示範例</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=578 height=375 id="圖片 2"
+src="topology.files/image001.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><a
+name=t1><span lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>拓撲一</span></a></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=290 height=85 id="圖片 3"
+src="topology.files/image002.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>有三種連線情況：一是電腦透過</span><span
+lang=EN-US>PPPoE</span><span style='font-family:"新細明體",serif'>撥號，二是光世代固定制（在電腦設定</span><span
+lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>），這兩者只要設定</span><span
+lang=EN-US>Windows</span><span style='font-family:"新細明體",serif'>本機防火牆即可。三是小烏龜硬體撥號，要在小烏龜設定</span><span
+lang=EN-US>port forwarding</span><span style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><a
+name=t2><span lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>拓撲二</span></a></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=472 height=108 id="圖片 4"
+src="topology.files/image003.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>透過路由器（或稱</span><span
+lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>分享器）撥號。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>路由器提供路由與轉送兩種重要機制，可以決定封包由來源端到目的端所經過的路徑（</span><span
+lang=EN-US>host</span><span style='font-family:"新細明體",serif'>到</span><span
+lang=EN-US>host</span><span style='font-family:"新細明體",serif'>之間的傳輸路徑），這個過程稱為路由；將路由器輸入端的封包移送至適當的路由器輸出端（在路由器內部進行），這稱為轉送。路由工作在</span><span
+lang=EN-US>OSI</span><span style='font-family:"新細明體",serif'>模型的第三層——即網路層，例如網際協定（</span><span
+lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>）。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>路由器可連接兩個以上個別網路的裝置，家用路由器通常連接兩個網路：區域網路（</span><span
+lang=EN-US>LAN</span><span style='font-family:"新細明體",serif'>）和廣域網路（</span><span
+lang=EN-US>WAN</span><span style='font-family:"新細明體",serif'>）。高檔一點的路由器甚至可以連接兩個</span><span
+lang=EN-US>WAN</span><span style='font-family:"新細明體",serif'>，</span><span
+lang=EN-US>LAN</span><span style='font-family:"新細明體",serif'>也可以切</span><span
+lang=EN-US>VLAN</span><span style='font-family:"新細明體",serif'>（</span><span
+lang=EN-US>Virtual LAN</span><span style='font-family:"新細明體",serif'>，虛擬區域網路）。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>Port forwarding</span><span
+style='font-family:"新細明體",serif'>是在路由器設定，指定外部</span><span lang=EN-US>Port
+31400-31409</span><span style='font-family:"新細明體",serif'>的連線轉到內部某一個</span><span
+lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><a
+name=t3><span lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>拓撲三</span></a></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=669 height=125 id="圖片 6"
+src="topology.files/image004.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>無線</span><span
+lang=EN-US>AP</span><span style='font-family:"新細明體",serif'>（</span><span
+lang=EN-US>Wireless Access Point</span><span style='font-family:"新細明體",serif'>）又稱無線存取點、無線基地台，是一種連接有線網路與無線網路的裝置，除了將有線網路轉為無線訊號之外，無線</span><span
+lang=EN-US>AP</span><span style='font-family:"新細明體",serif'>之間還能無線連接，拓展網路覆蓋範圍。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>要強調的是，這裡的無線</span><span
+lang=EN-US>AP</span><span style='font-family:"新細明體",serif'>是單純將有線網路轉為無線訊號，並沒有</span><span
+lang=EN-US>DHCP</span><span style='font-family:"新細明體",serif'>或</span><span
+lang=EN-US>PPPoE</span><span style='font-family:"新細明體",serif'>的功能，撥號與</span><span
+lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>分享都是由路由器來完成，所以</span><span
+lang=EN-US>port forwarding</span><span style='font-family:"新細明體",serif'>仍是在路由器設定。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><a
+name=t4><span lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>拓撲四</span></a></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=476 height=129 id="圖片 8"
+src="topology.files/image005.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>無線路由器是由無線</span><span
+lang=EN-US>AP</span><span style='font-family:"新細明體",serif'>與路由器組成的裝置，具有頻寬撥號能力，可以直接跟小烏龜連接。所以是在無線路由器設定</span><span
+lang=EN-US>port forwarding</span><span style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><a
+name=t5><span lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>拓撲五</span></a></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=669 height=126
+id="圖片 10" src="topology.files/image006.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>要看你如何設定無線路由器，如果將</span><span
+lang=EN-US>DHCP</span><span style='font-family:"新細明體",serif'>與撥號功能關閉，它就跟一台無線</span><span
+lang=EN-US>AP</span><span style='font-family:"新細明體",serif'>一樣。但如果你把它當路由器用，就必須做兩次的</span><span
+lang=EN-US>port forwarding</span><span style='font-family:"新細明體",serif'>，路由器與無線路由器都要設定。外部連線由路由器轉到無線路由器，無線路由器再轉到節點。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:24.0pt;text-indent:-24.0pt'><a
+name=t6><span lang=EN-US style='font-family:Wingdings'>l<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span style='font-family:"新細明體",serif'>拓撲六</span></a></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=471 height=121 id="圖片 1"
+src="topology.files/image007.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>這個情況是透過小烏龜硬體撥號，無線</span><span
+lang=EN-US>AP</span><span style='font-family:"新細明體",serif'>單純將有線網路轉為無線訊號，所以是在小烏龜設定</span><span
+lang=EN-US>port forwarding</span><span style='font-family:"新細明體",serif'>。</span></p>
+
+<div style='border:none;border-bottom:solid windowtext 1.0pt;padding:0cm 0cm 1.0pt 0cm'>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span style='font-family:
+"新細明體",serif'>最後討論一點，區域網路的</span><span lang=EN-US>IP</span><span
+style='font-family:"新細明體",serif'>需要手動設定嗎？或者自動取得</span><span lang=EN-US>IP</span><span
+style='font-family:"新細明體",serif'>？無線的</span><span lang=EN-US>IP</span><span
+style='font-family:"新細明體",serif'>又該怎麼辦？其實都可以，因為在</span><span lang=EN-US>IP</span><span
+style='font-family:"新細明體",serif'>夠用的情況下，</span><span lang=EN-US>DHCP</span><span
+style='font-family:"新細明體",serif'>通常會對同一個</span><span lang=EN-US>MAC address</span><span
+style='font-family:"新細明體",serif'>發放同一個</span><span lang=EN-US>IP</span><span
+style='font-family:"新細明體",serif'>，變動的機率很小。如果不放心，手動設定</span><span lang=EN-US>IP</span><span
+style='font-family:"新細明體",serif'>（有線）或是綁定</span><span lang=EN-US>MAC address</span><span
+style='font-family:"新細明體",serif'>與</span><span lang=EN-US>IP</span><span
+style='font-family:"新細明體",serif'>（無線）也是可以。</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=EN-US>&nbsp;</span></p>
+
+</div>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US><a
+href="https://yuanrui919.github.io/"><span lang=EN-US style='font-family:"新細明體",serif'><span
+lang=EN-US>回首頁</span></span></a></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>
