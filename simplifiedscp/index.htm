@@ -1,0 +1,210 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<title>最最最簡化的SCP</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:新細明體;
+	panose-1:2 2 5 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"\@新細明體";
+	panose-1:2 1 6 1 0 1 1 1 1 1;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	font-size:12.0pt;
+	font-family:"Calibri",sans-serif;}
+a:link, span.MsoHyperlink
+	{color:#0563C1;
+	text-decoration:underline;}
+.MsoChpDefault
+	{font-family:"Calibri",sans-serif;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:595.3pt 841.9pt;
+	margin:72.0pt 90.0pt 72.0pt 90.0pt;
+	layout-grid:18.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style>
+
+</head>
+
+<body lang=ZH-TW link="#0563C1" vlink="#954F72" style='word-wrap:break-word;
+text-justify-trim:punctuation'>
+
+<div class=WordSection1 style='layout-grid:18.0pt'>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>最最最簡化的</span><span
+lang=EN-US>SCP</span><span style='font-family:"新細明體",serif'>，希望大家能看得懂。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>協議系統允許一組參與者就某事達成相同的決定——例如，午餐吃什麼。在區塊鏈中，則決定了那些交易可以寫入到新的區塊上。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>在了解共識協議前，先提一下<b>拜占庭將軍問題（</b></span><b><span
+lang=EN-US>Byzantine Generals Problem</span></b><b><span style='font-family:
+"新細明體",serif'>）</span></b><span style='font-family:"新細明體",serif'>，它是由</span><span
+lang=EN-US>Leslie Lamport</span><span style='font-family:"新細明體",serif'>、</span><span
+lang=EN-US>Robert Shostak</span><span style='font-family:"新細明體",serif'>和</span><span
+lang=EN-US>Marshall Pease</span><span style='font-family:"新細明體",serif'>在其論文中提出的分散式對等網路通信容錯問題。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>論文描述了一組拜占庭將軍分別各率領一支軍隊共同圍困一座城市。條件在於所有的軍隊必須一起進攻或一起撤離，否則會導致災難性結果。因為各位將軍分處城市不同方向，他們只能通過信使互相聯絡，通知其他將軍自己投票給進攻還是撤退，這樣一來每位將軍根據自己的投票和其他所有將軍送來的資訊就可以知道共同的投票結果而決定行動策略。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>系統的問題在於，將軍中可能出現叛徒，傳給其他將軍假的訊息。也不能排除信使被敵人截殺，甚至被敵人間諜替換等情況。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>拜占庭容錯，又或稱<b>拜占庭容錯協議（</b></span><b><span
+lang=EN-US>Byzantine Fault Tolerance, BFT</span></b><b><span style='font-family:
+"新細明體",serif'>）</span></b><span style='font-family:"新細明體",serif'>正是解決這個情境題的經典解答，所以，<span
+style='background:yellow'>我們常聽見的「拜占庭容錯協議」其實是答案，背後要解決的，是上述的「拜占庭將軍問題」。</span></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>拜占庭容錯協議的做法，就是基於團隊會忠誠執行指令的前題下，所有人只需要執行最大多數的共同指示即可。說穿了，<span
+style='background:yellow'>就是少數服從多數，將錯誤的信息預計在內，再加以排除。</span></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>Leslie Lamport</span><span
+style='font-family:"新細明體",serif'>等人在論文中證明，當叛變者不超過</span><span lang=EN-US>1/3</span><span
+style='font-family:"新細明體",serif'>時，保證一定能達到一致結果。<span style='background:yellow'>假如節點總數為</span></span><span
+lang=EN-US style='background:yellow'> N</span><span style='font-family:"新細明體",serif;
+background:yellow'>，故障節點數為</span><span lang=EN-US style='background:yellow'> F</span><span
+style='font-family:"新細明體",serif;background:yellow'>，則當</span><span lang=EN-US
+style='background:yellow'> N &gt;= 3F + 1 </span><span style='font-family:"新細明體",serif;
+background:yellow'>時，問題才能有解。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>但傳統的拜占庭協議解決的是「封閉系統」中的共識問題。既然要少數服從多數，就要先知道「多數」是什麼，也就是節點成員資格要經過審查，不是想加入就能隨時加入，是中心化的系統。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><b><span style='font-family:"新細明體",serif'>聯邦拜占庭協議（</span><span
+lang=EN-US>Federated Byzantine Agreement, FBA</span></b><b><span
+style='font-family:"新細明體",serif'>）</span></b><span style='font-family:"新細明體",serif'>是對拜占庭協議的一種改編，應用在具有「開放」成員資格的系統，不必提前知道和驗證每個節點。成員資格是開放的，節點能隨時加入，也能隨時退出。節點間無須</span><span
+style='font-family:"新細明體",serif'>（</span><span style='font-family:"新細明體",serif'>也無法）知道所有的節點成員。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>Stellar.org</span><span style='font-family:
+"新細明體",serif'>的首席科学家</span><span lang=EN-US>David Mazières</span><span
+style='font-family:"新細明體",serif'>教授的論文介绍了<b>恒星共識協議（</b></span><b><span
+lang=EN-US>Stellar Consensus Protocol, SCP</span></b><b><span style='font-family:
+"新細明體",serif'>）</span></b><span style='font-family:"新細明體",serif'>，同時它也是聯邦拜占庭協議第一個安全可證的實作成果，所以說恒星共識協議是基於聯邦拜占庭協議算法的。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>簡單的講，</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='background:yellow'>BFT</span><span
+style='font-family:"新細明體",serif;background:yellow'>：中心化、少數服從多數。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='background:yellow'>FBA</span><span
+style='font-family:"新細明體",serif;background:yellow'>：改進為去中心化。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='background:yellow'>SCP</span><span
+style='font-family:"新細明體",serif;background:yellow'>：真正實作</span><span
+lang=EN-US style='background:yellow'>FBA</span><span style='font-family:"新細明體",serif;
+background:yellow'>的結果</span><span style='font-family:"新細明體",serif;background:
+yellow'>（</span><span style='font-family:"新細明體",serif;background:yellow'>前面兩個只是理論）。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>投票是</span><span
+lang=EN-US>SCP</span><span style='font-family:"新細明體",serif'>的核心，過程涉及多輪<b>聯邦投票（</b></span><b><span
+lang=EN-US>Federated Voting</span></b><b><span style='font-family:"新細明體",serif'>）</span></b><span
+style='font-family:"新細明體",serif'>（本文略過聯邦投票的細節）。但在具有動態成員資格的去中心化網路中，不可能提前知道有多少節點，以及有多少節點才叫做多數，要怎麼決定投票結果呢？</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>聯邦投票採用<b>仲裁切片（</b></span><b><span
+lang=EN-US>quorum slice</span></b><b><span style='font-family:"新細明體",serif'>）</span></b><span
+style='font-family:"新細明體",serif'>來解決這個問題。<span style='background:yellow'>仲裁切片就是節點所信任的一群節點集合</span>（</span><span
+lang=EN-US>Pi</span><span style='font-family:"新細明體",serif'>安全圈指的就是這個嗎？），會互相傳達投票的信息。每個節點都定義了自己的仲裁切片，本身也是仲裁切片中的一員。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>從某一個節點開始，添加它的仲裁切片的成員，然後再添加這些成員的仲裁切片的成員，依此類推。直到最後沒有新的節點可以添加，就形成了一個<b>仲裁（</b></span><b><span
+lang=EN-US>quorum</span></b><b><span style='font-family:"新細明體",serif'>）</span></b><span
+style='font-family:"新細明體",serif'>。<span style='background:yellow'>仲裁內的節點都<span
+style='color:black'>接受相同的投票</span>。</span></span></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img width=644 height=484 id="圖片 1"
+src="simplifiedscp.files/image001.jpg"></span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"新細明體",serif'>沒有剩餘的節點要添加。這就是一個仲裁。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif;color:black'>事實上，每個節點可能有多個仲裁切片。要形成仲裁，只需選擇其中一個切片並添加成員；然後為每個成員選擇任何一個切片並添加這些成員，依此類推。這意味著每個節點都是許多可能的仲裁的成員。</span></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img width=643 height=484 id="圖片 3"
+src="simplifiedscp.files/image002.jpg"></span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"新細明體",serif;
+color:black'>產生不同的仲裁</span>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>SCP</span><span style='font-family:"新細明體",serif'>要求網路必須具備<b>仲裁交集（</b></span><b><span
+lang=EN-US>quorum intersection</span></b><b><span style='font-family:"新細明體",serif'>）</span></b><span
+style='font-family:"新細明體",serif'>的特性，任何兩個仲裁總是至少有一個節點重疊。這表示如果任何仲裁同意</span><span
+lang=EN-US>X</span><span style='font-family:"新細明體",serif'>，則沒有其他仲裁可以同意</span><span
+lang=EN-US>&quot;</span><span style='font-family:"新細明體",serif'>非</span><span
+lang=EN-US>X&quot;</span><span style='font-family:"新細明體",serif'>，因為它一定包含第一個仲裁中已經投票給</span><span
+lang=EN-US>X</span><span style='font-family:"新細明體",serif'>的某個節點。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img width=644 height=484 id="圖片 2"
+src="simplifiedscp.files/image003.jpg"></span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"新細明體",serif;
+color:black'>總是會重疊的</span>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif;color:black'>一個節點可以從他們的廣播消息中看到其他節點是如何投票的，進而可能改變自己的投票，最後達到一個仲裁的節點全都接受相同結果</span><span
+style='font-family:"新細明體",serif'>（本文略過聯邦投票的細節）<span style='color:black'>。</span></span></span></p>
+
+<div style='border:none;border-bottom:solid windowtext 1.0pt;padding:0cm 0cm 1.0pt 0cm'>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=EN-US>&nbsp;</span></p>
+
+</div>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US><a
+href="https://yuanrui919.github.io/"><span lang=EN-US style='font-family:"新細明體",serif'><span
+lang=EN-US>回首頁</span></span></a></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>
