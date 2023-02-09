@@ -167,32 +167,44 @@ lang=EN-US>log</span><span style='font-family:"新細明體",serif'>。</span></
 lang=EN-US>Docker</span><span style='font-family:"新細明體",serif'>查看</span> <span
 lang=EN-US>/VAR/LOG/SUPERVISOR </span><span style='font-family:"新細明體",serif'>在本機的掛載路徑，</span><span
 lang=EN-US>Windows</span><span style='font-family:"新細明體",serif'>跟</span><span
-lang=EN-US>MAC</span><span style='font-family:"新細明體",serif'>不一樣：</span></p>
-
-<p class=MsoNormal><span lang=EN-US><img border=0 width=1258 height=713
-id="圖片 3" src="logs.files/image002.png" alt="一張含有 文字 的圖片&#10;&#10;自動產生的描述"></span></p>
-
-<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
-
-<p class=MsoNormal><span lang=EN-US><img border=0 width=1202 height=435
-id="圖片 9" src="logs.files/image003.png"></span></p>
+lang=EN-US>MAC</span><span style='font-family:"新細明體",serif'>不一樣。</span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
 <p class=MsoNormal><span lang=EN-US>Windows</span><span style='font-family:
 "新細明體",serif'>位於</span> <span lang=EN-US style='font-family:Consolas;
 background:yellow'>%appdata%\Pi Network\docker_volumes\supervisor_logs</span><span
-lang=EN-US> </span><span style='font-family:"新細明體",serif'>目錄；</span><span
-lang=EN-US>MAC</span><span style='font-family:"新細明體",serif'>位於</span> <span
-lang=EN-US style='font-family:Consolas;background:yellow'>/Users/</span><i><span
-style='font-family:"新細明體",serif;background:yellow'>使用者名稱</span></i><span
-lang=EN-US style='font-family:Consolas;background:yellow'>/Library/Application
-Support/Pi Network/docker_volumes/supervisor_logs</span><span lang=EN-US> </span><span
-style='font-family:"新細明體",serif'>目錄。如下圖是</span><span lang=EN-US>Windows</span><span
-style='font-family:"新細明體",serif'>的範例：</span></p>
+lang=EN-US> </span><span style='font-family:"新細明體",serif'>目錄。</span></p>
 
-<p class=MsoNormal><span lang=EN-US><img border=0 width=852 height=470 id="圖片 2"
-src="logs.files/image004.png"></span></p>
+<p class=MsoNormal><span lang=EN-US><img border=0 width=1259 height=713
+id="圖片 7" src="logs.files/image002.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>MAC</span><span style='font-family:"新細明體",serif'>位於</span>
+<span lang=EN-US style='font-family:Consolas;background:yellow'>~Library/Application
+Support/Pi Network/docker_volumes/supervisor_logs</span><span lang=EN-US> </span><span
+style='font-family:"新細明體",serif'>目錄。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=1202 height=435
+id="圖片 9" src="logs.files/image003.png"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>不管是</span><span
+lang=EN-US>Windows</span><span style='font-family:"新細明體",serif'>的</span><span
+lang=EN-US style='background:yellow'>%appdata%</span><span style='font-family:
+"新細明體",serif'>或</span><span lang=EN-US>MAC</span><span style='font-family:"新細明體",serif'>的</span><span
+lang=EN-US style='background:yellow'>~Library</span><span style='font-family:
+"新細明體",serif'>都是隱藏檔，請自行上網搜尋怎麼開啟它，這裡不說明電腦操作技巧。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>如下圖是</span><span
+lang=EN-US>Windows</span><span style='font-family:"新細明體",serif'>的範例：</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=854 height=472 id="圖片 2"
+src="logs.files/image004.jpg"></span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
@@ -293,7 +305,8 @@ lang=EN-US>6</span><span style='font-family:"新細明體",serif'>種檔案：</
 <p class=MsoNormal><span style='font-family:"新細明體",serif'>其中</span><span
 lang=EN-US>xxxxxx</span><span style='font-family:"新細明體",serif'>是隨機產生的，每台節點的檔名都不一樣。當檔案大小到達</span><span
 lang=EN-US>50MB</span><span style='font-family:"新細明體",serif'>的時候，會自動產生一個新檔，而舊檔案則在檔名後面接上</span>
-<span lang=EN-US>.1 .2 .3 </span><span style='font-family:"新細明體",serif'>等數字。</span></p>
+<span lang=EN-US>.1 .2 .3 </span><span style='font-family:"新細明體",serif'>等數字，最多</span><span
+lang=EN-US>10</span><span style='font-family:"新細明體",serif'>個檔案。</span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
@@ -301,7 +314,7 @@ lang=EN-US>50MB</span><span style='font-family:"新細明體",serif'>的時候�
 lang=EN-US>log</span><span style='font-family:"新細明體",serif'>裡面紀錄的時間是時區</span><span
 lang=EN-US>UTC+0</span><span style='font-family:"新細明體",serif'>，跟台灣的時間差了</span><span
 lang=EN-US>8</span><span style='font-family:"新細明體",serif'>小時，閱讀起來不是很方便，還要自己在腦袋中加</span><span
-lang=EN-US>8</span><span style='font-family:"新細明體",serif'>小時，建議裝好節點後先調整時區</span><span
+lang=EN-US>8</span><span style='font-family:"新細明體",serif'>小時，我習慣裝好節點後先調整時區</span><span
 lang=EN-US>(</span><span style='font-family:"新細明體",serif'>不改也沒關係，這不是必要的</span><span
 lang=EN-US>)</span><span style='font-family:"新細明體",serif'>。</span></p>
 
@@ -407,8 +420,8 @@ style='font-family:"新細明體",serif'>，詳細的訊息。</span></p>
 
 <p class=MsoNormal><span style='font-family:"新細明體",serif'>案例：</span></p>
 
-<p class=MsoNormal><span lang=EN-US><img border=0 width=1176 height=360
-id="圖片 6" src="logs.files/image007.png"></span></p>
+<p class=MsoNormal><span lang=EN-US><img border=0 width=1178 height=362
+id="圖片 6" src="logs.files/image007.jpg"></span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
