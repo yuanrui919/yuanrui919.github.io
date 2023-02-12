@@ -1,0 +1,236 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<title>例解聯邦投票</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:新細明體;
+	panose-1:2 2 5 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"\@新細明體";
+	panose-1:2 1 6 1 0 1 1 1 1 1;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	font-size:12.0pt;
+	font-family:"Calibri",sans-serif;}
+a:link, span.MsoHyperlink
+	{color:#0563C1;
+	text-decoration:underline;}
+.MsoChpDefault
+	{font-family:"Calibri",sans-serif;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:595.3pt 841.9pt;
+	margin:72.0pt 90.0pt 72.0pt 90.0pt;
+	layout-grid:18.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style>
+
+</head>
+
+<body lang=ZH-TW link="#0563C1" vlink="#954F72" style='word-wrap:break-word;
+text-justify-trim:punctuation'>
+
+<div class=WordSection1 style='layout-grid:18.0pt'>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>請先閱讀</span><span
+lang=EN-US><a href="https://yuanrui919.github.io/simplifiedscp/"><span
+lang=EN-US style='font-family:"新細明體",serif'><span lang=EN-US>最最最簡化的</span></span>SCP</a></span><span
+style='font-family:"新細明體",serif;color:black'>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>來講<b>聯邦投票（</b></span><b><span
+lang=EN-US>Federated Voting</span></b><b><span style='font-family:"新細明體",serif'>）</span></b><span
+style='font-family:"新細明體",serif'>的過程：<b>投票、接受和確認（</b></span><b><span
+lang=EN-US>Voting, accepting, and confirming</span></b><b><span
+style='font-family:"新細明體",serif'>）</span></b><span style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>在一輪聯邦投票中，一個節點可以選擇從投票給某個值</span><span
+lang=EN-US> V </span><span style='font-family:"新細明體",serif'>開始。我們用午餐吃什麼來舉例。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><u><span style='font-family:"新細明體",serif'>小安</span></u><span
+style='font-family:"新細明體",serif'>向周圍的人大喊（廣播）「我是<u>小安</u>，<u>小浪</u>和<u>小黑</u>是我的朋友（<u>小安</u></span><span
+lang=EN-US>+</span><u><span style='font-family:"新細明體",serif'>小浪</span></u><span
+lang=EN-US>+</span><u><span style='font-family:"新細明體",serif'>小黑</span></u><span
+style='font-family:"新細明體",serif'>就是<u>小安</u>的仲裁切片），我<b>投票（</b></span><b><span
+lang=EN-US>Voting</span></b><b><span style='font-family:"新細明體",serif'>）</span></b><span
+style='font-family:"新細明體",serif'>給<span style='color:#00B050'>排骨飯</span>。」當<u>小安</u>這樣講時，表示<span
+style='background:yellow'>承諾他從來不曾反對吃<span style='color:#00B050'>排骨飯</span>，也永遠不會反對吃<span
+style='color:#00B050'>排骨飯</span></span>（但最後吃不吃<span style='color:#00B050'>排骨飯</span>就不一定了，有可能票數太少，後來跟別人吃其他食物）。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><u><span style='font-family:"新細明體",serif'>小安</span></u><span
+style='font-family:"新細明體",serif'>也會聽到身邊的人說他們要投給票什麼，<u>小安</u>只要聽到足夠多的人喊話，就可以根據這些人的朋友的朋友…找到朋友們組成的群體（仲裁）。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>如果<u>小安</u>發現整群人都投票給<span
+style='color:#00B050'>排骨飯</span>，他就會轉成接受<span style='color:#00B050'>排骨飯</span>，並向周圍大喊「我是<u>小安</u>，<u>小浪</u>和<u>小黑</u>是我的朋友，我<b>接受（</b></span><b><span
+lang=EN-US>Accepting</span></b><b><span style='font-family:"新細明體",serif'>）</span></b><span
+style='font-family:"新細明體",serif;color:#00B050'>排骨飯</span><span
+style='font-family:"新細明體",serif'>。」</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><b><span style='font-family:"新細明體",serif'>接受（</span><span
+lang=EN-US>Accepting</span></b><b><span style='font-family:"新細明體",serif'>）</span></b><span
+style='font-family:"新細明體",serif'>比單純的<b>投票（</b></span><b><span lang=EN-US>Voting</span></b><b><span
+style='font-family:"新細明體",serif'>）</span></b><span style='font-family:"新細明體",serif'>提供了更強的保證。當<u>小安</u>投票給<span
+style='color:#00B050'>排骨飯</span>時，他永遠不會投票給<span style='color:#00B050'>排骨飯</span>以外的食物，但群內的其他人就不一定了。可是<span
+style='background:yellow'>當<u>小安</u>接受<span style='color:#00B050'>排骨飯</span>時，整個群體的人都<span
+style='color:red'>不會</span>接受<span style='color:#00B050'>排骨飯</span>以外的食物</span>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>當然，<u>小安</u>很有可能不會立即看到很多人同意他投的<span
+style='color:#00B050'>排骨飯</span>，其他人可能會投票給<span style='color:#00B050'>肉羹麵</span>、<span
+style='color:#00B050'>總匯三明治</span>。但是還有另一種方式可以讓<u>小安</u>從單純的投票推進到接受。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><u><span style='font-family:"新細明體",serif'>小安</span></u><span
+style='font-family:"新細明體",serif'>可以接受另一個不同的食物，比如<span style='color:#00B050'>肉圓</span>，即使<u>小安</u>沒有投票給<span
+style='color:#00B050'>肉圓</span>，也沒有看到整個群體的人都投票給<span style='color:#00B050'>肉圓</span>，但只要<u>小安</u>看到一些特別的朋友接受<span
+style='color:#00B050'>肉圓</span>就行。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>我們把這些特別的朋友取個專有名詞，叫做<b>阻塞集（</b></span><b><span
+lang=EN-US>blocking set</span></b><b><span style='font-family:"新細明體",serif'>）</span></b><span
+style='font-family:"新細明體",serif'>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>阻塞集是從<u>小安</u>的每個朋友切片中選擇一個人來組成。顧名思義，它能夠阻止任何其他食物選項。如果這些人都接受<span
+style='color:#00B050'>肉圓</span>，那麼將永遠不可能形成一個接受<span style='color:black'>“</span>不是<span
+style='color:#00B050'>肉圓</span><span style='color:black'>”</span>的群體，因此<u>小安</u>也接受<span
+style='color:#00B050'>肉圓</span>是安全的。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=1104 height=378
+id="圖片 13" src="FederatedVoting.files/image001.png"></span></p>
+
+<p class=MsoNormal><u><span style='font-size:10.0pt;font-family:"新細明體",serif'>小安</span></u><span
+style='font-size:10.0pt;font-family:"新細明體",serif'>有</span><span lang=EN-US
+style='font-size:10.0pt'>3</span><span style='font-size:10.0pt;font-family:
+"新細明體",serif'>個朋友切片<span style='color:black'>。</span></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=294 height=328
+id="圖片 14" src="FederatedVoting.files/image002.png"></span></p>
+
+<p class=MsoNormal><u><span style='font-size:10.0pt;font-family:"新細明體",serif;
+color:black'>小浪</span></u><span lang=EN-US style='font-size:10.0pt;color:black'>+</span><u><span
+style='font-size:10.0pt;font-family:"新細明體",serif;color:black'>老礦工</span></u><span
+lang=EN-US style='font-size:10.0pt;color:black'>+</span><u><span
+style='font-size:10.0pt;font-family:"新細明體",serif;color:black'>傑叔</span></u><span
+style='font-size:10.0pt;font-family:"新細明體",serif;color:black'>，是<u>小安</u>的阻塞集，它從<u>小安</u>的</span><span
+lang=EN-US style='font-size:10.0pt;color:black'>3</span><span style='font-size:
+10.0pt;font-family:"新細明體",serif;color:black'>個朋友切片中各挑了一個人。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=294 height=325
+id="圖片 18" src="FederatedVoting.files/image003.png"></span></p>
+
+<p class=MsoNormal><u><span style='font-size:10.0pt;font-family:"新細明體",serif;
+color:black'>小浪</span></u><span lang=EN-US style='font-size:10.0pt;color:black'>+</span><u><span
+style='font-size:10.0pt;font-family:"新細明體",serif;color:black'>艾瑪</span></u><span
+style='font-size:10.0pt;font-family:"新細明體",serif;color:black'>也是<u>小安</u>的阻塞集，因為<u>艾瑪</u>同時出現在<u>小安</u>的</span><span
+lang=EN-US style='font-size:10.0pt;color:black'>2</span><span style='font-size:
+10.0pt;font-family:"新細明體",serif;color:black'>個朋友切片中。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>但是阻塞集不是一個完整的朋友群體。如果有人可以在<u>小安</u>的每個朋友切片中收買一個人（例如收買<u>小浪</u>跟<u>艾瑪</u>），那麼就很容易欺騙<u>小安</u>接受一個奇怪的食物（如<span
+style='color:#00B050'>毛鴨蛋</span>！！）。所以接受<span style='color:#00B050'>肉圓</span>並不是午餐投票的結束。相反的，小安必須<b>確認（</b></span><b><span
+lang=EN-US>Confirming</span></b><b><span style='font-family:"新細明體",serif'>）</span></b><span
+style='font-family:"新細明體",serif'>它，也就是<span style='background:yellow'>看到整個群體的人全都接受<span
+style='color:#00B050'>肉圓</span></span>。如果走到這一步，其他人最終也都將確認相同的<span
+style='color:#00B050'>肉圓</span>，因此<u>小安</u>就能把<span style='color:#00B050'>肉圓</span>當作午餐投票結束的結果。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img border=0 width=667 height=370 id="圖片 2"
+src="FederatedVoting.files/image004.png"></span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"新細明體",serif'>午餐吃什麼的聯邦投票</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><b><span style='font-family:"新細明體",serif;color:black;
+background:yellow'>投票</span></b><span style='font-family:"新細明體",serif;
+color:black;background:yellow'>、<b>接受</b>和<b>確認</b>的過程構成了一輪完整的聯邦投票。</span><span
+style='font-family:"新細明體",serif;color:black'>恆星共識協議結合了<span style='background:
+yellow'>許多這樣的回合</span>來創建一個完整的共識系統。</span></p>
+
+<div style='border:none;border-bottom:solid windowtext 1.0pt;padding:0cm 0cm 1.0pt 0cm'>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=EN-US>&nbsp;</span></p>
+
+</div>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>這樣就結束了嗎？不，還沒。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>共識系統的兩個最重要的屬性是<b>安全性（</b></span><b><span
+lang=EN-US>safety</span></b><b><span style='font-family:"新細明體",serif'>）</span></b><span
+style='font-family:"新細明體",serif'>和<b>活性（</b></span><b><span lang=EN-US>liveness</span></b><b><span
+style='font-family:"新細明體",serif'>）</span></b><span style='font-family:"新細明體",serif'>。如果每個參與者最終的決定都一樣，<u>小安</u>和<u>小浪</u>永遠不會吃不同的東西，那麼它就是“安全的”。剛剛描述的聯邦投票程序在某種意義上是安全的，如果有人確認吃<span
+style='color:#00B050'>陽春麵</span>，則沒有其他人會確認吃<span style='color:#00B050'>披薩</span>。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>但“不會確認吃<span
+style='color:#00B050'>披薩</span>”與“會確認吃<span style='color:#00B050'>陽春麵</span>”是兩回事。可能人多嘴雜，有太多不同的<span
+style='color:#00B050'>美食</span>被投票，都沒有達到“接受”門檻。拖到下午四點大家才決定午餐吃<span
+style='color:#00B050'>陽春麵</span>，這樣就是缺乏“活性”。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>恆星共識協議確保安全性和活性的方法是，對<span
+style='background:yellow'>多種</span><span style='color:#00B050'>美食</span>進行<span
+style='background:yellow'>多次</span>聯邦投票，直到一項<span style='color:#00B050'>美食</span>通過</span><span
+lang=EN-US>SCP</span><span style='font-family:"新細明體",serif'>的各個投票階段。這部分我們留到另一個篇幅再說明。</span></p>
+
+<div style='border:none;border-bottom:solid windowtext 1.0pt;padding:0cm 0cm 1.0pt 0cm'>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=EN-US>&nbsp;</span></p>
+
+</div>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US><a
+href="https://yuanrui919.github.io/"><span lang=EN-US style='font-family:"新細明體",serif'><span
+lang=EN-US>回首頁</span></span></a></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

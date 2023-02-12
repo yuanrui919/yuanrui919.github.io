@@ -95,6 +95,13 @@ background:yellow'>時，問題才能有解。</span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>（</span><span
+style='font-family:"新細明體",serif'>大家有興趣也可以看看李永樂老師的影片，講得很淺顯易懂：</span> <span
+lang=EN-US><a href="https://youtu.be/e9KVmyI1eCg">https://youtu.be/e9KVmyI1eCg</a>
+</span><span style='font-family:"新細明體",serif'>）</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
 <p class=MsoNormal><span style='font-family:"新細明體",serif'>但傳統的拜占庭協議解決的是「封閉系統」中的共識問題。既然要少數服從多數，就要先知道「多數」是什麼，也就是節點成員資格要經過審查，不是想加入就能隨時加入，是中心化的系統。</span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
@@ -153,11 +160,11 @@ lang=EN-US>Pi</span><span style='font-family:"新細明體",serif'>安全圈指�
 <p class=MsoNormal><span style='font-family:"新細明體",serif'>從某一個節點開始，添加它的仲裁切片的成員，然後再添加這些成員的仲裁切片的成員，依此類推。直到最後沒有新的節點可以添加，就形成了一個<b>仲裁（</b></span><b><span
 lang=EN-US>quorum</span></b><b><span style='font-family:"新細明體",serif'>）</span></b><span
 style='font-family:"新細明體",serif'>。<span style='background:yellow'>仲裁內的節點都<span
-style='color:black'>接受相同的投票。</span></span></span></p>
+style='color:black'>接受相同的投票結果。</span></span></span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
-<p class=MsoNormal><span lang=EN-US><img width=644 height=484 id="圖片 1"
+<p class=MsoNormal><span lang=EN-US><img border=0 width=644 height=484 id="圖片 1"
 src="simplifiedscp.files/image001.jpg"></span></p>
 
 <p class=MsoNormal><span style='font-size:10.0pt;font-family:"新細明體",serif'>沒有剩餘的節點要添加。這就是一個仲裁。</span></p>
@@ -168,7 +175,7 @@ src="simplifiedscp.files/image001.jpg"></span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
-<p class=MsoNormal><span lang=EN-US><img width=643 height=484 id="圖片 3"
+<p class=MsoNormal><span lang=EN-US><img border=0 width=643 height=484 id="圖片 3"
 src="simplifiedscp.files/image002.jpg"></span></p>
 
 <p class=MsoNormal><span style='font-size:10.0pt;font-family:"新細明體",serif;
@@ -186,7 +193,7 @@ lang=EN-US>X</span><span style='font-family:"新細明體",serif'>的某個節�
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
-<p class=MsoNormal><span lang=EN-US><img width=644 height=484 id="圖片 2"
+<p class=MsoNormal><span lang=EN-US><img border=0 width=644 height=484 id="圖片 2"
 src="simplifiedscp.files/image003.jpg"></span></p>
 
 <p class=MsoNormal><span style='font-size:10.0pt;font-family:"新細明體",serif;
@@ -214,17 +221,35 @@ border-bottom:.75pt solid windowtext'><span lang=EN-US>&nbsp;</span></p>
 style='font-family:"新細明體",serif'>個中間人，就能夠相互建立起聯結），假設<u>小安</u>從他信任的朋友中任意挑選幾位，他挑了<u>小浪</u>跟<u>小黑</u>（<u>小安</u></span><span
 lang=EN-US>+</span><u><span style='font-family:"新細明體",serif'>小浪</span></u><span
 lang=EN-US>+</span><u><span style='font-family:"新細明體",serif'>小黑</span></u><span
-style='font-family:"新細明體",serif'>就是<u>小安</u>的仲裁切片），<u>小浪</u>也從自己信任的朋友中挑選了<u>阿佑</u>，<u>阿佑</u>又選了<u>小程</u>與<u>小逸</u>。一直這樣持續下去，到沒有新朋友可以加入，就形成了一個小圈圈（組成一個仲裁）。</span></p>
+style='font-family:"新細明體",serif'>就是<u>小安</u>的仲裁切片），<u>小浪</u>也從自己信任的朋友中挑選了<u>阿佑</u>和<u>小程</u>，<u>阿佑</u>又選了<u>小逸</u>。一直這樣持續下去，到沒有新朋友可以加入，就形成了一個<span
+style='color:black'>小群體</span>（組成一個仲裁）。</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=EN-US><img
+border=0 width=643 height=485 id="圖片 4" src="simplifiedscp.files/image004.png"></span></p>
 
 <p class=MsoNormal style='border:none;padding:0cm'><span lang=EN-US>&nbsp;</span></p>
 
 <p class=MsoNormal style='border:none;padding:0cm'><span style='font-family:
-"新細明體",serif'>當然，<u>小安</u>也可以一開始是選另一位朋友<u>大衛</u>，這樣組成新圈子的成員可能就跟上一個小圈圈差異很大了。</span></p>
+"新細明體",serif'>當然，<u>小安</u>也可以<span style='color:black'>一開始是選<u>大衛</u>跟<u>艾瑪</u></span>（不同的仲裁切片），這樣組成<span
+style='color:black'>新群體的成員可能就跟上一個群體不一樣</span>。</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=EN-US><img
+border=0 width=644 height=485 id="圖片 5" src="simplifiedscp.files/image005.png"></span></p>
 
 <p class=MsoNormal style='border:none;padding:0cm'><span lang=EN-US>&nbsp;</span></p>
 
 <p class=MsoNormal style='border:none;padding:0cm'><span style='font-family:
-"新細明體",serif'>而遠在地球另一端有位<u>阿正</u>，他可能透過朋友的朋友的朋友跟<u>小逸</u>牽上關係，所以這兩個小圈圈就有了仲裁交集。</span></p>
+"新細明體",serif'>而遠在地球另一端有位<u>阿正</u>，他可能透過朋友的朋友的朋友跟<u>小逸</u>牽上關係，所以這兩個<span
+style='color:black'>群體</span>就有了仲裁交集。</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=EN-US><img
+border=0 width=644 height=485 id="圖片 6" src="simplifiedscp.files/image006.png"></span></p>
 
 <p class=MsoNormal style='border:none;padding:0cm'><span lang=EN-US>&nbsp;</span></p>
 
@@ -234,7 +259,10 @@ style='font-family:"新細明體",serif'>就是<u>小安</u>的仲裁切片）�
 <p class=MsoNormal style='border:none;padding:0cm'><span lang=EN-US>&nbsp;</span></p>
 
 <p class=MsoNormal style='border:none;padding:0cm'><span style='font-family:
-"新細明體",serif;background:yellow'>再次強調！本文略過了聯邦投票的細節（因為太複雜了，可能要另開篇幅來講），所以這個例子是在解釋仲裁、仲裁切片，並非解釋投票的過程，不要誤解了。</span></p>
+"新細明體",serif'>再次強調！本文略過了聯邦投票的細節，因為太複雜了，另開篇幅在</span> <span lang=EN-US><a
+href="https://yuanrui919.github.io/FederatedVoting/">https://yuanrui919.github.io/FederatedVoting/</a>
+</span><span style='font-family:"新細明體",serif'>說明，所以<span style='background:
+yellow'>這個例子是在解釋仲裁、仲裁切片，並非解釋投票的過程，不要誤解了。</span></span></p>
 
 <p class=MsoNormal style='border:none;padding:0cm'><span lang=EN-US>&nbsp;</span></p>
 
