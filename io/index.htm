@@ -94,15 +94,26 @@ lang=EN-US>Outoging connections</span><span style='font-family:"新細明體",se
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>而</span><span
+lang=EN-US>Pi</span><span style='font-family:"新細明體",serif'>節點是一個點對點網路（</span><span
+lang=EN-US>peer-to-peer</span><span style='font-family:"新細明體",serif'>，</span><span
+lang=EN-US>P2P</span><span style='font-family:"新細明體",serif'>），彼此傳遞交易與</span><span
+lang=EN-US>SCP</span><span style='font-family:"新細明體",serif'>訊息，所以必然會有</span><span
+lang=EN-US>Outoging</span><span style='font-family:"新細明體",serif'>與</span><span
+lang=EN-US>Incoming</span><span style='font-family:"新細明體",serif'>連線。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
 <p class=MsoNormal><span style='font-family:"新細明體",serif'>二、參數</span></p>
 
 <p class=MsoNormal><span style='font-family:"新細明體",serif'>連線數分別可以透過</span><span
 lang=EN-US>TARGET_PEER_CONNECTIONS</span><span style='font-family:"新細明體",serif'>（</span><span
 lang=EN-US>out</span><span style='font-family:"新細明體",serif'>）、</span><span
 lang=EN-US>MAX_ADDITIONAL_PEER_CONNECTIONS</span><span style='font-family:"新細明體",serif'>（</span><span
-lang=EN-US>in</span><span style='font-family:"新細明體",serif'>）參數來設定，目前是設定為</span><span
-lang=EN-US>in 64</span><span style='font-family:"新細明體",serif'>、</span><span
-lang=EN-US>out 8</span><span style='font-family:"新細明體",serif'>。</span></p>
+lang=EN-US>in</span><span style='font-family:"新細明體",serif'>）參數來設定，目前</span><span
+lang=EN-US>stellar-core.cfg</span><span style='font-family:"新細明體",serif'>都沒有設定，所以是採用預設值</span><span
+lang=EN-US>out 8</span><span style='font-family:"新細明體",serif'>、</span><span
+lang=EN-US>in 64</span><span style='font-family:"新細明體",serif'>。</span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
@@ -117,12 +128,16 @@ lang=EN-US>public.peers</span><span style='font-family:"新細明體",serif'>表
 <p class=MsoNormal><span style='font-family:"新細明體",serif'>你的節點會連接到哪些節點，就是由這個清單一台一台的嘗試。反過來說，其他節點會不會連進來，也是看你的節點有沒有在對方的</span><span
 lang=EN-US>peers</span><span style='font-family:"新細明體",serif'>表格內。</span></p>
 
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>（不要問怎麼查這些資料，因為讓一位不懂資料庫的人去操作資料庫，是一件很危險的事，所以我不打算寫出來。）</span></p>
+
 <p class=MsoNormal><span lang=EN-US><img width=549 height=232 id="圖片 4"
 src="io.files/image001.png"></span></p>
 
 <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
 
-<p class=MsoNormal><span style='font-family:"新細明體",serif'>一開始你的節點並不知道網路上有哪些節點，只知道核心團隊的節點，所以起初資料是連到核心團隊節點取得的。當你</span><span
+<p class=MsoNormal><span style='font-family:"新細明體",serif'>一開始你的節點並不知道網路上有哪些節點，只知道核心團隊的節點（在</span><span
+lang=EN-US>KNOWN_PEERS</span><span style='font-family:"新細明體",serif'>與</span><span
+lang=EN-US>PREFERRED_PEERS</span><span style='font-family:"新細明體",serif'>參數設定），所以起初資料是連到核心團隊節點取得的。當你</span><span
 lang=EN-US>(out)</span><span style='font-family:"新細明體",serif'>連線到其他節點</span><span
 lang=EN-US>(in)</span><span style='font-family:"新細明體",serif'>，你只會從對方節點隨機得到幾筆</span><span
 lang=EN-US>IP</span><span style='font-family:"新細明體",serif'>資料，而不是整個</span><span
